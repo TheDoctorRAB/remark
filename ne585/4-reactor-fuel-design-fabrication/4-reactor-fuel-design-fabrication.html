@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Reactor fuel design and fabrication</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Open Sans', sans-serif; }
+      h1, h2, h3 {
+        font-family: 'Ubuntu';
+        font-weight: normal;
+        }
+      .remark-container {background-color: #F5F5F5; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { background-color: #FFFAF0; font-size: 26px; 
+                         h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
+       }
+      .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle
+
+# NE585
+## NUCLEAR FUEL CYCLE ANALYSIS
+### Reactor fuel design and fabrication 
+
+#### 4
+---
+# Outcomes for the lecture
+
+Chapter 4
+
+Design different fuel concepts
+
+Assess fule performance
+
+Analyze fuel cost as a component in the fuel cycle
+---
+# What's the advantage of nuclear
+
+Construction costs are really high  
+Hopefully modularization will help reduce that
+
+The real advantage is the high capacity factor
+
+[Fossil fuel sources](https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_07_a)
+
+[Non fossil fuel sources](https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_6_07_b)
+---
+# Defense in depth used for fuel design
+
+<img align="left" src="img/fuel.pin.jpg">
+
+In LWRs  
+Fuel matrix for structural integrity  
+Material that won't melt 
+
+Technically not really if LFTR
+
+Cladding to protect fuel from coolant  
+Can't melt either 
+
+Must contain fuel and prevent fission product release in the event of fuel failure
+
+We can talk about fuel for different reactors though
+---
+# Materials are the strongest design constraint
+
+One reason why NuScale is so far ahead is because the fuel is the same
+
+Other factors are  
+reactivity  
+heat transfer  
+structural containment  
+no neutron absorbers  
+---
+# Fuel has to be cost effective
+
+Long residency in the core 
+
+Standard design for ready production (use in a lot of reactors)
+
+Reliability - transients
+
+[Quality control](https://www.nrc.gov/reactors/new-reactors/oversight/quality-assurance.html)
+
+Technology-neutral
+---
+# Uranium fuel used as metal first
+
+Zircaloy clad
+
+[Any guesses where?](https://courses.candelalearning.com/x84x9/chapter/fuel-cycle-analysis/)
+
+$UF_4+2Mg \rightarrow 2MgF_2+U$
+
+We can also get it from electrorefining
+
+Uranium metal has three allotropes
+---
+# $\alpha$ phase is stable up to 600C
+
+<img align="left" src="img/orthorhombic.jpg">
+
+Anisotropic
+
+When heated, expands in two different directions and contracts in a third
+
+Crystal structure highly asymmetrical
+
+Only Mo and Nb form solid solutions
+
+Do we know anyone working with U-Mo?
+---
+# $\beta$ phase is stable between 660C to 700C
+
+<img align="left" src="img/tetragonal.png">
+
+Also anisotropic
+
+Both phases orient in preferred direction when metal is deformed
+
+Brittle and hard
+---
+# $\gamma$ phase is stable from 760C to 1130C
+
+<img align="left" src="img/bcc.png">
+
+This is isotropic
+
+Is this better to use?
+
+Irradiation adversely affects thermal conductivity
+
+How? 
+---
+# Commercial fuel in LWRs is $UO_2$ ceramic
+
+
+<img align="left" src="img/UO2.jpg">
+
+[Why?](http://www.pbs.org/program/rickover-birth-nuclear-power/)
+
+Crystallizes in fluorite structure
+
+Face centered cubic lattice
+
+Oxygen in tetrahedral sites
+
+[Phase diagram](http://www.stonybrook.edu/commcms/geosciences/people/faculty/parise/Parise%20Website%201.png)
+---
+
+
+
+![doggehs](img/final.jpg)
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script type="text/javascript">
+        var options = {};
+        var renderMath = function() {
+            renderMathInElement(document.body, {delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\[", right: "\\]", display: false},
+            ]});
+        }
+        var slideshow = remark.create({
+          // Set the slideshow display ratio
+          // Default: '4:3'
+          // Alternatives: '16:9', ...
+          ratio: '16:9',
+          // Navigation options
+          navigation: {
+          // Enable or disable navigating using scroll
+          // Default: true
+          // Alternatives: false
+          scroll: true,
+          // Enable or disable navigation using touch
+          // Default: true
+          // Alternatives: false
+          touch: true,
+          // Enable or disable navigation using click
+          // Default: false
+          // Alternatives: true
+          click: false
+          },
+          // Customize slide number label, either using a format string..
+          slideNumberFormat: '%current%',
+          // Enable or disable counting of incremental slides in the slide counting
+          countIncrementalSlides: false 
+          }, renderMath);
+    </script>
+  </body>
+</html>
