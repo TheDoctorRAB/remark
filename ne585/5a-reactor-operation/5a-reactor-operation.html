@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Reactor fuel design and fabrication</title>
+    <title>Reactor operation</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style type="text/css">
       @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
@@ -80,9 +80,58 @@ rate of change of neutron density = production - loss
 production = ?  
 loss = ?
 ---
+# Neutron transport derivation similar to Boltzmann particle transport
 
+Describes number of neutrons/square cm/s at a vector $\vec{r}$, time $t$, with energy between $E$ and $E+dE$, in direction $\hat{\Omega}$, inside solid angle $
+d\hat{\Omega}$
 
+$$\phi(\vec{r},E,\hat{\Omega},t)dEd\hat{\Omega}$$
+---
+class: middle, center
+![Solid angle](img/solid.angle.1.jpg)
+---
+class: middle, center
+![Solid angle](img/solid.angle.2.png)
+---
+class: middle, center
+![Solid angle](img/solid.angle.3.png)
+---
+# Transport equation solved piecewise over homogeneous regions
 
+We went into the derivation a little more in NE450
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\frac{1}{v}\frac{\partial{\phi}}{\partial{t}}=\int_{E'}dE'\int_{\Omega'}d\hat{\Omega'}\Sigma_S(E'\rightarrow&space;E,\hat{\Omega'}\rightarrow&space;\hat{\Omega}\phi)&space;&plus;S&space;-\nabla[\hat{\Omega}\phi&plus;\Sigma_T(E)\phi]" title="\frac{1}{v}\frac{\partial{\phi}}{\partial{t}}=\int_{E'}dE'\int_{\Omega'}d\hat{\Omega'}\Sigma_S(E'\rightarrow
+E,\hat{\Omega'}\rightarrow \hat{\Omega}\phi) +S -\nabla[\hat{\Omega}\phi+\Sigma_T(E)\phi]" />
+
+$\phi = f(\vec{r},E,\hat{\Omega'},t)$  
+$S = f(\vec{r},E,\hat{\Omega'},t)$
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;S=S_E&plus;\chi(E)&space;\int_{E'}dE'\int_{\Omega'}d\hat{\Omega'}\nu(E')\Sigma_F(E')\phi" title="S=S_E+\chi(E) \int_{E'}dE'\int_{\Omega'}d\hat{\Omega'}\nu(E')\Sigma_F(E')\phi" />
+
+What are the sources and losses?
+---
+# Diffusion approximation eliminates angular dependency
+
+Integrate over all directions  
+$\frac{1}{v}\frac{\partial{\phi}}{\partial{t}}=\int_{E'}dE'\Sigma_S(E' \rightarrow E)\phi(\vec{r},E)+S(\vec{r},E)-\nabla\vec{J}(\vec{r},E)-\Sigma_T(E)\phi(\vec{r},E)$
+
+$\phi(\vec{r},E)=\int_{4\pi}d\hat{\Omega}\phi(\vec{r},E,\hat{\Omega})$
+
+$\vec{J}(\vec{r},E)=\int_{4\pi}\hat{\Omega}\phi(\vec{r},E,\hat{\Omega})d\hat{\Omega}$  
+
+$\vec{J}(\vec{r},E)=-D\nabla\phi(\vec{r},E)$
+
+$\frac{1}{v}\frac{\partial{\phi}}{\partial{t}}=\int_{E'}dE'\Sigma_S(E' \rightarrow E)\phi(\vec{r},E)+S(\vec{r},E)+\nabla D\nabla\\phi(\vec{r},E)-\Sigma_T(E)\phi(\vec{r},E)$
+
+When is steady state reached?
+---
+class: middle, center
+
+### Skipping multigroup theory because we covered it already
+
+### Lamarsh explanation is better 
+---
+![Multigroup theory](img/group.theory.jpg)
 ---
 ![doggehs](img/final.jpg)
 </textarea>
