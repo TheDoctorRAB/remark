@@ -401,7 +401,7 @@ F = fission products lower than Xe, Sm
 <img src="https://latex.codecogs.com/gif.latex?\dpi{300}&space;\frac{dN_{25}}{dt}=-N_{25}\sigma_{25}\phi(t)" title="\frac{dN_{25}}{dt}=-N_{25}\sigma_{25}\phi(t)" />  
 <img src="https://latex.codecogs.com/gif.latex?\dpi{300}&space;N_{25}=N_{25}^0e^{-\sigma_{25}\int_0^t\phi&space;dt'}" title="N_{25}=N_{25}^0e^{-\sigma_{25}\int_0^t\phi dt'}" />
 
-$\theta \equiv \int_0^t\phi(t')dt'$
+$\theta \equiv \int_0^t\phi(t')dt'\rightarrow \theta = \overline{\phi} t$
 
 <img src="https://latex.codecogs.com/gif.latex?\dpi{300}&space;N_{25}=N_{25}^0e^{-\sigma_{25}\theta}" title="N_{25}=N_{25}^0e^{-\sigma_{25}\theta}" />
 ---
@@ -429,6 +429,82 @@ What does this mean?
 $\frac{\alpha}{1+\alpha}=\frac{\sigma_A}{\sigma_F} \cdot \frac{\sigma_F}{\sigma_F+\sigma_A} =\frac{\sigma_A}{\sigma_F+\sigma_A}$
 
 <img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;N_{26}=\frac{N_{25}^0\sigma_{25}\alpha_{25}}{(\sigma_{25}-\sigma_{26})(1&plus;\alpha_{25})}\cdot(e^{-\sigma_{26}\theta}-e^{-\sigma_{25}\theta})" title="N_{26}=\frac{N_{25}^0\sigma_{25}\alpha_{25}}{(\sigma_{25}-\sigma_{26})(1+\alpha_{25})}\cdot(e^{-\sigma_{26}\theta}-e^{-\sigma_{25}\theta})" />
+---
+# Pu-239 production is more complicated
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\frac{dN_{49}}{dt}=" title="\frac{dN_{49}}{dt}=" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;N^0_{28}\sigma_{28}\phi" title="N^0_{28}\sigma_{28}\phi" /> thermal neutron absorption in U-238
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;&plus;\eta_{X}\epsilon&space;P_F&space;(1-p)&space;N_{X}\sigma_{X}\phi" title="+\eta_{X}\epsilon P_F (1-p) N_{X}\sigma_{X}\phi" />
+
+Fission neutrons from X absorbed by Y in the resonance region  
+U-235, U-238; Pu-239, Pu-238; Pu-241, U-238
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;-N_{49}\sigma_{49}\phi" title="-N_{49}\sigma_{49}\phi" /> thermal neutron absorption in Pu-239
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\large&space;&plus;\frac{\alpha_{28}}{1&plus;\alpha_{28}}\cdot\frac{\epsilon-1}{\eta_{28-1}}(\eta_{25}N_{25}\sigma_{25}&plus;\eta_{49}N_{49}\sigma_{49}&plus;\eta_{41}N_{41}\sigma_{41})\phi" title="\large +\frac{\alpha_{28}}{1+\alpha_{28}}\cdot\frac{\epsilon-1}{\eta_{28-1}}(\eta_{25}N_{25}\sigma_{25}+\eta_{49}N_{49}\sigma_{49}+\eta_{41}N_{41}\sigma_{41})\phi" /> fast neutron absorption U-235, Pu-239, Pu-241
+---
+# Net formation can be simplified with flux time
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\large&space;\frac{dN_{49}}{d\theta}=N_{28}^0\sigma_{28}&plus;\kappa_{25}N_{25}\sigma_{25}-\gamma_{49}N_{49}\sigma_{49}&plus;\kappa_{41}N_{41}\sigma_{41}" title="\large \frac{dN_{49}}{d\theta}=N_{28}^0\sigma_{28}+\kappa_{25}N_{25}\sigma_{25}-\gamma_{49}N_{49}\sigma_{49}+\kappa_{41}N_{41}\sigma_{41}" />
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\large&space;\kappa_m&space;\equiv\eta_m\epsilon&space;P_F(1-p)&plus;\eta_m\frac{\alpha_{28}}{1&plus;\alpha_{28}}\cdot\frac{\epsilon-1}{\eta_{28}-1}" title="\large \kappa_m \equiv\eta_m\epsilon P_F(1-p)+\eta_m\frac{\alpha_{28}}{1+\alpha_{28}}\cdot\frac{\epsilon-1}{\eta_{28}-1}" />
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\large&space;\gamma_{49}=1-\kappa_{49}" title="\large \gamma_{49}=1-\kappa_{49}" />
+---
+# The remaining isotopes of plutonium produced are Pu-242, Pu-241, Pu-240
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\frac{dN_{42}}{d\theta}=\frac{\alpha_{41}}{1&plus;\alpha_{41}}\cdot&space;N_{41}\sigma_{41}-N_{42}\sigma_{42}" title="\LARGE \frac{dN_{42}}{d\theta}=\frac{\alpha_{41}}{1+\alpha_{41}}\cdot N_{41}\sigma_{41}-N_{42}\sigma_{42}" />
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\large&space;\frac{dN_{41}}{d\theta}=N_{40}\sigma_{40}-N_{41}\sigma_{41}" title="\large \frac{dN_{41}}{d\theta}=N_{40}\sigma_{40}-N_{41}\sigma_{41}" />
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\large&space;\frac{dN_{40}}{d\theta}=\frac{\alpha_{49}}{1&plus;\alpha_{49}}N_{49}\sigma_{49}-N_{40}\sigma_{40}" title="\large \frac{dN_{40}}{d\theta}=\frac{\alpha_{49}}{1+\alpha_{49}}N_{49}\sigma_{49}-N_{40}\sigma_{40}" />
+
+Initial conditions all = 0
+---
+# An exact solution can be solved analytically, but why bother?
+
+Formation of Pu-239 by absorption of resonance neutrons from Pu-241 can be neglected
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\kappa_{41}&space;N_{41}&space;\sigma_{41}&space;<<&space;\gamma_{41}&space;N_{49}&space;\sigma_{49}" title="\LARGE \kappa_{41} N_{41} \sigma_{41} << \gamma_{41} N_{49} \sigma_{49}" />
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\frac{dN_{49}}{d\theta}=N_{28}^0\sigma_{28}&plus;\kappa_{25}&space;N_{25}\sigma_{25}-\gamma_{49}&space;N_{49}&space;\sigma_{49}" title="\LARGE \frac{dN_{49}}{d\theta}=N_{28}^0\sigma_{28}+\kappa_{25} N_{25}\sigma_{25}-\gamma_{49} N_{49} \sigma_{49}" />
+
+$N_{49}(0)=0$
+---
+# Fission products are produced by $^{235}U$
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\frac{dN_{25}^F}{d\theta}=\frac{1}{1&plus;\alpha_{25}}\cdot&space;N_{25}\sigma_{25}" title="\LARGE \frac{dN_{25}^F}{d\theta}=\frac{1}{1+\alpha_{25}}\cdot N_{25}\sigma_{25}" />
+
+$N_{25}^F(0)=0$
+---
+# Fission products also from $^{239}Pu$
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\frac{dN_{49}^F}{d\theta}=\frac{1}{1&plus;\alpha_{49}}\cdot&space;N_{49}\sigma_{49}" title="\LARGE \frac{dN_{49}^F}{d\theta}=\frac{1}{1+\alpha_{49}}\cdot N_{49}\sigma_{49}" />
+
+$N_{49}^F(0)=0$
+---
+# And from $^{241}Pu$
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\frac{dN_{41}^F}{d\theta}=\frac{1}{1&plus;\alpha_{41}}\cdot&space;N_{41}\sigma_{41}" title="\LARGE \frac{dN_{41}^F}{d\theta}=\frac{1}{1+\alpha_{41}}\cdot N_{41}\sigma_{41}" />
+
+$N_{41}^F(0)=0$
+---
+# The Pu solutions can be checked by an overall neutron balance
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\alpha_{49}&space;N_{49}^F=N_{40}&plus;N_{41}&plus;N_{42}&plus;N_{41}^F" title="\LARGE \alpha_{49} N_{49}^F=N_{40}+N_{41}+N_{42}+N_{41}^F" />
+---
+# Burnup can be computed as a function of the neutron balance
+
+Fission energy is about 200 MeV per U-235 atom fissioned
+
+About 9.5E5 MWD/MTU
+
+$B=9.5E5 \cdot w$
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;w&space;\equiv&space;\frac{235\cdot&space;N_{25}^F&plus;238\cdot&space;N_{28}^F&plus;239\cdot&space;N_{49}^F&space;&plus;241\cdot&space;N_{41}^F}{235\cdot&space;N_{25}^0&plus;238\cdot&space;N_{28}^0}" title="\LARGE w \equiv \frac{235\cdot N_{25}^F+238\cdot N_{28}^F+239\cdot N_{49}^F +241\cdot N_{41}^F}{235\cdot N_{25}^0+238\cdot N_{28}^0}" />
+
+So Pu accumulation can be plotted as a function of burnup
 ---
 ![doggehs](img/final.jpg)
 </textarea>
