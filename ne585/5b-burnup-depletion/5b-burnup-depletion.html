@@ -130,7 +130,7 @@ Decreases the reactivity worth of control rods
 Prompt neutrons emmitted in $^{239}Pu$ thermal fission greater than $^{235}U$  
 Adds reactivity
 
-But delayed neutron yeild is lower  
+But delayed neutron yield is lower  
 High plutonium decreases time constants  
 Lowers margin to prompt critical transient  
 ---
@@ -505,6 +505,85 @@ $B=9.5E5 \cdot w$
 <img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;w&space;\equiv&space;\frac{235\cdot&space;N_{25}^F&plus;238\cdot&space;N_{28}^F&plus;239\cdot&space;N_{49}^F&space;&plus;241\cdot&space;N_{41}^F}{235\cdot&space;N_{25}^0&plus;238\cdot&space;N_{28}^0}" title="\LARGE w \equiv \frac{235\cdot N_{25}^F+238\cdot N_{28}^F+239\cdot N_{49}^F +241\cdot N_{41}^F}{235\cdot N_{25}^0+238\cdot N_{28}^0}" />
 
 So Pu accumulation can be plotted as a function of burnup
+---
+# U-238 continuously depletes during operation
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;N_{28}(\theta)=N_{28}^0-N_{28}^0\sigma_{28}\theta-\kappa_{25}(1&plus;\alpha_{28})N_{25}^F-\kappa_{49}(1&plus;\alpha_{49})N_{49}^F-N_{28}^F" title="\large N_{28}(\theta)=N_{28}^0-N_{28}^0\sigma_{28}\theta-\kappa_{25}(1+\alpha_{28})N_{25}^F-\kappa_{49}(1+\alpha_{49})N_{49}^F-N_{28}^F" />
+
+Initial amount of atoms U-238  
+
+Absorption of thermal neutrons
+
+Absorption of resonance,fast neutrons from U-235 fission
+
+Absorption of resonance,fast neutrons from Pu-239 fission
+
+Loss due to fast fission of U-238
+---
+# The overall neutron balance can be checked 
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;N_{28}=N_{28}^0-N_{28}^F-N_{49}-N_{49}^F-N_{40}-N_{41}-N_{41}^F-N_{42}" title="\large N_{28}=N_{28}^0-N_{28}^F-N_{49}-N_{49}^F-N_{40}-N_{41}-N_{41}^F-N_{42}" />
+---
+class: center,middle
+
+# Fisson product production
+---
+# FP atoms can be determined from the number of fissions
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;N_i(t)&space;=&space;Y_{25}^iN_{25}^F&plus;Y_{49}^iN_{49}^F" title="\large N_i(t) = Y_{25}^iN_{25}^F+Y_{49}^iN_{49}^F" />
+
+$N_i(t)$ number of i FP atoms
+
+$N_m^F$ number of m atoms fissioned
+
+$Y_m^i$ cumulative yield of i FP atom by thermal fisson of m
+
+Cumulative fission is the fracton of fissions that directly yield the nuclear and its radioactive decay precursors
+
+Sum of the direct yields of the nuclide and decay precursors
+---
+![Fission yield](img/fission.yield.ppm)
+---
+# The fission product production equations can be modified
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\frac{N_{25}^F}{dt}=N_{25}&space;\sigma_{25}^{fission}&space;\overline{\phi}" title="\large \frac{N_{25}^F}{dt}=N_{25} \sigma_{25}^{fission} \overline{\phi}" />
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\frac{N_{49}^F}{dt}=N_{49}&space;\sigma_{49}^{fission}&space;\overline{\phi}" title="\large \frac{N_{49}^F}{dt}=N_{49} \sigma_{49}^{fission} \overline{\phi}" />
+
+Neglect absorption in FP and precursors
+
+For t > T, no fission
+---
+# Individual FP atom production can be obtained
+
+For t < T
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\frac{dN_i}{dt}=Y_{25}^i&space;N_{25}\sigma_{25}^f\overline{\phi}&plus;Y_{49}^i&space;N_{49}\sigma_{49}^f\overline{\phi}-\lambda_iN_i" title="\large \frac{dN_i}{dt}=Y_{25}^i N_{25}\sigma_{25}^f\overline{\phi}+Y_{49}^i N_{49}\sigma_{49}^f\overline{\phi}-\lambda_iN_i" />
+
+For t > T
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\frac{dN_i}{dt}=-\lambda_iN_i" title="\large \frac{dN_i}{dt}=-\lambda_iN_i" />
+---
+# With post irradiation cooling 
+
+Cooling time C
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;N_i(T&plus;C)=e^{-\lambda_iC}\int_0^Te^{-\lambda_i(T-t)}&space;(Y_{25}^iN_{25}\sigma_{25}^f\overline{\phi}&plus;Y_{49}^iN_{49}\sigma_{49}^f\overline{\phi})dt" title="\large N_i(T+C)=e^{-\lambda_iC}\int_0^Te^{-\lambda_i(T-t)} (Y_{25}^iN_{25}\sigma_{25}^f\overline{\phi}+Y_{49}^iN_{49}\sigma_{49}^f\overline{\phi})dt" />
+
+With long lived nuclides which are most important anyway
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;N_i(T&plus;C)=e^{-\lambda_iC}\int_0^T&space;(Y_{25}^iN_{25}\sigma_{25}^f\overline{\phi}&plus;Y_{49}^iN_{49}\sigma_{49}^f\overline{\phi})dt" title="\large N_i(T+C)=e^{-\lambda_iC}\int_0^T (Y_{25}^iN_{25}\sigma_{25}^f\overline{\phi}+Y_{49}^iN_{49}\sigma_{49}^f\overline{\phi})dt" />
+
+By definition  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;N_i(T&plus;C)=e^{-\lambda_iC}[Y_{25}^iN_{25}^F(T)&plus;Y_{49}^iN_{49}^F(T)]" title="\large N_i(T+C)=e^{-\lambda_iC}[Y_{25}^iN_{25}^F(T)+Y_{49}^iN_{49}^F(T)]" />
+---
+class: center,middle
+
+# Radioactivity from neutron activation
+---
+# We have talked about helium generation for the gas cooled reactors
+
+
 ---
 ![doggehs](img/final.jpg)
 </textarea>

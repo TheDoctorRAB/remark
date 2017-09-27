@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project 5: Burnup and depletion</title>
+<style> p {font-size: 24px } </style>
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]} }); </script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+</head>
+
+<nav class="navbar navbar-default">
+<div class="container-fluid">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<h3><a class="navbar-brand" href="../ne585.html" target="_blank">NE585: Nuclear fuel cycle analysis</a></h3>
+</div>
+
+<div class="nav navbar-nav navbar-right" id="bs-example-navbar-collapse-1">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<h3><a class="navbar-brand" href="5b-burnup-depletion.html">Project 5b: Burnup and depletion</a></h3>
+</div>
+</div>
+</nav>
+
+<body>
+<xmp>
+# NE585: Nuclear fuel cycle analysis
+## Project 5
+### Burnup and delpletion analysis
+####[450]
+
+<p>
+1. [100] Let's do some depletion analysis. Solve the Pu-239 production equation.   
+2. [50] Solve for Pu-240, and the rest of the Pu isotopes in the same way.   
+3. [50] Solve for Pu-241.    
+4. [50] Solve for Pu-242.   
+5. [75] Solve for fission product production for U-235,Pu-239,Pu-241.   
+6. [75] Plot *(N v B)* for U-235, U-238, the Pu isotopes, and the fission products as a function of burnup (all together). Compare the plot to [these results](https://piazza.com/class_profile/get_resource/j5trc64dgan3ru/j839j5xx6co562). Don't worry that the graph is B v w; the shape of the curves should be similar.  
+7. [50] Compute and plot the production and decay of Cs-137 and Sr-90 for an irradiation time of 24 months and a cooling time of 10 years.
+___
+<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;\frac{dN_{49}}{d\theta}&space;=&space;N_{28}^{0}&space;\sigma_{28}&space;&plus;&space;\kappa_{25}&space;N_{25}&space;\sigma_{25}&space;-&space;\gamma_{49}&space;N_{49}&space;\sigma_{49}" title="\large \frac{dN_{49}}{d\theta} = N_{28}^{0} \sigma_{28} + \kappa_{25} N_{25} \sigma_{25} - \gamma_{49} N_{49} \sigma_{49}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;N_{49}(0)=0" title="\large N_{49}(0)=0" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;\kappa_m=\eta_m&space;\epsilon&space;P_F&space;(1-p)&plus;\eta_m&space;\frac{\alpha_{28}}{1&plus;&space;\alpha_{28}}\cdot\frac{\epsilon-1}{\eta_{28}-1}" title="\large \kappa_m=\eta_m \epsilon P_F (1-p)+\eta_m \frac{\alpha_{28}}{1+ \alpha_{28}}\cdot\frac{\epsilon-1}{\eta_{28}-1}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;\gamma_m=1-\kappa_m" title="\large \gamma_m=1-\kappa_m" />  
+
+Just to get the ball rolling, the solution is as follows:  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;N_{49}(\theta)=C_1(1-e^{-\sigma_{49}\gamma_{49}\theta})&plus;C_2(e^{-&space;\sigma_{25}\theta}-e^{-\sigma_{49}\gamma_{49}\theta})" title="\large N_{49}(\theta)=C_1(1-e^{-\sigma_{49}\gamma_{49}\theta})+C_2(e^{- \sigma_{25}\theta}-e^{-\sigma_{49}\gamma_{49}\theta})" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;C_1=\frac{N_{28}^0\sigma_{28}}{\sigma_{49}\gamma_{49}},&space;C_2=\frac{\kappa_{25}&space;N_{25}^0&space;\sigma_{25}}{\sigma_{49}\gamma_{49}-&space;\sigma_{25}}" title="\large C_1=\frac{N_{28}^0\sigma_{28}}{\sigma_{49}\gamma_{49}}, C_2=\frac{\kappa_{25} N_{25}^0 \sigma_{25}}{\sigma_{49}\gamma_{49}- \sigma_{25}}" />
+___
+<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;\frac{dN_{40}}{d\theta}=\frac{\alpha_{49}}{1&plus;&space;\alpha_{49}}N_{49}\sigma_{49}-N_{40}\sigma_{40}" title="\large \frac{dN_{40}}{d\theta}=\frac{\alpha_{49}}{1+ \alpha_{49}}N_{49}\sigma_{49}-N_{40}\sigma_{40}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;\frac{dN_{41}}{d\theta}=N_{40}\sigma_{40}-N_{41}\sigma_{41}" title="\large \frac{dN_{41}}{d\theta}=N_{40}\sigma_{40}-N_{41}\sigma_{41}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;\frac{dN_{42}}{d\theta}=\frac{\alpha_{41}}{1&plus;&space;\alpha_{41}}N_{41}\sigma{41}-N_{42}\sigma_{42}" title="\large \frac{dN_{42}}{d\theta}=\frac{\alpha_{41}}{1+ \alpha_{41}}N_{41}\sigma{41}-N_{42}\sigma_{42}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;N_m(0)=0" title="\large N_m(0)=0" />
+___
+<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;\frac{dN_{25}^F}{d\theta}=\frac{1}{1&plus;\alpha_{25}}N_{25}\sigma_{25}" title="\large \frac{dN_{25}^F}{d\theta}=\frac{1}{1+\alpha_{25}}N_{25}\sigma_{25}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;\frac{dN_{49}^F}{d\theta}=\frac{1}{1&plus;\alpha_{49}}N_{49}\sigma_{49}" title="\large \frac{dN_{49}^F}{d\theta}=\frac{1}{1+\alpha_{49}}N_{49}\sigma_{49}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;\frac{dN_{41}^F}{d\theta}=\frac{1}{1&plus;\alpha_{41}}N_{41}\sigma_{41}" title="\large \frac{dN_{41}^F}{d\theta}=\frac{1}{1+\alpha_{41}}N_{41}\sigma_{41}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;N^F_m(0)=0" title="\large N^F_m(0)=0" />  
+___
+<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;B=9.5E5\cdot&space;w" title="\large B=9.5E5\cdot w" />
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;w=\frac{235N^F_{25}&plus;238N^F_{28}&plus;239N^F_{49}&plus;241N^F_{41}}{235N^0_{25}&plus;&space;238N^0_{28}}" title="\large w=\frac{235N^F_{25}+238N^F_{28}+239N^F_{49}+241N^F_{41}}{235N^0_{25}+ 238N^0_{28}}" />
+___
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;N_i(T&plus;C)=e^{-\lambda_iC}[Y_{25}^iN_{25}^F(T)&plus;Y_{49}^iN_{49}^F(T)]" title="\large N_i(T+C)=e^{-\lambda_iC}[Y_{25}^iN_{25}^F(T)+Y_{49}^iN_{49}^F(T)]" />
+___
+### Data
+
+<p>
+- initial fuel mass = 99.2 MTU   
+- enrichment = 3.2%  
+- $\overline{\phi}=3.5E13 \frac{n}{cm^2 \cdot s}$  
+- $\epsilon = 1.0476$  
+- $P_{F} = 0.9889$  
+- $p = .07725$  
+<p>
+- $\sigma_{25} = 555.6b$    
+<p>
+- $\sigma_{28} = 2.23b$    
+<p>
+- $\sigma_{49} = 1618.2b$    
+<p>
+- $\sigma_{40} = 2616.8b$    
+<p>
+- $\sigma_{41} = 1567.3b$    
+<p>
+- $\sigma_{42} = 381b$    
+<p>
+- $\eta_{25} = 1.96$    
+<p>
+- $\eta_{28} = 2.3432$    
+<p>
+- $\eta_{49} = 1.86$  
+<p>
+- $\eta_{41} = 3.06$  
+<p>
+- $\alpha_{25} = 0.2398$  
+<p>
+- $\alpha_{28} = 0.1907$  
+<p>
+- $\alpha_{49} = 0.5430$  
+<p>
+- $\alpha_{41} = 0.3765$  
+</xmp>
+
+<script type="text/javascript" src="../../../strapdown.min.js?theme=readable"></script>
+
+</body>
+</html>
