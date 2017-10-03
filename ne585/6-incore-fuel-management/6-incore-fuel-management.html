@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>5a. Reactor operation</title>
+    <title>6. Incore fuel management</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style type="text/css">
       @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
@@ -27,111 +27,116 @@ class: center, middle
 
 # NE585
 ## NUCLEAR FUEL CYCLE ANALYSIS
-### Reactor operation 
+### Incore fuel management 
 
-#### 5
+#### 6
 ---
 # Outcomes for the lecture
 
-Review of Chapter 5  
-Covered in NE450 and I don't want to repeat it
+Understanding how fuel is managed in the core for maximum burnup
 
-More of stuff I put together
-
-Understand what goes on in the reactor more
-
-Model reactor neutron balance
-
-Stay away from core design since we've done that in NE450
-
-Compare fuel cycles
+Chapter 6 in the book 
 ---
-class: middle, center
+# Then the author says there's no real meaning to 'fuel management'
 
-## What's the reactor period on shutdown?
+The main component of fuel management is access to nuclear materials
 
-### Emma Redfoot
+Analyzing fuel performance in the core
+
+Power history of the reactor
+
+Core loading
+
+Refueling
+
+Storage and disposal
 ---
-# Reactor physics is about the neutron population in the core
+# Reactor operation is constrained by operational parameters
 
-Amount of fissile material for operation quantified by reactivity
+Need sufficient reactivity
 
-$\rho = \frac{k-1}{k}$  
-$k = \eta f \epsilon p L_F L_T$
+Core needs reactivity control
 
-Reactor needs to be designed such that k = ?
+Refueling needs to be during period of low demand
 
-Increase in power requires positive reactivity
+Fast neutron flux on the RPV should be reduced 
 
-Temperature effects
+Why? 
 ---
-# Neutron transport equation governs reactor operation
+# There are also several regulatory constraints 
 
-What kinds of neutron reactions are there during operation? 
+Peak to average power ratio
 
-Describing state of a neutron requires seven parameters  
-spatial location $x,y,z$    
-direction of motion $\hat{\Omega}$ - two angles  
-kinetic energy $E$  
-time $t$
+Maximum core temperature
 
-rate of change of neutron density = production - loss
+Deviation from nucleate boiling
 
-production = ?  
-loss = ?
+Core reactivity
+
+Temperature coefficient 
 ---
-# Neutron transport derivation similar to Boltzmann particle transport
+# Fuel cost needs to be minimized
 
-Describes number of neutrons/square cm/s at a vector $\vec{r}$, time $t$, with energy between $E$ and $E+dE$, in direction $\hat{\Omega}$, inside solid angle $
-d\hat{\Omega}$
+Though it's not a huge expense
 
-$$\phi(\vec{r},E,\hat{\Omega},t)dEd\hat{\Omega}$$
+Back in the 1950s, federal government was to buy reactor produced Pu to use in breeders  
+
+Plants also thought that the government was going to take back used fuel after 5 years
+
+So there was only limited onsite storage
+
+Also assumed reprocessing
+
+Wow they were optimistic
 ---
-class: middle, center
-![Solid angle](img/solid.angle.1.jpg)
+# The federal government issued a [GESMO](https://www.nrc.gov/docs/ML0710/ML071000110.pdf) in the 70s which is a stupid acronym
+
+It stands for Generic environmental impact statement for mixed oxide fuel
+
+The idea was that there were going to be a lot of reprocessing facilities
+
+AEC concluded based on study from 1957 to 1972 that "widescale use of mixed oxide fuel should be approved"
+
+Published in August 1974 - became the NRC in 1975
 ---
-class: middle, center
-![Solid angle](img/solid.angle.2.png)
+# [Carter](https://www.forbes.com/sites/realspin/2014/10/01/why-doesnt-u-s-recycle-nuclear-fuel/#d8c1550390f1) canceled reprocessing in 1977
+
+Thanks, Obama. 
+
+The idea was the risk of Pu diversion
+
+Even though USA is a nuclear weapons state
+
+But he wanted other nations to follow suit
+
+Reagan lifted the ban in 1981, but there wasn't any other investment
+
+Carter cited it not being cost effective 
+
+But the report indicated starting soon that it would be
+
+There's also been zero cases of civilian diversion to start a weapons program
 ---
-class: middle, center
-![Solid angle](img/solid.angle.3.png)
+# We even have [Carter's](http://www.presidency.ucsb.edu/ws/?pid=7316) speech
+
+The benefits of nuclear power are thus very real and practical. But a serious risk accompanies worldwide use of nuclear power--the risk that components of the nuclear power process will be turned to providing atomic weapons.
+
+First, we will defer indefinitely the commercial reprocessing and recycling of the plutonium produced in the U.S. nuclear power programs. From our own experience, we have concluded that a viable and economic nuclear power program can be sustained without such reprocessing and recycling.
+
+Third, we will redirect funding of U.S. nuclear research and development programs to accelerate our research into alternative nuclear fuel cycles which do not involve direct access to materials usable in nuclear weapons.
+
+Yet you're still burning Pu in the reactors anyway
 ---
-# Transport equation solved piecewise over homogeneous regions
+# Without reprocessing, plants were running out of storage space
 
-We went into the derivation a little more in NE450
+Redesign pools to rack more fuel
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\frac{1}{v}\frac{\partial{\phi}}{\partial{t}}=\int_{E'}dE'\int_{\Omega'}d\hat{\Omega'}\Sigma_S(E'\rightarrow&space;E,\hat{\Omega'}\rightarrow&space;\hat{\Omega}\phi)&space;&plus;S&space;-\nabla[\hat{\Omega}\phi&plus;\Sigma_T(E)\phi]" title="\frac{1}{v}\frac{\partial{\phi}}{\partial{t}}=\int_{E'}dE'\int_{\Omega'}d\hat{\Omega'}\Sigma_S(E'\rightarrow
-E,\hat{\Omega'}\rightarrow \hat{\Omega}\phi) +S -\nabla[\hat{\Omega}\phi+\Sigma_T(E)\phi]" />
+Extend the burn cycle to 24 months 
 
-$\phi = f(\vec{r},E,\hat{\Omega'},t)$  
-$S = f(\vec{r},E,\hat{\Omega'},t)$
-
-<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;S=S_E&plus;\chi(E)&space;\int_{E'}dE'\int_{\Omega'}d\hat{\Omega'}\nu(E')\Sigma_F(E')\phi" title="S=S_E+\chi(E) \int_{E'}dE'\int_{\Omega'}d\hat{\Omega'}\nu(E')\Sigma_F(E')\phi" />
-
-What are the sources and losses?
+Requires higher enrichment so increased costs because SWU is intensive
 ---
-# Diffusion approximation eliminates angular dependency
 
-Integrate over all directions  
-$\frac{1}{v}\frac{\partial{\phi}}{\partial{t}}=\int_{E'}dE'\Sigma_S(E' \rightarrow E)\phi(\vec{r},E)+S(\vec{r},E)-\nabla\vec{J}(\vec{r},E)-\Sigma_T(E)\phi(\vec{r},E)$
 
-$\phi(\vec{r},E)=\int_{4\pi}d\hat{\Omega}\phi(\vec{r},E,\hat{\Omega})$
-
-$\vec{J}(\vec{r},E)=\int_{4\pi}\hat{\Omega}\phi(\vec{r},E,\hat{\Omega})d\hat{\Omega}$  
-
-$\vec{J}(\vec{r},E)=-D\nabla\phi(\vec{r},E)$
-
-$\frac{1}{v}\frac{\partial{\phi}}{\partial{t}}=\int_{E'}dE'\Sigma_S(E' \rightarrow E)\phi(\vec{r},E)+S(\vec{r},E)+\nabla D\nabla\\phi(\vec{r},E)-\Sigma_T(E)\phi(\vec{r},E)$
-
-When is steady state reached?
----
-class: middle, center
-
-### Skipping multigroup theory because we covered it already
-
-### Lamarsh explanation is better 
----
-![Multigroup theory](img/group.theory.jpg)
 ---
 ![doggehs](img/final.jpg)
 </textarea>
