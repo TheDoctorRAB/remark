@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project 6: Incore fuel management</title>
+<style> p {font-size: 24px } </style>
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]} }); </script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+</head>
+
+<nav class="navbar navbar-default">
+<div class="container-fluid">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<h3><a class="navbar-brand" href="../ne585.html" target="_blank">NE585: Nuclear fuel cycle analysis</a></h3>
+</div>
+
+<div class="nav navbar-nav navbar-right" id="bs-example-navbar-collapse-1">
+<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+<span class="sr-only">Toggle navigation</span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+<span class="icon-bar"></span>
+</button>
+<h3><a class="navbar-brand" href="6-incore-fuel-management.html">Project 6: Incore fuel management</a></h3>
+</div>
+</div>
+</nav>
+
+<body>
+<xmp>
+# NE585: Nuclear fuel cycle analysis
+## Project 6
+### Incore fuel management
+####[250]
+
+<p>
+1. [100] Derive an expression for $\rho_n(t)$ in terms of $B(T)$. 
+2. [50] Show that the reactivity swing decreases with increasing batches.
+3. [50] Find $\lim_{n \rightarrow \infty} \frac{B_n(T)}{B(T)}$.
+4. [50] What does this mean in terms of practical incore fuel management?
+__
+$\rho=\rho_0-aB$
+
+$\rho_2(t)=\frac{\rho_0}{2}[(1-\frac{B_2^1(t)}{B(T)})+(1-\frac{B_2^2(t)}{B(T)})]$   
+$\rho_3(t)=\frac{\rho_0}{3}[(1-\frac{B_3^1(t)}{B(T)})+(1-\frac{B_3^2(t)}{B(T)})+(1-\frac{B_3^3(t)}{B(T)})]$
+</xmp>
+
+<script type="text/javascript" src="../../../strapdown.min.js?theme=readable"></script>
+
+</body>
+</html>

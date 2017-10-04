@@ -133,8 +133,124 @@ Redesign pools to rack more fuel
 
 Extend the burn cycle to 24 months 
 
+Higher burnup fuels to 50 GWD/MTU
+
 Requires higher enrichment so increased costs because SWU is intensive
+
+Roses are red  
+Violets are blue  
+No one likes nuclear  
+
+Because we use SWU
 ---
+# Nuclear waste policy act (1982, 1987) addressed storage issue
+
+Among the other issues about siting a repository
+
+DOE obligated to take used fuel from plants for final disposal  
+
+If plant needs storage space before government can take the fuel, interim storage must be provided
+
+Utilities paid $0.001/kWh to the Nuclear Waste Fund
+
+Since 1983, more than [$30 billion collected](https://www.nei.org/Knowledge-Center/Nuclear-Statistics/Costs-Fuel,-Operation,-Waste-Disposal-Life-Cycle/Nuclear-Waste-Fund-Payment-Information-by-State) - suspended in [May 2014](https://www.nei.org/News-Media/News/News-Archives/What-NARUC-Sees-on-the-Nuclear-Waste-Fee-Suspensio)
+
+[NEI Urges DOE, OMB to Address Nuclear Waste Fund Inequities](https://www.nei.org/News-Media/News/News-Archives/2017/NEI-Urges-DOE,-OMB-to-Address-Nuclear-Waste-Fund-I)
+---
+# Not core management, but extending operating license to keep plants going 
+
+While many plants did get [license renewals](https://www.nrc.gov/images/reading-rm/doc-collections/maps/power-reactors-license-renewals.png), there's still closures
+
+[Status of License Renewal Applications and Industry Activities](https://www.nrc.gov/reactors/operating/licensing/renewal/applications.html)
+
+Then we have to worry about instrumentation and control upgrades because Radio Shack closed
+
+RPV suffers radiation damage from neutron bombardment
+
+Why does this happen?
+
+Low leakage core management strategies were developed
+---
+# Core has assemblies with different initial enrichments
+
+Batch = group of assemblies of same fuel type and enrichment
+
+So core is reloaded by batch
+
+$B \equiv \frac{P_0 \cdot \epsilon \cdot T}{M(t)}$
+
+$\epsilon \equiv \frac{\int_0^T P(t) dt}{P_0 T}$
+
+So burnup is proportional to initial of enrichment of fuel  
+But we knew that
+---
+# Initial reactivity is also proportional to enrichment
+
+$\rho \equiv \frac{k-1}{k}$
+
+Once the reactor starts operating, negative reactivity increases due to poisons
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\rho_{net}&space;=&space;\rho_{fuel}-\rho_{FP}-\rho_T" title="\rho_{net} = \rho_{fuel}-\rho_{FP}-\rho_T" />
+
+Not sure this is precise enough  
+What's missing?
+
+Positive reactivity decreases linearly with time
+
+$\rho = \rho_0-aB$
+---
+# What is net reactivity at critical?
+
+That's where the control rods come in
+
+Reactivity control from boric acid, control rods
+
+Boron is removed from coolant over the cycle
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\rho_{net}&space;=&space;\rho_{fuel}-\rho_{FP}-\rho_T" title="\rho_{net} = \rho_{fuel}-\rho_{FP}-\rho_T" />
+
+Reactivity swing is the positive reactivity in the core available during operation
+
+Should be minimal because you don't want to have to use the control rods to suck up all the neutrons
+---
+# Cores operate on multiple batches
+
+This changes reactivity calculations  
+Operator needs to know real-time reactivity though
+
+For the one batch core: $\rho_1(t) = \rho_0[1-\frac{B_1^1(t)}{B(T)}]$
+
+$\rho_0$ is fresh fuel reactivity for unburned core
+
+$\rho_1(t)$ is the time dependent reactivity at t
+
+$B_N^n(t)$ is burnup of a batch at cycle n in the N-batch core at t
+
+$B(T)$ is final burnup in the core at end of life
+
+[So $\rho_1(T) = 0$](img/core_one.batch.jpg)
+---
+# Use of multiple batches reduces the reactivity swing
+
+The book is terrible at explaining this
+
+Assume the total core reactivity is the average of the batch reactivities
+
+$\rho_2(t)=\frac{\rho_0}{2}[(1-\frac{B_2^1(t)}{B(T)})+(1-\frac{B_2^2(t)}{B(T)})]$   
+$\rho_3(t)=\frac{\rho_0}{3}[(1-\frac{B_3^1(t)}{B(T)})+(1-\frac{B_3^2(t)}{B(T)})+(1-\frac{B_3^3(t)}{B(T)})]$
+
+Assume equal fractional contribution of burnup in each batch
+
+$\rho_2(T)=\frac{\rho_0}{2}[(1-\frac{1}{2}\cdot\frac{B_2(T)}{B(T)})+(1-\frac{2}{2}\cdot\frac{B_2(T)}{B(T)})]$     
+$\rho_3(T)=\frac{\rho_0}{3}[(1-\frac{1}{3}\cdot\frac{B_3(T)}{B(T)})+(1-\frac{2}{3}\cdot\frac{B_3(T)}{B(T)})+(1-\frac{3}{3}\cdot\frac{B_3(T)}{B(T)})]$
+---
+# And increases burnup
+
+With $\rho_N(T)=0$
+
+$B_2(T)=\frac{4}{3}B(T)$
+
+$B_3(T)=\frac{3}{2}B(T)$
 
 
 ---
