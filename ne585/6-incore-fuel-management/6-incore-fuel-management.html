@@ -270,7 +270,7 @@ Thanks
 
 It's an optimization problem
 ---
-#Core loading strategies typically assume equilibrium
+#[Core loading strategies](http://www.iaea.org/inis/collection/NCLCollectionStore/_Public/27/002/27002175.pdf) typically assume equilibrium
 
 cycle 1 - b{1,0},b{2,0},b{3,0}
 
@@ -341,6 +341,142 @@ Each with different enrichments, on different cycles
 Switch to the 18, 24 month cycle
 
 Requires higher enrichment
+
+Reduction in rod worth due to more Pu mass with higher enrichment
+
+Pu increases fast:thermal flux
+
+Control rods absorb mainly thermal neutrons
+---
+# Increased burnup affects structural materials 
+
+Increased fission gas production
+
+More radiation damage from fast neutrons 
+
+"Increased risk of fuel failure" 
+
+Though I would question by how much since this isn't happening
+---
+# It's not clear what the effect of higher burnup on fuel pools is
+
+The book implies that neutron multiplication would be higher per assembly
+
+There would be more Pu generated
+
+But there would be more fission product poisons too
+
+And the fuel would be more fissioned out 
+
+Obviously, there needs to be an accurate measurement to ensure criticality safety
+---
+# Burnup is measured in a variety of ways
+
+Direct measurement - sensors, fission chambers, flux wires - during operation
+
+Indirect measurement - after discharge  
+$^{137}Cs$ activity $B=a+bA_{Cs}$  
+Directly measures 662 keV gamma, so must be accurate
+
+Relative measurement  
+$B=c(e,r)+d(e,r) \cdot \frac{^{134}Cs}{^{137}Cs}$  
+e = enrichment; r = power rating
+
+$B=ae^{b\ln{R_0}}$, $R_0=\frac{^{106}Ru\cdot ^{137}Cs}{^{134}Cs^2}$  
+Good for fresh fuel because of short Ru half-life
+---
+# [NUREG/CR-6998](https://www.nrc.gov/docs/ML1002/ML100210543.pdf) Table 3.1
+
+Cs-137 direct measurement  
+Insensitive to variations in reactor power rating +  
+Requires well defined geometry between detector and assembly -
+
+Cs-134:Cs-137  
+Insensitive to geometry +  
+Short half life, less then 20 y cooling time
+Dependent on inital enrichment, power rating -  
+
+Ru  
+Insensitive to geometry +  
+Less than 9 years cooling time
+---
+# Passive neutron measurement can also be used
+
+Cm-244 spontaneous neutron emission dominant source  
+95% after 10 years  
+92% after 20 years
+
+Uniform signal from all pins +  
+Good for safeguards +  
+
+Strong function initial enrichment -  
+Geometry sensitive -  
+Affected by poisons -  
+---
+# Refueling needs to get done as quickly as possible 
+
+Lots of activities going on during shutdown  
+Emma Redfoot - Diablo internship
+
+Maintenance and refueling 
+
+Schedule shutdown during time of low demand
+
+Where does the power come from during shutdown? 
+
+When would be peak demand in Idaho?  
+If we actually had a reactor
+---
+# Outages cost a lot of money
+
+Up to 1 million dollars  
+Minimize shutdown period (based on experience)  
+Which lends to the question, how with SMRs do it?
+
+Then the utility may have to buy replacement power
+
+Establish outage organization  
+Inventory of tasks to perform (12,000)  
+Schedule all of the tasks
+
+Requires expertise in risk management and decision making 
+
+[Extra workers hired who go from site to site](https://www.nei.org/News-Media/News/News-Archives/Nuclear-Power-Plant-Outages-No-Place-for-Cowboys)
+
+Or use up dose in one shot
+---
+# [Outage activities](http://www.iaea.org/inis/collection/NCLCollectionStore/_Public/23/014/23014979.pdf) general areas
+
+Activities prior to reloading  
+Remove vessel head, prepare fuel handling equipment
+
+Unloading fuel  
+Assembly inspection, RPV inspection
+
+Fuel inspection  
+
+In-vessel and ex-vessel equipment repair  
+
+Reload fuel and close vessel
+
+Major equipment inspection and repair (pumps, turbine, etc.)
+
+Startup testing
+---
+# In addition to refueling, there's lots of [inspections and testing](http://www-pub.iaea.org/MTCD/Publications/PDF/TRS449_web.pdf)
+
+Reactor vessel; Steam generator; Pumps  
+
+Turbine and generator; Control rods; Pressurizer  
+
+Moisture separator; Coolant system; Containment testing  
+
+Fuel handling system; Instrumentation (new challenges with digital I&C)  
+
+Diesel generators; Piping; Valves  
+
+Residual heat removal; Cooling towers 
+---
 
 
 ---
