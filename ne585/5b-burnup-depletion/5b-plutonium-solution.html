@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project 5: Plutonium depletion analytical solution</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Open Sans', sans-serif; }
+      h1, h2, h3 {
+        font-family: 'Ubuntu';
+        font-weight: normal;
+        }
+      .remark-container {background-color: #F5F5F5; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { background-color: #FFFAF0; font-size: 26px; 
+                         h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
+       }
+      .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+    </style>
+  </head>
+  <body>
+<textarea id="source">
+class: center, middle
+
+# NE585
+## NUCLEAR FUEL CYCLE ANALYSIS
+### Plutonium and depletion analytical solution
+
+#### 5
+---
+class: center, middle
+
+# $^{239}Pu$ is the main fissile isotope in LWRs during second half of assembly lifetime
+---
+# Thermal Pu cross sections are higher than U
+
+Accumulation of non-fissile plutonium, minor actinides, fission products increases
+spatial self-shielding
+
+Hardens the flux spectrum  
+Decreases the reactivity worth of control rods
+
+Prompt neutrons emmitted in $^{239}Pu$ thermal fission greater than $^{235}U$  
+Adds reactivity
+
+But delayed neutron yield is lower  
+High plutonium decreases time constants  
+Lowers margin to prompt critical transient  
+---
+# Burnup and depletion calculations are the source terms for disposal 
+
+Heat production after shutdown is dominated by short lived, high activity radionuclides
+
+But long term, heat isn't a big deal
+
+It's the toxicity of long lived radionuclides like neptunium
+
+Main radionuclides after shutdown are $^{239}U,^{239}Np,^{134}I,^{138}Cs,^{140}Cs$
+
+Short half lives - minutes to near an hour  
+Neptunium 2.4 days
+
+Heat production affects fuel integrity after shutdown
+
+Need for pools
+---
+# Long lived isotopes in used fuel are the long term contributor to dose
+
+Actinides - Pu-239, Pu-240, Np-237, Am-241, Am-243
+
+Fission products - Tc-99, I-129, Cs-135
+
+I-129 is 15 million year half life, but anionic so it's very mobile 
+
+Cs-137, Sr-90 high heat but short lived ~300 years to decay away
+
+Pu-238 has 88 year half life but we can use it in RTGs
+---
+# We have used Bateman equations for decay
+
+But a generalized form can be used for overall depletion calculations in the reactor
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\LARGE&space;\frac{dN_j}{dt}=\sum_{i&space;\neq&space;j}S_{i&space;\rightarrow&space;j}-\lambda_jN_j-\phi\sigma_j&space;N_j" title="\LARGE \frac{dN_j}{dt}=\sum_{i \neq j}S_{i \rightarrow j}-\lambda_jN_j-\phi\sigma_j N_j" />
+
+rate of change = (production) - (removal)
+
+Source term is the sum of decay, transmutation, fission
+
+$S_{i \rightarrow j}=\lambda_i N_i+\phi\sigma_i N_i+\phi\gamma_i\Sigma_i^F$
+---
+class: middle,center
+
+# Neutron balance
+---
+# Plutonium buildup is based on several neutron interaction events
+
+<img
+src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;\begin{align*}&space;\frac{dN_{49}}{dt}=N^0_{28}\sigma_{28}\phi&plus;\eta_{25}\epsilon&space;P_F(1-p)N_{25}\sigma_{25}\phi&plus;\eta_{49}\epsilon&space;P_F(1-p)N_{49}\sigma_{49}\phi&space;&plus;\eta_{41}\epsilon&space;P_F(1-p)N_{41}-N_{49}\sigma_{49}\phi&space;\\&space;&plus;\frac{\alpha_{28}}{1&plus;\alpha_{28}}&space;\cdot&space;\frac{\epsilon-1}{\eta_{28}-1}(\eta_{25}N_{25}\sigma_{25}\phi&plus;\eta_{49}N_{49}\sigma_{49}\phi&plus;\eta_{41}N_{41}\sigma_{41}\phi)&space;\end{align*}"
+title="\large \begin{align*} \frac{dN_{49}}{dt}=N^0_{28}\sigma_{28}\phi+\eta_{25}\epsilon P_F(1-p)N_{25}\sigma_{25}\phi+\eta_{49}\epsilon P_F(1-p)N_{49}\sigma_{49}\phi +\eta_{41}\epsilon P_F(1-p)N_{41}-N_{49}\sigma_{49}\phi \\ +\frac{\alpha_{28}}{1+\alpha_{28}} \cdot \frac{\epsilon-1}{\eta_{28}-1}(\eta_{25}N_{25}\sigma_{25}\phi+\eta_{49}N_{49}\sigma_{49}\phi+\eta_{41}N_{41}\sigma_{41}\phi) \end{align*}" />
+
+1. Absorption of thermal neutrons in U-238  
+2. Absorption of resonance neutrons from U-235 fission in U-238  
+3. Absorption of resonance neutrons from Pu-239 fission in Pu-238  
+4. Absorption of resonance neutrons from Pu-241 fission in U-238  
+5. Absorption of thermal neutrons in Pu-239  
+6. Absorption of of fast neutrons from U-235, Pu-239, and Pu-241 in U-238
+---
+# Fission to capture ratio $\alpha$ gives the probability of a fission given an absorption event
+
+$\alpha \equiv \frac{\sigma_A}{\sigma_F}$
+
+$\frac{1}{1+\alpha}=\frac{\sigma_F}{\sigma_F+\sigma_A}$ is the probability of fission given an absorption
+
+$\frac{\alpha}{1+\alpha}=\frac{\sigma_A}{\sigma_F+\sigma_A}$ is the probability of absorption given an absorption
+
+Therefore, $\frac{\alpha}{1+\alpha}$ indicates the probability of producing an A+1 radionuclide given absoprtion in A
+---
+# Flux time expresses the extent of exposure to irradiation
+
+$\theta \equiv \int_0^t \phi(t') dt' = \overline{\phi} \cdot t$
+---
+class: center, middle
+
+#### Apply to depletion of plutonium and simplify with some algebra
+---
+# In terms of flux time:
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\frac{dN_{49}}{d\theta}=N^0_{28}\sigma_{28}&plus;\kappa_{25}N_{25}\sigma_{25}&plus;\kappa_{41}N_{41}\sigma_{41}-\gamma_{49}N_{49}\sigma_{49}" title="\large \frac{dN_{49}}{d\theta}=N^0_{28}\sigma_{28}+\kappa_{25}N_{25}\sigma_{25}+\kappa_{41}N_{41}\sigma_{41}-\gamma_{49}N_{49}\sigma_{49}" />
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\kappa_m&space;\equiv&space;\eta_m\epsilon&space;P_F(1-p)&plus;\eta_m\frac{\alpha_{28}}{1&plus;\alpha_{28}}\cdot\frac{\epsilon-1}{\eta_{28}-1}" title="\large \kappa_m \equiv \eta_m\epsilon P_F(1-p)+\eta_m\frac{\alpha_{28}}{1+\alpha_{28}}\cdot\frac{\epsilon-1}{\eta_{28}-1}" />
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\gamma_m&space;\equiv&space;1&space;-&space;\kappa_m" title="\large \gamma_m \equiv 1 - \kappa_m" />
+
+With initial condition $N_{49}(\theta = 0) = 0$
+
+For LWRs fresh fuel U-238:U-235
+---
+# Formation of Pu-239 by absorption of resonance neutrons can be neglected
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\kappa_{41}N_{41}\sigma_{41}&space;<<&space;\gamma_{49}N_{49}\sigma_{49}" title="\large \kappa_{41}N_{41}\sigma_{41} << \gamma_{49}N_{49}\sigma_{49}" />
+
+The depletion equation for plutonium reduces then to:
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\frac{dN_{49}}{d\theta}=&space;N^0_{28}\sigma_{28}&plus;\kappa_{25}N_{25}\sigma_{25}-\gamma_{49}N_{49}\sigma_{49}" title="\large \frac{dN_{49}}{d\theta}= N^0_{28}\sigma_{28}+\kappa_{25}N_{25}\sigma_{25}-\gamma_{49}N_{49}\sigma_{49}" />
+---
+# In order to solve for the plutonium depletion, we need the solution to U-235 depletion
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\frac{dN_{25}}{dt}=-N_{25}\sigma_{25}\phi" title="\large \frac{dN_{25}}{dt}=-N_{25}\sigma_{25}\phi" />
+
+There are no sources of U-235 production in the LWR reactor
+
+With flux time:  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\begin{align*}&space;\frac{dN_{25}}{d\theta}=-N_{25}\sigma_{25}&space;\\&space;N_{25}(0)=N^0_{25}&space;\end{align*}" title="\large \begin{align*} \frac{dN_{25}}{d\theta}=-N_{25}\sigma_{25} \\ N_{25}(0)=N^0_{25} \end{align*}" />
+---
+# The solution is readily obtained
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;N_{25}=N^0_{25}e^{-\sigma_{25}\theta}" title="\large N_{25}=N^0_{25}e^{-\sigma_{25}\theta}" />
+---
+# Substitute the U-235 depletion solution into the Pu-239 depletion equation
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\frac{dN_{49}}{d\theta}=&space;N^0_{28}\sigma_{28}&plus;\kappa_{25}N^0_{25}e^{-\sigma_{25}\theta}\sigma_{25}-\gamma_{49}N_{49}\sigma_{49}" title="\large \frac{dN_{49}}{d\theta}= N^0_{28}\sigma_{28}+\kappa_{25}N^0_{25}e^{-\sigma_{25}\theta}\sigma_{25}-\gamma_{49}N_{49}\sigma_{49}" />
+---
+# Since the irradiation time is essentially a time domain, let's look at the Laplace transform
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\tilde{f}(s)=\int^{\infty}_0f(t)e^{-st}dt" title="\large \tilde{f}(s)=\int^{\infty}_0f(t)e^{-st}dt" />
+
+Using integration by parts, it can be shown that:
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\int^{\infty}_0&space;\frac{df}{dt}e^{-st}dt=s\tilde{f}-f(0)" title="\large \int^{\infty}_0 \frac{df}{dt}e^{-st}dt=s\tilde{f}-f(0)" />
+---
+# The transformed plutonium depletion equation is then
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;s\tilde{N}_{49}-0=N^0_{28}\sigma_{28}\cdot\frac{1}{s}&plus;\kappa_{25}N^0_{25}\sigma_{25}\cdot\frac{1}{s&plus;\sigma_{25}}-&space;\gamma_{49}\tilde{N}_{49}\sigma_{49}" title="\large s\tilde{N}_{49}-0=N^0_{28}\sigma_{28}\cdot\frac{1}{s}+\kappa_{25}N^0_{25}\sigma_{25}\cdot\frac{1}{s+\sigma_{25}}- \gamma_{49}\tilde{N}_{49}\sigma_{49}" />
+
+Where: $\int_0^{\infty}e^{-at}e^{-st}dt=\frac{1}{s+a}$ and $\int_0^{\infty}Ce^{-st}dt=\frac{C}{s}$ 
+
+With just some algebra the Laplace solution is then:  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\tilde{N}_{49}=N^0_{28}\sigma_{28}\cdot\frac{1}{s}\cdot\frac{1}{s&plus;\gamma_{49}\sigma_{49}}&plus;\kappa_{25}N^0_{25}\sigma_{25}\cdot\frac{1}{s&plus;\sigma_{25}}\cdot\frac{1}{s&plus;\gamma_{49}\sigma_{49}}" title="\large
+\tilde{N}_{49}=N^0_{28}\sigma_{28}\cdot\frac{1}{s}\cdot\frac{1}{s+\gamma_{49}\sigma_{49}}+\kappa_{25}N^0_{25}\sigma_{25}\cdot\frac{1}{s+\sigma_{25}}\cdot\frac{1}{s+\gamma_{49}\sigma_{49}}" />  
+---
+# There are plenty of [online resources](http://www.dartmouth.edu/~sullivan/22files/New%20Laplace%20Transform%20Table.pdf) to find the inverse transform
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\pounds^{-1}(\frac{1}{s&plus;a}\cdot\frac{1}{s&plus;b})=\frac{1}{b-a}(e^{-at}-e^{-bt})" title="\large \pounds^{-1}(\frac{1}{s+a}\cdot\frac{1}{s+b})=\frac{1}{b-a}(e^{-at}-e^{-bt})" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\pounds^{-1}(\kappa_{25}N^0_{25}\sigma_{25}\cdot\frac{1}{s&plus;&space;\sigma_{25}}\cdot\frac{1}{s&plus;&space;\gamma_{49}\sigma_{49}})=\frac{\kappa_{25}N^0_{25}\sigma_{25}}{\gamma_{49}\sigma_{49}-\sigma_{25}}(e^{-\sigma_{25}\theta}-e^{-\gamma_{49}\sigma_{49}\theta})" title="\pounds^{-1}(\kappa_{25}N^0_{25}\sigma_{25}\cdot\frac{1}{s+
+\sigma_{25}}\cdot\frac{1}{s+ \gamma_{49}\sigma_{49}})=\frac{\kappa_{25}N^0_{25}\sigma_{25}}{\gamma_{49}\sigma_{49}-\sigma_{25}}(e^{-\sigma_{25}\theta}-e^{-\gamma_{49}\sigma_{49}\theta})" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\pounds^{-1}(N^0_{28}\sigma_{28}\cdot\frac{1}{s}\cdot\frac{1}{s&plus;&space;\gamma_{49}\sigma_{49}})=\frac{N^0_{28}\sigma_{28}}{\gamma_{49}\sigma_{49}}(1-e^{-\gamma_{49}\sigma_{49}\theta})" title="\pounds^{-1}(N^0_{28}\sigma_{28}\cdot\frac{1}{s}\cdot\frac{1}{s+
+\gamma_{49}\sigma_{49}})=\frac{N^0_{28}\sigma_{28}}{\gamma_{49}\sigma_{49}}(1-e^{-\gamma_{49}\sigma_{49}\theta})" />  
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;N_{49}(\theta)=\frac{\kappa_{25}N^0_{25}\sigma_{25}}{\gamma_{49}\sigma_{49}-&space;\sigma_{25}}(e^{-\sigma_{25}\theta}-e^{-\gamma_{49}\sigma_{49}\theta})&plus;\frac{N^0_{28}\sigma_{28}}{\gamma_{49}\sigma_{49}}(1-e^{-&space;\gamma_{49}\sigma_{49}\theta})"
+title="N_{49}(\theta)=\frac{\kappa_{25}N^0_{25}\sigma_{25}}{\gamma_{49}\sigma_{49}- \sigma_{25}}(e^{-\sigma_{25}\theta}-e^{-\gamma_{49}\sigma_{49}\theta})+\frac{N^0_{28}\sigma_{28}}{\gamma_{49}\sigma_{49}}(1-e^{- \gamma_{49}\sigma_{49}\theta})" />
+---
+# Now just a little bit of algebra
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;N_{49}(\theta)=C_1&plus;C_2e^{-\sigma_{25}\theta}-(C_1&plus;C_2)e^{-\gamma_{49}\sigma_{49}\theta}" title="\large N_{49}(\theta)=C_1+C_2e^{-\sigma_{25}\theta}-(C_1+C_2)e^{-\gamma_{49}\sigma_{49}\theta}" />
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;C_1=\frac{N^0_{28}\sigma_{28}}{\gamma_{49}\sigma_{49}}" title="\large C_1=\frac{N^0_{28}\sigma_{28}}{\gamma_{49}\sigma_{49}}" />
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;C_2=\frac{\kappa_{25}N^0_{25}\sigma_{25}}{\gamma_{49}\sigma_{49}-\sigma_{25}}" title="\large C_2=\frac{\kappa_{25}N^0_{25}\sigma_{25}}{\gamma_{49}\sigma_{49}-\sigma_{25}}" />
+---
+# Then for Pu-240 
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\frac{dN_{40}}{d\theta}=\frac{\alpha_{49}}{1&plus;\alpha_{49}}N_{49}\sigma_{49}-N_{40}\sigma_{40}" title="\large \frac{dN_{40}}{d\theta}=\frac{\alpha_{49}}{1+\alpha_{49}}N_{49}\sigma_{49}-N_{40}\sigma_{40}" />
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;s\tilde{N}_{40}=\frac{\alpha_{49}}{1&plus;\alpha_{49}}\sigma_{49}\tilde{N}_{49}-\tilde{N}_{40}\sigma_{40}" title="\large s\tilde{N}_{40}=\frac{\alpha_{49}}{1+\alpha_{49}}\sigma_{49}\tilde{N}_{49}-\tilde{N}_{40}\sigma_{40}" />
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\tilde{N}_{49}=C_1\cdot\frac{1}{s}&plus;C_2\cdot\frac{1}{s&plus;\sigma_{25}}-(C_1&plus;C_2)\cdot\frac{1}{s&plus;\gamma_{49}\sigma_{49}}" title="\large \tilde{N}_{49}=C_1\cdot\frac{1}{s}+C_2\cdot\frac{1}{s+\sigma_{25}}-(C_1+C_2)\cdot\frac{1}{s+\gamma_{49}\sigma_{49}}" />
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;s\tilde{N}_{40}=\frac{\alpha_{49}}{1&plus;\alpha_{49}}\sigma_{49}(C_1\cdot\frac{1}{s}&plus;C_2\cdot\frac{1}{s&plus;\sigma_{25}}-(C_1&plus;C_2)\cdot\frac{1}{s&plus;\gamma_{49}\sigma_{49}})-\tilde{N}_{40}\sigma_{40}"
+title="s\tilde{N}_{40}=\frac{\alpha_{49}}{1+\alpha_{49}}\sigma_{49}(C_1\cdot\frac{1}{s}+C_2\cdot\frac{1}{s+\sigma_{25}}-(C_1+C_2)\cdot\frac{1}{s+\gamma_{49}\sigma_{49}})-\tilde{N}_{40}\sigma_{40}" />
+---
+# Just some algebra
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\tiny&space;\tilde{N}_{40}=&space;\frac{\alpha_{49}}{1&plus;\alpha_{49}}\sigma_{49}&space;(C_1\cdot\frac{1}{s}\cdot\frac{1}{s&plus;\sigma_{40}}&plus;&space;C_2\cdot\frac{1}{s&plus;\sigma_{25}}\cdot\frac{1}{s&plus;\sigma_{40}}-&space;(C_1&plus;C_2)\cdot\frac{1}{s&plus;\gamma_{49}\sigma_{49}}\cdot\frac{1}{s&plus;\sigma_{40}})" title="\tiny \tilde{N}_{40}=
+\frac{\alpha_{49}}{1+\alpha_{49}}\sigma_{49} (C_1\cdot\frac{1}{s}\cdot\frac{1}{s+\sigma_{40}}+ C_2\cdot\frac{1}{s+\sigma_{25}}\cdot\frac{1}{s+\sigma_{40}}- (C_1+C_2)\cdot\frac{1}{s+\gamma_{49}\sigma_{49}}\cdot\frac{1}{s+\sigma_{40}})" />
+
+Invert
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\tiny&space;N_{40}=\frac{\alpha_{49}}{1&plus;\alpha_{49}}\sigma_{49}[\frac{C_1}{\sigma_{40}}(1-e^{-\sigma_{40}\theta})&plus;\frac{C_2}{\sigma_{40}-\sigma_{25}}(e^{-\sigma_{25}\theta}-e^{-\sigma_{40}\theta})-\frac{C_1&plus;C_2}{\sigma_{40}-\gamma_{49}\sigma_{49}}(e^{-\gamma_{49}\sigma_{49}\theta}-e^{-\sigma_{40}\theta})]" title="\tiny
+N_{40}=\frac{\alpha_{49}}{1+\alpha_{49}}\sigma_{49}[\frac{C_1}{\sigma_{40}}(1-e^{-\sigma_{40}\theta})+\frac{C_2}{\sigma_{40}-\sigma_{25}}(e^{-\sigma_{25}\theta}-e^{-\sigma_{40}\theta})-\frac{C_1+C_2}{\sigma_{40}-\gamma_{49}\sigma_{49}}(e^{-\gamma_{49}\sigma_{49}\theta}-e^{-\sigma_{40}\theta})]" />
+---
+# Finally
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;N_{40}=C_7&plus;C_8e^{-\sigma_{25}\theta}-C_9e^{-\gamma_{49}\sigma_{49}\theta}-(C_7&plus;C_8-C_9)e^{-\sigma_{40}\theta}" title="N_{40}=C_7+C_8e^{-\sigma_{25}\theta}-C_9e^{-\gamma_{49}\sigma_{49}\theta}-(C_7+C_8-C_9)e^{-\sigma_{40}\theta}" />
+
+With   
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;C_3=\frac{\alpha_{49}}{1&plus;\alpha_{49}}\sigma_{49}" title="C_3=\frac{\alpha_{49}}{1+\alpha_{49}}\sigma_{49}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;C_4=\frac{1}{\sigma_{40}}" title="C_4=\frac{1}{\sigma_{40}}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;C_5=\frac{1}{\sigma_{40}-\sigma_{25}}" title="C_5=\frac{1}{\sigma_{40}-\sigma_{25}}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;C_6=\frac{1}{\sigma_{40}-\gamma_{49}\sigma_{49}}" title="C_6=\frac{1}{\sigma_{40}-\gamma_{49}\sigma_{49}}" />  
+---
+#And
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;C_7=\frac{C_1C_3}{C_4}" title="C_7=\frac{C_1C_3}{C_4}" />   
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;C_8=\frac{C_2C_3}{C_5}" title="C_8=\frac{C_2C_3}{C_5}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;C_9=C_3\frac{C_1&plus;C_2}{C_6}" title="C_9=C_3\frac{C_1+C_2}{C_6}" />  
+---
+# For Pu-241
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\frac{dN_{41}}{d\theta}=N_{40}\sigma_{40}-N_{41}\sigma_{41}" title="\frac{dN_{41}}{d\theta}=N_{40}\sigma_{40}-N_{41}\sigma_{41}" />
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\tiny&space;\frac{dN_{41}}{d\theta}=\sigma_{40}(C_7&plus;C_8e^{-\sigma_{25}\theta}-C_9e^{-\gamma_{49}\sigma_{49}\theta}-(C_7e^{-\sigma_{40}\theta}&plus;C_8e^{-&space;\sigma_{40}\theta}-C_9)e^{-\sigma_{40}\theta})-N_{41}\sigma_{41}" title="\tiny \frac{dN_{41}}{d\theta}=\sigma_{40}(C_7+C_8e^{-\sigma_{25}\theta}-C_9e^{-\gamma_{49}\sigma_{49}\theta}-(C_7e^{-\sigma_{40}\theta}+C_8e^{-
+\sigma_{40}\theta}-C_9)e^{-\sigma_{40}\theta})-N_{41}\sigma_{41}" />
+
+<img
+src="https://latex.codecogs.com/gif.latex?\begin{align*}&space;N_{41}=&space;C_7\sigma_{40}(1-e^{-\sigma_{41}\theta})&space;&plus;C_8\frac{\sigma_{40}}{\sigma_{41}-\sigma_{25}}(e^{-\sigma_{25}\theta}-e^{-\sigma_{41}\theta})&space;-C_9\frac{\sigma_{40}}{\sigma_{41}-\gamma_{49}\sigma_{49}}(e^{-\gamma_{49}\sigma_{49}\theta}-e^{-\sigma_{41}\theta})&space;-(C_7&plus;C_8-C_9)\frac{\sigma_{40}}{\sigma_{41}-\sigma_{40}}(e^{-\sigma_{40}\theta}-e^{-\sigma_{41}\theta})&space;\end{align*}"
+title="\begin{align*} N_{41}= C_7\sigma_{40}(1-e^{-\sigma_{41}\theta}) +C_8\frac{\sigma_{40}}{\sigma_{41}-\sigma_{25}}(e^{-\sigma_{25}\theta}-e^{-\sigma_{41}\theta}) -C_9\frac{\sigma_{40}}{\sigma_{41}-\gamma_{49}\sigma_{49}}(e^{-\gamma_{49}\sigma_{49}\theta}-e^{-\sigma_{41}\theta}) -(C_7+C_8-C_9)\frac{\sigma_{40}}{\sigma_{41}-\sigma_{40}}(e^{-\sigma_{40}\theta}-e^{-\sigma_{41}\theta}) \end{align*}" />
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;\begin{align*}&space;N_{41}=A_1&plus;A_5e^{-\sigma_{25}\theta}-A_6e^{-\gamma_{49}\sigma_{49}\theta}-(A_7&plus;A_8-A_9)e^{-\sigma_{40}\theta}-(A_1&plus;A_5&plus;A_9-A_6-A_7-A_8)e^{-\sigma_{41}\theta}&space;\end{align*}" title="\large \begin{align*} N_{41}=A_1+A_5e^{-\sigma_{25}\theta}-A_6e^{-\gamma_{49}\sigma_{49}\theta}-(A_7+A_8-A_9)e^{-\sigma_{40}\theta}-(A_1+A_5+A_9-A_6-A_7-A_8)e^{-\sigma_{41}\theta}
+\end{align*}" />
+---
+# With
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;A_1=C_7\sigma_{40}" title="A_1=C_7\sigma_{40}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;A_2=\frac{\sigma_{40}}{\sigma_{41}-\sigma_{25}}" title="A_2=\frac{\sigma_{40}}{\sigma_{41}-\sigma_{25}}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;A_3=\frac{\sigma_{40}}{\sigma_{41}-\gamma_{49}\sigma_{49}}" title="A_3=\frac{\sigma_{40}}{\sigma_{41}-\gamma_{49}\sigma_{49}}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;A_4=\frac{\sigma_{40}}{\sigma_{41}-\sigma_{40}}" title="A_4=\frac{\sigma_{40}}{\sigma_{41}-\sigma_{40}}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;A_5=C_8A_2" title="A_5=C_8A_2" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;A_6=C_9A_3" title="A_6=C_9A_3" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;A_7=C_7A_4" title="A_7=C_7A_4" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;A_8=C_8A_4" title="A_8=C_8A_4" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;A_9=C_9A_4" title="A_9=C_9A_4" />  
+---
+# For Pu-242
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\large&space;\frac{dN_{42}}{d\theta}=\frac{\alpha_{41}}{1&plus;\alpha_{41}}\cdot&space;N_{41}\sigma_{41}-N_{42}\sigma_{42}" title="\large \frac{dN_{42}}{d\theta}=\frac{\alpha_{41}}{1+\alpha_{41}}\cdot N_{41}\sigma_{41}-N_{42}\sigma_{42}" />
+
+<img
+src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\begin{align*}\tilde{N}_{42}=&space;(\frac{\alpha_{41}}{1&plus;\alpha_{41}}\sigma_{41})&space;[A_1\frac{1}{s}\frac{1}{s&plus;\sigma_{42}}&space;&plus;A_5\frac{1}{s&plus;\sigma_{25}}\frac{1}{s&plus;\sigma_{42}}&space;-A_6\frac{1}{s&plus;\gamma_{49}\sigma_{49}}\frac{1}{s&plus;\sigma_{42}}&space;\\&space;-(A_7&plus;A_8-A_9)\frac{1}{s&plus;\sigma_{40}}\frac{1}{s&plus;\sigma_{42}}&space;\\&space;-(A_1&plus;A_5&plus;A_9-A_6-A_7-A_8)\frac{1}{s&plus;\sigma_{41}}\frac{1}{s&plus;\sigma_{42}}]&space;\end{align*}"
+title="\begin{align*}\tilde{N}_{42}= (\frac{\alpha_{41}}{1+\alpha_{41}}\sigma_{41}) [A_1\frac{1}{s}\frac{1}{s+\sigma_{42}} +A_5\frac{1}{s+\sigma_{25}}\frac{1}{s+\sigma_{42}} -A_6\frac{1}{s+\gamma_{49}\sigma_{49}}\frac{1}{s+\sigma_{42}} \\ -(A_7+A_8-A_9)\frac{1}{s+\sigma_{40}}\frac{1}{s+\sigma_{42}} \\ -(A_1+A_5+A_9-A_6-A_7-A_8)\frac{1}{s+\sigma_{41}}\frac{1}{s+\sigma_{42}}] \end{align*}" />
+---
+# Real time solution is then
+
+<img
+src="https://latex.codecogs.com/gif.latex?\dpi{120}&space;\large&space;\begin{align*}N_{42}=&space;(\frac{\alpha_{41}}{1&plus;\alpha_{41}}\sigma_{41})&space;[A_1(1-e^{-\sigma_{42}\theta})&space;&plus;&space;A_5\frac{1}{\sigma_{42}-\sigma_{25}}(e^{-\sigma_{25}\theta}-e^{-\sigma_{42}\theta})&space;-A_6\frac{1}{\sigma_{42}-&space;\gamma_{49}\sigma_{49}}(e^{-\gamma_{49}\sigma_{49}\theta}-e^{-\sigma_{42}\theta})&space;\\&space;-(A_7&plus;A_8-&space;A_9)\frac{1}{\sigma_{42}-\sigma_{40}}(e^{-\sigma_{40}\theta}-e^{-\sigma_{42}\theta})&space;\\&space;-(A_1&plus;A_5&plus;A_9-A_6-A_7-A_8)\frac{1}{\sigma_{42}-\sigma_{41}}(e^{-\sigma_{41}\theta}-e^{-\sigma_{42}\theta})]&space;\end{align*}"
+title="\large \begin{align*}N_{42}= (\frac{\alpha_{41}}{1+\alpha_{41}}\sigma_{41}) [A_1(1-e^{-\sigma_{42}\theta}) + A_5\frac{1}{\sigma_{42}-\sigma_{25}}(e^{-\sigma_{25}\theta}-e^{-\sigma_{42}\theta}) -A_6\frac{1}{\sigma_{42}- \gamma_{49}\sigma_{49}}(e^{-\gamma_{49}\sigma_{49}\theta}-e^{-\sigma_{42}\theta}) \\ -(A_7+A_8- A_9)\frac{1}{\sigma_{42}-\sigma_{40}}(e^{-\sigma_{40}\theta}-e^{-\sigma_{42}\theta}) \\
+-(A_1+A_5+A_9-A_6-A_7-A_8)\frac{1}{\sigma_{42}-\sigma_{41}}(e^{-\sigma_{41}\theta}-e^{-\sigma_{42}\theta})] \end{align*}" />
+---
+# Rearranging
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\begin{align*}N_{42}=B_6&plus;B_7e^{-\sigma_{25}\theta}-B_8e^{-\gamma_{49}\sigma_{49}\theta}&space;-(B_9&plus;D_1-D_2)e^{-\sigma_{40}\theta}&space;-(D_3&plus;D_4&plus;D_5-D_6-D_7-D_8)e^{-\sigma_{41}\theta}&space;\\&space;-(B_6&plus;B_7-B_8-B_9-D_1&plus;D_2-D_3-D_4-D_5&plus;D_6&plus;D_7&plus;D_8)e^{-\sigma_{42}\theta}&space;\end{align*}"
+title="\begin{align*}N_{42}=B_6+B_7e^{-\sigma_{25}\theta}-B_8e^{-\gamma_{49}\sigma_{49}\theta} -(B_9+D_1-D_2)e^{-\sigma_{40}\theta} -(D_3+D_4+D_5-D_6-D_7-D_8)e^{-\sigma_{41}\theta} \\ -(B_6+B_7-B_8-B_9-D_1+D_2-D_3-D_4-D_5+D_6+D_7+D_8)e^{-\sigma_{42}\theta} \end{align*}" />
+---
+# With 
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;B_1=\frac{\alpha_{41}}{1&plus;\alpha_{41}}" title="B_1=\frac{\alpha_{41}}{1+\alpha_{41}}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;B_2=\frac{\sigma_{41}}{\sigma_{42}-\sigma_{25}}" title="B_2=\frac{\sigma_{41}}{\sigma_{42}-\sigma_{25}}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;B_3=\frac{\sigma_{41}}{\sigma_{42}-\gamma_{49}\sigma_{49}}" title="B_3=\frac{\sigma_{41}}{\sigma_{42}-\gamma_{49}\sigma_{49}}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;B_4=\frac{\sigma_{41}}{\sigma_{42}-\sigma_{40}}" title="B_4=\frac{\sigma_{41}}{\sigma_{42}-\sigma_{40}}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;B_5=\frac{\sigma_{41}}{\sigma_{42}-\sigma_{41}}" title="B_5=\frac{\sigma_{41}}{\sigma_{42}-\sigma_{41}}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;B_6=A_1B_1\sigma_{41}" title="B_6=A_1B_1\sigma_{41}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;B_7=A_5B_1B_2" title="B_7=A_5B_1B_2" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;B_8=A_6B_1B_3" title="B_8=A_6B_1B_3" />  
+---
+# And
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\begin{align*}&space;B_9=A_7B_1B_4&space;\\&space;D_1=A_8B_1B_4&space;\\&space;D_2=A_9B_1B_4&space;\end{align*}" title="\begin{align*} B_9=A_7B_1B_4 \\ D_1=A_8B_1B_4 \\ D_2=A_9B_1B_4 \end{align*}" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\begin{align*}&space;D_3=A_1B_1B_5&space;\\&space;D_4=A_5B_1B_5&space;\\&space;D_5=A_9B_1B_5&space;\\&space;D_6=A_6B_1B_5&space;\\&space;D_7=A_7B_1B_5&space;\\&space;D_8=A_8B_1B_5&space;\end{align*}" title="\begin{align*} D_3=A_1B_1B_5 \\ D_4=A_5B_1B_5 \\ D_5=A_9B_1B_5 \\ D_6=A_6B_1B_5 \\ D_7=A_7B_1B_5 \\ D_8=A_8B_1B_5 \end{align*}" />
+---
+# On to the fission products
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\begin{align*}&space;\frac{dN_{25}^F}{d\theta}=\frac{1}{1&plus;\alpha_{25}}N_{25}\sigma_{25}&space;\\&space;\frac{dN_{49}^F}{d\theta}=\frac{1}{1&plus;\alpha_{49}}N_{49}\sigma_{49}&space;\\&space;\frac{dN_{41}^F}{d\theta}=\frac{1}{1&plus;\alpha_{41}}N_{41}\sigma_{41}&space;\end{align*}" title="\large \begin{align*}
+\frac{dN_{25}^F}{d\theta}=\frac{1}{1+\alpha_{25}}N_{25}\sigma_{25} \\ \frac{dN_{49}^F}{d\theta}=\frac{1}{1+\alpha_{49}}N_{49}\sigma_{49} \\ \frac{dN_{41}^F}{d\theta}=\frac{1}{1+\alpha_{41}}N_{41}\sigma_{41} \end{align*}" />
+---
+# Transformed
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\begin{align*}&space;s\tilde{N}_{25}^F=\frac{\sigma_{25}}{1&plus;\alpha_{25}}\tilde{N}_{25}&space;\\&space;s\tilde{N}_{49}^F=\frac{\sigma_{49}}{1&plus;\alpha_{49}}\tilde{N}_{49}&space;\\&space;s\tilde{N}_{41}^F=\frac{\sigma_{41}}{1&plus;\alpha_{41}}\tilde{N}_{41}&space;\end{align*}" title="\large \begin{align*}
+s\tilde{N}_{25}^F=\frac{\sigma_{25}}{1+\alpha_{25}}\tilde{N}_{25} \\ s\tilde{N}_{49}^F=\frac{\sigma_{49}}{1+\alpha_{49}}\tilde{N}_{49} \\ s\tilde{N}_{41}^F=\frac{\sigma_{41}}{1+\alpha_{41}}\tilde{N}_{41} \end{align*}" />
+---
+# For U-235
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\tilde{N}_{25}^F=\frac{\sigma_{25}}{1&plus;\alpha_{25}}\frac{1}{s}\frac{1}{s&plus;\sigma_{25}}N^0_{25}" title="\large \tilde{N}_{25}^F=\frac{\sigma_{25}}{1+\alpha_{25}}\frac{1}{s}\frac{1}{s+\sigma_{25}}N^0_{25}" />
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;N_{25}^F=\frac{N^0_{25}}{1&plus;\alpha_{25}}(1-e^{-\sigma_{25}\theta})" title="\large N_{25}^F=\frac{N^0_{25}}{1+\alpha_{25}}(1-e^{-\sigma_{25}\theta})" />
+---
+# For Pu-239
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\tilde{N}_{49}^F=\frac{\sigma_{49}}{1&plus;\alpha_{49}}(C_1\cdot\frac{1}{s}\frac{1}{s}&plus;C_2\cdot\frac{1}{s}\frac{1}{s&plus;\sigma_{25}}-(C_1&plus;C_2)\frac{1}{s}\cdot\frac{1}{s&plus;\gamma_{49}\sigma_{49}})" title="\large
+\tilde{N}_{49}^F=\frac{\sigma_{49}}{1+\alpha_{49}}(C_1\cdot\frac{1}{s}\frac{1}{s}+C_2\cdot\frac{1}{s}\frac{1}{s+\sigma_{25}}-(C_1+C_2)\frac{1}{s}\cdot\frac{1}{s+\gamma_{49}\sigma_{49}})" />
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;N^F_{49}=\frac{\sigma_{49}}{1&plus;\alpha_{49}}(C_1\theta&plus;C_2(1-e^{-\sigma_{25}\theta})-\frac{1}{\gamma_{49}\sigma_{49}}(C_1&plus;C_2)(1-e^{-\gamma_{49}\sigma_{49}\theta})" title="N^F_{49}=\frac{\sigma_{49}}{1+\alpha_{49}}(C_1\theta+C_2(1-e^{-\sigma_{25}\theta})-\frac{1}{\gamma_{49}\sigma_{49}}(C_1+C_2)(1-e^{-\gamma_{49}\sigma_{49}\theta})" />
+---
+# For Pu-241
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\begin{align*}&space;\tilde{N}_{41}^F=&space;\frac{\sigma_{41}}{1&plus;\alpha_{41}}&space;(A_1\frac{1}{s}\frac{1}{s}&plus;A_5\frac{1}{s}\frac{1}{s&plus;\sigma_{25}}-A_6\frac{1}{s}\frac{1}{s&plus;\gamma_{49}\sigma_{49}}-(A_7&plus;A_8-A_9)\frac{1}{s}\frac{1}{s&plus;\sigma_{40}}&space;\\&space;-(A_1&plus;A_5&plus;A_9-A_6-A_7-A_8)\frac{1}{s}\frac{1}{s&plus;\sigma_{41}})&space;\end{align*}" title="\begin{align*}
+\tilde{N}_{41}^F= \frac{\sigma_{41}}{1+\alpha_{41}} (A_1\frac{1}{s}\frac{1}{s}+A_5\frac{1}{s}\frac{1}{s+\sigma_{25}}-A_6\frac{1}{s}\frac{1}{s+\gamma_{49}\sigma_{49}}-(A_7+A_8-A_9)\frac{1}{s}\frac{1}{s+\sigma_{40}} \\ -(A_1+A_5+A_9-A_6-A_7-A_8)\frac{1}{s}\frac{1}{s+\sigma_{41}}) \end{align*}" />
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\begin{align*}&space;N_{41}^F=&space;\frac{\sigma_{41}}{1&plus;\alpha_{41}}&space;(A_1\theta&space;&plus;A_5(1-e^{-\sigma_{25}\theta})&space;-A_6(1-e^{-\gamma_{49}\sigma_{49}\theta})-(A_7&plus;A_8-A_9)(1-e^{\sigma_{40}\theta})&space;\\&space;-(A_1&plus;A_5&plus;A_9-A_6-A_7-A_8)(1-e^{\sigma_{41}\theta}))&space;\end{align*}" title="\begin{align*} N_{41}^F= \frac{\sigma_{41}}{1+\alpha_{41}} (A_1\theta
++A_5(1-e^{-\sigma_{25}\theta}) -A_6(1-e^{-\gamma_{49}\sigma_{49}\theta})-(A_7+A_8-A_9)(1-e^{\sigma_{40}\theta}) \\ -(A_1+A_5+A_9-A_6-A_7-A_8)(1-e^{\sigma_{41}\theta})) \end{align*}" />
+---
+![doggehs](img/final.jpg)
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script type="text/javascript">
+        var options = {};
+        var renderMath = function() {
+            renderMathInElement(document.body, {delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\[", right: "\\]", display: false},
+            ]});
+        }
+        var slideshow = remark.create({
+          // Set the slideshow display ratio
+          // Default: '4:3'
+          // Alternatives: '16:9', ...
+          ratio: '16:9',
+          // Navigation options
+          navigation: {
+          // Enable or disable navigating using scroll
+          // Default: true
+          // Alternatives: false
+          scroll: true,
+          // Enable or disable navigation using touch
+          // Default: true
+          // Alternatives: false
+          touch: true,
+          // Enable or disable navigation using click
+          // Default: false
+          // Alternatives: true
+          click: false
+          },
+          // Customize slide number label, either using a format string..
+          slideNumberFormat: '%current%',
+          // Enable or disable counting of incremental slides in the slide counting
+          countIncrementalSlides: false 
+          }, renderMath);
+    </script>
+    <script type="text/javascript">
+     /**
+      * a simple zoom in/out/reset for remark.js
+      *
+      * Hot key:
+      *   + : zoom in
+      *   - : zoom out
+      *   0 : reset zoom
+      *
+      * CAVEAT: when switching between full screen and normal screen,
+      *         the zoom factor may not function correctly.
+      *         RELOAD the page, if necessary.
+      *
+      * 
+      * @author William Yeh <william.pjyeh@gmail.com>
+      * @date   2015-01-15
+      *
+      * @license Apache License, Version 2.0.
+      * Copyright © 2015 William Yeh.
+      */
+      var ZOOM_TEXT_SELECTOR =
+       ".remark-slide-content p"
+       + "," + ".remark-slide-content .remark-code-line"
+       ;
+
+      var ZOOM_IMG_SELECTOR =
+       ".remark-slide-content img:hover"
+       ;
+
+      var ZOOM_IMG_RULE;
+
+      var zoom_factor = 100.0;
+      document.body.style.zoom = "100%"
+    
+      function init_zoom_rule() {
+       // @see http://davidwalsh.name/add-rules-stylesheets
+       var styles = document.styleSheets[0];
+       var index = styles.insertRule(
+        ZOOM_IMG_SELECTOR + ' { transform:scale(1); }',
+        styles.cssRules.length
+        );
+
+        ZOOM_IMG_RULE = styles.cssRules.item(index);
+       }
+    
+      function apply_zoom() {
+       var elements = document.querySelectorAll(ZOOM_TEXT_SELECTOR);
+       //console.log('length:', elements.length);
+       for (var i = 0; i < elements.length; ++i) {
+        var item = elements[i];
+        item.style.fontSize = zoom_factor.toString() + '%';
+        }
+
+        ZOOM_IMG_RULE.style.transform = 'scale(' + (zoom_factor / 100) + ')';
+      }
+
+      function zoom_in() {
+       zoom_factor += 10;
+       if (zoom_factor >= 200.0)  zoom_factor = 200.0;
+       apply_zoom();
+      }
+    
+      function zoom_out() {
+       zoom_factor -= 10;
+       if (zoom_factor <= 50.0)  zoom_factor = 50.0;
+       apply_zoom();
+      }
+
+      function zoom_reset() {
+       zoom_factor = 100.0;
+       apply_zoom();
+      }
+
+      init_zoom_rule();
+      window.addEventListener("keydown", function(event) {
+       //console.log(event.keyCode);
+       switch (event.keyCode) {
+        case 187:  // '+': 187 in Chrome & Safari, 61 in FF
+        case 61:  // '+': 187 in Chrome, 61 in FF
+         zoom_in(); 
+         break;
+
+        case 189:  // '-': 189 in Chrome & Safari, 173 in FF
+        case 173:  // '-': 189 in Chrome, 173 in FF
+         zoom_out();
+         break;
+        case 48:   // '0'
+         zoom_reset();
+         break;
+       }
+      }, false);
+    </script>
+  </body>
+</html>
