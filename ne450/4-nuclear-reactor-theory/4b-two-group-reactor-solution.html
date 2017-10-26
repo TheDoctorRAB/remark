@@ -88,177 +88,63 @@ And then scatter into g from h which is an additional source term
 ---
 # For a fast group and thermal group
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;D_1\nabla^2{\phi_1}-\Sigma_A^1\phi_1-\Sigma_{1&space;\rightarrow&space;2}\phi_1&plus;\Sigma_{2&space;\rightarrow&space;1}\phi_2&plus;s=0" title="\large D_1\nabla^2{\phi_1}-\Sigma_A^1\phi_1-\Sigma_{1 \rightarrow 2}\phi_1+\Sigma_{2 \rightarrow 1}\phi_2+s=0" />
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\large&space;D_1\nabla^2{\phi_1}-\Sigma_A^1\phi_1-\Sigma_{1&space;\rightarrow&space;T}\phi_1&plus;s_1=0" title="\large \large D_1\nabla^2{\phi_1}-\Sigma_A^1\phi_1-\Sigma_{1 \rightarrow T}\phi_1+s_1=0" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;D_T\nabla^2{\phi_T}-\Sigma_A^T\phi_T&plus;s_T=0" title="\large D_T\nabla^2{\phi_T}-\Sigma_A^T\phi_T+s_T=0" />
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;D_2\nabla^2{\phi_2}-\Sigma_A^2\phi_2-\Sigma_{2&space;\rightarrow&space;1}\phi_2&plus;\Sigma_{1&space;\rightarrow&space;2}\phi_1=0" title="\large D_2\nabla^2{\phi_2}-\Sigma_A^2\phi_2-\Sigma_{2 \rightarrow 1}\phi_2+\Sigma_{1 \rightarrow 2}\phi_1=0" />
+Assume bulk of fissions induced by thermal neutrons  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\eta_T&space;f&space;\epsilon&space;\Sigma_A^T&space;\phi_T&space;=&space;\frac{k_{\infty}}{p}&space;\Sigma_A^T&space;\phi_T" title="\large \eta_T f \epsilon \Sigma_A^T \phi_T = \frac{k_{\infty}}{p} \Sigma_A^T \phi_T" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;s_1=&space;\frac{k_{\infty}}{p}&space;\Sigma_A^T&space;\phi_T" title="\large s_1= \frac{k_{\infty}}{p} \Sigma_A^T \phi_T" />
 
-Neutrons can't scatter from the thermal group to the fast group
+Fast neutrons scattered out must survive the resonances
 
-<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;D_1\nabla^2{\phi_1}-\Sigma_A^1\phi_1-\Sigma_{1&space;\rightarrow&space;2}\phi_1&plus;s=0" title="\large D_1\nabla^2{\phi_1}-\Sigma_A^1\phi_1-\Sigma_{1 \rightarrow 2}\phi_1+s=0" />
-
-<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;D_2\nabla^2{\phi_2}-\Sigma_A^2\phi_2&plus;\Sigma_{1&space;\rightarrow&space;2}\phi_1=0" title="\large D_2\nabla^2{\phi_2}-\Sigma_A^2\phi_2+\Sigma_{1 \rightarrow 2}\phi_1=0" />
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;s_T=p\Sigma_{1&space;\rightarrow&space;T}\phi_1" title="\large s_T=p\Sigma_{1 \rightarrow T}\phi_1" />
 ---
-# Rearrange and compute the derivative
-
-<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\begin{align*}\frac{d^2\phi_1}{dx^2}-\frac{1}{K^2}\phi_1&plus;d=0\\\frac{d^2\phi_2}{dx^2}-\frac{1}{L^2}\phi_2&plus;\Sigma_{1&space;\rightarrow&space;2}\phi_1=0&space;\\L^2=\frac{D_2}{\Sigma_A^2}\\K^2=\frac{D_1}{\Sigma_A^1&plus;\Sigma_{1\rightarrow&space;2}}\\d=\frac{s}{D_1}\end{align*}"
-title="\large \begin{align*}\frac{d^2\phi_1}{dx^2}-\frac{1}{K^2}\phi_1+d=0\\\frac{d^2\phi_2}{dx^2}-\frac{1}{L^2}\phi_2+\Sigma_{1 \rightarrow 2}\phi_1=0 \\L^2=\frac{D_2}{\Sigma_A^2}\\K^2=\frac{D_1}{\Sigma_A^1+\Sigma_{1\rightarrow 2}}\\d=\frac{s}{D_1}\end{align*}" />
----
-# Solve the fast group first 
-
-Assume
-
-<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\phi_1(x)=\phi_H(x)&plus;\phi_P(x)" title="\large \phi_1(x)=\phi_H(x)+\phi_P(x)" />
-
-Solve
-
-<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\frac{d^2\phi_H}{dx^2}-\frac{1}{K^2}\phi_H=0" title="\large \frac{d^2\phi_H}{dx^2}-\frac{1}{K^2}\phi_H=0" />
-
-<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\phi_H(x)=Ae^{-\frac{x}{K}}&plus;Ce^{\frac{x}{K}}" title="\large \phi_H(x)=Ae^{-\frac{x}{K}}+Ce^{\frac{x}{K}}" />
----
-# Assume particular solution
-
-$\phi_P=B$ where B is an arbitrary constant
+# Rearrange
 
 Let $\frac{d^2\phi}{dx^2} \equiv \phi''$ to clean up the mess and save on typing
 
-Substitute into fast flux equation
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;D_1\phi''_1-\Sigma_A^1\phi_1-\Sigma_{1&space;\rightarrow&space;T}\phi_1&plus;\frac{k_{\infty}}{p}&space;\Sigma_A^T&space;\phi_T=0" title="\large D_1\phi''_1-\Sigma_A^1\phi_1-\Sigma_{1 \rightarrow T}\phi_1+\frac{k_{\infty}}{p} \Sigma_A^T \phi_T=0" />
 
-$0-\frac{1}{K^2}B+d=0$
-
-$B=dK^2$ 
-
-So 
-
-$\phi_P=dK^2$
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;D_T\phi''_T-\Sigma_A^T\phi_T&plus;p\Sigma_{1&space;\rightarrow&space;T}\phi_1=0" title="\large D_T\phi''_T-\Sigma_A^T\phi_T+p\Sigma_{1 \rightarrow T}\phi_1=0" />
 ---
-# Then the fast flux is obtained
+# Clean up
 
-$\phi_1=A_1e^{-\frac{x}{K}}+C_1e^{\frac{x}{K}}+dK^2$
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\phi''_1-\frac{1}{K^2}\phi_1&plus;f\phi_T=0" title="\large \phi''_1-\frac{1}{K^2}\phi_1+f\phi_T=0" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\phi''_T&plus;g\phi_1-\frac{1}{L^2}\phi_T=0" title="\large \phi''_T+g\phi_1-\frac{1}{L^2}\phi_T=0" />  
+<img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\large&space;\begin{align*}&space;K^2=\frac{D_1}{\Sigma_{1&space;\rightarrow&space;T}&plus;\Sigma_A^1}&space;\\&space;L^2=\frac{D_T}{\Sigma_A^T}&space;\\&space;f=\frac{k\Sigma_A^T}{pD_1}&space;\\&space;g=\frac{p\Sigma_{1&space;\rightarrow&space;T}}{D_T}&space;\end{align*}" title="\large \begin{align*} K^2=\frac{D_1}{\Sigma_{1 \rightarrow T}+\Sigma_A^1} \\ L^2=\frac{D_T}{\Sigma_A^T}
+\\ f=\frac{k\Sigma_A^T}{pD_1} \\ g=\frac{p\Sigma_{1 \rightarrow T}}{D_T} \end{align*}" />
 ---
-# Check
+# Put in matrix form
 
-$\phi''_1=\frac{A_1}{K^2}e^{-\frac{x}{K}}+\frac{C_1}{K^2}e^{\frac{x}{K}}$
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\underline{\phi}''=\underline{\underline{A}}\cdot\underline{\phi}" title="\underline{\phi}''=\underline{\underline{A}}\cdot\underline{\phi}" />
 
-$(\frac{A_1}{K^2}e^{-\frac{x}{K}}+\frac{C_1}{K^2}e^{\frac{x}{K}})-\frac{1}{K^2}[A_1e^{-\frac{x}{K}}+C_1e^{\frac{x}{K}}+dK^2]+d=0$
-
-$\frac{A_1}{K^2}e^{-\frac{x}{K}}+\frac{C_1}{K^2}e^{\frac{x}{K}}-\frac{A_1}{K^2}e^{-\frac{x}{K}}-\frac{C_1}{K^2}e^{\frac{x}{K}}-d+d=0$
-
-All good
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\begin{bmatrix}&space;\phi''_1&space;\\&space;\phi''_T&space;\end{bmatrix}&space;=&space;\begin{bmatrix}&space;\frac{1}{K^2}&space;&&space;-f&space;\\&space;-g&space;&&space;\frac{1}{L^2}&space;\end{bmatrix}&space;\cdot&space;\begin{bmatrix}&space;\phi_1&space;\\&space;\phi_T&space;\end{bmatrix}" title="\begin{bmatrix} \phi''_1 \\ \phi''_T \end{bmatrix} = \begin{bmatrix} \frac{1}{K^2} & -f \\ -g & \frac{1}{L^2}
+\end{bmatrix} \cdot \begin{bmatrix} \phi_1 \\ \phi_T \end{bmatrix}" />
 ---
-# Let's look at the thermal flux
+# Find eigenvalues
 
-$\phi''_2-\frac{1}{L^2}\phi_2+\Sigma_1\phi_1=0$
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\underline{\underline{A}}\cdot\underline{x}=\lambda^2\underline{x}" title="\underline{\underline{A}}\cdot\underline{x}=\lambda^2\underline{x}" />
 
-$\phi''_2-\frac{1}{L^2}\phi_2+\Sigma_1 A_1e^{-\frac{x}{K}}+\Sigma_1 C_1e^{\frac{x}{K}}+\Sigma_1 dK^2=0$
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;(\underline{\underline{A}}-\lambda^2\underline{\underline{I}})\underline{x}=0" title="(\underline{\underline{A}}-\lambda^2\underline{\underline{I}})\underline{x}=0" />
 
-We let $\Sigma_{1 \rightarrow 2} \equiv \Sigma_1$ for less mess
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;det(\underline{\underline{A}}-\lambda^2\underline{\underline{I}})=0" title="det(\underline{\underline{A}}-\lambda^2\underline{\underline{I}})=0" />
 
-Same procedure; assume
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;det&space;\begin{bmatrix}&space;\frac{1}{K^2}-\lambda^2&space;&&space;-f&space;\\&space;-g&space;&&space;\frac{1}{L^2}-\lambda^2&space;\end{bmatrix}" title="det \begin{bmatrix} \frac{1}{K^2}-\lambda^2 & -f \\ -g & \frac{1}{L^2}-\lambda^2 \end{bmatrix}" />
 
-$\phi_2=\phi_H+\phi_P$
-
-Then
-
-$\phi''_H-\frac{1}{L^2}\phi_H=0$  
-
-$\phi_H=A_2e^{-\frac{x}{L}}+C_2e^{\frac{x}{L}}$
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;det&space;\begin{bmatrix}&space;\frac{1}{K^2}-\lambda^2&space;&&space;-f&space;\\&space;-g&space;&&space;\frac{1}{L^2}-\lambda^2&space;\end{bmatrix}=\frac{1}{K^2}(\frac{1}{L^2}-\lambda^2)&plus;\lambda^4-\lambda^2\frac{1}{L^2}&plus;fg=0" title="det \begin{bmatrix} \frac{1}{K^2}-\lambda^2 & -f \\ -g & \frac{1}{L^2}-\lambda^2
+\end{bmatrix}=\frac{1}{K^2}(\frac{1}{L^2}-\lambda^2)+\lambda^4-\lambda^2\frac{1}{L^2}+fg=0" />
 ---
-# For the particular solution, apply the following [theorem](https://www.math.uh.edu/~etgen/5389-Chap3.pdf)
+# Solve for eigenvalues
 
-If $z_1(x)$ is a particular solution of 
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;K^2L^2\lambda^4-(L^2&plus;K^2)\lambda^2&plus;fgK^2L^2&plus;1=0" title="K^2L^2\lambda^4-(L^2+K^2)\lambda^2+fgK^2L^2+1=0" />
 
-$$y''+p(x)y'+q(x)y=f(x)$$
+[Eigenvalue solution](http://www.wolframalpha.com/widgets/view.jsp?id=dcc8007e03af36a0bd3635b09e4cd5a2)
 
-and $z_2(x)$ is a particular solution of 
+[Eigenvector solution](http://tutorial.math.lamar.edu/Classes/DE/ComplexEigenvalues.aspx)
 
-$$y''+p(x)y'+q(x)y=g(x)$$
+[Help with second order](http://www.math.utah.edu/~gustafso/2250systems-de.pdf)
 
-then $z=z_1(x)+z_2(x)$ is a particular solution of 
-
-$$y''+p(x)y'+q(x)y=f(x)+g(x)$$
-
-for any number of forcing functions
----
-# So for this neutron diffusion problem
-
-$\phi''_2-\frac{1}{L^2}\phi_2+\Sigma_1 A_1e^{-\frac{x}{K}}+\Sigma_1 C_1e^{\frac{x}{K}}+\Sigma_1 dK^2=0$  
-$\phi_P=\phi_F+\phi_G+\phi_I$
-
-Where we don't need to split up $L^2$ because the geometry is the same
-
-$\phi''_F-\frac{1}{L^2}\phi_F+\Sigma_1 A_1 e^{-\frac{x}{K}}$  
-$\phi''_G-\frac{1}{L^2}\phi_G+\Sigma_1 C_1 e^{\frac{x}{K}}$  
-$\phi''_I-\frac{1}{L^2}\phi_I+\Sigma_1 dK^2$  
-
-And
-
-$\phi_F^P=B_1e^{-\frac{x}{K}} \rightarrow \phi''_F=\frac{B_1}{K^2}e^{-\frac{x}{K}}$  
-$\phi_G^P=B_2e^{\frac{x}{K}} \rightarrow \phi''_G=\frac{B_2}{K^2}e^{\frac{x}{K}}$  
-$\phi_I^P=B_3$  
----
-# Therefore
-
-$\frac{B_1}{K^2}e^{-\frac{x}{K}}-\frac{B_1}{L^2}e^{-\frac{x}{K}}+\Sigma_1 A_1 e^{-\frac{x}{K}}=0$
-
-$\frac{B_2}{K^2}e^{\frac{x}{K}}-\frac{B_2}{L^2}e^{\frac{x}{K}}+\Sigma_1 C_1 e^{\frac{x}{K}}=0$
-
-$0-\frac{B_3}{L^2}+\Sigma_1 dK^2=0$
-
-Then 
-
-$\frac{B_1}{K^2}-\frac{B_1}{L^2}+\Sigma_1 A_1 =0$
-
-$\frac{B_2}{K^2}-\frac{B_2}{L^2}+\Sigma_1 C_1 =0$
-
-$\frac{B_3}{L^2}=\Sigma_1 dK^2$
----
-# Solve for the constants
-
-$B_1=\frac{\Sigma_1 A_1 K^2 L^2}{K^2-L^2}$
-
-$B_2=\frac{\Sigma_1 C_1 K^2 L^2}{K^2-L^2}$
-
-$B_3=\Sigma_1dK^2L^2$
-
-Then 
-
-$\phi_F^P=\frac{\Sigma_1 A_1 K^2 L^2}{K^2-L^2} e^{-\frac{x}{K}}$
-
-$\phi_G^P=\frac{\Sigma_1 C_1 K^2 L^2}{K^2-L^2} e^{\frac{x}{K}}$
-
-$\phi_I^P=\Sigma_1 d K^2 L^2$
----
-# Arrange to obtain thermal flux
-
-$\phi_2=A_2e^{-\frac{x}{L}}+C_2e^{\frac{x}{L}}+\frac{\Sigma_1 A_1 K^2 L^2}{K^2-L^2} e^{-\frac{x}{K}}+\frac{\Sigma_1 C_1 K^2 L^2}{K^2-L^2} e^{\frac{x}{K}}+\Sigma_1 d K^2 L^2$
----
-# Check
-
-$\phi_2=A_2e^{-\frac{x}{L}}+C_2e^{\frac{x}{L}}+\frac{\Sigma_1 A_1 K^2 L^2}{K^2-L^2} e^{-\frac{x}{K}}+\frac{\Sigma_1 C_1 K^2 L^2}{K^2-L^2} e^{\frac{x}{K}}+\Sigma_1 d K^2 L^2$
-
-$\phi''_2-\frac{1}{L^2}\phi_2+\Sigma_1\phi_1=0$  
-
-$[\frac{A_2}{L^2}e^{-\frac{x}{L}}+\frac{C_2}{L^2}e^{\frac{x}{L}}+\frac{\Sigma_1 A_1 K^2 L^2}{(K^2-L^2)K^2} e^{-\frac{x}{K}}+\frac{\Sigma_1 C_1 K^2 L^2}{(K^2-L^2)K^2} e^{\frac{x}{K}}]$  
-
-$-[\frac{A_2}{L^2}e^{-\frac{x}{L}}+\frac{C_2}{L^2}e^{\frac{x}{L}}+\frac{\Sigma_1 A_1 K^2 L^2}{(K^2-L^2)L^2} e^{-\frac{x}{K}}+\frac{\Sigma_1 C_1 K^2 L^2}{(K^2-L^2)L^2} e^{\frac{x}{K}}+\Sigma_1 d K^2]$  
-
-$+[\Sigma_1A_1e^{-\frac{x}{K}}+\Sigma_1C_1e^{\frac{x}{K}}+\Sigma_1dK^2]=0$  
----
-# Check on algebra
-
-$(\frac{A_2}{L^2}-\frac{A_2}{L^2})e^{-\frac{x}{L}}+(\frac{C_2}{L^2}-\frac{C_2}{L^2})e^{\frac{x}{L}}+(\Sigma_1dK^2-\Sigma_1dK^2)$
-
-$+[\frac{\Sigma_1A_1K^2L^2}{(K^2-L^2)K^2}-\frac{\Sigma_1A_1K^2L^2}{(K^2-L^2)L^2}+\Sigma_1A_1]e^{-\frac{x}{K}}$
-
-$+[\frac{\Sigma_1C_1K^2L^2}{(K^2-L^2)K^2}-\frac{\Sigma_1C_1K^2L^2}{(K^2-L^2)L^2}+\Sigma_1C_1]e^{\frac{x}{K}}=0$
-
-The first three terms equal zero. Taking the last two:
-
-$[\frac{\Sigma_1A_1L^2}{K^2-L^2}-\frac{\Sigma_1A_1K^2}{K^2-L^2}+\frac{\Sigma_1A_1(K^2-L^2)}{K^2-L^2}]e^{-\frac{x}{K}}=0$
-
-$[\frac{\Sigma_1C_1L^2}{K^2-L^2}-\frac{\Sigma_1C_1K^2}{K^2-L^2}+\frac{\Sigma_1C_1(K^2-L^2)}{K^2-L^2}]e^{\frac{x}{K}}=0$
-
-All good
+Have to find $z = \lambda x$ also 
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
