@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>5. Monte Carlo methods and MCNP</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Open Sans', sans-serif; }
+      h1, h2, h3 {
+        font-family: 'Ubuntu';
+        font-weight: normal;
+        }
+      .remark-container {background-color: #F5F5F5; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { background-color: #FFFAF0; font-size: 26px; 
+                         h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
+       }
+      .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+    </style>
+  </head>
+  <body>
+<textarea id="source">
+class: center, middle
+
+# NE450
+## PRINCIPLES OF NUCLEAR ENGINEERING  
+### Monte Carlo methods and MCNP
+
+#### 5
+---
+# Outcomes for the lecture
+
+Understanding modeling of nuclear systems
+
+Get started with MCNP 
+
+Not in book
+
+Just literature researched commonly used material
+
+Materials posted on [OER](https://courses.candelalearning.com/x84x9/)
+---
+# Monte Carlo simulates particle transport
+
+Like neutrons
+
+Because we're engineers we are going to focus more on application than theory 
+
+There are a lot of Monte Carlo codes
+
+We will use MCNPX, MCNP6
+---
+class: middle,center
+
+# Fundamentals of Monte Carlo particle transport
+# Forrest B. Brown
+# [LA-UR-05-4983](https://laws.lanl.gov/vhosts/mcnp.lanl.gov/pdf_files/la-ur-05-4983.pdf)
+---
+# Monte Carlo was invented by von Neumann
+
+Fairly successful guy
+
+Basically invented what we call 'scientific computing'
+
+Monte Carlo is highly accurate but expensive CPU
+
+MCNP can be run on just about all architectures
+---
+# Monte Carlo methods solve the transport equation
+
+So we don't have to
+
+Mathematical approach is for importance sampling, convergence, variance reduction, random sampling techniques, eigenvalue calculation schemes
+
+Simulation approach is for collision physics, tracking, tallying  
+Monte Carlo methods solve integral problems, so consider the integral form of the Boltzmann equation
+
+Most theory on Monte Carlo deals with fixed-source problems  
+Eigenvalue problems are needed for criticality and reactor physics calculations
+
+Should know basic statistics
+---
+# Consider a simple example
+
+$G = \int_0^1 g(x)dx$  
+$g(x) = \sqrt{1-x^2}$
+
+Could just compute the integral
+
+What if you can't?
+
+$G \approx \frac{1}{N} \sum_{k=1}^{N} \sqrt{1-x_k^2}$  
+Choose randomly in (0,1)
+
+Or  
+$x_k^2+y_k^2 \leq 1, k=1,..,N$  
+Sample x and y and count a 'hit' if less than 1  
+$G \approx (1 \cdot 1)\frac{hits}{N}$
+---
+# Analytical solution can be obtained
+
+$G = \frac{1}{2}(x\sqrt{1-x^2}-sin^{-1} x)$ 
+
+So the Monte Carol routine can be checked 
+
+Code on [github](https://github.com/TheDoctorRAB/education/blob/master/src/monte.carlo.simple.py)  
+
+See Brown 1-6
+
+![circle](img/circle.png)
+---
+# Use Monte Carlo to compute pi
+
+$x^2+y^2=r^2$
+
+$A=\pi r^2$
+
+So there's a direct relationship to find pi
+
+Sample x (0,r)  
+Sample y (0,r)  
+First quadrant  
+
+Record the hit  
+Divide hits by sample number like before  
+Multiply by 4  
+---
+# Monte Carlo is good for multi dimensional integration
+
+The procedure is the same
+
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\large&space;G&space;=&space;\int_{a_1}^{b_1}&space;...&space;\int_{a_n}^{b_n}&space;g(r_1,&space;...&space;,r_n)&space;dr_1&space;...&space;dr_n" target="_blank"><img
+    src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;G&space;=&space;\int_{a_1}^{b_1}&space;...&space;\int_{a_n}^{b_n}&space;g(r_1,&space;...&space;,r_n)&space;dr_1&space;...&space;dr_n" title="\large G = \int_{a_1}^{b_1} ... \int_{a_n}^{b_n} g(r_1, ... ,r_n) dr_1 ... dr_n" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\large&space;G&space;\approx&space;(b_1-a_1)&space;...&space;(b_n-a_n)&space;\frac{1}{N}&space;\sum_{k=1}^N&space;g(r_1^k,&space;...&space;,r_n^k)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;G&space;\approx&space;(b_1-a_1)&space;...&space;(b_n-a_n)&space;\frac{1}{N}&space;\sum_{k=1}^N&space;g(r_1^k,&space;...&space;,r_n^k)" title="\large G \approx (b_1-a_1) ...
+    (b_n-a_n) \frac{1}{N} \sum_{k=1}^N g(r_1^k, ... ,r_n^k)" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\large&space;r_n^k&space;\in&space;(a_n,b_n)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;r_n^k&space;\in&space;(a_n,b_n)" title="\large r_n^k \in (a_n,b_n)" /></a>
+---
+# The key to Monte Carlo methods is the notion of random sampling
+
+For a pdf p(x) produce actual Xs distributed in the same way
+
+Models the outcome of physical events
+
+Neutron scatting, absorption, fission
+
+1-8 to 1-10
+---
+class: center,middle
+
+# Boltzmann transport equation
+---
+# Monte Carlo is used to simulate the transport equation
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\large&space;\Psi(\underline{r},\underline{v})=\int[\int\Psi(\underline{r}',\underline{v}')C(\underline{v}'\rightarrow\underline{v})d\underline{v}'&plus;Q(\underline{r}',\underline{v})]T(\underline{r}'\rightarrow\underline{r})d\underline{r}'" target="_blank"><img
+    src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\Psi(\underline{r},\underline{v})=\int[\int\Psi(\underline{r}',\underline{v}')C(\underline{v}'\rightarrow\underline{v})d\underline{v}'&plus;Q(\underline{r}',\underline{v})]T(\underline{r}'\rightarrow\underline{r})d\underline{r}'" title="\large
+    \Psi(\underline{r},\underline{v})=\int[\int\Psi(\underline{r}',\underline{v}')C(\underline{v}'\rightarrow\underline{v})d\underline{v}'+Q(\underline{r}',\underline{v})]T(\underline{r}'\rightarrow\underline{r})d\underline{r}'" /></a>  
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\large&space;\Psi(\underline{r},\underline{v})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\Psi(\underline{r},\underline{v})" title="\large \Psi(\underline{r},\underline{v})" /></a> particle collision density  
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\large&space;Q(\underline{r}',\underline{v})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;Q(\underline{r}',\underline{v})" title="\large Q(\underline{r}',\underline{v})" /></a> source term; fixed, +fission, etc.  
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\large&space;C(\underline{v}'\rightarrow\underline{v})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;C(\underline{v}'\rightarrow\underline{v})" title="\large C(\underline{v}'\rightarrow\underline{v})" /></a> collision; change velocity at fixed position  
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\large&space;T(\underline{r}'\rightarrow\underline{r})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;T(\underline{r}'\rightarrow\underline{r})" title="\large T(\underline{r}'\rightarrow\underline{r})" /></a> transport; change position at fixed velocity
+---
+# The source term can become exceedingly complex
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\large&space;Q(\underline{r},\underline{v})=S(\underline{r},\underline{v})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;Q(\underline{r},\underline{v})=S(\underline{r},\underline{v})" title="\large Q(\underline{r},\underline{v})=S(\underline{r},\underline{v})" /></a> fixed source
+
+
+
+
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script type="text/javascript">
+        var options = {};
+        var renderMath = function() {
+            renderMathInElement(document.body, {delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\[", right: "\\]", display: false},
+            ]});
+        }
+        var slideshow = remark.create({
+          // Set the slideshow display ratio
+          // Default: '4:3'
+          // Alternatives: '16:9', ...
+          ratio: '16:9',
+          // Navigation options
+          navigation: {
+          // Enable or disable navigating using scroll
+          // Default: true
+          // Alternatives: false
+          scroll: true,
+          // Enable or disable navigation using touch
+          // Default: true
+          // Alternatives: false
+          touch: true,
+          // Enable or disable navigation using click
+          // Default: false
+          // Alternatives: true
+          click: false
+          },
+          // Customize slide number label, either using a format string..
+          slideNumberFormat: '%current%',
+          // Enable or disable counting of incremental slides in the slide counting
+          countIncrementalSlides: false 
+          }, renderMath);
+    </script>
+    <script type="text/javascript">
+     /**
+      * a simple zoom in/out/reset for remark.js
+      *
+      * Hot key:
+      *   + : zoom in
+      *   - : zoom out
+      *   0 : reset zoom
+      *
+      * CAVEAT: when switching between full screen and normal screen,
+      *         the zoom factor may not function correctly.
+      *         RELOAD the page, if necessary.
+      *
+      * 
+      * @author William Yeh <william.pjyeh@gmail.com>
+      * @date   2015-01-15
+      *
+      * @license Apache License, Version 2.0.
+      * Copyright © 2015 William Yeh.
+      */
+      var ZOOM_TEXT_SELECTOR =
+       ".remark-slide-content p"
+       + "," + ".remark-slide-content .remark-code-line"
+       ;
+
+      var ZOOM_IMG_SELECTOR =
+       ".remark-slide-content img:hover"
+       ;
+
+      var ZOOM_IMG_RULE;
+
+      var zoom_factor = 100.0;
+      document.body.style.zoom = "100%"
+    
+      function init_zoom_rule() {
+       // @see http://davidwalsh.name/add-rules-stylesheets
+       var styles = document.styleSheets[0];
+       var index = styles.insertRule(
+        ZOOM_IMG_SELECTOR + ' { transform:scale(1); }',
+        styles.cssRules.length
+        );
+
+        ZOOM_IMG_RULE = styles.cssRules.item(index);
+       }
+    
+      function apply_zoom() {
+       var elements = document.querySelectorAll(ZOOM_TEXT_SELECTOR);
+       //console.log('length:', elements.length);
+       for (var i = 0; i < elements.length; ++i) {
+        var item = elements[i];
+        item.style.fontSize = zoom_factor.toString() + '%';
+        }
+
+        ZOOM_IMG_RULE.style.transform = 'scale(' + (zoom_factor / 100) + ')';
+      }
+
+      function zoom_in() {
+       zoom_factor += 10;
+       if (zoom_factor >= 200.0)  zoom_factor = 200.0;
+       apply_zoom();
+      }
+    
+      function zoom_out() {
+       zoom_factor -= 10;
+       if (zoom_factor <= 50.0)  zoom_factor = 50.0;
+       apply_zoom();
+      }
+
+      function zoom_reset() {
+       zoom_factor = 100.0;
+       apply_zoom();
+      }
+
+      init_zoom_rule();
+      window.addEventListener("keydown", function(event) {
+       //console.log(event.keyCode);
+       switch (event.keyCode) {
+        case 187:  // '+': 187 in Chrome & Safari, 61 in FF
+        case 61:  // '+': 187 in Chrome, 61 in FF
+         zoom_in(); 
+         break;
+
+        case 189:  // '-': 189 in Chrome & Safari, 173 in FF
+        case 173:  // '-': 189 in Chrome, 173 in FF
+         zoom_out();
+         break;
+        case 48:   // '0'
+         zoom_reset();
+         break;
+       }
+      }, false);
+    </script>
+  </body>
+</html>
