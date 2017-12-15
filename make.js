@@ -10,6 +10,14 @@ target.all = function () {
 };
 
 target.highlighter = function () {
+  var config = require('./package.json').config;
+  if (config && config.highlighter === false) {
+    console.log('Bundling empty highlighter skeleton...');
+    "module.exports = {styles:[],engine:{highlightBlock:function(){}}};"
+      .to('src/remark/highlighter.js');
+    return;
+  }
+
   console.log('Bundling highlighter...');
 
   rm('-rf', 'vendor/highlight.js');
@@ -17,7 +25,7 @@ target.highlighter = function () {
   pushd('vendor');
   exec('git clone https://github.com/isagalaev/highlight.js.git');
   pushd('highlight.js');
-  exec('git checkout tags/8.0');
+  exec('git checkout tags/9.6.0');
   popd();
   popd();
 
@@ -30,12 +38,12 @@ target.test = function () {
   target['test-bundle']();
 
   console.log('Running tests...');
-  run('mocha-phantomjs test/runner.html');
+  run('mocha-phantomjs test/runner.html', true);
 };
 
 target.lint = function () {
   console.log('Linting...');
-  run('jshint src', {silent: true});
+  run('jshint src');
 };
 
 target.bundle = function () {
@@ -44,8 +52,7 @@ target.bundle = function () {
 
   mkdir('-p', 'out');
 
-  run('browserify ' + components() + ' src/remark.js',
-      {silent: true}).output.to('out/remark.js');
+  run('browserify ' + components() + ' src/remark.js').stdout.to('out/remark.js');
 };
 
 function components () {
@@ -64,7 +71,8 @@ target['test-bundle'] = function () {
 
   [
     "require('should');",
-    "require('sinon');"
+    "require('sinon');",
+    "require('should-sinon');"
   ]
     .concat(find('./test')
       .filter(function(file) { return file.match(/\.js$/); })
@@ -73,8 +81,7 @@ target['test-bundle'] = function () {
       .join('\n')
       .to('_tests.js');
 
-  run('browserify ' + components() + ' _tests.js',
-      {silent: true}).output.to('out/tests.js');
+  run('browserify ' + components() + ' _tests.js').stdout.to('out/tests.js');
   rm('_tests.js');
 };
 
@@ -85,7 +92,7 @@ target.boilerplate = function () {
 
 target.minify = function () {
   console.log('Minifying...');
-  run('uglifyjs out/remark.js', {silent: true}).output.to('out/remark.min.js');
+  run('uglifyjs -m -c -o out/remark.min.js out/remark.js');
 };
 
 target.deploy = function () {
@@ -104,9 +111,8 @@ target.deploy = function () {
     return;
   }
 
-  git('add package.json');
+  git('checkout HEAD');
   git('add -f out');
-  git('checkout head');
   git('commit -m "Deploy version ' + version + '."');
   git('tag -a v' + version + ' -m "Version ' + version + '."');
   git('checkout ' + currentBranch);
@@ -116,13 +122,16 @@ target.deploy = function () {
 // Helper functions
 
 var path = require('path')
-  , config = require('./package.json').config
+  , package = require('./package.json')
+  , version = package.version
+  , config = package.config
   , ignoredStyles = ['brown_paper', 'school_book', 'pojoaque']
   ;
 
 function bundleResources (target) {
   var resources = {
-        DOCUMENT_STYLES: JSON.stringify(
+        VERSION: version
+      , DOCUMENT_STYLES: JSON.stringify(
           less('src/remark.less'))
       , CONTAINER_LAYOUT: JSON.stringify(
           cat('src/remark.html'))
@@ -143,10 +152,15 @@ function bundleHighlighter (target) {
       , HIGHLIGHTER_ENGINE:
           cat(highlightjs + 'highlight.js')
       , HIGHLIGHTER_LANGUAGES:
-          config.highlighter.languages.map(function (language) {
-            return '{name:"' + language + '",create:' +
-              cat(highlightjs + 'languages/' + language + '.js') + '}';
-          }).join(',')
+          Array.prototype.sort.call(ls(highlightjs + 'languages/*.js'),
+            function (a, b) {
+              // Other languages depend on cpp, so put it first
+              return a.indexOf('cpp.js') !== -1 ? -1 : 0;
+            })
+            .map(function (file) {
+              var language = path.basename(file, path.extname(file))
+              return '{name:"' + language + '",create:' + cat(file) + '}';
+            }).join(',')
       };
 
   cat('src/templates/highlighter.js.template')
@@ -186,19 +200,19 @@ function mapStyle (map, file) {
 }
 
 function less (file) {
-  return run('lessc -x ' + file, {silent: true}).output.replace(/\n/g, '');
+  return run('lessc -x -s ' + file).stdout.replace(/\n/g, '');
 }
 
 function git (cmd) {
-  return exec('git ' + cmd, {silent: true}).output;
+  return exec('git ' + cmd, {silent: true}).stdout;
 }
 
-function run (command, options) {
-  var result = exec(pwd() + '/node_modules/.bin/' + command, options);
+function run (command, loud) {
+  var result = exec(pwd() + '/node_modules/.bin/' + command, {silent: !loud, fatal: false});
 
   if (result.code !== 0) {
     if (!options || options.silent) {
-      console.error(result.output);
+      console.error(result.stdout);
     }
     exit(1);
   }

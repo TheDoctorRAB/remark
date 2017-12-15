@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>5a. Reactor operation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Open Sans', sans-serif; }
+      h1, h2, h3 {
+        font-family: 'Ubuntu';
+        font-weight: normal;
+        }
+      .remark-container {background-color: #F5F5F5; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { background-color: #FFFAF0; font-size: 26px; 
+                         h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
+       }
+      .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+    </style>
+  </head>
+  <body>
+<textarea id="source">
+class: center, middle
+
+# NE585
+## NUCLEAR FUEL CYCLE ANALYSIS
+### Reactor operation 
+
+#### 5
+---
+# Outcomes for the lecture
+
+Review of Chapter 5  
+Covered in NE450 and I don't want to repeat it
+
+More of stuff I put together
+
+Understand what goes on in the reactor more
+
+Model reactor neutron balance
+
+Stay away from core design since we've done that in NE450
+
+Compare fuel cycles
+---
+class: middle, center
+
+## What's the reactor period on shutdown?
+
+### Emma Redfoot
+---
+# Reactor physics is about the neutron population in the core
+
+Amount of fissile material for operation quantified by reactivity
+
+$\rho = \frac{k-1}{k}$  
+$k = \eta f \epsilon p L_F L_T$
+
+Reactor needs to be designed such that k = ?
+
+Increase in power requires positive reactivity
+
+Temperature effects
+---
+# Neutron transport equation governs reactor operation
+
+What kinds of neutron reactions are there during operation? 
+
+Describing state of a neutron requires seven parameters  
+spatial location $x,y,z$    
+direction of motion $\hat{\Omega}$ - two angles  
+kinetic energy $E$  
+time $t$
+
+rate of change of neutron density = production - loss
+
+production = ?  
+loss = ?
+---
+# Neutron transport derivation similar to Boltzmann particle transport
+
+Describes number of neutrons/square cm/s at a vector $\vec{r}$, time $t$, with energy between $E$ and $E+dE$, in direction $\hat{\Omega}$, inside solid angle $
+d\hat{\Omega}$
+
+$$\phi(\vec{r},E,\hat{\Omega},t)dEd\hat{\Omega}$$
+---
+class: middle, center
+![Solid angle](img/solid.angle.1.jpg)
+---
+class: middle, center
+![Solid angle](img/solid.angle.2.png)
+---
+class: middle, center
+![Solid angle](img/solid.angle.3.png)
+---
+# Transport equation solved piecewise over homogeneous regions
+
+We went into the derivation a little more in NE450
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\frac{1}{v}\frac{\partial{\phi}}{\partial{t}}=\int_{E'}dE'\int_{\Omega'}d\hat{\Omega'}\Sigma_S(E'\rightarrow&space;E,\hat{\Omega'}\rightarrow&space;\hat{\Omega}\phi)&space;&plus;S&space;-\nabla[\hat{\Omega}\phi&plus;\Sigma_T(E)\phi]" title="\frac{1}{v}\frac{\partial{\phi}}{\partial{t}}=\int_{E'}dE'\int_{\Omega'}d\hat{\Omega'}\Sigma_S(E'\rightarrow
+E,\hat{\Omega'}\rightarrow \hat{\Omega}\phi) +S -\nabla[\hat{\Omega}\phi+\Sigma_T(E)\phi]" />
+
+$\phi = f(\vec{r},E,\hat{\Omega'},t)$  
+$S = f(\vec{r},E,\hat{\Omega'},t)$
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;S=S_E&plus;\chi(E)&space;\int_{E'}dE'\int_{\Omega'}d\hat{\Omega'}\nu(E')\Sigma_F(E')\phi" title="S=S_E+\chi(E) \int_{E'}dE'\int_{\Omega'}d\hat{\Omega'}\nu(E')\Sigma_F(E')\phi" />
+
+What are the sources and losses?
+---
+# Diffusion approximation eliminates angular dependency
+
+Integrate over all directions  
+$\frac{1}{v}\frac{\partial{\phi}}{\partial{t}}=\int_{E'}dE'\Sigma_S(E' \rightarrow E)\phi(\vec{r},E)+S(\vec{r},E)-\nabla\vec{J}(\vec{r},E)-\Sigma_T(E)\phi(\vec{r},E)$
+
+$\phi(\vec{r},E)=\int_{4\pi}d\hat{\Omega}\phi(\vec{r},E,\hat{\Omega})$
+
+$\vec{J}(\vec{r},E)=\int_{4\pi}\hat{\Omega}\phi(\vec{r},E,\hat{\Omega})d\hat{\Omega}$  
+
+$\vec{J}(\vec{r},E)=-D\nabla\phi(\vec{r},E)$
+
+$\frac{1}{v}\frac{\partial{\phi}}{\partial{t}}=\int_{E'}dE'\Sigma_S(E' \rightarrow E)\phi(\vec{r},E)+S(\vec{r},E)+\nabla D\nabla\\phi(\vec{r},E)-\Sigma_T(E)\phi(\vec{r},E)$
+
+When is steady state reached?
+---
+class: middle, center
+
+### Skipping multigroup theory because we covered it already
+
+### Lamarsh explanation is better 
+---
+![Multigroup theory](img/group.theory.jpg)
+---
+![doggehs](img/final.jpg)
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script type="text/javascript">
+        var options = {};
+        var renderMath = function() {
+            renderMathInElement(document.body, {delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\[", right: "\\]", display: false},
+            ]});
+        }
+        var slideshow = remark.create({
+          // Set the slideshow display ratio
+          // Default: '4:3'
+          // Alternatives: '16:9', ...
+          ratio: '16:9',
+          // Navigation options
+          navigation: {
+          // Enable or disable navigating using scroll
+          // Default: true
+          // Alternatives: false
+          scroll: true,
+          // Enable or disable navigation using touch
+          // Default: true
+          // Alternatives: false
+          touch: true,
+          // Enable or disable navigation using click
+          // Default: false
+          // Alternatives: true
+          click: false
+          },
+          // Customize slide number label, either using a format string..
+          slideNumberFormat: '%current%',
+          // Enable or disable counting of incremental slides in the slide counting
+          countIncrementalSlides: false 
+          }, renderMath);
+    </script>
+    <script type="text/javascript">
+     /**
+      * a simple zoom in/out/reset for remark.js
+      *
+      * Hot key:
+      *   + : zoom in
+      *   - : zoom out
+      *   0 : reset zoom
+      *
+      * CAVEAT: when switching between full screen and normal screen,
+      *         the zoom factor may not function correctly.
+      *         RELOAD the page, if necessary.
+      *
+      * 
+      * @author William Yeh <william.pjyeh@gmail.com>
+      * @date   2015-01-15
+      *
+      * @license Apache License, Version 2.0.
+      * Copyright © 2015 William Yeh.
+      */
+      var ZOOM_TEXT_SELECTOR =
+       ".remark-slide-content p"
+       + "," + ".remark-slide-content .remark-code-line"
+       ;
+
+      var ZOOM_IMG_SELECTOR =
+       ".remark-slide-content img:hover"
+       ;
+
+      var ZOOM_IMG_RULE;
+
+      var zoom_factor = 100.0;
+      document.body.style.zoom = "100%"
+    
+      function init_zoom_rule() {
+       // @see http://davidwalsh.name/add-rules-stylesheets
+       var styles = document.styleSheets[0];
+       var index = styles.insertRule(
+        ZOOM_IMG_SELECTOR + ' { transform:scale(1); }',
+        styles.cssRules.length
+        );
+
+        ZOOM_IMG_RULE = styles.cssRules.item(index);
+       }
+    
+      function apply_zoom() {
+       var elements = document.querySelectorAll(ZOOM_TEXT_SELECTOR);
+       //console.log('length:', elements.length);
+       for (var i = 0; i < elements.length; ++i) {
+        var item = elements[i];
+        item.style.fontSize = zoom_factor.toString() + '%';
+        }
+
+        ZOOM_IMG_RULE.style.transform = 'scale(' + (zoom_factor / 100) + ')';
+      }
+
+      function zoom_in() {
+       zoom_factor += 10;
+       if (zoom_factor >= 200.0)  zoom_factor = 200.0;
+       apply_zoom();
+      }
+    
+      function zoom_out() {
+       zoom_factor -= 10;
+       if (zoom_factor <= 50.0)  zoom_factor = 50.0;
+       apply_zoom();
+      }
+
+      function zoom_reset() {
+       zoom_factor = 100.0;
+       apply_zoom();
+      }
+
+      init_zoom_rule();
+      window.addEventListener("keydown", function(event) {
+       //console.log(event.keyCode);
+       switch (event.keyCode) {
+        case 187:  // '+': 187 in Chrome & Safari, 61 in FF
+        case 61:  // '+': 187 in Chrome, 61 in FF
+         zoom_in(); 
+         break;
+
+        case 189:  // '-': 189 in Chrome & Safari, 173 in FF
+        case 173:  // '-': 189 in Chrome, 173 in FF
+         zoom_out();
+         break;
+        case 48:   // '0'
+         zoom_reset();
+         break;
+       }
+      }, false);
+    </script>
+  </body>
+</html>

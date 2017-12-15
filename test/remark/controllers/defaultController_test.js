@@ -28,7 +28,7 @@ describe('Controller', function () {
       dom.getLocationHash = function () { return '#3'; };
       events.emit('hashchange');
 
-      events.emit.should.not.be.calledWithExactly('gotoSlide', '3');
+      events.emit.should.be.neverCalledWith('gotoSlide', '3');
     });
 
     it('should navigate by hash when slideshow is not embedded', function () {
@@ -66,6 +66,12 @@ describe('Controller', function () {
       events.emit.should.be.calledWithExactly('gotoNextSlide');
     });
 
+    it('should navigate to previous slide when pressing shift+space', function () {
+      events.emit('keydown', {keyCode: 32, shiftKey: true});
+
+      events.emit.should.be.calledWithExactly('gotoPreviousSlide');
+    });
+
     it('should navigate to next slide when pressing page down', function () {
       events.emit('keydown', {keyCode: 34});
 
@@ -94,6 +100,14 @@ describe('Controller', function () {
       events.emit('keydown', {keyCode: 35});
 
       events.emit.should.be.calledWithExactly('gotoLastSlide');
+    });
+    
+    it('should navigate to slide N when pressing N followed by return', function () {
+      events.emit('keypress', {which: 49}); // 1
+      events.emit('keypress', {which: 50}); // 2
+      events.emit('keydown', {keyCode: 13}); // return
+      
+      events.emit.should.be.calledWithExactly('gotoSlide', '12');
     });
 
     beforeEach(function () {

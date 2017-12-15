@@ -9,8 +9,11 @@ describe('SlideView', function () {
         slides: []
       , getHighlightStyle: function () { return 'default'; }
       , getSlides: function () { return this.slides; }
+      , getHighlightLines: function () { return true; }
+      , getHighlightSpans: function () { return true; }
+      , getHighlightInlineCode: function () { return false; }
       , getLinks: function () { return {}; }
-      , getHighlightLanguage: function () { }
+      , getHighlightLanguage: function () { return ''; }
       , getSlideNumberFormat: function () { return '%current% / %total%'; }
       }
     , scaler = {
@@ -19,7 +22,7 @@ describe('SlideView', function () {
     ;
 
   describe('background', function () {
-    it('should be set from background slide property', function () {
+    it('should be set from background-image slide property', function () {
       var slide = new Slide(1, {
             source: '',
             properties: {'background-image': 'url(image.jpg)'}
@@ -27,8 +30,44 @@ describe('SlideView', function () {
 
       slideshow.slides.push(slide);
       var slideView = new SlideView(new EventEmitter(), slideshow, scaler, slide);
+      
+      slideView.contentElement.style.backgroundImage.should.match(/^url\((['|"]?).*image\.jpg\1\)$/);
+    });
 
-      slideView.contentElement.style.backgroundImage.should.match(/^url\(.*image\.jpg\)$/);
+    it('should be set by background-image slide property', function () {
+      var slide = new Slide(1, {
+            source: '',
+            properties: {'background-color': 'red'}
+          });
+
+      slideshow.slides.push(slide);
+      var slideView = new SlideView(new EventEmitter(), slideshow, scaler, slide);
+
+      slideView.contentElement.style.backgroundColor.should.match(/^red$/);
+    });
+
+    it('should be set from background-size slide property', function () {
+      var slide = new Slide(1, {
+            source: '',
+            properties: {'background-size': 'cover'}
+          });
+
+      slideshow.slides.push(slide);
+      var slideView = new SlideView(new EventEmitter(), slideshow, scaler, slide);
+      
+      slideView.contentElement.style.backgroundSize.should.match(/^cover$/);
+    });
+
+    it('should be set from background-position slide property', function () {
+      var slide = new Slide(1, {
+            source: '',
+            properties: {'background-position': '2% 98%'}
+          });
+
+      slideshow.slides.push(slide);
+      var slideView = new SlideView(new EventEmitter(), slideshow, scaler, slide);
+      
+      slideView.contentElement.style.backgroundPosition.should.match(/^2% 98%$/);
     });
   });
 
@@ -40,7 +79,7 @@ describe('SlideView', function () {
       var slideView = new SlideView(new EventEmitter(), slideshow, scaler, slide);
       var classes = utils.getClasses(slideView.contentElement)
 
-      classes.should.include('remark-slide-content');
+      classes.should.containEql('remark-slide-content');
     });
 
     it('should contain additional classes from slide properties', function () {
@@ -53,9 +92,22 @@ describe('SlideView', function () {
       var slideView = new SlideView(new EventEmitter(), slideshow, scaler, slide);
       var classes = utils.getClasses(slideView.contentElement)
 
-      classes.should.include('remark-slide-content');
-      classes.should.include('middle');
-      classes.should.include('center');
+      classes.should.containEql('remark-slide-content');
+      classes.should.containEql('middle');
+      classes.should.containEql('center');
+    });
+    
+    it('should set remark-slide-incremental class for incremental slides', function () {
+      var slide = new Slide(2, {
+            source: '',
+            properties: {'continued': 'true'}
+          });
+
+      slideshow.slides.push(slide);
+      var slideView = new SlideView(new EventEmitter(), slideshow, scaler, slide);
+      var classes = utils.getClasses(slideView.element)
+
+      classes.should.containEql('remark-slide-incremental');
     });
   });
 
@@ -66,7 +118,7 @@ describe('SlideView', function () {
       slideshow.slides.push(slide);
       var slideView = new SlideView(new EventEmitter(), slideshow, scaler, slide);
 
-      slideView.contentElement.innerHTML.should.not.include('<p></p>');
+      slideView.contentElement.innerHTML.should.not.containEql('<p></p>');
     });
   });
 
@@ -79,8 +131,8 @@ describe('SlideView', function () {
       slideView.show();
 
       var classes = utils.getClasses(slideView.containerElement);
-      classes.should.include('remark-visible');
-      classes.should.not.include('remark-fading');
+      classes.should.containEql('remark-visible');
+      classes.should.not.containEql('remark-fading');
     });
 
     it('should remove any fading element', function () {
@@ -93,8 +145,8 @@ describe('SlideView', function () {
       slideView.show();
 
       var classes = utils.getClasses(slideView.containerElement);
-      classes.should.include('remark-visible');
-      classes.should.not.include('remark-fading');
+      classes.should.containEql('remark-visible');
+      classes.should.not.containEql('remark-fading');
     });
   });
 
@@ -109,8 +161,8 @@ describe('SlideView', function () {
       slideView.hide();
 
       var classes = utils.getClasses(slideView.containerElement);
-      classes.should.not.include('remark-visible');
-      classes.should.include('remark-fading');
+      classes.should.not.containEql('remark-visible');
+      classes.should.containEql('remark-fading');
     });
   });
 
@@ -124,6 +176,62 @@ describe('SlideView', function () {
 
       lines.length.should.equal(1);
       lines[0].innerHTML.should.equal('  line 2');
+    });
+
+    it('should be possible to disable', function () {
+      slideshow.getHighlightLines = function () { return false; };
+
+      var slide = new Slide(1, { content: ['```\n* line\n```'] })
+        , slideView = new SlideView(new EventEmitter(), slideshow, scaler, slide)
+        ;
+
+      var lines = slideView.element.getElementsByClassName('remark-code-line');
+
+      lines[0].innerHTML.should.equal('* line');
+    });
+  });
+
+  describe('code block span highlighting', function () {
+    it('should allow escaping first backtick', function () {
+      var slide = new Slide(1, { content: ['```\na \\`f` b\n```'] });
+      slideshow.slides.push(slide);
+      var slideView = new SlideView(new EventEmitter(), slideshow, scaler, slide);
+
+      var lines = slideView.element.getElementsByClassName('remark-code-line');
+      lines[0].innerHTML.should.equal('a `f` b');
+    });
+
+    it('should allow custom delimiters', function () {
+      slideshow.getHighlightSpans = function () { return /«([^»]+?)»/g; };
+
+      var slide = new Slide(1, { content: ['```\na «f» b\n```'] });
+      slideshow.slides.push(slide);
+      var slideView = new SlideView(new EventEmitter(), slideshow, scaler, slide);
+
+      var lines = slideView.element.getElementsByClassName('remark-code-line');
+      lines[0].innerHTML.should.equal('a <span class="remark-code-span-highlighted">f</span> b');
+    });
+
+    it('should allow escaping opening custom delimiter', function () {
+      slideshow.getHighlightSpans = function () { return /«([^»]+?)»/g; };
+
+      var slide = new Slide(1, { content: ['```\na \\«f» b\n```'] });
+      slideshow.slides.push(slide);
+      var slideView = new SlideView(new EventEmitter(), slideshow, scaler, slide);
+
+      var lines = slideView.element.getElementsByClassName('remark-code-line');
+      lines[0].innerHTML.should.equal('a «f» b');
+    });
+
+    it('should be possible to disable', function () {
+      slideshow.getHighlightSpans = function () { return false; };
+
+      var slide = new Slide(1, { content: ['```\na `f` b\n```'] });
+      slideshow.slides.push(slide);
+      var slideView = new SlideView(new EventEmitter(), slideshow, scaler, slide);
+
+      var lines = slideView.element.getElementsByClassName('remark-code-line');
+      lines[0].innerHTML.should.equal('a `f` b');
     });
   });
 });

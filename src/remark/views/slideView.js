@@ -1,4 +1,4 @@
-var SlideNumber = require('components/slide-number')
+var SlideNumber = require('../components/slide-number/slide-number')
   , converter = require('../converter')
   , highlighter = require('../highlighter')
   , utils = require('../utils')
@@ -67,8 +67,7 @@ SlideView.prototype.configureElements = function () {
   self.scalingElement = document.createElement('div');
   self.scalingElement.className = 'remark-slide-scaler';
 
-  self.element = document.createElement('div');
-  self.element.className = 'remark-slide';
+  self.element = createSlideElement(self.slide);
 
   self.contentElement = createContentElement(self.events, self.slideshow, self.slide);
   self.notesElement = createNotesElement(self.slideshow, self.slide.notes);
@@ -84,10 +83,18 @@ SlideView.prototype.scaleBackgroundImage = function (dimensions) {
   var self = this
     , styles = window.getComputedStyle(this.contentElement)
     , backgroundImage = styles.backgroundImage
+    , backgroundSize = styles.backgroundSize
+    , backgroundPosition = styles.backgroundPosition
     , match
     , image
     , scale
     ;
+
+  // If the user explicitly sets the backgroundSize or backgroundPosition, let
+  // that win and early return here.
+  if ((backgroundSize || backgroundPosition) && !self.backgroundSizeSet) {
+    return;
+  }
 
   if ((match = /^url\(("?)([^\)]+?)\1\)/.exec(backgroundImage)) !== null) {
     image = new Image();
@@ -127,6 +134,17 @@ SlideView.prototype.scaleBackgroundImage = function (dimensions) {
   }
 };
 
+function createSlideElement(slide) {
+  var element = document.createElement('div');
+  element.className = 'remark-slide';
+  
+  if (slide.properties.continued === 'true') {
+    utils.addClass(element, 'remark-slide-incremental');
+  }
+  
+  return element;
+}
+
 function createContentElement (events, slideshow, slide) {
   var element = document.createElement('div');
 
@@ -156,7 +174,7 @@ function createNotesElement (slideshow, notes) {
 
   element.className = 'remark-slide-notes';
 
-  element.innerHTML = converter.convertMarkdown(notes);
+  element.innerHTML = converter.convertMarkdown(notes, slideshow.getLinks());
 
   highlightCodeBlocks(element, slideshow);
 
@@ -165,9 +183,21 @@ function createNotesElement (slideshow, notes) {
 
 function setBackgroundFromProperties (element, properties) {
   var backgroundImage = properties['background-image'];
+  var backgroundColor = properties['background-color'];
+  var backgroundSize = properties['background-size'];
+  var backgroundPosition = properties['background-position'];
 
   if (backgroundImage) {
     element.style.backgroundImage = backgroundImage;
+  }
+  if (backgroundColor) {
+    element.style.backgroundColor = backgroundColor;
+  }
+  if (backgroundSize) {
+    element.style.backgroundSize = backgroundSize;
+  }
+  if (backgroundPosition) {
+    element.style.backgroundPosition = backgroundPosition;
   }
 }
 
@@ -189,28 +219,43 @@ function setClassFromProperties (element, properties) {
 }
 
 function highlightCodeBlocks (content, slideshow) {
-  var codeBlocks = content.getElementsByTagName('code')
-    ;
+  var codeBlocks = content.getElementsByTagName('code'),
+      highlightLines = slideshow.getHighlightLines(),
+      highlightSpans = slideshow.getHighlightSpans(),
+      highlightInline = slideshow.getHighlightInlineCode(),
+      meta;
 
   codeBlocks.forEach(function (block) {
-    if (block.parentElement.tagName !== 'PRE') {
-      utils.addClass(block, 'remark-inline-code');
-      return;
-    }
-
     if (block.className === '') {
       block.className = slideshow.getHighlightLanguage();
     }
 
-    var meta = extractMetadata(block);
+    if (block.parentElement.tagName !== 'PRE') {
+      utils.addClass(block, 'remark-inline-code');
+      if (highlightInline) {
+        highlighter.engine.highlightBlock(block, '');
+      }
+      return;
+    }
+
+    if (highlightLines) {
+      meta = extractMetadata(block);
+    }
 
     if (block.className !== '') {
       highlighter.engine.highlightBlock(block, '  ');
     }
 
     wrapLines(block);
-    highlightBlockLines(block, meta.highlightedLines);
-    highlightBlockSpans(block);
+
+    if (highlightLines) {
+      highlightBlockLines(block, meta.highlightedLines);
+    }
+
+    if (highlightSpans) {
+      // highlightSpans is either true or a RegExp
+      highlightBlockSpans(block, highlightSpans);
+    }
 
     utils.addClass(block, 'remark-code');
   });
@@ -252,12 +297,33 @@ function highlightBlockLines (block, lines) {
   });
 }
 
-function highlightBlockSpans (block) {
-  var pattern = /([^\\`])`([^`]+?)`/g
-    , replacement = '$1<span class="remark-code-span-highlighted">$2</span>'
-    ;
+/**
+ * @param highlightSpans `true` or a RegExp
+ */
+function highlightBlockSpans (block, highlightSpans) {
+  var pattern;
+  if (highlightSpans === true) {
+    pattern = /([^`])`([^`]+?)`/g;
+  } else if (highlightSpans instanceof RegExp) {
+    if (! highlightSpans.global) {
+      throw new Error('The regular expression in `highlightSpans` must have flag /g');
+    }
+    // Use [^] instead of dot (.) so that even newlines match
+    // We prefix the escape group, so users can provide nicer regular expressions
+    var flags = highlightSpans.flags || 'g'; // ES6 feature; use if it’s available
+    pattern = new RegExp('([^])' + highlightSpans.source, flags);
+  } else {
+    throw new Error('Illegal value for `highlightSpans`');
+  }
 
   block.childNodes.forEach(function (element) {
-    element.innerHTML = element.innerHTML.replace(pattern, replacement);
+    element.innerHTML = element.innerHTML.replace(pattern,
+      function (m,e,c) {
+        if (e === '\\') {
+          return m.substr(1);
+        }
+        return e + '<span class="remark-code-span-highlighted">' +
+          c + '</span>';
+      });
   });
 }

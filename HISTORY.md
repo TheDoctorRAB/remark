@@ -1,3 +1,40 @@
+### 0.14.1
+* #365: Fix casing issue with reference links ([tbfe-de](https://github.com/tbfe-de))
+* #357: Fix variables inheritance ([tbfe-de](https://github.com/tbfe-de))
+
+### 0.14
+* #205: Jump to specific slide by pressing <number> + Return.
+* #277: Load source from URL asynchronously.
+* #317: Allow overriding background-size and -position ([jbeda](https://github.com/jbeda)).
+* #347: Add new highlightInlineCode option ([pospi](https://github.com/pospi)).
+* #348: Upgrade to Highlight.js 9.6.0.
+* #364: Implement `cloneTarget` configuration option ([jugglinmike](https://github.com/jugglinmike)).
+
+### 0.13
+* #217: Create .npmignore ([chadrien](https://github.com/chadrien)).
+* Upgrade to Highlight.js 9.0.0.
+* #275: Bundle all languages supported by Highlight.js.
+* #288: Address printing issue in Chrome ([tbrannam](https://github.com/tbrannam)).
+
+### 0.12
+* #155: Fix tap navigation.
+* #268: Don't use History API for document.origin 'null' documents.
+* Add Powershell syntax highlighting support ([toenuff](https://github.com/toenuff)).
+* Increase contrast of presenter notes ([bkeepers](https://github.com/bkeepers)).
+* Make background black in fullscreen mode ([dirkhusemann](https://github.com/dirkhusemann)).
+
+### 0.11
+* #190: Add background-color slide property.
+* #192: Make highlighting of code lines and spans configurable and disabled by default.
+* #215: Support slide properties in HTML comments.
+* #220: Enable escaping code span highlighting.
+* #221: Upgrade highlight.js to version 8.5.
+* #224: Set note area font color to black.
+* #225: Add `remark.version` property.
+* Add live reloading (via Grunt) ([aminb](https://github.com/aminb)).
+* Stay in presenter mode when reloading ([junderhill](https://github.com/junderhill)).
+* Make shortcut keys case-insensitive ([WouterSioen](https://github.com/WouterSioen)).
+
 ### 0.10.2
 * #123: Don't expand content class inside inline code.
 
