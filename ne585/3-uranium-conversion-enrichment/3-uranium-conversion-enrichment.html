@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>3. Uranium conversion and enrichment</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Open Sans', sans-serif; }
+      h1, h2, h3 {
+        font-family: 'Ubuntu';
+        font-weight: normal;
+        }
+      .remark-container {background-color: #F5F5F5; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { background-color: #FFFAF0; font-size: 26px; 
+                         h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
+       }
+      .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle
+
+# NE585
+## NUCLEAR FUEL CYCLE ANALYSIS
+### Uranium conversion and enrichment  
+
+#### 3
+---
+# Outcomes for the lecture
+
+Chapter 3
+
+Model enrichment processes
+
+Demonstrate principles of enrichment and converstion
+
+Apply principle of separative work
+---
+# Uranium enrichment derived from WWII
+
+Facilities needed to make bombs initially
+
+Then used the uranium for submarines (but we can't talk about that)
+
+When moving to commercial power, infrastructure already in place
+
+Gaseous diffusion first invented at Oak Ridge
+
+Needed lots of electricity from TVA
+
+Uranium hexafluoride used for enrichment
+---
+# Yellowcake needs to be purified first
+
+Impurities are rare earths, chlorine cadmium
+
+Uranium readily forms chemical compounds (lots of oxidation states)
+Can be extracted by organic solvents (like PUREX)
+
+Uranium forms complexes that can be precipitated out
+---
+# There are different forms that are mined 
+
+Forms of $UO_2$ and $UO_3$
+
+$xUO_2 \cdot yUO_3$  
+$0<y/x<2$
+
+$K_2O \cdot 2UO_3 \cdot V_2O_5 \cdot xH_2O$  
+$CaO \cdot 2UO_3 \cdot P_2O_5 \cdot xH_2O$
+
+Goal is to get it as $UO_3^{2+}$ and then acid or alkaline leaching  
+$UO_3+2H^+ \rightarrow UO_2^{2+}+H_2O$
+
+$UO_2+2FE^{3+} \rightarrow UO_2^{2+}+2Fe^{2+}$
+---
+# Acid leaching is like PUREX using organic solvent
+
+$UO_2^{2+}+2NO_3+2TBP \rightarrow UO_2(NO_3)_2 \cdot 2TBP$  
+$UO_2(NO_3)_2+2H_2O_2+H_2O \rightarrow UO_4 \cdot 2H_2O +2HNO_3$
+
+precipitates uranium peroxide 
+
+$2Na_2S_2O_3+UO_4+H_2O \rightarrow Na_2S_4O_6+UO_3+2NaOH$
+
+Or use ammonium hydroxide $2UO_2^{2+}+6NH_4(OH) \rightarrow (NH_4)_2U_2O_7+4NH_4^++3H_2O$
+
+Then dry and calcine to get $UO_3$  
+If alkaline leaching is used, recover $U_3O_8$
+---
+# Uranium hexafluoride has favorable properties
+
+<img align="left" src="img/uf6.phase.diagram.gif">  
+Solid at room temperature
+Easy to handle
+
+Relatively low pressure and not too high temperature to sublimate
+---
+# Conversion applies hydrofluor process
+
+Crushed $U_3O_8$ and $UO_3$ is reduced by hydrogen to get 'crude' $UO_2$
+
+$U_3O_8+2H_2 \rightarrow 3UO_2+2H_2O$  
+$UO_3+H_2 \rightarrow UO_2+H_2O$
+
+Then hydrofluorinized (I made that up) $UO_2+4HF \rightarrow UF_4+2H_2O$  
+$UF_4$ is a solid green salt with a high melting point (1700F)
+
+Treated with fluorine gas and distilled  
+$UF_4+F_2 \rightarrow UF_6$
+---
+# Enrichment based on different diffusion rates
+
+Separation factor is defined as $\alpha \equiv \frac{v_5}{v_8}=\sqrt{\frac{m_8}{m_5}}$  
+Based on kinetic energy of the molecule $kT = \frac{1}{2}mv^2$
+
+This just says lighter molecules move faster
+
+$\alpha = 1.004289$ for uranium enrichment  
+
+Higher value, easier enrichment
+
+This isn't that high  
+Low enrichment takes a lot of energy
+---
+# Cascades are designed to enrich
+
+<img align="left" src="img/enrichment.stage.jpg">
+Basic operation is the stage  
+
+Join stages to form cells
+
+Cells form unit
+
+Together all that is a cascade
+---
+# Enriching and stripping stages added for efficiency
+
+[Sample cascade](http://www.atomicheritage.org/sites/default/files/Gas_Diffusion.gif)
+
+Feed enters to A-1  
+Enriched feed goes through B-2 and depleted through the bottom stage
+
+Moving up is higher enrichment
+---
+# Enrichment based on mass conservation
+
+<img align="left" src="img/enrichment_material.flow.jpg">
+
+$F=P+W$   
+$x_FF=x_PP+x_WW$  
+
+separation factor ratio between product and tails  
+$\alpha \equiv \frac{x_P(1-x_P)^{-1}}{x_W(1-x_W)^{-1}}$
+---
+# Enrichment based on mass conservation
+
+$x_F$  = weight fraction $^{235}U$ feed into system  
+$x_P$  = weight fraction $^{235}U$ product (enrichment target)  
+$x_W$  = weight fraction $^{235}U$ waste stream (depleted U)
+
+F = mass flow rate feed  
+P = mass flow rate product  
+W = mass flow rate waste stream
+
+Six equations and two variables
+---
+# Enrichment based on mass conservation
+
+$x_F$ fixed at 0.00711  
+$x_P$ enrichment target  
+$x_w$ 0.002 - 0.003 depends on company (cost)
+
+P target mass
+
+$\frac{F}{P}=\frac{x_P-x_W}{x_F-x_w}$  
+Feed factor gives mass of U needed to feed into system for target enrichment
+
+Similarly waste factor: $\frac{W}{P}=\frac{x_P-x_F}{x_F-x_W}=\frac{F}{P}-1$
+---
+# Separative work unit is a measure of 'effort' to enrich
+
+SWU proportional to electric energy needed to enrich  
+Measure of cost
+
+Thermodynamic work needed to create a quantity of enriched U
+
+$SWU=PV(x_P)+WV(x_W)-FV(x_F)$
+
+Separation potential is $V(x_i)=(2x_i-1)ln(\frac{x_i}{1-x_i})$ from thermodynamics
+
+Change in entropy when binary mix of perfect gasses is separated
+---
+# Separation potential is a measure of differences in Gibbs free energy
+
+[Value function](http://energyfromthorium.com/wp-content/uploads/2010/08/valueFunctionPlot.gif)
+
+What does this tell us?
+
+Net free energy difference is always positive  
+But individual free energies may change sign as add or subtract from mixture
+
+Gibbs free energy is zero at x = 0.5  
+Minimum work, not actual
+
+How many stages are needed to produce a pure isotope?
+---
+# SWU is normalized to mass of product
+
+$\frac{SWU}{P}=V(x_P)+\frac{W}{P}V(x_W)-\frac{F}{P}V(x_F)$  
+
+Based on factors computed before
+---
+class: center, middle
+## How are tails managed?
+---
+# Only one company enriches by gaseous diffusion
+
+United States Enrichment Corporation established in 1992  
+Energy Policy Act
+
+1998 privatized with an IPO so you can buy stock
+
+Operates plant in Paducah up to 5%
+---
+# Enrichment also done by centrifuge
+
+[URENCO](https://urenco.com/) established in 1970 with UK, Dutch, Germany  
+Still going strong
+
+Construction of USA plant in 1977 in Ohio, but Reagan scrapped it in favor of laser separation
+
+Rotating drum causes centrifugal force to compress gas molecules to the outer wall
+
+Velocity of molecules separates differing those of differing weights
+
+Light molecules collect near center of drum
+---
+# Still based on conservation of mass
+
+<img align="left" src="img/gas.centrifuge.jpg">
+
+Lighter $U^{235}$ molecules collect toward center
+
+$\alpha=exp^{\frac{(m_8-m_5) \omega^2 a^2}{2RT}} \approx 1+ \frac{(m_8-m_5) \omega^2 a^2}{2RT}$ 
+
+Rotational motion of he centrifuge accelerates gas molecules toward  wall  
+
+Counteracting diffusive force thermal motion of molecules seeks to distribute the gas evenly  
+
+Two forces balance to create a dynamic equilibrium  
+Pressure distribution in the rotor that is function of the molecular mass
+
+$p(r)=p_0 exp^{\frac{m \omega^2 r^2}{2RT}}$; $\omega$=angular speed, r, a=radius [OER](https://courses.candelalearning.com/x84x9/chapter/front-end-of-the-fuel-cycle/)
+---
+class: center,middle
+
+# Which is better?
+---
+# Design based on separative power
+
+$SWU = \frac{\pi \rho DL}{2}(\frac{\Delta m \omega^2}{2RT})^2$ theoretical separative power 
+
+density of uranium hexafluoride; isotope self-diffusion; mass difference; length of rotor
+
+Proportional to length and 4th power of speed
+
+Inverse to temperature squared
+
+What does this say about how to design the centrifuge?
+
+It's actually small SWU per centrifuge, so up to 100,000 needed forr 9 million SWU/y
+
+That would be needed for industrial scale
+---
+# There are only 3 companies in the USA interested in centrifuges
+
+USEC Inc. (USEC)  
+[Louisiana Energy Services (LES)](https://www.nirs.org/les/)  
+AREVA Enrichment Services (AES)
+
+USEC submitted application to operate a commercial facility  
+American Centrifuge Plant (ACP) August 2004  
+NRC issued a license April 2007  
+Construction of the facility is currently on hold (did not get DOE grant)  
+Chapter 11 in 2014 - now called [Centrus Energy Corp](http://www.centrusenergy.com/)
+---
+# There are only 3 companies in the USA interested in centrifuges
+
+LES submitted license application NRC December 2003 for a 3 million SWU/year facility  
+One-third of the United States demand   
+Lea County, New Mexico  
+June 2006 NRC issued LES a license to construct and operate its facility
+
+
+Began operations in June 2010 while continuing construction  
+Part of [URENCO](https://urenco.com/about-us/company-structure/urenco-usa/)  
+July 2014 all cascades operational 
+---
+# There are only 3 companies in the USA interested in centrifuges
+
+AES submitted a license application for Eagle Rock Enrichment Facility to NRC in December 2008  
+18 miles west of Idaho Falls!  
+
+NRC issued the Safety Evaluation Report (NUREG-1951) in September 2010  
+Final Environmental Impact Statement (NUREG-1945) in February 2011
+
+October 2011 NRC issued AES license to construct and operate the [Eagle Rock Enrichment Facility](http://www.new.areva.com/EN/operations-780/the-eagle-rock-enrichment-facility-enrichment-by-centrifugation.html)
+
+[Construction currently inactive](http://www.wise-uranium.org/epusarc.html)
+---
+# Lasers can be used for enrichment
+<img align="left" src="img/shark.png">
+---
+# Lasers can be used for enrichment
+
+Started in 1985
+
+Absorption spectrum of uranium metal vapor  
+More than 300,000 lines at visible wavelengths 
+
+Sufficient displacement between lines
+Selective excitation of $^{235}U$ based on laser wavelength
+
+Requires liquid uranium at 2300C
+Laser at 5915 angstroms to excite U-235  
+Ultraviolet light at 3100 angstroms ionizes U-235  
+Then it is collected in a Faraday cup
+
+Low throughput, high temperature, high energy
+
+---
+# Lasers can be used for enrichment
+
+<img align="left" src="img/laser.enrichment.jpg">
+GE got [operating license](https://nuclear.gepower.com/fuel-a-plant/products/gle) for a facility
+
+Doesn't seem like much progress, limited testing with DU in Paducah
+
+Different process than what we were just talking about though (coming up)
+
+Looking to construct in WIlmington
+---
+<img align="left" src="img/han.solo.jpg">
+---
+# Molecular separation uses uranium hexafluoride
+
+Uses different vibrational and rotational states between isotopes
+
+Almost the same procedure
+
+U-235 molecule is dissociated and precipitates to a $^{235}UF_5 powder$
+
+Need to reduce the vapor pressure to 77K 
+---
+<img align="left" src="img/real.genius.jpg">
+---
+# SILEX seems to be state of the art
+
+Uses carbon dioxide laser at 10.8 um and amplified to 16 um  
+Infrared spectrum
+
+Preferentially excites U-235
+
+Again trapped electromagnetically
+
+Still inefficient due to laser frequency
+---
+# Price used to be set by government
+
+<img align="left" src="img/swu.png">
+
+From Atomic Energy Act 1954
+
+Prices then set by USEC based on market conditions
+
+I don't know if this is right
+
+Below [$50/SWU](http://www.neimagazine.com/opinion/opinionuranium-enrichment-why-are-prices-now-much-lower-and-what-is-the-impact-5692128/)
+
+Used to be high because of high energy requirements of gaseous diffusion plants
+
+What now?
+---
+# World capacity is estimated at 56 million SWU
+
+[World enrichment capacity](http://www.world-nuclear.org/information-library/nuclear-fuel-cycle/conversion-enrichment-and-fabrication/uranium-enrichment.aspx)
+
+US demand at 15 million SWU per year
+
+Import a lot from Europe, Russia, China
+
+Do we need to though?
+---
+![doggehs](img/final.jpg)
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script type="text/javascript">
+        var options = {};
+        var renderMath = function() {
+            renderMathInElement(document.body, {delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\[", right: "\\]", display: false},
+            ]});
+        }
+        var slideshow = remark.create({
+          // Set the slideshow display ratio
+          // Default: '4:3'
+          // Alternatives: '16:9', ...
+          ratio: '16:9',
+          // Navigation options
+          navigation: {
+          // Enable or disable navigating using scroll
+          // Default: true
+          // Alternatives: false
+          scroll: true,
+          // Enable or disable navigation using touch
+          // Default: true
+          // Alternatives: false
+          touch: true,
+          // Enable or disable navigation using click
+          // Default: false
+          // Alternatives: true
+          click: false
+          },
+          // Customize slide number label, either using a format string..
+          slideNumberFormat: '%current%',
+          // Enable or disable counting of incremental slides in the slide counting
+          countIncrementalSlides: false 
+          }, renderMath);
+    </script>
+    <script type="text/javascript">
+     /**
+      * a simple zoom in/out/reset for remark.js
+      *
+      * Hot key:
+      *   + : zoom in
+      *   - : zoom out
+      *   0 : reset zoom
+      *
+      * CAVEAT: when switching between full screen and normal screen,
+      *         the zoom factor may not function correctly.
+      *         RELOAD the page, if necessary.
+      *
+      * 
+      * @author William Yeh <william.pjyeh@gmail.com>
+      * @date   2015-01-15
+      *
+      * @license Apache License, Version 2.0.
+      * Copyright © 2015 William Yeh.
+      */
+      var ZOOM_TEXT_SELECTOR =
+       ".remark-slide-content p"
+       + "," + ".remark-slide-content .remark-code-line"
+       ;
+
+      var ZOOM_IMG_SELECTOR =
+       ".remark-slide-content img:hover"
+       ;
+
+      var ZOOM_IMG_RULE;
+
+      var zoom_factor = 100.0;
+      document.body.style.zoom = "100%"
+    
+      function init_zoom_rule() {
+       // @see http://davidwalsh.name/add-rules-stylesheets
+       var styles = document.styleSheets[0];
+       var index = styles.insertRule(
+        ZOOM_IMG_SELECTOR + ' { transform:scale(1); }',
+        styles.cssRules.length
+        );
+
+        ZOOM_IMG_RULE = styles.cssRules.item(index);
+       }
+    
+      function apply_zoom() {
+       var elements = document.querySelectorAll(ZOOM_TEXT_SELECTOR);
+       //console.log('length:', elements.length);
+       for (var i = 0; i < elements.length; ++i) {
+        var item = elements[i];
+        item.style.fontSize = zoom_factor.toString() + '%';
+        }
+
+        ZOOM_IMG_RULE.style.transform = 'scale(' + (zoom_factor / 100) + ')';
+      }
+
+      function zoom_in() {
+       zoom_factor += 10;
+       if (zoom_factor >= 200.0)  zoom_factor = 200.0;
+       apply_zoom();
+      }
+    
+      function zoom_out() {
+       zoom_factor -= 10;
+       if (zoom_factor <= 50.0)  zoom_factor = 50.0;
+       apply_zoom();
+      }
+
+      function zoom_reset() {
+       zoom_factor = 100.0;
+       apply_zoom();
+      }
+
+      init_zoom_rule();
+      window.addEventListener("keydown", function(event) {
+       //console.log(event.keyCode);
+       switch (event.keyCode) {
+        case 187:  // '+': 187 in Chrome & Safari, 61 in FF
+        case 61:  // '+': 187 in Chrome, 61 in FF
+         zoom_in(); 
+         break;
+
+        case 189:  // '-': 189 in Chrome & Safari, 173 in FF
+        case 173:  // '-': 189 in Chrome, 173 in FF
+         zoom_out();
+         break;
+        case 48:   // '0'
+         zoom_reset();
+         break;
+       }
+      }, false);
+    </script>
+  </body>
+</html>
