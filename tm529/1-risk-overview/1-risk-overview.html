@@ -223,6 +223,361 @@ Accepting no unnecessary risk
 
 Risk-informed, performance based decision making as part of design process (NRC paradigm)
 ---
+# Risk management is the process of identifying, controlling hazards to conserve combat resources
+
+Identify hazards to people, property, mission  
+Past, present, future  
+Complexity and difficulty of the mission/task  
+Terrain and environment  
+Weather and visibility  
+Equipment on hand and status  
+Time available for preparation/execution  
+(Supervision, Experience, Training, Morale, Environment)
+---
+# Assess hazards to determine risks
+
+Defense in depth   
+Multiple barriers  
+Eliminate common failure modes (huge problem)  
+Safety margins to account for uncertainty  
+
+Develop controls  
+Implement controls  
+Supervise and evaluate  
+
+
+Risk assessment establishes situational awareness  
+Management also cost/benefit analysis
+---
+# Leaders continuously assess the risk to the overall mission and to those involved in the task
+
+Evaluate the effectiveness of controls
+
+Provide lessons learned
+---
+# Risk has been around for a long time
+
+“...the appearance of disease in human populations is influenced by the quality of air, water, and food; the topography of the land; and general living habits.
+
+--Hippocrates
+Air, Water and Places
+
+Make sure everyone knows who this guy is
+---
+class: center,middle
+
+# Where is risk analysis used?
+---
+# Risk analysis is used literally everywhere
+
+Reactor safety  
+Space shuttle  
+Superfund sites  
+Insurance and banking  
+Information technology  
+Cyber-physical systems (Michael Haney)  
+Gambling and counting cards
+
+My ex-wife  
+Finding an apartment [analytical hierarchy procedure]  
+Finding my house  
+Deciding what dessert to have
+---
+# Risk analysis contains several complex elements
+
+Probabalistic risk assessment: risks imposed by technologies  
+Models needed due to lack of data (assumptions)
+
+Risk/benefit: are the risks acceptable  
+Involuntary v voluntary
+
+Option generation: risk reduction  
+
+Cost/benefit: and value/impact: evaluate options  
+Typically greatest good for less cost  
+How much will society pay to reduce risk  
+---
+# Risk assessment is people-centered
+
+**Public health risk analysis**  
+Determination of toxic material required to cause effect
+Determination of the amount of exposure to the toxin
+
+**Environmental risk**  
+Location and strength of source  
+Disperson  
+Uptake  
+Dose + effects + response = Health effects  
+Population demographic at risk  
+---
+# Most assessments focus on acute fatalities and cancer deaths
+
+Somatic effects = manifested in exposed individuals
+
+Genetic effects = manifested in exposed individuals progeny
+
+Deterministic effects = Severity proportional to dose
+
+Stochastic effects = Incident rate of exposure proportional to dose
+---
+# Risk analysis involves both technical and institutional issues
+
+What are the risks? (assessment): technical
+
+Are the risks acceptable?: institutional, societal context, **regulations**
+
+Can the risks be reduced?: (options) both but more technical
+
+Evaluation of the options (risk/benefit, PRA): technical
+
+But the decisions (management) based on the PRA are institutional
+
+Because we're engineers here, we have to be technical experts
+
+Yet also be socially literate
+---
+class: middle,center
+
+# The event doesn't care about society
+
+# Consequences are societal
+---
+# Risk analysis also involves human factors
+
+In many cases a system being analyzed has very deterministic failures associated with it 
+
+Which is where we get PRA
+
+In reality, system failures are never well identified and humans and the organizations we create change the failure rates of systems
+
+And we have to live with a lot of uncertainty
+---
+# Seminal literaure
+
+[On the quantitative definition of risk](https://s3-us-west-2.amazonaws.com/courses-images-archive-read-only/wp-content/uploads/sites/1270/2016/12/24201241/kaplan_risk.seminal_1981.pdf)
+
+[The Hyatt Horror](https://s3-us-west-2.amazonaws.com/courses-images-archive-read-only/wp-content/uploads/sites/1270/2016/12/24201243/sarah.k.a.pfatteicher_the.hyatt_.horror_journal.of_.performance.of_.constructed.facilities_2000.pdf)
+
+[The Pinto Case](https://s3-us-west-2.amazonaws.com/courses-images-archive-read-only/wp-content/uploads/sites/1270/2016/12/24201233/degeorge_the.pinto_.case_1981.pdf)
+
+[Reactor accident scenarios - LOCA 'WASH1400'](https://courses.candelalearning.com/riskassessment/chapter/pra-2/)
+---
+class: center,middle
+
+# Risk involves three essential questions
+---
+class: center,middle
+
+# What can go wrong?
+
+# How likely is it to happen?
+
+# What are the consequences? 
+---
+# Risk analysis should start early in life cycle and continue
+
+Preliminary hazard analysis early
+
+Failure mode and effect analysis and fault tree analysis for conceptual design phases
+
+Probabilistic risk assessment and human reliability analysis for mature designs
+
+Continuing after system is real and is ongoing
+
+Nuclear reactors, technical specifications, performance goals
+
+Always after accidents
+---
+![bathtub curve](img/bath.jpe)
+---
+# A Weibull distribution can describe each part of the curve
+
+$\beta < 1$  
+No operational experience or real data cohort  
+Would want to minimize time period with extensive testing and modeling
+
+$\beta=1$  
+Random failures
+
+$\beta>1$  
+So you want to know when you are heading in to here and make decisions about when to replace parts, equipment, etc.
+
+$Q(t)=1-e^{-(\frac{t}{\eta})^{\beta}}$
+---
+class: middle,center
+
+# Frequency is not intuitive
+---
+# Monty Hall problem
+
+Suppose you're on a game show, and you're given the choice of three doors: Behind one door is a car; behind the others, goats.
+ 
+You pick a door, say No. 1, and the host, who knows what's behind the doors, opens another door, say No. 3, which has a goat. 
+
+He then says to you, "Do you want to pick door No. 2?" 
+
+Is it to your advantage to switch your choice? What is the probability?
+
+When assessing frequency, intuition can be problematic
+
+[Monty Hall explained](http://betterexplained.com/articles/understanding-the-monty-hall-problem/)
+---
+# No spin Russian roulette
+
+Important to fully characterize risk and understand the real problem
+
+**What could go wrong?**  
+You have to shoot the gun
+
+**How likely is it to happen?**  
+These are 'dependent events' not like the NCAA tourney  
+Because we are dependent on the chamber state AND player state
+
+**What are the consequences?**  
+Gun goes off, you die; slow singing, flower bringing
+
+**Management options**  
+Where should you sit to maximize you chance at life?
+---
+# Risk is the expected value of an undesirable event
+
+$E[X] \equiv \int xf(x)dx$  
+$E[X] \equiv \sum_i x_i f(x_i)$
+
+This is the quantitative part of the risk analysis
+
+Not always so easy due to uncertainties
+
+E[DICE] = ?
+---
+# Uncertainties come in different flavors but are essential in risk
+
+There are things we know we know.  
+
+Then there’s things we know that we do not know.
+
+But there’s still things that we don’t know we don’t know.
+---
+# Aleatory uncertainty is statistical
+
+Random variations and chance outcomes in the physical world, natural randomness in a process
+
+If a parameter sometimes has one value and sometimes has another values
+---
+# Epistemic uncertainty is systematic
+
+Lack of knowledge about the physical world, scientific uncertainty in the model of the process
+
+If a parameter always has either one value or another, but we are not sure which
+
+[Aleatory or epistemic? Does it matter](http://www.ripid.ethz.ch/Paper/DerKiureghian_paper.pdf)
+---
+# Risk = Frequency X Consequence
+
+![Farmers chart](img/farmer.jpg)
+---
+# There is an ethical theory basis for risk
+
+Based on universal rules and principles by Descartes  
+(1596-1650)
+
+Rights ethics by John Locke, not the guy from the Island  
+(1632-1704)
+
+Duties ethics by Immanuel Kant  
+(1724-1804)
+
+Utilitarianism by Jeremy Bentham and John Stuart Mill  
+(1748-1832),(1806-1873)
+
+‘Greatest good for greatest number of people’ (Red Wedding)
+
+PRA (WASH1400) comes from this - ‘economic determinism’, cost/benefit
+---
+# Society determines acceptable risks
+
+ALARA = as low as reasonably achievable (000/person/rem
+
+Versus precautionary principle
+
+Contaminated [superfund] sites and cancer risks
+
+Safety goals for reactors, 0.1% of background cancer risk
+
+So it is the regulations that determine the acceptable levels)
+---
+# How is that codified?
+
+The USNRC has qualitative safety goals
+
+Individuals bear no significant additional risk to life and health
+
+Societal risks to life and health from nuclear power plant operation should be comparable to or less than the risks due to electric generation by competing technologies and should not be a significant addition to other societal risks
+
+There’s more, but you get the idea
+---
+# What are some examples of utilitarianism in real life?
+
+**Insurance**  
+How much am I willing to spend each year to insure my house, car, life and for what amount?
+
+**Energy**  
+What risks am I willing to take for the benefit of 1000 MWe among a coal, natural gas, oil or nuclear power plant?
+
+These are not strictly technically-based? Or not?
+---
+# Cost/benefit is the typical risk reduction mode
+
+Rational decision maker will choose the option that maximizes utility
+
+Or largest benefit/cost ratio
+
+Multiattribute utilty theory uses functions to express risk aversion
+
+Use of decision trees
+
+AHP for when there is a lack of data 
+(ANS proposal Verner! YAY)
+
+Relies on expert judgement
+
+Game theory for two party decision making
+---
+class: middle,center
+
+# Challenger
+---
+# The Challenger disaster occurred in 1986
+
+The Space Shuttle management prior to the Challenger disaster felt that a failure would occur about 1 every 100,000 flights
+
+Engineers calculated the failure rates between 1 in 100 and 1 in 556 missions pre-Challenger
+
+In actuality the failure rates were 1 in 137 on launch and 1 in 137 on re-entry or 2 in 137 flights
+
+Human decision process gravely impacted the Challenger mission 
+
+How frequency is determined affects management options
+---
+class: middle,center
+
+# Ford Pinto
+---
+# The Ford Pinto case is a classic study of risk/benefit and ethics
+
+During design and production, crash tests revealed a serious
+defect in the gas tank
+
+In crashes over **25 miles per hour,** the gas tank always
+ruptured
+
+To correct it would have required changing and strengthening the design
+
+So they didn’t
+
+What other more contemporary examples are there?
+---
+
 
 ![doggehs](img/final.jpg)
 </textarea>
