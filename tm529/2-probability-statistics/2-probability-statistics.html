@@ -121,6 +121,74 @@ What is an independent event? Dependent event?
 ---
 # Ground rules for probabilities
 
+AND = multiply probabilities  
+$P(A \cap B) = P(A) \cdot P(B)$
+
+OR = add probabilities  
+$P(A \cup B) = P(A) + P(B)$
+
+CONDITIONAL = B given A
+P(theory|data) ~ P(data|theory) P(theory)  
+
+[Bayes Theorem](https://courses.candelalearning.com/riskassessment/chapter/bayes-theorem/)  
+
+$P(B|A) = \frac{P(A \cap B)}{P(A)}$  
+$P(B|A) = \frac{P(B) P(A|B)}{P(A)}$
+---
+# More terms for probabilities
+
+experiment = process by which an outcome is observed
+and we get data
+
+what experiments are we conducting in our research?
+
+sample space = set of all possible outcomes
+
+event = subset of sample space
+
+joint probability = occurrences of two random variables
+---
+# We derive probability distributions from sample spaces
+
+Why?  How can a distribution be derived?  
+Probability is starting with an animal, and figuring out what footprints it will make  
+Statistics is seeing a footprint, and guessing the animal  
+Discrete or continuous
+
+Probability density function  
+$P(a \leq X \leq b) \equiv \int_a^b p(x)dx$  
+
+Cumulative distribution or 'unreliability'  
+$P(X \leq x) \equiv \int_{-\infty}^x p(\xi)d\xi$
+
+Used to determine failure rates for safety analysis  
+1st and 2nd [moments](https://courses.candelalearning.com/riskassessment/chapter/statistical-moments/) are used to obtain expected value and variance 
+---
+# [Normal distribution](https://courses.candelalearning.com/riskassessment/chapter/common-statistical-distributions/)
+
+![Normal distribution](img/normal.distribution.png)
+---
+![Class grades](img/class.png)
+---
+# [Likelihood](https://courses.candelalearning.com/riskassessment/chapter/likelihood/) is a tool for summarizing the data’s evidence about unknown parameters
+
+Normal distribution depends on two parameters   
+$f(x;\mu,\sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$
+
+f is a PDF when the parameters are constant and we vary in x  
+f is a likelihood when x is constant and the parameters vary
+
+A common application of the likelihood function is in estimation 
+
+Estimate parameters from some given data x to understand how the function behaves
+if it has 'fat tails' or really skewed
+---
+# There may not be a lot of data where the true mean, etc., could be directly obtained
+
+Example of statistical inference
+
+So, if a coin is 'fair' then we know p = 0.5 and can use the binomial distribution for the PDF
+
 
 ---
 ![doggehs](img/final.jpg)
