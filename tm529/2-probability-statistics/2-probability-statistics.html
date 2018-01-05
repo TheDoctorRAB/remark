@@ -189,6 +189,150 @@ Example of statistical inference
 
 So, if a coin is 'fair' then we know p = 0.5 and can use the binomial distribution for the PDF
 
+$f(x) = \frac{n!}{x!(n-x)!}p^x(1-p)^{(n-x)}$
+
+For 10 flips of the fair coin  
+$f(x;p) = \binom{10}{x}0.5^x(1-0.5)^{(10-x)}$
+---
+# What if you don't know the coin is fair? 
+
+You see 7 heads on 10 flips
+
+Now it's a likelihood function
+
+$L(p;x) = \binom{10}{7}p^7(1-p)^3$
+
+Typically to find p, find the maximum or log maximum
+---
+![Binomial pdf](img/binomial.pdf.png)
+---
+# Statistics get a bad rap
+
+There are three kinds of lies:  lies, damned lies, and statistics.   
+-Benjamin Disraeli
+
+
+I gather, young man, that you wish to be a Member of Parliament. The first lesson that you must learn is, when I call for statistics about the rate of infant mortality, what I want is proof that fewer babies died when I was Prime Minister than when anyone else was!  
+-Winston Churchill
+---
+![Cartoon](img/cartoon.jpg)
+---
+# Statistics are tools, not ends
+
+It is very easy for research psychologists, particularly young psychologists, to be overconcerned with statistical methods...
+
+However, **careful observation** is the main business of empirical science, and statistical methods are useful only so long as they help, not hinder, the **systematic exploration of data** and the accumulation and coordination of results.        
+
+William Hays (1963)
+---
+# Statistical inference: The “grand thing of reasoning backwards”  
+
+In solving a problem of this sort, the grand thing is to be able to reason backward. That is a very useful accomplishment, and a very easy one, but people do not practise it much...Most people, if you describe a train of events to them, will tell you what the result would be.  
+
+They can put those events together in their minds, and argue from them that something will come to pass.  There are few people, however, who, if you told them a result, would be able to evolve from their own inner consciousness what the steps were which led up to that result.  
+
+This power is what I mean when I talk of reasoning backwards...
+
+Sherlock Holmes - A Study in Scarlet
+---
+class: center,middle
+
+# Let's look at some seminal cases
+---
+# In 1854, there was a cholera outbreak near Broad Street in London
+
+Over 500 people died  
+[Seminal epidemiological study by Dr. John Snow](https://courses.candelalearning.com/riskassessment/chapter/probability-and-statistics/)  
+They did not know cholera was water borne  
+**Snow knew nothing at the time!**
+
+Snow mapped the 13 public wells and known cholera deaths (Soho)  
+Not great water treatment practices back then  
+Spatial clustering of cases around one particular water pump  
+SW corner of Broad Street and Cambridge Street  
+Others died who had water delivered from that pump  
+Or went to school there
+
+Shut it down and new cases stopped
+---
+![Jon Snow](img/snow.png)
+---
+![Walker](img/walker.jpg)
+---
+# Statistics is even used in war
+
+Too many [Allied planes](https://courses.candelalearning.com/riskassessment/chapter/probability-and-statistics/) were getting shot down over Germany
+
+During WWII, statistician Abraham Wald was asked to catalog the location of bullet holes on returning Allied aircraft and determine the best places to reinforce the planes with armor
+
+To reduce losses
+
+Take observations of planes that did return
+
+Draw map of where each aircraft was hit (generally)
+---
+![WWII plane](img/wwii.plane.jpg)
+---
+![WWII planes](img/wwii.planes.jpg)
+---
+# Wald’s supervisors concluded that nose, wings, fuselage were covered in damage and needed more armor
+
+Wald said, no
+
+Why?
+
+He recognized survivorship bias in the sample
+
+Allies were only sampling planes that completed their missions and returned home
+
+A form of sampling bias
+---
+# Don't miss the forest for the trees when analyzing tons of data
+
+Garbage in = garbage out
+
+Good data in != good conclusions out without good analysis  
+(engineering judgement)
+
+And that applies to risk assessment how?  
+
+When we were critisizing utilitarianism
+---
+# The Challenger explosion was the first space shuttle catastrophe
+
+28 January 1986  
+Forecast calls for abnormally low temperature (30F)   
+Engineers recommend against launch due to concern about O-ring failure
+ 
+NASA flight control overrules  
+O-rings had failed due to cold temperatures on the morning of the launch  
+Challenger explodes shortly after launch (73 seconds)  
+First time this happened  
+
+Christa McAuliffe, teacher from New Hampshire, selected to teach lessons from space
+
+This was a big deal leading up to the launch
+---
+# Launch was already delayed for six days due to weather, technical problems
+
+Reagan appointed a special commission to determine what went wrong with Challenger and to develop future corrective measures  
+
+Neil Armstrong and Chuck Yeager on the commission
+
+O-ring seal on solid rocket booster became brittle  
+Flames broke out and damaged the external fuel tank  
+
+NASA managers were aware of these design problems but also failed to act  
+(Lack of ethical context imo)
+---
+# Launches resumed in 1988 after redesigns  
+
+But there still have been failures  
+
+Would there ever be 100% safety?
+
+Are there more contemporary analogues?
+---
 
 ---
 ![doggehs](img/final.jpg)
