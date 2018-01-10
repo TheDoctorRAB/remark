@@ -237,7 +237,196 @@ You want to be able to head off low risk that can be mitigated by design and hig
 ### Backward analysis identifies hazards to find events
 ![Backward PHA](img/backward.jpg)
 ---
+### Use top down analysis to decompose the events
+![Top down](img/top.down.jpg)
+---
+### Use bottom up analysis to decompose the hazard
+![Bottom up](img/bottom.up.jpg)
+---
+# PHA should take place during different stages in the life cycle
 
+New facilities as part of design before committing resources
+
+During construction, things are going to come up that were not anticipated  
+We know what we know  
+We know what we don't know  
+We don't know what we don't know
+
+Operational readiness must be conducted prior to system start up
+---
+# Periodic analyze during operational lifetime
+
+Maybe due to regulations
+
+Anytime there is a modification  
+Safety analysis at USA nuclear plants after Fukushima  
+NRC regulations for technical specification, performance based goals, best practices  
+
+Finally, when decommissioning new hazards will arise  
+Disposal of materials, chemicals, etc.
+
+Really think about the wide range of engineering structures, facilities, etc., about how important this is
+---
+### Probability of occurrence of unexpected hazardous release determines credibility
+
+Less than 1E-06: less than credible  
+Not expected during facility lifetime
+
+1E-06 - 1E-04: credible and extremely unlikely  
+Probably not occur during facility lifetime
+
+1E-04 - 1E-02: credible and unlikely  
+May occur once during facility lifetime  
+Natural phenomena  
+Trained worker error (do not agree with this at all)
+
+1E-02 - 1E-01: very likely  
+Events may often occur
+---
+# If you can't guess at probabilities, estimate
+
+Frequent: occurs often  
+Likely: occurs several times  
+Occasional: occurs sporadically  
+Seldom: not negligible but unlikely  
+Unlikely: neglibible 
+
+These can be site or facility specific too
+---
+### Rank hazards in terms of qualitative consequences or severity
+
+**Class I: negligible**  
+worst case effects cause less than minor injury, occupational illness, system damage
+
+**Class II: marginal effects**  
+worse case effects cause minor occupational illness, system damage
+
+**Class III: critical**  
+worse case effects cause severe (nondisabling) personnel injury, severe occupational illness, major system damage
+
+**Class IV: catastrophic**  
+worse case effects cause death, disabling injury, system loss
+---
+# Most reliable solution is to eliminate source of hazard
+
+No problem amirite?!
+
+cf. Flushing automobile cooling system example in 6.2  and crib in 6.3
+---
+# Beware common cause events or multiple consequences
+
+Different events may lead to similar consequences
+
+Ranking hazards needs a normalized metric
+
+So severity must be carefully determined 
+
+Consequences should be characterized as precisely or descriptively as possible 
+
+Estimate the frequency that initiating event produces a specific consequence 
+
+This means that for each initiating event, there might be several consequences with associated frequencies
+---
+# Example
+
+For a typical warehouse environment
+
+Worker (sober) falls off a ladder  
+
+Risk = low severity but moderate frequency
+
+Could be fatal, but low frequency, not negligible
+
+Both should be considered in PHA
+
+How can this risk be mitigated?
+
+Maybe you have a separate section where fatalities are considered
+
+How else could this be classified?
+---
+# Clearer comparisons can be made now
+![Matrix](img/matrix.jpg)
+---
+![Farmer's chart](img/farmer.jpg)
+---
+# How can hazards be eliminated?
+
+**Substitution**  
+Use safe materials  
+Simple hardware devices may be safer than using a computer
+No technological imperative that says we MUST use computers to control dangerous devices  
+Introducing new technology introduces unknowns and even unk−unks
+
+**Simplify**  
+Limit process states  
+Easily understood and readable  
+Interactions between components are limited and straightforward  
+Code includes only minimum features and capability required by system  
+No unnecessary, undocumented features, unused executable code  
+Worst case timing is determinable  
+Design so that structural decomposition matches functional decomposition
+---
+# How else can hazards be eliminated?
+
+**Decouple**  
+Tightly coupled system is one that is highly interdependent  
+Failure or unplanned behavior in one can rapidly affect status of others  
+System accidents caused by unplanned interactions  
+Coupling creates increased number of interfaces and potential interactions
+
+**Passive safeguards**  
+Fail to a safe state
+
+**Redundancy and diversity**
+
+**Human error**
+---
+# In PHA, idea is to just rank the hazards and not to analyze each step in the procedure
+
+Event can carry wide range of consequences from negligible to catastrophic 
+
+Fire alone could be easy to put out or burn down the whole place
+
+It would seen that an envelope of potential consequences would be sensible
+
+Definitely worst case and maybe average consequence +/- something
+
+Expert judgment is critical if there is a lack of data or experience 
+---
+# What's so good about PHA?
+
+Helps ensure that the system is safe
+
+Modifications are less expensive and easier to implement in earlier design stages  
+This seems like the motivation for 'inventing' safeguardability (explain)
+
+Decreases design time by reducing the number of surprises  
+Identifies and provides a log of primary system hazards and corresponding risks
+
+Provides systematic evaluation early enough to allow for design mitigation (Rokkasho)
+
+Provides information to management to make decisions to allocate resources to reduce risk
+
+Provides relatively quick review of most significant system risks
+---
+# What's not so good about PHA?
+
+Hazards must be foreseen by the analysts  
+Effects of interactions between hazards are not easily recognized  
+You don't know what you don't know  
+Especially for new systems like pyroprocessing
+
+Can fail to assess risks well of combined hazards of common failure modes  
+Then underrepresent overall system risk
+
+Insufficient or inappropriate targets chosen, assessment is flawed
+
+Garbage in = garbage out  
+Wrong assumptions for unknown data, etc.
+
+Too many targets, PHA becomes large and costly  
+Which misses the point
 ---
 ![doggehs](img/final.jpg)
 </textarea>
