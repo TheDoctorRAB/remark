@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>4. Failure modes and effects analysis</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Open Sans', sans-serif; }
+      h1, h2, h3 {
+        font-family: 'Ubuntu';
+        font-weight: normal;
+        }
+      .remark-container {background-color: #F5F5F5; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { background-color: #FFFAF0; font-size: 26px; 
+                         h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
+       }
+      .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+    </style>
+  </head>
+  <body>
+<textarea id="source">
+class: center, middle
+
+# TM529
+## RISK ASSESSMENT
+### Failure modes and effects analysis
+
+#### 4
+---
+# Learning outcomes
+
+Chapter 9 in book
+
+Explain and analyze failures for process, system, product in detail
+
+My m/o is to use this time to show the concepts with my examples
+
+See case studies and literature in the [OER](https://courses.candelalearning.com/riskassessment/) to supplement the lecture
+
+Choose what is most interesting and relevant to you
+
+Immersive critical thinking - always the three questions 
+---
+## FMEA helps to develop a firm understanding of what a failure is prior to risk analysis
+
+Detailed document that identifies ways in which process/product fails
+Or does not meet critical requirements
+
+Inductive - Sherlock Holmes  
+Bottom up, forward search approach (from chapter 3)
+
+Living document that lists all the possible causes of failure  
+Items can be generated to determine types of controls/changes in procedures 
+
+Systematic way to identify and prevent problems in processes and products before they occur  
+Design driven approach
+---
+## FMEA is a proactive tool to assist in new service design or enhancement of existing processes
+
+What was the purpose of the PHA?
+
+How will this relate?
+
+FMEA might be more conducive when dealing with monetary loss
+
+Most common for assessment technique at initial stages of system development
+
+Maximize design life
+---
+# Let's start with some definitions
+
+**Failure mode**  
+Ways in which a process can fail  
+Interrupts continuity of production  
+Loss of assets (not just money)  
+Unavailability of equipment  
+Deviation from normal operation (define normal operation for pyroprocessing)  
+Not meeting target expectations  
+Secondary defects  
+
+**Potential (failure) effect (consequence)**  
+Result of failure mode   
+Some more likely to occur than others  
+Include regulatory requirements  
+---
+# More definitions
+
+**Risk of failure**  
+Each potential effect carries risk associated with it  
+Consequences  
+Frequency  
+
+So we are still operating in the universe of the Three Questions
+
+**Risk priority number**  
+Value assigned to risk for each failure
+
+Can results from a PHA be applied?
+---
+# Why is FMEA effective?
+
+Identify...
+
+Areas of failure in process, system, component, or procedure  
+Effects of the process, system, component, or procedure failing  
+Failure causes (common cause)
+
+Reducing the probability of failure  
+Improving the means of detecting the causes of failure  
+Risk ranking of failures, allowing risk informed decisions by those responsible 
+
+A starting point from which the control plan can be created
+
+Decomposition of risk - focus on the areas where risk can be reduced
+---
+class: middle,center
+
+# FMEA procedure
+---
+# Construct a detailed flow chart of the process
+
+Multi-disciplinary participation of all those involved in the process
+
+Allocate plenty of time for this step
+
+Be as complete as possible
+
+Flow charting software can help  
+(or write your own)
+
+The book uses an example of a lawn mower
+---
+![Pyroprocessing flowsheet](img/pyroprocessing.flowsheet.jpg)
+---
+![Fuel fabrication](img/fuel.fabrication.jpg)
+---
+### Process steps
+![Fuel fabrication process steps](img/fuel.fabrication.process.steps.jpg)
+---
+# Determine how each step could possibly fail
+
+Getting material into the crucible - effect - cause
+
+Getting material into the crucible - effect - cause
+
+Heater fails to sufficiently melt all the metal - effect - cause
+
+Vacuum cannot be induced - effect - cause
+
+Molds get stuck or break - effect - cause
+
+Cannot remove heel - effect - cause
+---
+
+---
+![doggehs](img/final.jpg)
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script type="text/javascript">
+        var options = {};
+        var renderMath = function() {
+            renderMathInElement(document.body, {delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\[", right: "\\]", display: false},
+            ]});
+        }
+        var slideshow = remark.create({
+          // Set the slideshow display ratio
+          // Default: '4:3'
+          // Alternatives: '16:9', ...
+          ratio: '16:9',
+          // Navigation options
+          navigation: {
+          // Enable or disable navigating using scroll
+          // Default: true
+          // Alternatives: false
+          scroll: true,
+          // Enable or disable navigation using touch
+          // Default: true
+          // Alternatives: false
+          touch: true,
+          // Enable or disable navigation using click
+          // Default: false
+          // Alternatives: true
+          click: false
+          },
+          // Customize slide number label, either using a format string..
+          slideNumberFormat: '%current%',
+          // Enable or disable counting of incremental slides in the slide counting
+          countIncrementalSlides: false 
+          }, renderMath);
+    </script>
+    <script type="text/javascript">
+     /**
+      * a simple zoom in/out/reset for remark.js
+      *
+      * Hot key:
+      *   + : zoom in
+      *   - : zoom out
+      *   0 : reset zoom
+      *
+      * CAVEAT: when switching between full screen and normal screen,
+      *         the zoom factor may not function correctly.
+      *         RELOAD the page, if necessary.
+      *
+      * 
+      * @author William Yeh <william.pjyeh@gmail.com>
+      * @date   2015-01-15
+      *
+      * @license Apache License, Version 2.0.
+      * Copyright © 2015 William Yeh.
+      */
+      var ZOOM_TEXT_SELECTOR =
+       ".remark-slide-content p"
+       + "," + ".remark-slide-content .remark-code-line"
+       ;
+
+      var ZOOM_IMG_SELECTOR =
+       ".remark-slide-content img:hover"
+       ;
+
+      var ZOOM_IMG_RULE;
+
+      var zoom_factor = 100.0;
+      document.body.style.zoom = "100%"
+    
+      function init_zoom_rule() {
+       // @see http://davidwalsh.name/add-rules-stylesheets
+       var styles = document.styleSheets[0];
+       var index = styles.insertRule(
+        ZOOM_IMG_SELECTOR + ' { transform:scale(1); }',
+        styles.cssRules.length
+        );
+
+        ZOOM_IMG_RULE = styles.cssRules.item(index);
+       }
+    
+      function apply_zoom() {
+       var elements = document.querySelectorAll(ZOOM_TEXT_SELECTOR);
+       //console.log('length:', elements.length);
+       for (var i = 0; i < elements.length; ++i) {
+        var item = elements[i];
+        item.style.fontSize = zoom_factor.toString() + '%';
+        }
+
+        ZOOM_IMG_RULE.style.transform = 'scale(' + (zoom_factor / 100) + ')';
+      }
+
+      function zoom_in() {
+       zoom_factor += 10;
+       if (zoom_factor >= 200.0)  zoom_factor = 200.0;
+       apply_zoom();
+      }
+    
+      function zoom_out() {
+       zoom_factor -= 10;
+       if (zoom_factor <= 50.0)  zoom_factor = 50.0;
+       apply_zoom();
+      }
+
+      function zoom_reset() {
+       zoom_factor = 100.0;
+       apply_zoom();
+      }
+
+      init_zoom_rule();
+      window.addEventListener("keydown", function(event) {
+       //console.log(event.keyCode);
+       switch (event.keyCode) {
+        case 187:  // '+': 187 in Chrome & Safari, 61 in FF
+        case 61:  // '+': 187 in Chrome, 61 in FF
+         zoom_in(); 
+         break;
+
+        case 189:  // '-': 189 in Chrome & Safari, 173 in FF
+        case 173:  // '-': 189 in Chrome, 173 in FF
+         zoom_out();
+         break;
+        case 48:   // '0'
+         zoom_reset();
+         break;
+       }
+      }, false);
+    </script>
+  </body>
+</html>
