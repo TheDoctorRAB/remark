@@ -233,6 +233,179 @@ For pyroprocessing, we also would have to do a material balance and that takes t
 
 As long as it's a systematic scale
 ---
+### Assign occurance rating to fuel fabrication failure modes
+
+Getting material into the crucible: crucible breaks  
+6 Moderate   
+Failure results in subsystem or partial malfunction of the product  
+6 Moderate: Occasional failure  
+1 occurrence every 3 months or 3 occurrences in 1,000 events
+
+Heater fails to sufficiently melt all the metal: molds might crack; not sufficiently take up all the metal  
+6 Moderate  
+Failure results in subsystem or partial malfunction of the product  
+7 Moderate/High  
+1 occurrence every month or 1 occurrence in 100 events
+---
+### Assign an occurance rating to fuel fabrication failure modes 
+
+Vacuum cannot be induced: no injection  
+6 Moderate   
+Failure results in subsystem or partial malfunction of the product  
+6 Moderate: Occasional failure  
+1 occurrence every 3 months or 3 occurrences in 1,000 events  
+
+Molds get stuck or break: big mess; liquid metal spills onto equipment  
+8 Very High   
+Failure renders the unit inoperable or unfit for use  
+5 Low/Moderate  
+1 occurrence every 6 months to 1 year or 1 occurrence in 10,000 events
+---
+### Assign an occurance rating to fuel fabrication failure modes 
+
+Cannot remove heel: replace crucible; store heel  
+6 Moderate   
+Failure results in subsystem or partial malfunction of the product  
+7 Moderate/High  
+1 occurrence every month or 1 occurrence in 100 events  
+---
+### Calculate, prioritize a Risk Priority Number for each failure
+
+RPN = Severity Rating  x  Occurrence Rating  
+Even more quantitative than prior work we've done
+
+Getting material into the crucible: crucible breaks  
+6 Moderate   
+Failure results in subsystem or partial malfunction of the product  
+6 Moderate: Occasional failure  
+1 occurrence every 3 months or 3 occurrences in 1,000 events  
+**36**
+---
+### Calculate, prioritize a Risk Priority Number for each failure
+
+Heater fails to sufficiently melt all the metal: molds might crack; not sufficiently take up all the metal  
+6 Moderate   
+Failure results in subsystem or partial malfunction of the product  
+7 Moderate/High  
+1 occurrence every month or 1 occurrence in 100 events  
+**42**
+
+Vacuum cannot be induced: no injection  
+6 Moderate   
+Failure results in subsystem or partial malfunction of the product  
+6 Moderate: Occasional failure  
+1 occurrence every 3 months or 3 occurrences in 1,000 events  
+**36**
+---
+### Calculate, prioritize a Risk Priority Number for each failure
+
+Molds get stuck or break: big mess; liquid metal spills onto equipment  
+8 Very High   
+Failure renders the unit inoperable or unfit for use  
+5 Low/Moderate   
+1 occurrence every 6 months to 1 year or 1 occurrence in 10,000 events  
+**40**
+
+Cannot remove heel: replace crucible; store heel  
+6 Moderate   
+Failure results in subsystem or partial malfunction of the product  
+7 Moderate/High  
+1 occurrence every month or 1 occurrence in 100 events  
+**42**
+---
+class: center,middle
+
+### We can see that this is a way to initially quantify risk based on unknown frequencies, etc.
+
+**Also referred to as Failure Mode Effects and Criticality Analysis**
+---
+# It's really hard to quantify risk 
+
+Who knew?!
+
+PRA is a really really useful tool
+
+It is the NRC regulatory paradigm
+
+Still wasn't "invented" until there were 2-ish decades of operational data
+
+Getting any data cohorts for an FMEA is ideal but probably difficult
+
+If you have enough data, probably best to do a PRA in the first place or use this as a first run
+
+Can use related historical or similarly accident data
+
+What will I use for the injection casting process?
+---
+## Most likely will need to draw upon expert judgement and best estimates
+
+Can use a [Delphi](https://courses.candelalearning.com/riskassessment/chapter/failure-rates/) technique for this
+
+Iterative way to develop consensus about something
+---
+## Conduct a [root cause](https://courses.candelalearning.com/riskassessment/chapter/failure-mode-and-effects-analysis/) analysis for highest risk 
+![Root Cause](img/root.cause.1.jpg)
+---
+## Conduct a root cause analysis for highest risk 
+![Root Cause](img/root.cause.2.jpg)
+---
+![Fuel fabrication root cause](img/fuel.fabrication.root.cause.jpg)
+---
+### Causes to make the metal stick to the crucible and cannot remove it cleanly
+
+Graphite is the wrong material  
+Inert atmosphere  
+Can induce vacuum
+
+Maybe there has to be X grams of it before removing  
+We also have to be able to detect the material in the crucible
+
+If the process is automated, it may be too complicated   
+Human hands might be needed  
+Which is a host of other problems
+---
+### Causes to make the metal stick to the crucible and cannot remove it cleanly
+
+Different equipment might be needed instead of people  
+So the removal process might need redesigning  
+Or the removal process itself could use some optimization  
+Maybe heat the crucible and pour metal into separate container
+
+Should be conducted by a team and be more in depth
+---
+### Take action to eliminate or reduce the Risk Priority Number (RPN)
+
+Decrease likelihood of occurrence
+
+Decrease the severity of effects
+
+Which either would reduce overall risk (go to RPN again)
+
+Lab-scale testing of different crucible materials may show a preferable material  
+May also show that removal cannot be achieved unless there is 100 grams, etc.
+
+Probably have a lot of crucibles on hand and maybe develop a clean, swap out procedure  
+Also induces cost hike
+
+My expert opinion would be that the crucible is the primary root cause
+---
+### Apply a Plan-Do-Study-Act approach
+
+**What are we trying to accomplish?**  
+Remove the heel without having it stick on the crucible  
+We have to measure the SNM  
+Then maybe store it and recycle it back into the melter
+
+**How will we know that a change is an improvement?**  
+Heel is removed cleanly  
+Probably need to conduct lab scale experiments 
+
+**What changes can we make that will result in an improvement?**  
+See fishbone discussion  
+Change material, procedures, environment  
+
+Iterative process - but only so many meetings and brainstorming    
+If you're the project manager, at some point you have to get the job done
 ---
 ![doggehs](img/final.jpg)
 </textarea>
