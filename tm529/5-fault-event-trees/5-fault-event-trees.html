@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>5. Fault and event trees </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Open Sans', sans-serif; }
+      h1, h2, h3 {
+        font-family: 'Ubuntu';
+        font-weight: normal;
+        }
+      .remark-container {background-color: #F5F5F5; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { background-color: #FFFAF0; font-size: 26px; 
+                         h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
+       }
+      .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+    </style>
+  </head>
+  <body>
+<textarea id="source">
+class: center, middle
+
+# TM529
+## RISK ASSESSMENT
+### Fault and event trees
+
+#### 5
+---
+# Learning outcomes
+
+Chapter 8, 12, 14 in the book
+
+Skipping decision trees in chapter 12 for later
+
+Quanitifying risk using fault and event trees
+
+Identifying where these tools fall short
+
+Please remember to see [case studies](https://courses.candelalearning.com/riskassessment/) in OER
+---
+# How likely is it to happen?
+
+Fault and event trees require frequency analysis for initiating events
+
+We need to establish frequencies for a PRA (chapter 8)
+
+Data data data data data
+
+Data doesn't magically appear, however
+
+We've been talking about the pyroprocessing system (Jieun has some information)
+
+Troubles with scaling up from the laboratory experiments
+
+Expert judgment only goes so far to where you're just making it up
+
+Then any analysis is effectively meaningless
+---
+## Failure rate data is probably the most important
+
+We need to know when equipment is going to fail for basically everything
+
+As well as the probability distributions  
+That allows for modeling and coding of the system first
+
+We can also just buy equipment and test it  
+Manufacturer might have the data
+
+Though most entities outside of academics don't really have the time
+
+There is a 30 year test bed for clay and radioactive waste in France  
+At the repository site  
+Because the repository is completely new and unprecedented 
+
+We need to model behavior in the EDZ for at least 1000 years
+---
+# Some data can be obtained from the manufacturer
+
+Historical data (e.g., MCNP error messages)
+
+Government and military handbooks
+
+[Reliability Information Analysis Center](https://www.qualitydigest.com/node/17750#)
+---
+# Failure rate of system or equipment varies over life cycle
+
+We've shown the [bathtub curve](https://thedoctorrab.github.io/class-lecture/tm529/1-risk-overview/1-risk-overview.html#35) in Chapter 1
+
+Airplanes (from the book is a good example)  
+They're big, like a tylenol with wings!
+
+[Failure Knowledge Database](https://courses.candelalearning.com/riskassessment/chapter/fault-trees-2/)
+
+Obviously the structure of the plane is going to degrade with time
+
+High stress over the life cycle
+
+[Table 8.2](https://docs.google.com/spreadsheets/d/11KeppAs0_VcJ_vLqMwpkflKbmLzNUPx13o_W31yFI8w/edit?usp=sharing) in the book is a typical example
+---
+### Sorting data into bins can present and overall picture of what is going on 
+
+First, they sorted by [failure](https://docs.google.com/spreadsheets/d/1iNBowXJOa8Da4_TxbC0iFPxhtJtCSlNWTEF8rtCHdbI/edit?usp=sharing)  
+I also sorted by [temperature and hours of operation](https://docs.google.com/spreadsheets/d/1MLsXFbCZcbv1Atahns1xxBUEvodaqZh2DdBCWs13oN4/edit?usp=sharing)
+
+Any observations? 
+
+**Failure rate**  
+$\lambda = \frac{20}{130300}=1.53 \times 10^{-04}$ per hour
+
+**Mean time before failure (MTBF)**  
+$\theta = \frac{1}{\lambda} = 6515$ hours  
+Typically called mean time to failure (MTTF)
+
+Assumes all systems fail in the same way  
+Is this the best way to do this?
+---
+# Let's look at failure as a function of temperature
+
+**Above 100**  
+$\lambda = 2.14 \times 10^{-04}$/h  
+$\theta = 4675$h
+
+**Below 100**  
+$\lambda = 1.08 \times 10^{-04}$/h  
+$\theta = 9275$h
+
+Observations?
+---
+![Pyroprocessing flowsheet](img/pyroprocessing.flowsheet.jpg)
+---
+![Fuel fabrication](img/fuel.fabrication.jpg)
+---
+![Fuel fabrication process steps](img/fuel.fabrication.process.steps.jpg)
+---
+# For each process step, what are the failures?
+
+Multiple failures, much more complexity
+
+Getting material into the crucible  
+Heater fails to sufficiently melt all the metal  
+Vacuum cannot be induced  
+Molds get stuck or break  
+Cannot remove heel  
+
+If one component fails the equipment fails
+
+Systems do not fail in the same way
+
+Major challenge to failure analysis
+---
+![doggehs](img/final.jpg)
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script type="text/javascript">
+        var options = {};
+        var renderMath = function() {
+            renderMathInElement(document.body, {delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\[", right: "\\]", display: false},
+            ]});
+        }
+        var slideshow = remark.create({
+          // Set the slideshow display ratio
+          // Default: '4:3'
+          // Alternatives: '16:9', ...
+          ratio: '16:9',
+          // Navigation options
+          navigation: {
+          // Enable or disable navigating using scroll
+          // Default: true
+          // Alternatives: false
+          scroll: true,
+          // Enable or disable navigation using touch
+          // Default: true
+          // Alternatives: false
+          touch: true,
+          // Enable or disable navigation using click
+          // Default: false
+          // Alternatives: true
+          click: false
+          },
+          // Customize slide number label, either using a format string..
+          slideNumberFormat: '%current%',
+          // Enable or disable counting of incremental slides in the slide counting
+          countIncrementalSlides: false 
+          }, renderMath);
+    </script>
+    <script type="text/javascript">
+     /**
+      * a simple zoom in/out/reset for remark.js
+      *
+      * Hot key:
+      *   + : zoom in
+      *   - : zoom out
+      *   0 : reset zoom
+      *
+      * CAVEAT: when switching between full screen and normal screen,
+      *         the zoom factor may not function correctly.
+      *         RELOAD the page, if necessary.
+      *
+      * 
+      * @author William Yeh <william.pjyeh@gmail.com>
+      * @date   2015-01-15
+      *
+      * @license Apache License, Version 2.0.
+      * Copyright © 2015 William Yeh.
+      */
+      var ZOOM_TEXT_SELECTOR =
+       ".remark-slide-content p"
+       + "," + ".remark-slide-content .remark-code-line"
+       ;
+
+      var ZOOM_IMG_SELECTOR =
+       ".remark-slide-content img:hover"
+       ;
+
+      var ZOOM_IMG_RULE;
+
+      var zoom_factor = 100.0;
+      document.body.style.zoom = "100%"
+    
+      function init_zoom_rule() {
+       // @see http://davidwalsh.name/add-rules-stylesheets
+       var styles = document.styleSheets[0];
+       var index = styles.insertRule(
+        ZOOM_IMG_SELECTOR + ' { transform:scale(1); }',
+        styles.cssRules.length
+        );
+
+        ZOOM_IMG_RULE = styles.cssRules.item(index);
+       }
+    
+      function apply_zoom() {
+       var elements = document.querySelectorAll(ZOOM_TEXT_SELECTOR);
+       //console.log('length:', elements.length);
+       for (var i = 0; i < elements.length; ++i) {
+        var item = elements[i];
+        item.style.fontSize = zoom_factor.toString() + '%';
+        }
+
+        ZOOM_IMG_RULE.style.transform = 'scale(' + (zoom_factor / 100) + ')';
+      }
+
+      function zoom_in() {
+       zoom_factor += 10;
+       if (zoom_factor >= 200.0)  zoom_factor = 200.0;
+       apply_zoom();
+      }
+    
+      function zoom_out() {
+       zoom_factor -= 10;
+       if (zoom_factor <= 50.0)  zoom_factor = 50.0;
+       apply_zoom();
+      }
+
+      function zoom_reset() {
+       zoom_factor = 100.0;
+       apply_zoom();
+      }
+
+      init_zoom_rule();
+      window.addEventListener("keydown", function(event) {
+       //console.log(event.keyCode);
+       switch (event.keyCode) {
+        case 187:  // '+': 187 in Chrome & Safari, 61 in FF
+        case 61:  // '+': 187 in Chrome, 61 in FF
+         zoom_in(); 
+         break;
+
+        case 189:  // '-': 189 in Chrome & Safari, 173 in FF
+        case 173:  // '-': 189 in Chrome, 173 in FF
+         zoom_out();
+         break;
+        case 48:   // '0'
+         zoom_reset();
+         break;
+       }
+      }, false);
+    </script>
+  </body>
+</html>
