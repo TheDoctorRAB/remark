@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>10. SCALE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Open Sans', sans-serif; }
+      h1, h2, h3 {
+        font-family: 'Ubuntu';
+        font-weight: normal;
+        }
+      .remark-container {background-color: #F5F5F5; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { background-color: #FFFAF0; font-size: 26px; 
+                         h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
+       }
+      .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+    </style>
+  </head>
+  <body>
+<textarea id="source">
+class: center,middle
+
+# NE585
+## NUCLEAR FUEL CYCLE ANALYSIS
+### SCALE
+
+#### 10
+
+.right[**R. A. Borrelli**  
+**@TheDoctorRAB**]
+---
+# Outcomes for the lecture
+
+Content courtesy of Prof. Steven E. Skutnik  
+Department of Nuclear Engineering  
+The University of Tennessee-Knoxville
+
+Understanding the capabilities of SCALE
+
+Building input files
+
+Analyzing output files
+---
+class: center,middle
+
+## Nuclear fuel depletion calculations with Origen
+---
+## How do we calculate used fuel isotopic content?
+
+Origen (part of SCALE) is used to calculate isotopic inventories for an assembly, given:
+
+A collapsed one-group cross-section library  
+Fuel assembly initial enrichment  
+Assembly irradiation history and cooling time
+---
+### Origen libraries are pre-calculated lattice physics solutions
+![Lattice assembly](img/lattice.jpg)
+---
+### Origen solves for the time-dependent neutron flux in the assembly using lattice physics transport tools like **TRITON**
+
+Calculating an “assembly average” flux and collapsing to one group, this time-dependent flux is then used to solve for isotopic concentrations
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{300}&space;\LARGE&space;\underline{N}'&space;=&space;\underline{N_0}&space;\cdot&space;\underline{\underline{A}}&space;\cdot&space;\phi" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{300}&space;\LARGE&space;\underline{N}'&space;=&space;\underline{N_0}&space;\cdot&space;\underline{\underline{A}}&space;\cdot&space;\phi" title="\LARGE \underline{N}' = \underline{N_0} \cdot \underline{\underline{A}} \cdot \phi" /></a>
+---
+# What do ORIGEN calculations assume?
+
+“Assembly-averaged” burnup characteristics - flux, burnup, etc. produces “averaged” isotopic concentrations
+
+Works well for “bulk” assembly characteristics – i.e., decay heat, concentrations, etc.
+
+In other words, an “average,” uniform burnup across the assembly – point depletion
+---
+## Origen depletion calculation flow
+![Origen material flow](img/origen_depletion.calculation.flow.jpg)
+---
+## Origen reactor data library interpolation
+![Origen interpolation](img/origen_interpolation.jpg)
+---
+# ARP input format (LEU / UOX)
+
+ORIGEN-ARP is a SCALE isotopic depletion and decay analysis sequence used to perform point-depletion calculations using problem-dependent cross sections
+
+Problem-dependent cross-section libraries are generated using ARP (Automatic Rapid Processing) using an interpolation algorithm that operates on pre-generated libraries created for a range of fuel properties and operating conditions
+---
+# ARP input format (LEU/UOX)
+
+{configuration name}
+
+{enrichment [%U-235]}
+
+{number of cycles}
+
+{fuel irradiation period(s) [days]} - 1 irradiation period/cycle
+
+{average cycle power [MW/MTU]} - 1 power/cycle
+
+{number interpolations per cycle}
+
+{moderator density [g/cc]}
+
+{interpolated library name}
+---
+# ARP input example (UOX)
+
+=arp                
+w17x17 - Westinghouse 17x17 lattice                 
+3.65 - 3.65% enrichment                 
+3 - 3 irradiation cycles    
+400 400 350 - 400, 400, 350 day cycle lengths  
+40 35 30 - 40, 35, 30 MW/MTU  
+1 1 1 - 1 library per cycle   
+0.732 - 0.732 g/cc moderator density
+w17_interpolated.f33 - interpolated library name  
+end                
+---
+![doggehs](img/final.jpg)
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script type="text/javascript">
+        var options = {};
+        var renderMath = function() {
+            renderMathInElement(document.body, {delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\[", right: "\\]", display: false},
+            ]});
+        }
+        var slideshow = remark.create({
+          // Set the slideshow display ratio
+          // Default: '4:3'
+          // Alternatives: '16:9', ...
+          ratio: '16:9',
+          // Navigation options
+          navigation: {
+          // Enable or disable navigating using scroll
+          // Default: true
+          // Alternatives: false
+          scroll: true,
+          // Enable or disable navigation using touch
+          // Default: true
+          // Alternatives: false
+          touch: true,
+          // Enable or disable navigation using click
+          // Default: false
+          // Alternatives: true
+          click: false
+          },
+          // Customize slide number label, either using a format string..
+          slideNumberFormat: '%current%',
+          // Enable or disable counting of incremental slides in the slide counting
+          countIncrementalSlides: false 
+          }, renderMath);
+    </script>
+    <script type="text/javascript">
+     /**
+      * a simple zoom in/out/reset for remark.js
+      *
+      * Hot key:
+      *   + : zoom in
+      *   - : zoom out
+      *   0 : reset zoom
+      *
+      * CAVEAT: when switching between full screen and normal screen,
+      *         the zoom factor may not function correctly.
+      *         RELOAD the page, if necessary.
+      *
+      * 
+      * @author William Yeh <william.pjyeh@gmail.com>
+      * @date   2015-01-15
+      *
+      * @license Apache License, Version 2.0.
+      * Copyright © 2015 William Yeh.
+      */
+      var ZOOM_TEXT_SELECTOR =
+       ".remark-slide-content p"
+       + "," + ".remark-slide-content .remark-code-line"
+       ;
+
+      var ZOOM_IMG_SELECTOR =
+       ".remark-slide-content img:hover"
+       ;
+
+      var ZOOM_IMG_RULE;
+
+      var zoom_factor = 100.0;
+      document.body.style.zoom = "100%"
+    
+      function init_zoom_rule() {
+       // @see http://davidwalsh.name/add-rules-stylesheets
+       var styles = document.styleSheets[0];
+       var index = styles.insertRule(
+        ZOOM_IMG_SELECTOR + ' { transform:scale(1); }',
+        styles.cssRules.length
+        );
+
+        ZOOM_IMG_RULE = styles.cssRules.item(index);
+       }
+    
+      function apply_zoom() {
+       var elements = document.querySelectorAll(ZOOM_TEXT_SELECTOR);
+       //console.log('length:', elements.length);
+       for (var i = 0; i < elements.length; ++i) {
+        var item = elements[i];
+        item.style.fontSize = zoom_factor.toString() + '%';
+        }
+
+        ZOOM_IMG_RULE.style.transform = 'scale(' + (zoom_factor / 100) + ')';
+      }
+
+      function zoom_in() {
+       zoom_factor += 10;
+       if (zoom_factor >= 200.0)  zoom_factor = 200.0;
+       apply_zoom();
+      }
+    
+      function zoom_out() {
+       zoom_factor -= 10;
+       if (zoom_factor <= 50.0)  zoom_factor = 50.0;
+       apply_zoom();
+      }
+
+      function zoom_reset() {
+       zoom_factor = 100.0;
+       apply_zoom();
+      }
+
+      init_zoom_rule();
+      window.addEventListener("keydown", function(event) {
+       //console.log(event.keyCode);
+       switch (event.keyCode) {
+        case 187:  // '+': 187 in Chrome & Safari, 61 in FF
+        case 61:  // '+': 187 in Chrome, 61 in FF
+         zoom_in(); 
+         break;
+
+        case 189:  // '-': 189 in Chrome & Safari, 173 in FF
+        case 173:  // '-': 189 in Chrome, 173 in FF
+         zoom_out();
+         break;
+        case 48:   // '0'
+         zoom_reset();
+         break;
+       }
+      }, false);
+    </script>
+  </body>
+</html>
