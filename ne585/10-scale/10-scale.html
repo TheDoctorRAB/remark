@@ -107,16 +107,171 @@ Problem-dependent cross-section libraries are generated using ARP (Automatic Rap
 ---
 # ARP input example (UOX)
 
-=arp                
-w17x17 - Westinghouse 17x17 lattice                 
-3.65 - 3.65% enrichment                 
-3 - 3 irradiation cycles    
-400 400 350 - 400, 400, 350 day cycle lengths  
-40 35 30 - 40, 35, 30 MW/MTU  
-1 1 1 - 1 library per cycle   
-0.732 - 0.732 g/cc moderator density
-w17_interpolated.f33 - interpolated library name  
-end                
+`=arp`                
+`w17x17` - Westinghouse 17x17 lattice                 
+`3.65` - 3.65% enrichment                 
+`3` - 3 irradiation cycles    
+`400 400 350` - 400, 400, 350 day cycle lengths  
+`40 35 30` - 40, 35, 30 MW/MTU  
+`1 1 1` - 1 library per cycle   
+`0.732` - 0.732 g/cc moderator density  
+`w17_interpolated.f33` - interpolated library name  
+`end`                
+---
+# Origen inputs are organized into cases
+
+Each “case” block represents a single irradiation or decay cycle
+
+Typically, each irradiation cycle uses a new interpolated library position
+
+Representing the nearest interpolated burnup
+
+Material compositions can be passed from one case to the next
+---
+## Origen 6.2 uses SON (Standard Object Notation) syntax for input
+
+[ arrays ] - Consist of one or more numbered entries in brackets  
+
+time = [ 10 20 30 ]
+
+{ blocks } - contain keys and arrays
+
+case(caseLabel){ ... }
+---
+# SON arrays allow for input shortcuts (similar to MCNP)
+
+Repeat [R] N **R** X - 3 r 1E14 --> 1E14 1E14 1E14
+
+Linear inerpolation [I] N **I** X Y - 3 i 5 1 --> 5 4 3 2 1
+
+Log interpolation [L] N **L** X Y - 5 l 1E-9 1E-3 --> 1E-9 1E-8 1E-7 1E-6 1E-5 1E-4 1E-3
+---
+# Origen input structure
+
+```
+'SCALE comment  
+=origen    
+% ORIGEN comment  
+ bounds{ ... }    
+ solver{ ... }    
+ options{ ... }      
+case(A){         
+  time=[31 365] % days    
+ ...   
+}  
+case(B){   
+ ...   
+}     
+end
+```
+Global configuration blocks  
+
+Each cycle (irradiation or decay) is a case block with time, powers, and (optionally) library and materials
+
+Multiple cases can be chained together to represent an irradiation history
+---
+# Origen input structure
+
+Cycles can be irradiation or decay
+
+Library and materials are optional 
+
+Multiple cases can be chained together to represent an irradiation history
+---
+# Origen case block components
+
+```
+case(label){  
+  time{...}  
+  lib{...}     
+  power=[...]     
+  mat{...}   
+  print{...}  
+  save{...}     
+  neutron{...}  
+  gamma{...}  
+  beta{...}   
+  alpha{...}  
+}
+```
+
+Specify problem times and time units  
+Data library and position to use  
+Problem powers (in MW)  
+Specify problem materials  
+Control output print options  
+Specify which steps to save and output file (.f71)  
+Optional blocks to control emissions
+---
+## How to specify times with the time block
+
+Times may be expressed one of two ways
+
+Via array - `time=[ 5 15 300 ]` with units of days
+
+Via block -  
+```
+time{  
+  t=[ 5 15 300 ]  
+  units = HOURS  
+}
+```
+---
+## By default, the start time begins where the last case left off
+
+```
+case{  
+  mat{ ... }  
+  time=[ 1 10 25 50 ]  
+  flux=[ 4 r 1E14]    
+}  
+
+case{  
+  time{    
+    units=YEARS  
+    start=0  
+    t=[ 0.1 0.3 0.9 2.7 ]  
+  }   
+}   
+```
+First case ends at 50 days
+Second case will start at 50 + 365 + 36.5 unless you reset
+---
+# How to specify libraries
+
+```
+case{  
+  mat{ ... }  
+  time=[ ... ]  
+  power=[ ... ]  
+  lib{
+       file="w17_interp.f33"  
+       pos=1 % use first position on ARP interpolated library  
+  } % end lib  
+}
+% continuation case (same library, new position)  
+case{  
+  time=[ ... ]  
+  lib{ pos=2 } % use second position on same interpolated library  
+}
+```
+---
+# How to specify materials 
+
+```
+=origen
+case{
+...
+% create a material with 1 kg of 3% enriched LEU
+  mat{
+    units=GRAMS % units include grams, gram-atoms/moles and curies
+    iso=[u238=970.0E3 u235=3.0E4 o=123.1E3] % can specify individual isotope masses
+  } % specifying only elemental symbol uses natural abundances for each isotope
+  ...
+} % end case
+```
+
+#### First case must always specify materials
 ---
 ![doggehs](img/final.jpg)
 </textarea>
