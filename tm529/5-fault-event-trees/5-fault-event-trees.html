@@ -53,7 +53,7 @@ Data data data data data
 
 Data doesn't magically appear, however
 
-We've been talking about the pyroprocessing system (Jieun has some information)
+We've been talking about the pyroprocessing system
 
 Troubles with scaling up from the laboratory experiments
 
@@ -152,6 +152,222 @@ If one component fails the equipment fails
 Systems do not fail in the same way
 
 Major challenge to failure analysis
+---
+## It is important to consider how to frame failure data or what the data actually is
+
+Space shuttle program used as an example 8.1.9  
+At the time, failure rate was 1 in 25  
+2 catastrophic failures in 132 flights currently however
+
+Each shuttle operated for different number of missions with varying operating time (table 8.5)
+
+Total of 30946 operating hours = 4.5 operating years  
+1 failure in 15000 operating hours for 5 different shuttles  
+There is not any normalization in terms of failures per operating year
+
+Which is better?  
+How to decide?
+---
+## Monte Carlo can be used to establish failure rates or MTTFs
+
+Monte Carlo simulation is very famous, but not fancy
+
+Generates values of a random variable based probability distributions
+
+Applied to wide variety of complex problems involving random behavior
+
+We use MCNP in nuclear engineering to simulate neutron behavior
+
+Show example from NE450 now (lecture slides)
+---
+# Monte Carlo can be used for [reliability](https://courses.candelalearning.com/riskassessment/chapter/failure-rates/)
+
+$R(T) = e^{-(\frac{T}{\eta})^{\beta}}$
+
+$U \equiv R(T)$ where U is a random number
+
+$T = -\eta(lnU)^{\frac{1}{\beta}}$
+
+What is the interpretation of T in this context?
+
+When $\beta = 1$ we have the exponential distribution
+---
+![DES fuel fabrication](img/des_fuel.fabrication.jpg)
+---
+![Weibull](img/weibull.jpg)
+---
+![Unreliability](img/unreliability.jpg)
+---
+## We can use the unreliability function to simulate failures
+
+$Q(t) = 1 - R(t)$
+
+$Q(t) = 1 - e^{-(\frac{t}{\eta})^{\beta}}$
+
+Assume $\beta = 1$ for general failures
+
+$Q(t) = 1 - e^{-\lambda t}$  
+$\lambda = 0.4$ per day
+
+Monte Carlo simulates area under the curve at t = T
+
+A 'hit' is an equipment failure
+---
+`campaign: 1`       
+`operation time: 0.7144`  
+`failure probability: 0.2486`  
+`failure test: 0.1808`  
+**`failure`**
+
+New equipment is installed, so there is new distribution
+
+`campaign: 2`       
+`operation time: 3.0762`  
+`failure probability: 0.2486`  
+`failure test: 0.6888`  
+**`no failure`**
+
+Early times the likelihood of failure is low  
+Later times it is higher because equipment is older
+---
+# Human error probability is difficult to quantify
+
+Because people generally behave stupidly even sober
+
+Or, different responses are elicited by people in the same environment
+
+What would be examples of human errors that could be quantified?
+
+Astronaut behavior in normal conditions and critical conditions
+
+Psychological stress
+---
+## Performance shaping factors account for human response to stressors
+
+hot/cold  
+noise level   
+light level (my office is dark)  
+vibration  
+ergonomics  
+experience and training (this is something that can be changed)  
+management  
+time  
+stress  
+equipment design/human machine interface
+---
+# The [Delphi technique](https://courses.candelalearning.com/riskassessment/chapter/failure-rates/) forecasts future events
+
+Initially developed in the 1950s by Helmer and Dalkey at Rand Corp
+
+Controlled opinion feedback
+
+Initially “to solicit expert opinion to the selection, from the point of view of a Soviet strategic planner, of an optimal U.S. industrial target system and to the estimation of the number of A-bombs required to reduce the munitions output by a prescribed amount"
+---
+# Delphi is used to validate research outcomes
+
+Impact analysis of changes to the international business environment
+
+Identify national park selection criteria
+
+Develop a taxonomy of organizational mechanisms
+
+Develop rules for a ceramic casting process
+
+Examine and explain how recruitment message specificity influences job seeker attraction to organizations
+
+Well suited to rigorously capture qualitative data or when knowledge is incomplete
+---
+class: middle,center
+
+# Let's step through an example
+---
+## Assemble a panel of experts and use the Delphi technique for your problem
+
+**Mission - Build consensus with a panel on failure rates, etc.**  
+Aircraft maintenance tasks - missing structural anomalies on an inspection (8.1.12)  
+For composite structural material  
+Relevance - Dreamliner 787 from ENGIN110
+
+*Pyroprocessing (challenging because human interaction is limited)*  
+*Robotic operation? Remote equipment operation?*
+
+**Select panel and eliminate bias**  
+Airline inspectors (regulations)  
+Structural experts from manufacturer(s)  
+Repair/mechanics experts
+---
+# Continuing 
+
+**Select panel and eliminate bias**  
+*People from INL*  
+*Actual operators of injection casting equipment*
+
+**Calibrate the panel on the topic**  
+Historical data on detecting cracks in the structure (not the same but close)  
+Inspection procedures, etc.    
+In book example, estimated probabilities are presented
+
+*Related data on industrial injection casting processing (crucible cracking)*
+---
+# Continuing
+
+**Present the parameters of the task to evaluate**  
+Qualitatively assess the problem  
+Discuss any direct historical experience from inspectors, mechanics  
+What kind of structural anomalies would be present?  
+
+*How crucible has cracked, what can be applied to molten TRU*  
+*How we can detect any cracking, range of crack lengths if you need a camera*
+
+**Perform the initial round of discussions on the error probability**  
+Detecting anomalies 2" or less  
+Establish nominal probabilities for each class of crack 
+
+**Discuss the results and iterate**  
+**Repeat until consensus reached for each class**
+---
+# Continuing
+
+**Develop PSFs**  
+What factors would lower the probability of the task?  
+Lack of training; experience  
+Environmental conditions; lighting, etc.  
+Time to inspect
+
+*Hot cells; lack of direct line of sight*  
+*Need for cameras?*  
+*Highly radioactive environment* 
+
+**Establish the conditions where the task can be achieved satisfactorily**  
+"better than nothing"
+
+For use in human reliability analysis
+---
+class: center,middle
+
+# Event tree analysis
+---
+### An event tree is a graphical representation of a series of possible events in an accident sequence
+
+Each event is either a fail or success with associated frequency
+
+Assumes events occur in sequence to a final state
+
+Event sequences follow from some initial event of interest, usually a component failure
+
+Downstream events follow from original event and subsequent events of other components
+
+Initiating event -- event 1 -- event 2 -- event 3 -- event n-1 -- event n -- Final state
+
+We covered ways to assess frequency
+
+Now we're thinking about "What are the consequences?"
+---
+### What is the sequence of events when there is a [fire?](https://courses.candelalearning.com/riskassessment/chapter/event-trees-2/) - Figure 12.2 in the book
+
+![Even tree for fire](img/event.tree_fire.jpg)
+---
+
 ---
 ![doggehs](img/final.jpg)
 </textarea>
