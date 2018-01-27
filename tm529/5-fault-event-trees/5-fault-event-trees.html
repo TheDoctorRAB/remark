@@ -365,9 +365,201 @@ Now we're thinking about "What are the consequences?"
 ---
 ### What is the sequence of events when there is a [fire?](https://courses.candelalearning.com/riskassessment/chapter/event-trees-2/) - Figure 12.2 in the book
 
-![Even tree for fire](img/event.tree_fire.jpg)
+![Event tree for fire](img/event.tree_fire.jpg)
 ---
+# Calculate probabilities and losses
+![Event tree for fire](img/event.tree_fire.loss.jpg)
+---
+![Event tree for pump and valve maintenance](img/event.tree_pump.valve.jpg)
+---
+![Event tree for high pressure gas](img/event.tree_gas.jpg)
+---
+# Event trees apply forward logic
 
+We start with the initiating events and work to what eventually happens
+
+Event trees are used to describe the major events in the accident sequence and each event can then be further analyzed using a fault tree
+
+Each event would need its own fault tree
+
+Event trees are accident sequence development tools
+
+We talked about WASH1400 that basically invented for nuclear power plants
+
+[NRC Handbook](http://www.nrc.gov/reading-rm/doc-collections/nuregs/staff/sr0492/)
+
+Figure 12.3 in the book
+---
+![Event tree for LOCA](img/event.tree_loca.jpg)
+---
+# Multiple barriers reduce risk
+
+A well designed system has multiple barriers that are implemented to stop or reduce consequences of events
+
+The probability that an accidental event will lead to unwanted consequences will therefore depend on whether these barriers are functioning
+
+Event trees can then also be used as a design tool
+
+Design, procedural weaknesses can be identified
+---
+# Event trees are essential to a PRA
+
+Visualize event chains following an accidental event
+
+Visualize barriers and sequence of activation
+
+Good basis for evaluating the need for new/improved procedures and safety functions
+
+Draws on prior PHAs, etc., to determine initiating events
+
+So it's a natural progression into PRA I,II,III
+---
+# But event trees have limitations
+
+No standard for the graphical representation of the event tree
+
+Only one initiating event can be studied in each analysis
+
+Easy to overlook subtle system dependencies
+
+Not well suited for handling common cause failures (only independent events)
+
+Practical only when events can be ordered in time (chronology of events is stable) 
+
+Does not show acts of omission
+
+Difficult to represent interactions among events  
+Difficult to consider effects of multiple initiating events (PHA, FMEA)
+
+So we need other tools for comprehensive risk assessment
+---
+class: center,middle
+
+# Fault tree analysis
+---
+### Fault tree analysis is applied to identify areas to mitigate or prevent risk at all phases of system life cycle
+
+'Little things' lead to catastrophic failures  
+Like the [Japan Airlines](http://lessonslearned.faa.gov/ll_main.cfm?TabID=4&LLID=16&LLTypeID=2) accident  
+
+But before risk assessment was invented, most likely from common cause failures
+
+Advancements in technologies increased complexity and necessitated detailed safety analysis
+
+First FTA developed by Bell Telephone Laboratories (1962)
+
+For the Minuteman ICBM (can't find any information)
+
+Though it seems that not formalized as part of risk assessment until WASH1400
+---
+### Fault trees are a graphic to represent the interaction of failures and other events in a system
+
+Top down, deductive failure analysis  
+Top event are hazards or failure modes (from event tree)  
+Decompose the top event using boolean logic (AND, OR)  
+Bottom set of events are non-decomposable (basic events)
+
+Top events are LOCA, emissions, explosions
+
+Identify failures as a malfunction in a component requiring repair (pump shaft)
+
+Identify faults as malfunctions that self-repair once the governing condition is corrected (wet contacts for a switch; dry them)
+
+Undeveloped events are neglected due to low probability or effect on system
+
+FMEA can be used as input to FTA
+---
+## Define the top event clearly and unambiguously
+
+What is the event?  
+Where does the event occur?  
+When does the event occur?
+
+Crucible cracks in the injection casting equipment during normal operation
+
+Immediate, necessary, and sufficient causes leading to the event  
+Connect via logic gates (down)
+
+Get down to basic events  
+Independent events  
+For which failure data is obtained (or distributions)  
+Work back up to compute top event probability
+
+Really requires expert knowledge of the system
+---
+# Assemble a basic event matrix after defining the top event
+
+Basic failure event -- description -- credible? (table 14.5)
+
+Assessing credibility = whether to include the event in the fault tree
+
+Coolant system flushing procedure in the car (14.7.1)
+
+Sprinkler system failure
+
+System design tool
+---
+### [TAM Airlines Flight 3054](https://www.google.com/maps/place/Sao+Paulo+International+Airport/@-23.4382049,-46.4703261,15z/data=!4m5!3m4!1s0x94ce8af96f722a25:0x8071626c51a7154a!8m2!3d-23.4345529!4d-46.478126) overran the runway and crashed into a warehouse (2007)
+
+Use of FTA for accident analysis with multiple failures (14.7.3)
+
+Airplane are an instructive example because we know a lot about them
+
+Warehouse next to gas station, which exploded
+
+199 fatalities
+---
+# What happened
+
+Rain caused the runway to be wet
+
+Plane overran the runway
+
+Crossed the road(!)
+---
+# Background
+
+20379 operating hours
+
+Jammed braking device reported the day before (thrust reverser)
+
+Landed and couldn't slow down
+
+Veered left and overshot runway over the major road
+
+Collided with warehouse
+
+Safety issues with insufficient length of the runway (faster speed, more distance to stop)
+---
+# Flight recorder
+
+Thrusters in climb position just before touchdown
+
+Audio warning 2 seconds before touchdown for pilots to take manual control
+
+One idle, one at climb position at touchdown; both needed to be in idle position
+
+(cause of veering left)
+
+So, what are some causes for this crash?
+---
+![Sao Paulo airport](img/brazil_airport.jpg)
+---
+# Top event is the airplane crash
+
+So, what are some causes for this crash?  
+Wet runway (hydroplaning, loss of vehicle control)  
+Rain   
+Grooves cut in runway to drain and increase traction  
+Thrust reverser broken (known)  
+Airline policy allowed aircraft to be flown with broken thrust reverser  
+Short runway   
+Airport policy allowed larger planes to land on runway  
+Experienced pilots had not had training in this situation  
+
+Which of these are basic events?
+---
+![Fault tree plane 1]
 ---
 ![doggehs](img/final.jpg)
 </textarea>
