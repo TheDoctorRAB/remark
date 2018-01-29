@@ -23,7 +23,7 @@
   </head>
   <body>
 <textarea id="source">
-class: center,middle
+class: center, middle
 
 # NE585
 ## NUCLEAR FUEL CYCLE ANALYSIS
@@ -31,309 +31,301 @@ class: center,middle
 
 #### 10
 
-.right[**R. A. Borrelli**  
-**@TheDoctorRAB**]
+#### .right[Bob Borrelli  
+@TheDoctorRAB]
 ---
 # Outcomes for the lecture
 
-Content courtesy of Prof. Steven E. Skutnik  
+Understanding how to use SCALE for burnup and depletion calculations
+
+Preparing input files
+
+Executing the computational tools
+
+Interpreting output
+
+Presenting data
+
+**Provided courtesy of  
+Prof. Steven E. Skutnik, Ph.D.  
 Department of Nuclear Engineering  
-The University of Tennessee-Knoxville
-
-Understanding the capabilities of SCALE
-
-Building input files
-
-Analyzing output files
+The University of Tennessee - Knoxville**
 ---
-class: center,middle
+# How do we calculate used fuel isotopic content?
 
-## Nuclear fuel depletion calculations with Origen
----
-## How do we calculate used fuel isotopic content?
-
-Origen (part of SCALE) is used to calculate isotopic inventories for an assembly, given:
+Origen (part of SCALE) is used to calculate isotopic inventories for an assembly using
 
 A collapsed one-group cross-section library  
 Fuel assembly initial enrichment  
 Assembly irradiation history and cooling time
 ---
-### Origen libraries are pre-calculated lattice physics solutions
-![Lattice assembly](img/lattice.jpg)
----
-### Origen solves for the time-dependent neutron flux in the assembly using lattice physics transport tools like **TRITON**
+# Origen libraries are pre-calculated lattice physics solutions
+
+Origen solves for the time-dependent neutron flux in the assembly using lattice physics transport tools like TRITON
 
 Calculating an “assembly average” flux and collapsing to one group, this time-dependent flux is then used to solve for isotopic concentrations
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{300}&space;\LARGE&space;\underline{N}'&space;=&space;\underline{N_0}&space;\cdot&space;\underline{\underline{A}}&space;\cdot&space;\phi" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{300}&space;\LARGE&space;\underline{N}'&space;=&space;\underline{N_0}&space;\cdot&space;\underline{\underline{A}}&space;\cdot&space;\phi" title="\LARGE \underline{N}' = \underline{N_0} \cdot \underline{\underline{A}} \cdot \phi" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\LARGE&space;\underline{N}'&space;=&space;\underline{N_0}\cdot\underline{\underline{A}}\cdot\phi" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\LARGE&space;\underline{N}'&space;=&space;\underline{N_0}\cdot\underline{\underline{A}}\cdot\phi" title="\LARGE \underline{N}' = \underline{N_0}\cdot\underline{\underline{A}}\cdot\phi" /></a>
+---
+![Lattice](img/lattice.jpg)
 ---
 # What do ORIGEN calculations assume?
 
-“Assembly-averaged” burnup characteristics - flux, burnup, etc. produces “averaged” isotopic concentrations
+“Assembly-averaged” burnup characteristics – i.e., flux, burnup, etc. produces “averaged” isotopic concentrations
 
 Works well for “bulk” assembly characteristics – i.e., decay heat, concentrations, etc.
 
 In other words, an “average,” uniform burnup across the assembly – point depletion
 ---
-## Origen depletion calculation flow
-![Origen material flow](img/origen_depletion.calculation.flow.jpg)
+# Origen depletion calculation flow
+![Origen depletion calculation flow](img/origen_depletion.calculation.flow.jpg)
 ---
-## Origen reactor data library interpolation
+# Origen reactor data library interpolation
 ![Origen interpolation](img/origen_interpolation.jpg)
----
-# ARP input format (LEU / UOX)
-
-ORIGEN-ARP is a SCALE isotopic depletion and decay analysis sequence used to perform point-depletion calculations using problem-dependent cross sections
-
-Problem-dependent cross-section libraries are generated using ARP (Automatic Rapid Processing) using an interpolation algorithm that operates on pre-generated libraries created for a range of fuel properties and operating conditions
 ---
 # ARP input format (LEU/UOX)
 
-{configuration name}
+```
+{ Configuration name }
 
-{enrichment [%U-235]}
+{ enrichment [% U-235] } % U-235 initial enrichment 
 
-{number of cycles}
+{ # of cycles } 
 
-{fuel irradiation period(s) [days]} - 1 irradiation period/cycle
+{ Fuel irradiation period(s) [days] } % 1 irradiation period per cycle
 
-{average cycle power [MW/MTU]} - 1 power/cycle
+{ Average cycle power [MW/MTU] } % 1 power (MW/MTU) per cycle
 
-{number interpolations per cycle}
+{ # interpolations per cycle }
 
-{moderator density [g/cc]}
+{ Moderator density [g/cc] }
 
-{interpolated library name}
+{ Interpolated library name }
+```
 ---
 # ARP input example (UOX)
 
-`=arp`                
-`w17x17` - Westinghouse 17x17 lattice                 
-`3.65` - 3.65% enrichment                 
-`3` - 3 irradiation cycles    
-`400 400 350` - 400, 400, 350 day cycle lengths  
-`40 35 30` - 40, 35, 30 MW/MTU  
-`1 1 1` - 1 library per cycle   
-`0.732` - 0.732 g/cc moderator density  
-`w17_interpolated.f33` - interpolated library name  
-`end`                
+```
+=arp
+w17x17 % Westinghouse 17x17 lattice
+3.65 % 3.65% initial enrichment
+3 % 3 irradiation cycles
+400 400 350 % 400, 400, 350 day cycle lengths
+40 35 30 % 40, 35, 30 MW/MTU
+1 1 1 % 1 library per cycle
+0.732 % 0.732 g/cc mod density
+w17_interpolated.f33 % Interpolated library name
+end
+```
 ---
-# Origen inputs are organized into cases
+# Origen input structure
+
+Origen inputs are organized into cases
 
 Each “case” block represents a single irradiation or decay cycle
 
-Typically, each irradiation cycle uses a new interpolated library position
-
-Representing the nearest interpolated burnup
+Typically, each irradiation cycle uses a new interpolated library position; i.e., representing the nearest interpolated burnup
 
 Material compositions can be passed from one case to the next
 ---
-## Origen 6.2 uses SON (Standard Object Notation) syntax for input
+# Origen 6.2 uses SON (Standard Object Notation) syntax for input
 
-[ arrays ] - Consist of one or more numbered entries in brackets  
+`[ arrays ]` Consist of one or more numbered entries in brackets
 
-time = [ 10 20 30 ]
+`time=[ 10 20 30 ]`
 
-{ blocks } - contain keys and arrays
+`{ blocks }` Contain keys and arrays within curly braces
 
-case(caseLabel){ ... }
+`case(caseLabel){ ... }`
 ---
-# SON arrays allow for input shortcuts (similar to MCNP)
+# SON arrays allow for input shortcuts  (similar to MCNP)
 
-Repeat [R] N **R** X - 3 r 1E14 --> 1E14 1E14 1E14
+Repeat - `3 r 1E14` --> `1E14 1E14 1E14`
 
-Linear inerpolation [I] N **I** X Y - 3 i 5 1 --> 5 4 3 2 1
+Linear interpolation - `3 i 5 1` --> `5 4 3 2 1`
 
-Log interpolation [L] N **L** X Y - 5 l 1E-9 1E-3 --> 1E-9 1E-8 1E-7 1E-6 1E-5 1E-4 1E-3
+Log interpolation - `5 L 1E-9 1E-3` --> `1E-9 1E-8 1E-7 1E-6 1E-5 1E-4 1E-3`
 ---
 # Origen input structure
 
 ```
-'SCALE comment  
-=origen    
-% ORIGEN comment  
- bounds{ ... }    
- solver{ ... }    
- options{ ... }      
-case(A){         
-  time=[31 365] % days    
- ...   
-}  
-case(B){   
- ...   
-}     
+'SCALE comment 
+=origen 
+% ORIGEN comment 
+ bounds{ … } % Global problem configuration blocks 
+ solver{ … } % Global problem configuration blocks
+ options{ … } % Global problem configuration blocks
+case(A){ 
+    time=[31 365] % days 
+… 
+} % Each cycle (irradiation or decay) is a case block with time, powers, and (optionally) library, materials
+case(B){ 
+… 
+} % Multiple cases can be chained together to represent an irradiation history
+% more cases? 
 end
 ```
-Global configuration blocks  
-
-Each cycle (irradiation or decay) is a case block with time, powers, and (optionally) library and materials
-
-Multiple cases can be chained together to represent an irradiation history
----
-# Origen input structure
-
-Cycles can be irradiation or decay
-
-Library and materials are optional 
-
-Multiple cases can be chained together to represent an irradiation history
 ---
 # Origen case block components
 
 ```
-case(label){  
-  time{...}  
-  lib{...}     
-  power=[...]     
-  mat{...}   
-  print{...}  
-  save{...}     
-  neutron{...}  
-  gamma{...}  
-  beta{...}   
-  alpha{...}  
+case(label){
+  time{…} % Specify problem times, time units
+  lib{…} % Data library, position to use
+  power=[…] % Problem powers (in MW)
+  mat{…} % Specify problem materials
+  print{…} % Control output print options
+  save{…} % Specify which steps to save, output file (.f71)
+  neutron{…} % Optional blocak to control output of emissions
+  gamma{…}
+  beta{…}
+  alpha{…}
 }
 ```
-
-Specify problem times and time units  
-Data library and position to use  
-Problem powers (in MW)  
-Specify problem materials  
-Control output print options  
-Specify which steps to save and output file (.f71)  
-Optional blocks to control emissions
 ---
-## How to specify times with the time block
+# Specifying times with the time block
 
 Times may be expressed one of two ways
 
-Via array - `time=[ 5 15 300 ]` with units of days
+Time array - `time=[ 5 15 30 ]` with default unit days
 
-Via block -  
+Time block - `time{ t=[ 5 15 30 ] units=HOURS }`
+---
+# Specifying start time with `start`
+
 ```
-time{  
-  t=[ 5 15 300 ]  
-  units = HOURS  
+case{
+  mat{ … }
+  time=[ 1 10 25 50] % End time is 50 days
+  flux=[ 4 r 1E14 ]
+}
+% continuation case (time zero is 50 days) 
+case{
+  time{
+    units=YEARS
+    start=0 % Reset start time to 0
+    t=[0.1 0.3 0.9 2.7] % otherwise will start at 50+365+0.1
+  }
 }
 ```
 ---
-## By default, the start time begins where the last case left off
+# Library specification example
 
 ```
-case{  
-  mat{ ... }  
-  time=[ 1 10 25 50 ]  
-  flux=[ 4 r 1E14]    
-}  
-
-case{  
-  time{    
-    units=YEARS  
-    start=0  
-    t=[ 0.1 0.3 0.9 2.7 ]  
-  }   
-}   
-```
-First case ends at 50 days
-Second case will start at 50 + 365 + 36.5 unless you reset
----
-# How to specify libraries
-
-```
-case{  
-  mat{ ... }  
-  time=[ ... ]  
-  power=[ ... ]  
-  lib{
-       file="w17_interp.f33"  
-       pos=1 % use first position on ARP interpolated library  
-  } % end lib  
+case{
+  mat{ … }
+  time=[ … ]
+  power=[ … ]
+  lib{ 
+    file="w17_interp.f33" % Use 1st position on ARP-interpolated library
+    pos=1
+  } % end lib
 }
-% continuation case (same library, new position)  
-case{  
-  time=[ ... ]  
-  lib{ pos=2 } % use second position on same interpolated library  
+% continuation case (same library, new position)
+case{
+  time=[ … ]
+  lib{ pos=2 } % Use 2nd position on same interpolated library
 }
 ```
 ---
-# How to specify materials 
+# Specifying problem materials
 
 ```
 =origen
 case{
-...
+  …
 % create a material with 1 kg of 3% enriched LEU
   mat{
-    units=GRAMS % units include grams, gram-atoms/moles and curies
-    iso=[u238=970.0E3 u235=3.0E4 o=123.1E3] % can specify individual isotope masses
-  } % specifying only elemental symbol uses natural abundances for each isotope
-  ...
+    units=GRAMS % Valid units include grams, gram-atoms/moles and curies
+    iso=[u238=970.0E3 u235=3.0E4 o=123.1E3] % Can specify individual isotope masses as key/value pairs
+  } % Specifying only elemental symbol uses natural abundances for each isotope
+  …
 } % end case
+end
 ```
 
-#### First case must always specify materials
+**First case must always specify materials**
 ---
-## How to load materials from a previous case
+# Loading materials from a previous case
 
 ```
 =origen
 case(first) {
-  mat{ 
-    units=GRAMS 
-    iso=[u238=970.0E3 u235=3.0E4 o=123.1E3] 
+  mat{
+    units=GRAMS
+    iso=[u238=970.0E3 u235=3.0E4 o=123.1E3]
   }
-... 
+…
 } % end case
 case(second) {
 % load materials from step 4 of last case
-  mat{ previous=4 } % load from step 4 of last case - default is previous=LAST
-...
+  mat{ previous=4 } % Default: previous=LAST
+…
 }
 end
 ```
 ---
-# How to load materials from a saved file
+# Loading materials from a saved file
 
 ```
 =origen
 case{
-...
-% load from position 2 on saved f71 file
+  …
+% Load from position 2 on saved f71 file
   mat{
     load{ file="origen_saved.f71" pos=2 }
   } % end mat
-...
+  …
 } % end case
 end
 ```
 ---
-## Specifying irradiation powers with the power array
+#  Specifying irradiation powers with the power array
 
 ```
 =origen
 case{
-...
+  …
   mat{
-     units=GRAMS
-     iso=[u238=970.0E3 u235=3.0E4 o=123.1E3] 
+    units=GRAMS
+    iso=[u238=970.0E3 u235=3.0E4 o=123.1E3]
   }
 % 10 steps at 35 MW each
 % 14,000 MWd/MTU total cycle burnup
-  powers=[ 10R 35.0 ] % 10 steps of all the same power (35 MW)  - can be different powers for each time interval
-  times=[ 8I 10 400.0 ] % # times = # powers 
+  powers=[ 10R 35.0 ] % 10 steps of all the same power (35 MW) - can be different powers for each time interval
+  times=[ 8I 10 400.0 ] % Number of times = Number of powers - Origen supplies t0 by default
 } % end case
 end
 ```
 
-Powers are in total MW
+**Powers are in total MW (not MW/MTU)**
 ---
-# How to save case output with the save block
+# Saving case outputs with the save block
 
 ```
 =origen
 case(rad){
-...
+  …
 } % end case
+case(decay){
+  time{
+    start=0
+    t=[ 1 3 10 30 100 300 1000 ]
+    units=YEARS
+  }
+  save{
+    file="decay.f71" % Save concentrations to “decay.f71” for later analysis, restarts
+    steps=[ 0 3 7 ] % Save concentrations at initial step (time 0), then at steps 3 (10 years) and 7 (1000 years)
+  }
+} % end case
+end
+```
+---
+# Other save options: LAST
+
+```
+=origen
+  …
 case(decay){
   time{
     start=0
@@ -341,56 +333,33 @@ case(decay){
     units=YEARS
   }
   save{
-     file="decay.f71" % save concentrations to decay.f71 for later analysis and restarts
-     steps=[ 0 3 7 ] % save concentrations at initial step (time 0), then at steps 3 (10 years) and 7 (1000 years)
+    file="decay.f71" % Save concentrations only for last time step (1000 years)
+    steps=[LAST]
   }
 } % end case
 end
 ```
 ---
-# Use of the save option LAST
+# Other save options: ALL
 
 ```
 =origen
-case(rad){
-...
-} % end case
+…
 case(decay){
   time{
     start=0
-    t=[ 1 3 10 30 100 300 1000]
+    t=[ 1 3 10 30 100 300 1000 ]
     units=YEARS
   }
   save{
-     file="decay.f71" 
-     steps=[ LAST ] % save concentrations only for last time step (1000 years)
+    file="decay.f71"
+    steps=ALL % Save concentrations for all time steps
   }
 } % end case
 end
 ```
 ---
-# Use of the save option ALL
-
-```
-=origen
-case(rad){
-...
-} % end case
-case(decay){
-  time{
-    start=0
-    t=[ 1 3 10 30 100 300 1000]
-    units=YEARS
-  }
-  save{
-     file="decay.f71" 
-     steps=[ ALL ] % save concentrations for all time steps
-  }
-} % end case
-end
-```
----
-# Origen options for printing output
+# Origen print options
 
 Origen output can be printed by nuclide `[nuc]` or by element `[ele]`
 
@@ -400,102 +369,27 @@ Actinides `[ac]`, fission products `[fp]`, and light elements `[le]`
 
 Origen supports output across a number of different units
 
-Grams, moles/gram-atoms, decay heat, weight/atom %, radiotoxicity, etc. 
+grams, moles/gram-atoms, decay heat, weight/atom %, radiotoxicity, etc.
 ---
 # Origen output units for decay cases
 
-|UNIT|Description|
-|:----|:----------|
-|`GRAMS`|Mass in grams|
-|`MOLES`,`GRAM-ATOMS`|Number of moles of material|
-|`CURIES`|Activity in Curies|
-|`BECQUERELS`|Activity in Becquerels|
-|`ATOMS_PPM`|Atom fractions $\times 10^6$|
-|`WEIGHT_PPM`|Weight fractions $\times 10^6$|
-|`WATTS`|Total decay heat in watts|
-|`G-WATTS`|Total decay heat from photons in watts|
-|`M3_AIR`|Radiotoxicity for inhalation in $m^3$|
-|`M3_WATER`|Radiotoxicity for ingestion in $m^3$|
+|Unit name    |Description                   |
+|:------------|:-----------------------------|
+|`GRAMS`      |Mass                          |
+|`MOLES`      |Number of moles               |
+|`CURIES`     |Activity                      |
+|`BECQUERELS` |Activity                      |
+|`ATOMS_PPM`  |Atom fractions $\times 10^6$  |
+|`WEIGHT_PPM` |Weight fractions $\times 10^6$|
+|`WATTS`      |Total decay heat              |
+|`G-WATTS`    |Total decay heat from photons |
+|`M3_AIR`     |Radiotoxicity for inhalation  |
+|`M3_WATER`   |Radiotoxicity for ingestion   |
 ---
 # Origen output print examples
 
 ```
-% print each nuclide (with totals across each sub-library) in grams
-print{
-   nuc{ total=yes units=GRAMS }
-}
-```
 
-```
-% print each element (sub-library totals) in grams, moles, and curies
-% Specify a minimum cutoff threshold of 1%
-print{
-   ele{ total=yes units=[GRAMS MOLES CURIES] }
-      cutoffs[ ALL=1.0 ]
-}
-```
-
-```
-% print decay heat and  mass (by element) ONLY for fission products and  actinides
-print{
-   ele{ sublibs=[AC FP] units=[GRAMS WATTS] }
-}
-```
----
-class: center,middle
-
-# Origen sample problems
----
-# Cf-252 decay for 10 years
-
-```
-=origen
-bounds{ neutron=[ 20L 2.0E7 1.0E-5] } % 20 logarithmic bins spanning the energy range in eV
-case{
-  title="Cf-252 decay"
-  lib{ file="end7dec" pos=1 }
-  time{
-    units=YEARS
-    t=[ 0.01 0.03 0.1 0.3 1 3 10 ]
-  }
- mat{
-   units=CURIES
-   iso=[cf252=1.0]
- }
- neutron=yes % perform neutron calculation with defaults
-}
-end
-```
----
-# Simple depletion example
-
-```
-=origen
-case(rad){
-lib{ file="myInterpLib.f33" pos=1 }
-  time=[ 8I 10 300 ]
-  power=[ 10R 30.0 ]  
-  mat{
-    units=GRAMS
-    iso=[u235=32.5E3 u238=967.5E3]
-  }
-}
-case(decay){
-  time{
-     t=[ 10L 1.0 10.0 ]
-     units=YEARS
-  }
-  save{
-     file="simple.f71"
-     steps=ALL
-  }
-}
-end
-```
-
-Irradiate 1 MTU at 3.25% enrichment for 300 days at 30MW   
-Decay for 10 years and save all decay steps
----
 
 ---
 ![doggehs](img/final.jpg)
