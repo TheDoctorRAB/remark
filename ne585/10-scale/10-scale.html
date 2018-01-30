@@ -389,8 +389,207 @@ grams, moles/gram-atoms, decay heat, weight/atom %, radiotoxicity, etc.
 # Origen output print examples
 
 ```
+% print each nuclide (with totals across each sub-library) in grams
+print{
+  nuc{ total=yes units=GRAMS }
+}
+```
 
+```
+% print each element (sub-library totals) in grams, moles, and curies
+% Specify a minimum cutoff threshold of 1%
+print{
+  ele{ total=yes units=[GRAMS MOLES CURIES] }
+  cutoffs[ ALL=1.0 ]
+}
+```
 
+```
+% print decay heat, mass (by element) ONLY for fission products, actinides
+print{
+  ele{ sublibs=[AC FP] units=[GRAMS WATTS] }
+}
+```
+---
+class: center,middle
+
+# Origen sample problems
+---
+# Cf-252 decay for 10 years
+
+```
+=origen
+bounds{ neutron=[ 20L 2.0E7 1.0E-5] } % 20 logarithmic bins spanning the energy range in eV
+case{
+  title="Cf-252 decay"
+  lib{ file="end7dec" pos=1 }
+  time{
+    units=YEARS
+    t=[ 0.01 0.03 0.1 0.3 1 3 10 ]
+  }
+  mat{
+    units=CURIES
+    iso=[cf252=1.0]
+  }
+  neutron=yes
+}
+end
+```
+---
+# Simple depletion example
+
+```
+=origen
+case(rad){
+  lib{ file="myInterpLib.f33" pos=1 }
+    time=[ 8I 10 300 ]
+    power=[ 10R 30.0 ]  
+    mat{
+      units=GRAMS
+      iso=[u235=32.5E3 u238=967.5E3]
+    }
+}
+case(decay){
+  time{
+    t=[ 10L 1.0 10.0 ]
+    units=YEARS
+  }
+  save{
+    file="simple.f71"
+    steps=ALL
+  }
+}
+end
+```
+
+Irradiate 1 MT of 3.25% LEU for 300 days at 30 MW power  
+Decay for 10 years and save all decay steps
+---
+class: middle, center
+
+# Using Fulcrum for output analysis
+---
+# Plotting results
+
+In Fulcrum, open the saved .f71 file from the prior input file 
+
+Select plot units and sort units
+
+Clicking on the “Table” tab at the top of the graph will give a tabular listing of nuclides for each time step
+---
+# MOX fuel calculations with Origen
+
+Mixed-oxide (MOX) fuel calculations (U/Pu fuel) can be performed similarly to LEU/UOX calculations
+
+Only the ARP interpolation format changes
+---
+# ARP input format is slightly changed
+
+```
+{ Configuration name } % mox14x14
+
+{ Pu fraction [% Pu] } % Initial Pu wt%
+
+{ Pu enrichment [% Pu-239 / Pu] } % Initial fissile Pu fraction (% 239Pu/Pu)
+
+{ dummy entry – 1.0 } 
+
+{ number of cycles }
+
+{ Fuel irradiation period(s) [days] } % 1 irradiation period per cycle
+
+{ Average cycle power [MW/MTU] } % 1 power (MW/MTU) per cycle
+
+{ number interpolations per cycle }
+
+{ Moderator density [g/cm3] }
+
+{ Interpolated library name } % mox_interpolated.f33
+```
+---
+# ARP input example for MOX fuel
+
+```
+mox_w17x17 % Westinghouse 17x17 lattice with MOX fuel
+6.65 % initial Pu wt%
+58.5 % fissile Pu fraction
+1 % dummy entry
+3 % irradiation cycles
+400 400 350 % day cycle lengths
+40 35 30 % MW/MTU
+1 1 1 % library per cycle
+0.732 % moderator density
+mox_interpolated.f33 % file name
+```
+---
+### Origen can separate out streams (by element) from a depletion case using the `processing` block
+
+Atom fractions specified in the `retained` array are kept
+
+All others become zero within the stream
+
+```
+case(PUREX){
+  …
+  processing{
+% Structure: element=frac - keep 50 a/o U and 99 a/o Pu
+    retained=[ u=0.50 pu=0.99 ]
+  }
+}
+```
+---
+# Origen can also handle continuous removal of elements
+
+Off-gas handling, continuous feed/removal in the processing block
+
+Multiple removal rates (covering groups of elements) can be specified
+
+```
+case(off_gas){
+  …
+  processing{
+% Removal rate in 1/s    
+    removal{ rate=1E-2 ele=[H Xe Ar] }
+    removal{ rate=1E-7 ele=[U Pu] }
+  }
+}
+```
+---
+# Origen can combine streams from named cases into a combined stream
+
+Useful for waste and recycle calculations
+
+Only one blend keyword may appear in the entire Origen input 
+---
+## Blending case example
+
+```
+=origen
+case(rad){
+% Irradiation happens here
+  …
+}
+case(waste){
+  …
+% process irradiated fuel - keep just FPs
+  processing{ retained=[ pu=0.99 ] }
+}
+case(glass){
+% Borosilicate glass
+  mat{
+    units=GRAMS
+    iso=[li=2.18e3 b=2.11e3 o=46.4e3 f=0.061e3 na=7.65e3 mg=0.49e3 al=2.18e3 si=25.4e3 cl=0.049e3 ca=1.08e3 mn=1.83e3 
+    fe=8.61e3 ni=0.70e3 zr=0.88e3 pb=0.049e3] 
+  }
+  time{ t=1 start=0 }
+}
+case(blend_glass){
+% Vitrified HLW
+  mat{ blend[ waste=0.1 glass=0.1 ] } % Use 10% of waste stream and 10% of glass stream 
+  time={ … }
+  …
+}
+```
 ---
 ![doggehs](img/final.jpg)
 </textarea>
