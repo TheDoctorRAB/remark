@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project 5: Fault and event trees</title>
+<style> p {font-size: 24px } </style>
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]} }); </script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+</head>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <h3><a class="navbar-brand" href="../tm529.html" target="_blank">TM529: Risk assessment</a></h3>
+        </div>
+
+        <div class="nav navbar-nav navbar-right" id="bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <h3><a class="navbar-brand" href="5-fault-event-trees.html">Project 5: Fault and event trees</a></h3>
+        </div>
+    </div>
+</nav>
+
+<body>
+<xmp>
+# TM529: Risk assessment
+## Project 5
+### Fault and event trees
+####[550]
+
+<p>
+1. [75] Because fuel fabrication of pyroprocessing materials is not known well at all, we want to apply a basic failure function that is grounded in some reality in order to model the process for a material flow simulation at the facility scale. It might be useful to obtain failure data for injection casting equipment for other industrial processes.  You each (pretend) to gather this data from different manufacturers. Please run the
+[failure.data.py](https://github.com/TheDoctorRAB/education/blob/master/src/failure.data.py) code from my GitHub space. The free Anaconda package can be downloaded and installed to run python. This code generates a two column data file: equipment ID and operation time in hours. The equipment failed at the operation time.
+
+Sort the data. Compute the failure rate. 
+
+Because not much is known about how the equipment will behave with liquid plutonium metal, the [Weibull distribution](https://courses.candelalearning.com/riskassessment/chapter/failure-rates/) is most useful for these kinds of situations.
+
+$Q(t) = 1 - e^{-\frac{t}{\eta}^{\beta}}
+
+Q(t) is the cumulative density function, sometimes referred to the unreliability function. The variable (t) is time. You have to look up the other two yourself. Stick to the two-parameter distribution. An example of this was covered in class. 
+
+Plot Q(t) versus t for 0 < t < 4500 hours. Just plot for $\beta = 0.5, 1, 1.5$. What does $\beta$  mean in reality for this problem? How should it be selected? Does it make sense to use the Weibull function? Why? What would be the best model to use? What are the limitations to this approach?
+
+If the reliability function is defined as R(t) = 1 - Q(t) find the mean time to failure (MTTF) if:
+
+$MTTF=\int_0^{\infty} R(t) d(t)$ for $\beta$.
+
+There are online tools that will compute the integral for you. Just cite what you use.
+
+An operation time of 4500 hours roughly translates to 18 hours of operation per day for a 250 day working year. Therefore, 3375 hours would be about 75% operation, for a little over six months. What would be the probability that the equipment survives at least 3375 hours for each $\beta$? How is MTTF interpreted with this survival probability?
+
+<p>
+</xmp>
+
+<script type="text/javascript" src="../../../strapdown.min.js?theme=readable"></script>
+
+</body>
+</html>
