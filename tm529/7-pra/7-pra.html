@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>7. Probabilistic risk assessment</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Open Sans', sans-serif; }
+      h1, h2, h3 {
+        font-family: 'Ubuntu';
+        font-weight: normal;
+        }
+      .remark-container {background-color: #F5F5F5; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { background-color: #FFFAF0; font-size: 26px; 
+                         h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
+       }
+      .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+    </style>
+  </head>
+  <body>
+<textarea id="source">
+class: center, middle
+
+# TM529
+## RISK ASSESSMENT
+### Probabilistic risk assessment
+
+#### 7
+
+#### .right[Bob Borrelli  
+@TheDoctorRAB]
+---
+# Learning outcomes
+
+Brief overview of chapters 15 and 16 in the book
+
+Understanding how to integrate analytical tools to form a PRA
+---
+## [PRA](https://ocw.mit.edu/courses/nuclear-engineering/22-38-probability-and-its-applications-to-reliability-quality-control-and-risk-assessment-fall-2005/lecture-notes/sec12_pra_aposta.pdf) is the NRC regulatory paradigm now
+
+Surprisingly, this is not the case with many industries
+
+[Defense-in-Depth](https://www.nrc.gov/reading-rm/doc-collections/commission/srm/1998/1998-144srm.pdf) is an element of the NRC’s safety philosophy that employs successive compensatory measures to prevent accidents or mitigate damage if a malfunction, accident, or naturally caused event occurs at a nuclear facility
+
+Design Basis Accidents are postulated accidents that a nuclear facility must be designed and built to withstand without loss to the systems, structures, and components necessary to assure public health and safety
+
+Essential to PRA
+---
+## PRA can inform system or facility design
+
+Facility must be operated without undue risk to public health and safety
+
+A single failure of any active component (assuming passive components function properly) nor (2) a single failure of a passive component (assuming active components function properly), results in a loss of the capability of the system to perform its safety functions
+
+So don't have something fail and the whole place blows up
+
+Defense in depth mitigates single failures  
+For nuclear, this deals with LOCA  
+
+So they came up with criteria to avoid this  
+Need a heat sink and coolant source (Generation III+)  
+Cladding temperature, long term cooling, accident tolerant fuels etc.
+---
+## Farmer came up with his chart in 1967 for I-131
+![Farmers chart](img/farmers.chart.jpg)
+---
+## [WASH-1400](https://courses.candelalearning.com/riskassessment/chapter/pra-2/) came along in 1975
+
+First formalized use of PRA; fault and events trees, etc.
+
+Dominant contributors to risk were small LOCAs and transients
+
+Support systems and operator actions very important
+
+Change in the reactor coolant system temperature, pressure, or both, attributed to a change in the reactor’s power output
+---
+## The follow up to WASH1400 was [NUREG1150](https://courses.candelalearning.com/riskassessment/chapter/pra-2/) in 1990
+
+Average probability of an individual early fatality per reactor per year
+
+NRC Safety Goal: 5E-07
+
+Level I PRA methods generally sound
+
+Concerns with human reliability analysis, common cause failures, data analysis
+
+Same things we talk about today
+---
+![CDF](img/cdf.jpg)
+---
+![Iodine release](img/iodine.release.jpg)
+---
+
+---
+![doggehs](img/final.jpg)
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script type="text/javascript">
+        var options = {};
+        var renderMath = function() {
+            renderMathInElement(document.body, {delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\[", right: "\\]", display: false},
+            ]});
+        }
+        var slideshow = remark.create({
+          // Set the slideshow display ratio
+          // Default: '4:3'
+          // Alternatives: '16:9', ...
+          ratio: '16:9',
+          // Navigation options
+          navigation: {
+          // Enable or disable navigating using scroll
+          // Default: true
+          // Alternatives: false
+          scroll: true,
+          // Enable or disable navigation using touch
+          // Default: true
+          // Alternatives: false
+          touch: true,
+          // Enable or disable navigation using click
+          // Default: false
+          // Alternatives: true
+          click: false
+          },
+          // Customize slide number label, either using a format string..
+          slideNumberFormat: '%current%',
+          // Enable or disable counting of incremental slides in the slide counting
+          countIncrementalSlides: false 
+          }, renderMath);
+    </script>
+    <script type="text/javascript">
+     /**
+      * a simple zoom in/out/reset for remark.js
+      *
+      * Hot key:
+      *   + : zoom in
+      *   - : zoom out
+      *   0 : reset zoom
+      *
+      * CAVEAT: when switching between full screen and normal screen,
+      *         the zoom factor may not function correctly.
+      *         RELOAD the page, if necessary.
+      *
+      * 
+      * @author William Yeh <william.pjyeh@gmail.com>
+      * @date   2015-01-15
+      *
+      * @license Apache License, Version 2.0.
+      * Copyright © 2015 William Yeh.
+      */
+      var ZOOM_TEXT_SELECTOR =
+       ".remark-slide-content p"
+       + "," + ".remark-slide-content .remark-code-line"
+       ;
+
+      var ZOOM_IMG_SELECTOR =
+       ".remark-slide-content img:hover"
+       ;
+
+      var ZOOM_IMG_RULE;
+
+      var zoom_factor = 100.0;
+      document.body.style.zoom = "100%"
+    
+      function init_zoom_rule() {
+       // @see http://davidwalsh.name/add-rules-stylesheets
+       var styles = document.styleSheets[0];
+       var index = styles.insertRule(
+        ZOOM_IMG_SELECTOR + ' { transform:scale(1); }',
+        styles.cssRules.length
+        );
+
+        ZOOM_IMG_RULE = styles.cssRules.item(index);
+       }
+    
+      function apply_zoom() {
+       var elements = document.querySelectorAll(ZOOM_TEXT_SELECTOR);
+       //console.log('length:', elements.length);
+       for (var i = 0; i < elements.length; ++i) {
+        var item = elements[i];
+        item.style.fontSize = zoom_factor.toString() + '%';
+        }
+
+        ZOOM_IMG_RULE.style.transform = 'scale(' + (zoom_factor / 100) + ')';
+      }
+
+      function zoom_in() {
+       zoom_factor += 10;
+       if (zoom_factor >= 200.0)  zoom_factor = 200.0;
+       apply_zoom();
+      }
+    
+      function zoom_out() {
+       zoom_factor -= 10;
+       if (zoom_factor <= 50.0)  zoom_factor = 50.0;
+       apply_zoom();
+      }
+
+      function zoom_reset() {
+       zoom_factor = 100.0;
+       apply_zoom();
+      }
+
+      init_zoom_rule();
+      window.addEventListener("keydown", function(event) {
+       //console.log(event.keyCode);
+       switch (event.keyCode) {
+        case 187:  // '+': 187 in Chrome & Safari, 61 in FF
+        case 61:  // '+': 187 in Chrome, 61 in FF
+         zoom_in(); 
+         break;
+
+        case 189:  // '-': 189 in Chrome & Safari, 173 in FF
+        case 173:  // '-': 189 in Chrome, 173 in FF
+         zoom_out();
+         break;
+        case 48:   // '0'
+         zoom_reset();
+         break;
+       }
+      }, false);
+    </script>
+  </body>
+</html>
