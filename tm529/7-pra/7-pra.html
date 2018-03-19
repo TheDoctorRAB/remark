@@ -39,6 +39,8 @@ class: center, middle
 Brief overview of chapters 15 and 16 in the book
 
 Understanding how to integrate analytical tools to form a PRA
+
+This is a bit of a mash
 ---
 ## [PRA](https://ocw.mit.edu/courses/nuclear-engineering/22-38-probability-and-its-applications-to-reliability-quality-control-and-risk-assessment-fall-2005/lecture-notes/sec12_pra_aposta.pdf) is the NRC regulatory paradigm now
 
@@ -92,9 +94,247 @@ Same things we talk about today
 ---
 ![CDF](img/cdf.jpg)
 ---
+![Cesium release](img/cesium.release.jpg)
+---
 ![Iodine release](img/iodine.release.jpg)
 ---
+## The NRC issued a [policy statement](https://www.nrc.gov/about-nrc/regulatory/risk-informed/history.html) in 1995
 
+Use of PRA should be increased to the extent supported by the state of the art and data and in a manner that complements the defense-in-depth philosophy
+
+PRA should be used to reduce unnecessary conservatisms associated with current regulatory requirements  
+This is still kind of a problem
+
+Insights derived from PRAs are used in combination with deterministic system analysis to focus licensee and regulatory attention on issues commensurate with their importance to safety
+
+Use risk to inform decision making, not dictate the decision
+
+Measurable parameters monitor plant and licensee performance
+---
+## Devise objective criteria to assess system performance 
+
+Based on a combination of risk insights, deterministic analysis, and performance history  
+Licensee flexibility to determine how to meet established performance criteria
+
+Failure to meet a performance criterion must not result in unacceptable consequences
+
+NPP needs to make sure when an earthquake hits that there is no care damage or release  
+But how a CA plant does that v an MA plant is different
+
+Risk informed, performance based regulations 
+
+Another example?
+---
+## Doing a PRA is wicked hard
+
+Models the whole system including hardware failures, human performance, and relevant physical phenomena
+
+Which is why you need all these tools
+
+When do you know the PRA is satisfactory, complete, comprehensive?
+
+Knowing a priori is highly subjective and very difficult
+
+Unknown unknowns
+
+Still a reactive process
+---
+class: center,middle
+
+# Common cause failures
+---
+## Failures result from events exhibiting dependencies
+
+Or from a single shared cause and coupling factor
+
+Sequence of item failures where the first failure shifts its load to one or more nearby items
+such that these fail and again shift their load to other item, etc.
+
+Cascade
+
+Why did the item fail?  
+Why were several items affected?
+---
+## Identify causes as part of facility or system design
+
+Pre-operational causes stem from design, manufacturing, construction, installation
+
+Operational causes stem from inadequate maintenance and operational procedures, execution, competence, scheduling
+
+Redundancy and diversity  
+Isolation (shielding, containment, separation)
+
+There's lots of modeling for this (bayes and binomial distribution, tables)
+---
+![Common cause failures](img/common.cause.failures.jpg)
+---
+class: center,middle
+
+# PRA  
+## Putting it all together
+---
+## PRA was used by aviation and nuclear industry first, but now everyone uses it
+
+Requires in depth knowledge of the system or process  
+Fuel fabrication example
+
+I have been studying pyroprocessing for years
+
+Tools like fault/event trees, HAZOP, PHA, FMEA all contribute
+
+We need to know what normal operation looks like
+
+Identify deviations
+
+Assign frequencies (with uncertainties)
+
+Sensitivity analysis (HAZOP)
+---
+## Integrate all our tools to assess risk
+
+Identify end states  
+
+How can radiation be released?  
+
+How could people become exposed?  
+
+How could we lose a lot of money?
+
+Characterize the system comprehensively   
+
+You've all done some of this with all the homework projects
+---
+## Identify what data is going to be needed and how you would collect it
+
+Select initiating events (hazards)
+
+Define scenarios linking each initiating event to the end states  
+Apply the trees, FMEA, HAZOP
+
+Modeling where needed  
+Material flow models  
+Transport models  
+Repository assessment  
+
+Quantify risk for each initiating event  
+Uncertainty and sensitivity analysis
+---
+## Rank risk by importance
+
+Farmers chart
+
+Regulations
+
+Peer review
+
+Management - Coming up
+---
+## We have been focused largely on qualitative risk analysis
+
+Risk assessment matrices 
+
+Being able to do this is most of the job
+
+Eventually, frequencies have to be developed
+
+Parameters quantified with associated uncertainties
+
+Models defined
+
+More specific to the system to be analyzed
+---
+## Narrative research can be used to determine what happened
+
+Way of understanding experience
+
+Determining risk by looking at an event such as an airplane crash
+
+You already did this for several examples
+
+Narrative research incorporates personal observation, records, videos, pictures
+
+Mitigate risk for future events
+
+Again, still a retrospective process though
+---
+## Case study research can be used to apply a bounded system to other problems
+
+Hyatt
+
+Pinto --> GM ignition
+
+Dreamliner
+
+Bay bridge
+
+TMI, Chernobyl, Fukushima
+
+Takata air bags?
+
+Doesn't need to be historical 
+---
+## Pedagogically, you want to teach fundamental principles, existing case studies
+
+Then develop your own
+
+So data gathering (what/importance) is important because you aren't modeling on your own, or using existing data in a model to further analyze the case
+---
+## Quantitative risk analysis is needed for the Farmer's chart and regulations
+
+Ultimately needed for Level I,II,III PRA
+
+We have initiating events and scenarios, including human effects
+
+We know how to obtain failure rates and process data
+
+Higher level statistical analysis used
+Like Monte Carlo
+
+Identify distributions for relevant parameters
+Run the model
+
+Establish confidence limits
+---
+## Consider repository assessment 
+
+Wide variety of engineering and scientific disciplines to be needed
+
+Geology, chemical engineering, environmental science, nuclear engineering
+
+Even though we've been working on small-scale projects, you should be able to expand to this level
+
+What is important is that risk has to be defined clearly for each system
+---
+class: center,middle
+## There are two overall 'spaces' to consider with risk assessment
+---
+## 1. After the accident
+
+Figure out what went wrong
+
+Limit potential exposures and releases
+
+Prevent future similar accidents
+
+16.3 in the book
+---
+## 2. Facility/process/experimental operations
+
+Demonstrate ahead of time what the risks are and how they meet institutional requirements
+
+16.3.1. discusses again about the detection of small structural cracks in aircraft
+
+You can't really establish a probability of detection of the cracks
+
+But you can determine how experience would make detection more reliable
+
+Knowing what parts are more prone to cracks
+
+So you need qualitative efforts to determine this
+
+Develop a survey to determine experience level of inspectors
+
+Conduct a physical experiment to collect quantitative data from a lot of inspectors
 ---
 ![doggehs](img/final.jpg)
 </textarea>
