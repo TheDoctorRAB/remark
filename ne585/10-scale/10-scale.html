@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>10. SCALE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Open Sans', sans-serif; }
+      h1, h2, h3 {
+        font-family: 'Ubuntu';
+        font-weight: normal;
+        }
+      .remark-container {background-color: #F5F5F5; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { background-color: #FFFAF0; font-size: 26px; 
+                         h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
+       }
+      .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+    </style>
+  </head>
+  <body>
+<textarea id="source">
+class: center, middle
+
+# NE585
+## NUCLEAR FUEL CYCLE ANALYSIS
+### SCALE
+
+#### 10
+
+#### .right[Bob Borrelli  
+@TheDoctorRAB]
+---
+# Outcomes for the lecture
+
+Understanding how to use SCALE for burnup and depletion calculations
+
+Preparing input files
+
+Executing the computational tools
+
+Interpreting output
+
+Presenting data
+
+**Provided courtesy of  
+Prof. Steven E. Skutnik, Ph.D.  
+Department of Nuclear Engineering  
+The University of Tennessee - Knoxville**
+---
+# How do we calculate used fuel isotopic content?
+
+Origen (part of SCALE) is used to calculate isotopic inventories for an assembly using
+
+A collapsed one-group cross-section library  
+Fuel assembly initial enrichment  
+Assembly irradiation history and cooling time
+---
+# Origen libraries are pre-calculated lattice physics solutions
+
+Origen solves for the time-dependent neutron flux in the assembly using lattice physics transport tools like TRITON
+
+Calculating an “assembly average” flux and collapsing to one group, this time-dependent flux is then used to solve for isotopic concentrations
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\LARGE&space;\underline{N}'&space;=&space;\underline{N_0}\cdot\underline{\underline{A}}\cdot\phi" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\LARGE&space;\underline{N}'&space;=&space;\underline{N_0}\cdot\underline{\underline{A}}\cdot\phi" title="\LARGE \underline{N}' = \underline{N_0}\cdot\underline{\underline{A}}\cdot\phi" /></a>
+---
+![Lattice](img/lattice.jpg)
+---
+# What do ORIGEN calculations assume?
+
+“Assembly-averaged” burnup characteristics – i.e., flux, burnup, etc. produces “averaged” isotopic concentrations
+
+Works well for “bulk” assembly characteristics – i.e., decay heat, concentrations, etc.
+
+In other words, an “average,” uniform burnup across the assembly – point depletion
+---
+# Origen depletion calculation flow
+![Origen depletion calculation flow](img/origen_depletion.calculation.flow.jpg)
+---
+# Origen reactor data library interpolation
+![Origen interpolation](img/origen_interpolation.jpg)
+---
+# ARP input format (LEU/UOX)
+
+```
+{ Configuration name }
+
+{ enrichment [% U-235] } % U-235 initial enrichment 
+
+{ # of cycles } 
+
+{ Fuel irradiation period(s) [days] } % 1 irradiation period per cycle
+
+{ Average cycle power [MW/MTU] } % 1 power (MW/MTU) per cycle
+
+{ # interpolations per cycle }
+
+{ Moderator density [g/cc] }
+
+{ Interpolated library name }
+```
+---
+# ARP input example (UOX)
+
+```
+=arp
+w17x17 % Westinghouse 17x17 lattice
+3.65 % 3.65% initial enrichment
+3 % 3 irradiation cycles
+400 400 350 % 400, 400, 350 day cycle lengths
+40 35 30 % 40, 35, 30 MW/MTU
+1 1 1 % 1 library per cycle
+0.732 % 0.732 g/cc mod density
+w17_interpolated.f33 % Interpolated library name
+end
+```
+---
+# Origen input structure
+
+Origen inputs are organized into cases
+
+Each “case” block represents a single irradiation or decay cycle
+
+Typically, each irradiation cycle uses a new interpolated library position; i.e., representing the nearest interpolated burnup
+
+Material compositions can be passed from one case to the next
+---
+# Origen 6.2 uses SON (Standard Object Notation) syntax for input
+
+`[ arrays ]` Consist of one or more numbered entries in brackets
+
+`time=[ 10 20 30 ]`
+
+`{ blocks }` Contain keys and arrays within curly braces
+
+`case(caseLabel){ ... }`
+---
+# SON arrays allow for input shortcuts  (similar to MCNP)
+
+Repeat - `3 r 1E14` --> `1E14 1E14 1E14`
+
+Linear interpolation - `3 i 5 1` --> `5 4 3 2 1`
+
+Log interpolation - `5 L 1E-9 1E-3` --> `1E-9 1E-8 1E-7 1E-6 1E-5 1E-4 1E-3`
+---
+# Origen input structure
+
+```
+'SCALE comment 
+=origen 
+% ORIGEN comment 
+ bounds{ … } % Global problem configuration blocks 
+ solver{ … } % Global problem configuration blocks
+ options{ … } % Global problem configuration blocks
+case(A){ 
+    time=[31 365] % days 
+… 
+} % Each cycle (irradiation or decay) is a case block with time, powers, and (optionally) library, materials
+case(B){ 
+… 
+} % Multiple cases can be chained together to represent an irradiation history
+% more cases? 
+end
+```
+---
+# Origen case block components
+
+```
+case(label){
+  time{…} % Specify problem times, time units
+  lib{…} % Data library, position to use
+  power=[…] % Problem powers (in MW)
+  mat{…} % Specify problem materials
+  print{…} % Control output print options
+  save{…} % Specify which steps to save, output file (.f71)
+  neutron{…} % Optional blocak to control output of emissions
+  gamma{…}
+  beta{…}
+  alpha{…}
+}
+```
+---
+# Specifying times with the time block
+
+Times may be expressed one of two ways
+
+Time array - `time=[ 5 15 30 ]` with default unit days
+
+Time block - `time{ t=[ 5 15 30 ] units=HOURS }`
+---
+# Specifying start time with `start`
+
+```
+case{
+  mat{ … }
+  time=[ 1 10 25 50] % End time is 50 days
+  flux=[ 4 r 1E14 ]
+}
+% continuation case (time zero is 50 days) 
+case{
+  time{
+    units=YEARS
+    start=0 % Reset start time to 0
+    t=[0.1 0.3 0.9 2.7] % otherwise will start at 50+365+0.1
+  }
+}
+```
+---
+# Library specification example
+
+```
+case{
+  mat{ … }
+  time=[ … ]
+  power=[ … ]
+  lib{ 
+    file="w17_interp.f33" % Use 1st position on ARP-interpolated library
+    pos=1
+  } % end lib
+}
+% continuation case (same library, new position)
+case{
+  time=[ … ]
+  lib{ pos=2 } % Use 2nd position on same interpolated library
+}
+```
+---
+# Specifying problem materials
+
+```
+=origen
+case{
+  …
+% create a material with 1 kg of 3% enriched LEU
+  mat{
+    units=GRAMS % Valid units include grams, gram-atoms/moles and curies
+    iso=[u238=970.0E3 u235=3.0E4 o=123.1E3] % Can specify individual isotope masses as key/value pairs
+  } % Specifying only elemental symbol uses natural abundances for each isotope
+  …
+} % end case
+end
+```
+
+**First case must always specify materials**
+---
+# Loading materials from a previous case
+
+```
+=origen
+case(first) {
+  mat{
+    units=GRAMS
+    iso=[u238=970.0E3 u235=3.0E4 o=123.1E3]
+  }
+…
+} % end case
+case(second) {
+% load materials from step 4 of last case
+  mat{ previous=4 } % Default: previous=LAST
+…
+}
+end
+```
+---
+# Loading materials from a saved file
+
+```
+=origen
+case{
+  …
+% Load from position 2 on saved f71 file
+  mat{
+    load{ file="origen_saved.f71" pos=2 }
+  } % end mat
+  …
+} % end case
+end
+```
+---
+#  Specifying irradiation powers with the power array
+
+```
+=origen
+case{
+  …
+  mat{
+    units=GRAMS
+    iso=[u238=970.0E3 u235=3.0E4 o=123.1E3]
+  }
+% 10 steps at 35 MW each
+% 14,000 MWd/MTU total cycle burnup
+  powers=[ 10R 35.0 ] % 10 steps of all the same power (35 MW) - can be different powers for each time interval
+  times=[ 8I 10 400.0 ] % Number of times = Number of powers - Origen supplies t0 by default
+} % end case
+end
+```
+
+**Powers are in total MW (not MW/MTU)**
+---
+# Saving case outputs with the save block
+
+```
+=origen
+case(rad){
+  …
+} % end case
+case(decay){
+  time{
+    start=0
+    t=[ 1 3 10 30 100 300 1000 ]
+    units=YEARS
+  }
+  save{
+    file="decay.f71" % Save concentrations to “decay.f71” for later analysis, restarts
+    steps=[ 0 3 7 ] % Save concentrations at initial step (time 0), then at steps 3 (10 years) and 7 (1000 years)
+  }
+} % end case
+end
+```
+---
+# Other save options: LAST
+
+```
+=origen
+  …
+case(decay){
+  time{
+    start=0
+    t=[ 1 3 10 30 100 300 1000]
+    units=YEARS
+  }
+  save{
+    file="decay.f71" % Save concentrations only for last time step (1000 years)
+    steps=[LAST]
+  }
+} % end case
+end
+```
+---
+# Other save options: ALL
+
+```
+=origen
+…
+case(decay){
+  time{
+    start=0
+    t=[ 1 3 10 30 100 300 1000 ]
+    units=YEARS
+  }
+  save{
+    file="decay.f71"
+    steps=ALL % Save concentrations for all time steps
+  }
+} % end case
+end
+```
+---
+# Origen print options
+
+Origen output can be printed by nuclide `[nuc]` or by element `[ele]`
+
+Output can be limited by nuclide library type
+
+Actinides `[ac]`, fission products `[fp]`, and light elements `[le]`
+
+Origen supports output across a number of different units
+
+grams, moles/gram-atoms, decay heat, weight/atom %, radiotoxicity, etc.
+---
+# Origen output units for decay cases
+
+|Unit name    |Description                   |
+|:------------|:-----------------------------|
+|`GRAMS`      |Mass                          |
+|`MOLES`      |Number of moles               |
+|`CURIES`     |Activity                      |
+|`BECQUERELS` |Activity                      |
+|`ATOMS_PPM`  |Atom fractions $\times 10^6$  |
+|`WEIGHT_PPM` |Weight fractions $\times 10^6$|
+|`WATTS`      |Total decay heat              |
+|`G-WATTS`    |Total decay heat from photons |
+|`M3_AIR`     |Radiotoxicity for inhalation  |
+|`M3_WATER`   |Radiotoxicity for ingestion   |
+---
+# Origen output print examples
+
+```
+% print each nuclide (with totals across each sub-library) in grams
+print{
+  nuc{ total=yes units=GRAMS }
+}
+```
+
+```
+% print each element (sub-library totals) in grams, moles, and curies
+% Specify a minimum cutoff threshold of 1%
+print{
+  ele{ total=yes units=[GRAMS MOLES CURIES] }
+  cutoffs[ ALL=1.0 ]
+}
+```
+
+```
+% print decay heat, mass (by element) ONLY for fission products, actinides
+print{
+  ele{ sublibs=[AC FP] units=[GRAMS WATTS] }
+}
+```
+---
+class: center,middle
+
+# Origen sample problems
+---
+# Cf-252 decay for 10 years
+
+```
+=origen
+bounds{ neutron=[ 20L 2.0E7 1.0E-5] } % 20 logarithmic bins spanning the energy range in eV
+case{
+  title="Cf-252 decay"
+  lib{ file="end7dec" pos=1 }
+  time{
+    units=YEARS
+    t=[ 0.01 0.03 0.1 0.3 1 3 10 ]
+  }
+  mat{
+    units=CURIES
+    iso=[cf252=1.0]
+  }
+  neutron=yes
+}
+end
+```
+---
+# Simple depletion example
+
+```
+=origen
+case(rad){
+  lib{ file="myInterpLib.f33" pos=1 }
+    time=[ 8I 10 300 ]
+    power=[ 10R 30.0 ]  
+    mat{
+      units=GRAMS
+      iso=[u235=32.5E3 u238=967.5E3]
+    }
+}
+case(decay){
+  time{
+    t=[ 10L 1.0 10.0 ]
+    units=YEARS
+  }
+  save{
+    file="simple.f71"
+    steps=ALL
+  }
+}
+end
+```
+
+Irradiate 1 MT of 3.25% LEU for 300 days at 30 MW power  
+Decay for 10 years and save all decay steps
+---
+class: middle, center
+
+# Using Fulcrum for output analysis
+---
+# Plotting results
+
+In Fulcrum, open the saved .f71 file from the prior input file 
+
+Select plot units and sort units
+
+Clicking on the “Table” tab at the top of the graph will give a tabular listing of nuclides for each time step
+---
+# MOX fuel calculations with Origen
+
+Mixed-oxide (MOX) fuel calculations (U/Pu fuel) can be performed similarly to LEU/UOX calculations
+
+Only the ARP interpolation format changes
+---
+# ARP input format is slightly changed
+
+```
+{ Configuration name } % mox14x14
+
+{ Pu fraction [% Pu] } % Initial Pu wt%
+
+{ Pu enrichment [% Pu-239 / Pu] } % Initial fissile Pu fraction (% 239Pu/Pu)
+
+{ dummy entry – 1.0 } 
+
+{ number of cycles }
+
+{ Fuel irradiation period(s) [days] } % 1 irradiation period per cycle
+
+{ Average cycle power [MW/MTU] } % 1 power (MW/MTU) per cycle
+
+{ number interpolations per cycle }
+
+{ Moderator density [g/cm3] }
+
+{ Interpolated library name } % mox_interpolated.f33
+```
+---
+# ARP input example for MOX fuel
+
+```
+mox_w17x17 % Westinghouse 17x17 lattice with MOX fuel
+6.65 % initial Pu wt%
+58.5 % fissile Pu fraction
+1 % dummy entry
+3 % irradiation cycles
+400 400 350 % day cycle lengths
+40 35 30 % MW/MTU
+1 1 1 % library per cycle
+0.732 % moderator density
+mox_interpolated.f33 % file name
+```
+---
+### Origen can separate out streams (by element) from a depletion case using the `processing` block
+
+Atom fractions specified in the `retained` array are kept
+
+All others become zero within the stream
+
+```
+case(PUREX){
+  …
+  processing{
+% Structure: element=frac - keep 50 a/o U and 99 a/o Pu
+    retained=[ u=0.50 pu=0.99 ]
+  }
+}
+```
+---
+# Origen can also handle continuous removal of elements
+
+Off-gas handling, continuous feed/removal in the processing block
+
+Multiple removal rates (covering groups of elements) can be specified
+
+```
+case(off_gas){
+  …
+  processing{
+% Removal rate in 1/s    
+    removal{ rate=1E-2 ele=[H Xe Ar] }
+    removal{ rate=1E-7 ele=[U Pu] }
+  }
+}
+```
+---
+# Origen can combine streams from named cases into a combined stream
+
+Useful for waste and recycle calculations
+
+Only one blend keyword may appear in the entire Origen input 
+---
+## Blending case example
+
+```
+=origen
+case(rad){
+% Irradiation happens here
+  …
+}
+case(waste){
+  …
+% process irradiated fuel - keep just FPs
+  processing{ retained=[ pu=0.99 ] }
+}
+case(glass){
+% Borosilicate glass
+  mat{
+    units=GRAMS
+    iso=[li=2.18e3 b=2.11e3 o=46.4e3 f=0.061e3 na=7.65e3 mg=0.49e3 al=2.18e3 si=25.4e3 cl=0.049e3 ca=1.08e3 mn=1.83e3 
+    fe=8.61e3 ni=0.70e3 zr=0.88e3 pb=0.049e3] 
+  }
+  time{ t=1 start=0 }
+}
+case(blend_glass){
+% Vitrified HLW
+  mat{ blend[ waste=0.1 glass=0.1 ] } % Use 10% of waste stream and 10% of glass stream 
+  time={ … }
+  …
+}
+```
+---
+![doggehs](img/final.jpg)
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script type="text/javascript">
+        var options = {};
+        var renderMath = function() {
+            renderMathInElement(document.body, {delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\[", right: "\\]", display: false},
+            ]});
+        }
+        var slideshow = remark.create({
+          // Set the slideshow display ratio
+          // Default: '4:3'
+          // Alternatives: '16:9', ...
+          ratio: '16:9',
+          // Navigation options
+          navigation: {
+          // Enable or disable navigating using scroll
+          // Default: true
+          // Alternatives: false
+          scroll: true,
+          // Enable or disable navigation using touch
+          // Default: true
+          // Alternatives: false
+          touch: true,
+          // Enable or disable navigation using click
+          // Default: false
+          // Alternatives: true
+          click: false
+          },
+          // Customize slide number label, either using a format string..
+          slideNumberFormat: '%current%',
+          // Enable or disable counting of incremental slides in the slide counting
+          countIncrementalSlides: false 
+          }, renderMath);
+    </script>
+    <script type="text/javascript">
+     /**
+      * a simple zoom in/out/reset for remark.js
+      *
+      * Hot key:
+      *   + : zoom in
+      *   - : zoom out
+      *   0 : reset zoom
+      *
+      * CAVEAT: when switching between full screen and normal screen,
+      *         the zoom factor may not function correctly.
+      *         RELOAD the page, if necessary.
+      *
+      * 
+      * @author William Yeh <william.pjyeh@gmail.com>
+      * @date   2015-01-15
+      *
+      * @license Apache License, Version 2.0.
+      * Copyright © 2015 William Yeh.
+      */
+      var ZOOM_TEXT_SELECTOR =
+       ".remark-slide-content p"
+       + "," + ".remark-slide-content .remark-code-line"
+       ;
+
+      var ZOOM_IMG_SELECTOR =
+       ".remark-slide-content img:hover"
+       ;
+
+      var ZOOM_IMG_RULE;
+
+      var zoom_factor = 100.0;
+      document.body.style.zoom = "100%"
+    
+      function init_zoom_rule() {
+       // @see http://davidwalsh.name/add-rules-stylesheets
+       var styles = document.styleSheets[0];
+       var index = styles.insertRule(
+        ZOOM_IMG_SELECTOR + ' { transform:scale(1); }',
+        styles.cssRules.length
+        );
+
+        ZOOM_IMG_RULE = styles.cssRules.item(index);
+       }
+    
+      function apply_zoom() {
+       var elements = document.querySelectorAll(ZOOM_TEXT_SELECTOR);
+       //console.log('length:', elements.length);
+       for (var i = 0; i < elements.length; ++i) {
+        var item = elements[i];
+        item.style.fontSize = zoom_factor.toString() + '%';
+        }
+
+        ZOOM_IMG_RULE.style.transform = 'scale(' + (zoom_factor / 100) + ')';
+      }
+
+      function zoom_in() {
+       zoom_factor += 10;
+       if (zoom_factor >= 200.0)  zoom_factor = 200.0;
+       apply_zoom();
+      }
+    
+      function zoom_out() {
+       zoom_factor -= 10;
+       if (zoom_factor <= 50.0)  zoom_factor = 50.0;
+       apply_zoom();
+      }
+
+      function zoom_reset() {
+       zoom_factor = 100.0;
+       apply_zoom();
+      }
+
+      init_zoom_rule();
+      window.addEventListener("keydown", function(event) {
+       //console.log(event.keyCode);
+       switch (event.keyCode) {
+        case 187:  // '+': 187 in Chrome & Safari, 61 in FF
+        case 61:  // '+': 187 in Chrome, 61 in FF
+         zoom_in(); 
+         break;
+
+        case 189:  // '-': 189 in Chrome & Safari, 173 in FF
+        case 173:  // '-': 189 in Chrome, 173 in FF
+         zoom_out();
+         break;
+        case 48:   // '0'
+         zoom_reset();
+         break;
+       }
+      }, false);
+    </script>
+  </body>
+</html>
