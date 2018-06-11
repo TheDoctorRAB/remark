@@ -99,214 +99,296 @@ Licensing - What are the right regulations? What is needed for licensing? - ME!
 
 Market penetration - Who wants it? - Sakae
 ---
-## I discussed shielding technical challenges
+## I discussed shielding design previously
 
-Takeaways
+Results for dose rate showed that there are considerable design challenges
 
+Try backfill materials 
+
+Put the cask in something else 
+
+Get help
 ---
 class: center,middle
 
-## We argued some used fuel pools are filling up  
+## We had argued some pools are filling up  
 
-#### Let's look at this now - USA, Europe, Asia
+### As partial justification for designing this cask  
+
+#### (I talked about ROK because I knew it best from my Berkelely-KAERI postdoc)
+---
+class: center,middle
+
+## Let's look at this now - USA, Europe, Asia
 ---
 ## We know the policy in the United States
 
-Once through fuel cycle
+Once through fuel cycle, no active repository, no interim storage
 
 Fuel stored onsite in pools and some dry storage
 
-75% pool capacity filled in 2011
+75% pool capacity filled in 2011 and 63% pool capacity filled in 2017
 
-63% 
----
+About 55000 MTHM stored in the pools and 2200 MTHM discharged/year 
 
+USA is using dry cask storage at many sites 
 
+Lots of plants are extending the operating licenses, more fuel discharged
 
-
-
-
-
-
-
-
----
-Assemblies need to be cooled for several years before transfer to standard dry casks   
-(Understand that some are transferred sooner - not necessarily internationally)
-
-Let's try design a cask that could serve as an intermediate option between pool and dry storage?
-
-Intended for onsite storage - not a dual purpose cask - storage only
----
-## We have several challenges
-
-Thermal cooling - determining heat transfer coeffients in the cooling tubes and cask materials - Rich
-
-Materials optimization - Boron chemical form, solid solution with aluminum, homogeneity - Brian
-
-Shielding - How thick will the cask be? How much boron do we need? - ME!
-
-Licensing - What are the right regulations? What is needed for licensing? - ME!
-
-Market penetration - Who wants it? - Sakae
----
-## What are some  design constraints for this cask? 
-
-Occupational safety (dose)
-
-Effective heat removal
-
-Mechanical strength 
-
-Cost
-
-Realistically, the cask probably will only be effective for certain fuel types
-
-Test different enrichments, cooling age
----
-## I used ORIGEN for burnup and depletion
-
-Thanks to Steve Skutnik for some slides
-
-Divided the cases in to low burnup, typical burnup, high burnup  
-
-(Read - N-XXYY - X.X% and YY GWD/MTU)
-
-**L-3030**,L-3530,L-3033,L-3133,L-3233,L-3533,L-3240,L-3540,L-4040  
-T-4045,T-4545,T-5045,T-4050,T-4250,T-42550,T-4550,T-5050  
-H-4555,H-5055,H-4560,**H-5060**
-
-Westinghouse 17x17 PWR  
-515 day cycle length and pool cooling (decay) from discharge out to 20 years
----
-class: middle,center
-![Low burnup curies](img/low.burnup.curies.png)
----
-class: middle,center
-![High burnup curies](img/high.burnup.curies.png)
+Argued either way - storage might be an issue long term or might be able to construct dry casks to keep up
 ---
 class: center,middle
 
-## Cask design with MCNP
+## France?
 
-### (oh no)
+## Not really
 ---
-# What's the plan?
+## France has a closed fuel cycle
 
-I decided that the cask probably would only be useful for older fuel
+Reprocess 850 MTHM per year
 
-I wanted to start with a neutron shielding model  
+EDF announced a plan to build 8000 MTHM centralized pool at Belleville-sur-Loire
 
-Cm-144 shown in ORIGEN simulations to be dominant emitter across the board
+~120 miles south of France
+---
+## UK not really either 
 
-Start with initial Sakae cask design
+Operate advanced gas cooled reactors mostly
 
-Simulate neutron emission for dose
+Sellafield reprocesses the AGR fuel 
 
-Vary $B_4C$ weight percent in the plates
+There is a single PWR at the Sizewell B site
 
-Vary thickness
+Dry cask construction started in 2016, and fuel was loaded in 2017
+
+They also call the pools 'ponds' so if you're doing a search for used fuel data in the UK and use 'pools', you're going to waste about half a day figuring out they call them 'ponds'
+---
+## Germany and Belgium are phasing out nuclear
+
+Germany has 7 operating reactors, down from 19
+
+Germany exported used fuel to France for reprocessing
+
+Currently have 16 dry storage facilities including a centralized one at Gorleben
+
+Belgium also has 7 operating reactors 
+
+Used fuel was reprocessed prior to 1999 ban
+
+Remaining MOX fuel will be burned till it runs out
+
+4 pools reracked
+
+Some dry storage at Doel
+---
+## Europe does not look like a credible market
+
+There might be a case for Belgium 
+
+I couldn't find data on pool capacity
+
+They are reracking, but since 2 plants shut down, but Doel 1 and 2 pools are empty
+
+They built a new pool in repsonse to the reprocessing ban
+
+It's not known how full that is either
+
+I didn't look at Finland and Sweden because they already have repository sites
+---
+## ROK has 23 total reactors, 19 PWRs
+
+6541 MTHM used fuel with 70% of space full in the pools at 4 sites
+
+Could be filled by 2021
+
+Public opposition to interim facilities becoming permanent 
+
+Fabricated higher burnup fuel, reracked pools
+
+Fuel transferred from older sites where storage is running out, to newer sites
+
+Don't want to reprocess due to cost
+
+And they would need to find somewhere to store subsequent reprocessing waste
+---
+## Taiwan has 6 reactors on 3 sites - 2 operating
+
+3400 MTHM used fuel all in pools
+
+Pool capacity at **97%**
+
+Taiwanese legislature refused to approve restart at Kuosheng due to the lack onsite used fuel storage
+
+Citizens concerned about a Fukushima-type pool accident because Taiwan is in similar region
+
+Other political opposition to shipping fuel for reprocessing
+
+Atomic Energy Council just issued construction license for dry cask storage at Kuosheng
+---
+## Japan and Fukushima is well known here
+
+Loss of water in the pools led to partially melted fuel
+
+Dry casks were in tact though
+
+13000 MTHM used fuel with 55% capacity filled (2013) - could be higher now
+
+Used to ship fuel overseas for reprocessing - ended in 2005
+
+Rokkasho scheduled to open in 2021 (for now)
+
+2900 MHTM stored at Rokkasho out of 3000 MTHM capacity
+
+Dry casks in use at Fukushima and Tokai Daini
+
+Local government approval required
+---
+## Asia is a potential market for the Sakae cask
+
+Small countries
+
+Centralized storage is problematic
+
+Lack of onsite storage space
+
+Difficulties with local approval
+
+Limited development of dry cask storage
+
+Sakae cask could alleviate space and extend time for dry cask construction
 ---
 class: center,middle
 
-## VISED views
-
-### Got started with help from Seth Dustin
+## So what?
 ---
-class: center,middle
-![Assembly](img/single.assembly_plan.view.jpg)
----
-class: center,middle
-![Assembly](img/single.assembly_side.view_fuel.jpg)
----
-class: center,middle
-![Assembly](img/single.assembly_side.view_pipe.jpg)
----
-class: center,middle
-![Assembly](img/single.assembly_side.view_pipe.zoom.jpg)
----
-# MCNP modeling notes for your interest
+## Sakae has a path to pursue a market plan now
 
-<img src="img/single.assembly_plan.view_small.jpg" align="left">
+Visiting TaiPower this summer to talk about the cask
 
-Cask has backfill   
-Filled with different materials
+Attending an exposition in the UK in October
 
-Lattice card 17x17 unit cells - pitch 12.54 mm
+I suggested that NRC certification will offer a higher level of credibility
 
-Material card taken from ORIGEN output 
+More attractive product
 
-Pipes equally positioned on plates  
-More can be added
+I wanted to start developing compliance guidelines now
 
-"Welds" are separate cells  
-Material can be changed independently
----
-# MCNP output notes for your interest
-
-Standard defaults for dose card
-
-SDEF card - 5 source points per rod (POS)
-
-ERG = Spontaneous Cm fission energy distribution
-
-F2 tally for outward normal on each plate
-
-NPS 1E7 passed all tests for error and VOV  
-
-Few where cap and plug had slope 2.9
-
-Few where FOM trend during last half of problem
-
-Maybe because of running several simulations at once
+If we can build a prototype, we use the guidelines as part of the testing program 
 ---
 class: center,middle
 
-## Results so far
----
-## Low burnup 3030 results for highest dose
+## 10CFR72
 
-|N-XXYY|10wt%|30wt%|50wt%|70wt%|90wt%|
-|:---- |:---:|:---:|:---:|:---:|:---:|
-|1.5 cm|  -  |  -  |  -  |  -  |  -  |
-|3 cm  |  -  |  -  |  -  |  -  |  -  |
-|6 cm  |  -  |  -  |  -  |  -  |  -  |
-|12 cm |  -  |  -  |  -  |  -  |  -  |
-|18 cm |  -  |  -  |  -  |  -  |  -  |
-|30 cm |  -  |  -  |  -  |  -  |  -  |
+#### Licensing Requirements for the Independent Storage of Spent Nuclear Fuel, High-level Radioactive Waste, and Reactor-Related Greater Than Class C Waste
 ---
-## High burnup 5060 results for highest dose
+## Dry storage has been in use in USA since 1986
 
-|N-XXYY|10wt%|30wt%|50wt%|70wt%|90wt%|
-|:---- |:---:|:---:|:---:|:---:|:---:|
-|1.5 cm|  -  |  -  |  -  |  -  |  -  |
-|3 cm  |  -  |  -  |  -  |  -  |  -  |
-|6 cm  |  -  |  -  |  -  |  -  |  -  |
-|12 cm |  -  |  -  |  -  |  -  |  -  |
-|18 cm |  -  |  -  |  -  |  -  |  -  |
-|30 cm |  -  |  -  |  -  |  -  |  -  |
+Vendor obtains Certificate of Compliance under 10CFR72
+
+Currently 4 companies have obtained compliance each with different models
+
+NUHOMS, MAGNASTOR, HI-STAR, HI-STORM (51 total)
+
+Operator also obtains a license to use the casks at the site
+
+Defined as Independent Spent Fuel Storage Installations (ISFSI)
+
+Acronyms are why people hate us
+
+Sakae cask is intended to be single use - storage at reactor site
+
+Pools operate under power reactor license stipulated in 10CFR50
+---
+class: center,middle
+
+## Dry storage cask inventory assessment (2016)
+
+## FCRD-NFST-2014-000602, Revision 2
+
+### Robert H. Jones, Jr. 
+---
+## 10CFR72 has a lots of subparts and paragraphs
+
+It's a bit of a challenge to communicate 
+
+What I did was just go through the regulation, identify relevant parts
+
+Explain how we would have to demonstrate compliance
+
+I was hoping there would be specific performance measure
+
+I made a #fancy table, but it's impossible to reproduce here
+
+I'm just going to hit the relevant parts of the regulation
+---
+## We don't start until Subpart F
+
+### General design criteria
+
+||Part||Description||Action item||
+|:-----|:-----------|:-----------|
+||72.120b.1||GTCC can't be sotred with the used fuel||Sakae cask is only for used fuel||
+||72.124a||Criticality safety||Demonstrate subcritical configuration with MCNP modeling||
+||72.128a.1||Test, monitor safety components||Wait till prototype design||
+||72.128a.2||Shielding||My current task||
+||72.188a.4||Heat removal||Current research||
+---
+## Subpart G addresses quality assurance
+
+I'm admittedly not so strong in this area
+
+||Part||Description||Action item||
+|:-----|:-----------|:-----------|
+||72.140b||QA program||Sakae QA on June 8||
+||72.144c||QA requirements||Need Sakae review||
+||72.146a||Quality standard design||Need Sakae review||
+||72.154a||Purchased material||When boron loading is determined||
+||72.158 ||Special processes||May be relevant to boron loading||
+
+The problem here is we need to know how the boron-Al mix can be done first
+
+Then modify Sakae QA program
+
+It's also not clear if this applies to compuational tools
+---
+## Subpart L lists requirements for approval
+
+||Part||Description||Action item||
+|:-----|:-----------|:-----------|
+||72.230a||Application||Safety analysis report||
+||72.236a||Specify fuel type||PWR||
+||72.236b||Design basis for safety||Safety analysis report||
+||72.236c||Criticality safety||Current research||
+||72.236d||Radiation shielding||Current research||
+||72.236e||Redundant sealing||Prototype phase||
+||**72.236f**||Passive cooling||Not currently||
+||72.236g||Cask lifecycle||Current research||
+||72.236h||Loading/unloading compatiblity||Prototype phase||
 ---
 class: center,middle
 
 ## What's next?
 ---
-## What design and modeling enhancements can be made? 
+## This turned out to be really interesting 
 
-Stick with modeling L-3030 and H-5060
+Subpart F seems like we have covered mostly as part of research process
 
-Design review with the team to bound realistic boron loading and casting plate thickness
+Working on QA with Sakae and Boise State on Subpart G
 
-Add Cs-137 beta, gamma source
+Also will look for other cask company QA programs
 
-Vary backfill material
+Getting help from Mark on Subpart L with other safety analysis reports
 
-Determine significance of neutron activation of aluminum  
-Beta emission at 2.7 MeV and gamma emission at 1.8 MeV
+He licensed one of the Holtec designs
 
-Alternatives to Al 
+Already working on passively cooled design with Rich
+
+Other materials from Brenden like NUGREGs and RGs
+
+Find students I can actually pay to help me
 ---
 class: center,middle
-![doggehs](img/final.jpg)
+![doggehs](img/final2.jpg)
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
