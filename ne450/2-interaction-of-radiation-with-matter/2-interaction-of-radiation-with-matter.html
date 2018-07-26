@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>2. Interaction of radiation with matter</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Open Sans', sans-serif; }
+      h1, h2, h3 {
+        font-family: 'Ubuntu';
+        font-weight: normal;
+        }
+      .remark-container {background-color: #F5F5F5; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { background-color: #FFFAF0; font-size: 26px; 
+                         h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
+       }
+      .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+    </style>
+  </head>
+  <body>
+<textarea id="source">
+class: center, middle
+
+# NE450
+## PRINCIPLES OF NUCLEAR ENGINEERING  
+### Interaction of radiation with matter
+
+#### 2
+
+##### .right[
+Bob Borrelli  
+@TheDoctorRAB  
+]
+---
+# Learning objectives
+
+Explain the different ways radiation interacts with matter 
+
+Apply the concept of cross sections to neutron interactions with matter
+
+Derive neutron scattering relationships
+
+Book - Chapter 3
+---
+class: center,middle
+
+### Gamma rays interact with matter in very complicated ways
+#### Fortunately for us we only need to know three
+---
+## The photoelectric effect occurs when a high energy photon knocks out an electron
+
+Interacts with entire atom
+
+Electron ejected
+
+Leaves a positively charged ion
+
+Usually an x ray emission
+
+Atom recoil carries little KE
+
+Highly probable with heavier atoms
+
+Why?
+---
+class: center,middle
+![pe](img/pe.jpg)
+---
+## For pair production, a high energy photon creates a negatron and positron
+
+Only occurs with photon above 1.022 MeV  
+Near the nucleus  
+Why?
+
+Then they react with other negatrons/positrons
+
+Give off characteristic 0.511 MeV photons
+
+Only in vicinity of Coulomb field
+---
+class: center,middle
+![pp](img/pp.jpg)
+---
+## The Compton effect is elastic scattering of a photon by an electron
+
+Energy and momentum are conserved
+
+All angles of scattering possible
+
+![scatter equation](img/scattering.eq.jpg)
+
+hould be able to derive maximum energy
+
+CE causes problems with shielding - Why?
+
+Talk about NE class experiment
+---
+class:center, middle
+![scatter diagram](img/scattering.jpg)
+---
+class: center,middle
+
+## What is fission?
+---
+## What is the energy of fission from thorium and uranium fuel cycles?
+
+![U235 fission](img/fission_u235.jpg)
+
+![U233 fission](img/fission_u233.jpg)
+
+### $Q = 173.3 MeV, 185.4 MeV$
+
+For comparison, burning a carbon atom releases 4 eV
+
+Some super heavy nuclei fission spontaneously
+---
+## Fission is the splitting of atoms, which releases a lot of energy
+
+![fission](img/fission.jpg)
+---
+class: center,middle
+
+## Neutron interactions
+---
+## Neutrons will pass through electron cloud and react directly with the nucleus
+
+Why?
+
+![u235 compound](img/u235.compound.jpg)
+
+Sometimes the compound nucleus is left in an excited state, before the reaction proceeds, but this can be a very short time
+
+What happens is highly dependent on neutron energy/temp
+
+So you do not always write the compound nucleus in the reaction expression
+---
+class: center,middle
+
+[![compound nucleus](img/compound.jpg)](http://www.citycollegiate.com/fissionXb.gif)
+---
+## There are several ways neutrons interact with nuclei
+
+1. Elastic scattering (probably most important)
+
+2. Inelastic scattering
+
+3. Radiative capture/neutron absorption
+
+4. Charged-particle reactions
+
+5. Neutron producing reactions
+
+Fission (later)
+---
+class:center, middle
+
+![neutron interaction equations](img/neutron.eqs.jpg)
+---
+## With elastic scattering, the neutron strikes the nucleus, and they scatter (n,n)
+
+If you’ve ever played pool (billiards), it’s that sort of
+
+But the neutron is a lot smaller than the nucleus
+
+Kinetic energy and momentum is conserved with nucleus and neutron
+---
+## With elastic scattering, the neutron strikes the nucleus, and they scatter
+
+![neutron elastic scattering](img/neutron.elastic.scattering.jpg)
+---
+## With elastic scattering, the neutron strikes the nucleus, and they scatter (n,n)
+
+Nucleus can be at rest or moving, but neutron velocity is really faster
+
+So basically the nucleus is ‘at rest’
+---
+## The neutron energy after the collision can be obtained by conservation principles
+
+<img align="left" src="img/neutron.elastic.scattering2.jpg">
+
+### $E=E^{'}+E_A$  
+
+### $\vec{p}=\vec{p}^{'}+\vec{P}$
+
+#### $E^{'}=\frac{E_n}{(A+1)^2} \cdot [cos \theta \sqrt{A^2-sin^2 \theta}]^2$
+
+### $\alpha \equiv (\frac{A-1}{A+1})^2$
+
+(p58-9) - but in any edition
+---
+## The concept of lethargy was invented for neutron moderation
+
+They aren't good at naming things
+
+### $u \equiv ln \frac{E_M}{E}$
+
+$E_M$ is the highest neutron energy in the system
+
+What is happening mathematically?
+---
+## The concept of lethargy was invented for neutron moderation
+
+So, lethargy increases when neutron slows down
+
+Log scale is used because neutrons have huge energy range
+---
+## What we really want is average log energy loss per elastic scatter/collision
+
+### $\xi \equiv 1+\frac{\alpha}{1-\alpha}ln \alpha$
+
+### $\alpha \equiv (\frac{A-1}{A+1})^2$
+
+Average change in lethargy
+
+What does this tell us?
+
+In terms of thermal reactor design?
+---
+## Because elastic scattering can be applied to find out how a neutron will slow down
+
+### $\overline{n}_{COL} \equiv \frac{1}{\xi} ln \frac{E_1}{E_2}$
+
+What is the physical interpretation?
+
+Moderation = getting high energy neutrons to low energy
+
+This means from fast moving to slow
+
+Why? This is a very fundamental reactor design constraint
+---
+### With inelastic scattering, it is the same as elastic, but the nucleus is left in excited state (n,n’)
+
+<img align="left" src="img/inelastic.scattering.jpg">
+
+Then the nucleus emits gamma rays  
+
+Occurs above a certain neutron energy for each nucleus  
+
+A neutron with same energy may not scatter with different nuclei  
+Energy is lower for heavier nuclei  
+
+Kinetic energy and momentum **not** conserved  
+Compound nucleus emits lower energy neutron
+---
+class: center,middle
+![doggehs](img/final.jpg)
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script type="text/javascript">
+        var options = {};
+        var renderMath = function() {
+            renderMathInElement(document.body, {delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\[", right: "\\]", display: false},
+            ]});
+        }
+        var slideshow = remark.create({
+          // Set the slideshow display ratio
+          // Default: '4:3'
+          // Alternatives: '16:9', ...
+          ratio: '16:9',
+          // Navigation options
+          navigation: {
+          // Enable or disable navigating using scroll
+          // Default: true
+          // Alternatives: false
+          scroll: true,
+          // Enable or disable navigation using touch
+          // Default: true
+          // Alternatives: false
+          touch: true,
+          // Enable or disable navigation using click
+          // Default: false
+          // Alternatives: true
+          click: false
+          },
+          // Customize slide number label, either using a format string..
+          slideNumberFormat: '%current%',
+          // Enable or disable counting of incremental slides in the slide counting
+          countIncrementalSlides: false 
+          }, renderMath);
+    </script>
+    <script type="text/javascript">
+     /**
+      * a simple zoom in/out/reset for remark.js
+      *
+      * Hot key:
+      *   + : zoom in
+      *   - : zoom out
+      *   0 : reset zoom
+      *
+      * CAVEAT: when switching between full screen and normal screen,
+      *         the zoom factor may not function correctly.
+      *         RELOAD the page, if necessary.
+      *
+      * 
+      * @author William Yeh <william.pjyeh@gmail.com>
+      * @date   2015-01-15
+      *
+      * @license Apache License, Version 2.0.
+      * Copyright © 2015 William Yeh.
+      */
+      var ZOOM_TEXT_SELECTOR =
+       ".remark-slide-content p"
+       + "," + ".remark-slide-content .remark-code-line"
+       ;
+
+      var ZOOM_IMG_SELECTOR =
+       ".remark-slide-content img:hover"
+       ;
+
+      var ZOOM_IMG_RULE;
+
+      var zoom_factor = 100.0;
+      document.body.style.zoom = "100%"
+    
+      function init_zoom_rule() {
+       // @see http://davidwalsh.name/add-rules-stylesheets
+       var styles = document.styleSheets[0];
+       var index = styles.insertRule(
+        ZOOM_IMG_SELECTOR + ' { transform:scale(1); }',
+        styles.cssRules.length
+        );
+
+        ZOOM_IMG_RULE = styles.cssRules.item(index);
+       }
+    
+      function apply_zoom() {
+       var elements = document.querySelectorAll(ZOOM_TEXT_SELECTOR);
+       //console.log('length:', elements.length);
+       for (var i = 0; i < elements.length; ++i) {
+        var item = elements[i];
+        item.style.fontSize = zoom_factor.toString() + '%';
+        }
+
+        ZOOM_IMG_RULE.style.transform = 'scale(' + (zoom_factor / 100) + ')';
+      }
+
+      function zoom_in() {
+       zoom_factor += 10;
+       if (zoom_factor >= 200.0)  zoom_factor = 200.0;
+       apply_zoom();
+      }
+    
+      function zoom_out() {
+       zoom_factor -= 10;
+       if (zoom_factor <= 50.0)  zoom_factor = 50.0;
+       apply_zoom();
+      }
+
+      function zoom_reset() {
+       zoom_factor = 100.0;
+       apply_zoom();
+      }
+
+      init_zoom_rule();
+      window.addEventListener("keydown", function(event) {
+       //console.log(event.keyCode);
+       switch (event.keyCode) {
+        case 187:  // '+': 187 in Chrome & Safari, 61 in FF
+        case 61:  // '+': 187 in Chrome, 61 in FF
+         zoom_in(); 
+         break;
+
+        case 189:  // '-': 189 in Chrome & Safari, 173 in FF
+        case 173:  // '-': 189 in Chrome, 173 in FF
+         zoom_out();
+         break;
+        case 48:   // '0'
+         zoom_reset();
+         break;
+       }
+      }, false);
+    </script>
+  </body>
+</html>
