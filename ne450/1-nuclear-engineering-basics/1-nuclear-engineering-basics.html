@@ -90,7 +90,7 @@ $~$
 
 ![element notation](img/element.notation.jpg)
 ---
-[![periodic table](img/periodic.table.jpg)](http://www2.lbl.gov/Publications/Seaborg/assets/tablePDF.gif)
+[![periodic table](img/periodic.table.jpg)](http://ptable.com)
 ---
 ## Decay is described by a [Poisson process](https://stattrek.com/probability-distributions/poisson.aspx)
 
@@ -286,9 +286,95 @@ Interactions of gamma rays with matter is a very important branch of nuclear phy
 ---
 class: center,middle
 
-[![chart of the nuclides](img/chart.jpg)(https://www.nndc.bnl.gov/chart/)
+[![chart of the nuclides](img/chart.jpg)](https://www.nndc.bnl.gov/chart/)
 ---
+class: center,middle
 
+![chart example](img/chart.example.jpg)
+---
+class: center,middle
+
+![th232 chain](img/th232.chain.jpg)
+---
+class: center,middle
+
+![np237 chain](img/np237.chain.jpg)
+---
+class: center,middle
+
+![u238 chain](img/u238.chain.jpg)
+---
+class: center,middle
+
+![u235 chain](img/u235.chain.jpg)
+---
+## A radioactive isotope decays with a unique characteristic time
+
+Decay is stochastic, characterized by Poisson distribution
+
+So the decay of any one radionuclide cannot be predicted
+
+The probability per time that a nucleus will decay is a constant
+---
+## Decay is described by a [Poisson process](https://stattrek.com/probability-distributions/poisson.aspx)
+
+Occurrences are randomly distributed in time
+
+What is the 'occurrence' here?
+
+Homogeneous, long term decay rate is constant
+
+## $\mu \equiv \lambda \Delta t$
+
+## $P(n) = e^{-\mu} \cdot \frac{\mu^n}{n!}$
+
+What is the [expected value and variance](https://courses.candelalearning.com/riskassessment/chapter/statistical-moments/) of the distribution?
+---
+## A radioactive isotope decays with a unique characteristic time
+
+$n(t)$ atoms at $t$ have decayed in $dt$
+
+## $\lambda n(t) dt$
+
+The number of atoms that decay on average in the interval $t,(t+dt)$ can be expressed as
+
+## $-dn(t)=\lambda n(t) dt$ 
+
+You should be able to solve this for $n(0)=n_0$
+---
+## Radionuclides are characterized by half life
+
+## $t_{\frac{1}{2}}=\frac{ln 2}{\lambda}$
+
+Half life can be derived from the decay law
+---
+## A radionuclide is ‘negligible’ after 10 half-lives have elapsed
+
+![half life example](img/half.life.example.jpg)
+
+Why would this be important?
+---
+## How was half-life discovered?
+
+Rutherford discovered alpha and beta particle decay
+
+In the course of, he noticed that there was a characteristic time
+
+Basically observed decay time was the same for each atom
+
+Experiments with thorium led to the discovery of radon
+
+Then observing the radon gas led to the decay/half-life (65 s)
+---
+class: center,middle
+
+![au198 linear](img/au198.linear.jpg)
+---
+## Engineers like straight lines
+
+Slope of the line is the decay constant
+
+![au198 log](img/au198.log.jpg)
 ---
 class: center,middle
 ![doggehs](img/final.jpg)
