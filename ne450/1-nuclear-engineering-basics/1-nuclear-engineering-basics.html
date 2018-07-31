@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>1. Nuclear engineering basics</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Open Sans', sans-serif; }
+      h1, h2, h3 {
+        font-family: 'Ubuntu';
+        font-weight: normal;
+        }
+      .remark-container {background-color: #F5F5F5; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { background-color: #FFFAF0; font-size: 26px; 
+                         h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
+       }
+      .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+    </style>
+  </head>
+  <body>
+<textarea id="source">
+class: center, middle
+
+# NE450
+## PRINCIPLES OF NUCLEAR ENGINEERING  
+### Nuclear engineering basics
+
+#### 1
+
+##### .right[
+Bob Borrelli  
+@TheDoctorRAB  
+]
+---
+# Learning objectives
+
+Demonstrating fundamental concepts in nuclear physics
+
+Analyzing decay data to identify radionuclides
+
+Summarizing different decay mechanisms
+
+Book - Chapter 2
+---
+[![nuclear infographic](img/nuclear.infographic.jpg)](https://info.stylee32.net/Science/Nuclear%20Physics/1285053099383.jpg)
+---
+## We apply energy from nuclear reactions and radiation interactions with matter
+
+## $E_{REST}=m_0c^2$
+
+## $E=mc^2$
+
+Rest mass energy for an electron = 0.511 MeV  
+
+Save that for later
+---
+## Energy released or energy injected 
+
+![fission](img/fission.jpg) ![fusion](img/fusion.jpg)
+---
+## Determine the energy of a fusion neutron that is not at rest
+
+### $m=\frac{m_0}{\sqrt{1-\frac{v}{c}}^2}$
+
+For the neutron traveling at 5.2E7 m/s, that's about 0.17c; i.e., not negligible
+
+So we have to compute the not rest mass
+
+Rest mass of the neutron is 1.674927211E-27 kg
+
+Fusion neutron at that speed has E = 14.5 MeV
+
+For relativistic calculations use MeV
+---
+class: center, middle
+
+## Some notes on atomic structure
+---
+## Radioactivity is the spontaneous emission of radiation (decay) from unstable atoms
+
+![calcium](img/calcium.jpg) ![phosphorus](img/phosphorus.jpg)
+---
+# Notation
+
+$~$
+
+![element notation](img/element.notation.jpg)
+---
+[![periodic table](img/periodic.table.jpg)](http://www2.lbl.gov/Publications/Seaborg/assets/tablePDF.gif)
+---
+## Decay is described by a [Poisson process](https://stattrek.com/probability-distributions/poisson.aspx)
+
+Occurrences are randomly distributed in time
+
+What is the 'occurrence' here?
+
+Homogeneous, long term decay rate is constant
+
+## $\mu \equiv \lambda \Delta t$
+
+## $P(n) = e^{-\mu} \cdot \frac{\mu^n}{n!}$
+
+What is the [expected value and variance](https://courses.candelalearning.com/riskassessment/chapter/statistical-moments/) of the distribution?
+---
+## There are four fundamental forces of interaction
+
+Gravity: obvious
+
+*Strong nuclear: holds the nucleus together*
+
+Electromagnetic: basically electrons/magnetism
+
+Weak nuclear: changes flavors of quarks
+---
+## To blow out a nucleus, a lot of energy is needed
+
+Would it be constant or variable per nucleus?
+
+Why would you want to blow out the nucleus?
+
+## $\Delta m = (A-Z)m_n-Zm_p-M$
+
+## $\Delta m(^{239}_{94}Pu) = 1759 MeV = 7.40 \frac{MeV}{nucleon}$
+
+This energy corresponds to a velocity of 0.88c
+
+Helpful conversion $931.5 \frac{MeV}{amu}$
+---
+class: center,middle
+
+### 1 amu = 1/12 of the rest mass of an unbound atom of $^{12}_{6}C$ in its nuclear and electronic ground state
+---
+### Binding energy is used to compare atomic stability, reaction energy, probability of fission/fusion
+
+[![binding energy](img/binding.energy.jpg)](https://static.wixstatic.com/media/b89a36_1bd87fd3fe5c4d148c7a37c821c5187b~mv2.gif)
+---
+### Light nuclei get more stable by fusion; heavy nuclei get more stable by fission
+
+[![binding energy invert](img/binding.energy.invert.jpg)](http://ch302.cm.utexas.edu/images302/binding-energy.png)
+---
+## The Q-value for a reaction indicates energy requirements
+
+## $^6_3Li (n,\alpha) ^3_1H$
+
+## $^6_3Li + ^1_0n \rightarrow ^4_2\alpha + ^3_1H$
+
+1. Conservation of nucleons  
+2. Conservation of charge  
+3. Conservation of momentum  
+4. Conservation of energy
+---
+## Compute the Q value for the reaction
+
+## $^6_3Li + ^1_0n \rightarrow ^4_2\alpha + ^3_1H$
+
+![q value](img/q.value.jpg)
+
+## $Q=4.78 MeV$
+
+$Q > 0$ is exothermic  
+$Q < 0$ is endothermic
+
+What does this mean?
+---
+## What is the energy of fission from thorium and uranium fuel cycles?
+
+![U235 fission](img/fission_u235.jpg)
+
+![U233 fission](img/fission_u233.jpg)
+
+For comparison, burning a carbon atom releases 4 eV
+---
+class: center,middle
+
+## On to radiation
+---
+### Scientists in late 1800s made discoveries which would change the course of science, medicine, and history in the 20th Century
+
+![nobel](img/nobel.jpg)
+---
+### Radiation is energy as particles or electromagnetic waves, like sunshine 
+
+[![waves](img/waves.jpg)](https://www.researchgate.net/profile/Ngai_Chan/publication/277996216/figure/fig5/AS:336497640263680@1457238697222/The-electromagnetic-spectrum-for-different-frequency-bands-and-the-corresponding.jpg)
+---
+## Radiation is energy as particles or electromagnetic waves
+
+![shielding](img/shielding.jpg) ![shielding2](img/shielding2.jpg)
+---
+## Radiation is energy as particles or electromagnetic waves
+
+Charged particles are 
+
+- protons (+)  
+- alpha (++)  
+- beta (+/-)  
+- heavy ions (varying)  
+- Pu (4+)
+
+Neutrons have no charge, but are also ionizing
+
+Ionizing rays are x-rays, g-rays, cosmic rays
+---
+## Ernest Rutherford discovered the three main kinds of radioactive decay (Chemistry Nobel 08)
+
+[![radioactivity](img/radioactivity.jpg)](https://www.google.com/search?q=alpha+decay&hl=en&tbs=simg:CAEStgIJRp2DQYj7oxwaqgILEKjU2AQaBggVCAYICAwLELCMpwgaYgpgCAMSKPkI-gjHA_1wInQzbCOwX5hb-C_1ETjD2PPbo9iDfhPbs9qT2oPcY0uz4aMCdedX7oM9sXvHN-RIl_17iPihtH5WOHvC5mTv_1EzrFGcrCNi_1b62swkYrR_1niiXMiiAEDAsQjq7-CBoKCggIARIED5GcQgwLEJ3twQkakwEKHQoKc2NyZWVuc2hvdNqliPYDCwoJL20vMDF6Ym53ChoKCWFuaW1hdGlvbtqliPYDCQoHL20vMGhjcgoYCgZudW1iZXLapYj2AwoKCC9tLzA1ZndiCh8KDGNvbG9yZnVsbmVzc9qliPYDCwoJL20vMDMwemxmChsKCGdyYXBoaWNz2qWI9gMLCgkvbS8wMjFzZGcM,isz:l&tbm=isch&source=lnt&sa=X&ved=0ahUKEwjThtih3a7cAhWnFjQIHWoxAUkQpwUIIA&biw=1092&bih=994&dpr=1.5#imgrc=c6FvpbYSI_eI4M:)
+---
+## Alpha particle decay is the ejection of a helium atom from a heavy nucleus
+
+![alpha decay](img/alpha.jpg)
+
+$Q = 4.268 MeV$
+
+Sometimes nucleus decays to excited state and then emits a gamma ray (for any kind of radiation)
+
+Discrete energy spectrum
+
+Some % decay at certain energy
+---
+class: center,middle
+
+[![alpha con](img/alpha.con.jpg)](https://courses.ecampus.oregonstate.edu/ne581/three/images/chart32.gif)
+---
+## Beta(-) particle decay occurs for unstable nuclei with excessive neutrons
+
+## $^{19}_8O \rightarrow ^{19}_9F + \beta^- + \overline{\nu}$
+
+The neutron is converted to a proton and a beta negative (electron) and anti-neutrino (momentum) are ejected
+
+Sometimes nucleus decays to excited state and then emits a gamma ray (for any kind of radiation)
+---
+class: center,middle
+
+![beta con](img/beta.con.jpg)
+---
+## Beta(+) particle decay occurs for unstable nuclei with deficient neutrons
+
+## $^{11}_6C \rightarrow ^{11}_5B + \beta^+ + \nu$
+
+The proton is converted to a neutron and a beta positive (positron) and neutrino (momentum) are ejected
+
+Sometimes nucleus decays to excited state and then emits a gamma ray (for any kind of radiation)
+---
+class: center,middle
+
+[![betaplus con](img/betaplus.con.jpg)](https://uwaterloo.ca/safety-office/sites/ca.safety-office/files/resize/uploads/images/beta-plus-decay-22na-to-22ne-282x200.gif)
+---
+## In both forms of beta decay, the energies are exhibited by a continuous energy spectrum
+
+[![beta spectrum](img/beta.spectrum.jpg)](http://images.slideplayer.com/17/5357960/slides/slide_24.jpg)
+
+### $\overline{E}(\beta^-)=0.3E_{MAX}$
+
+### $\overline{E}(\beta^+)=0.4E_{MAX}$
+---
+## Electron capture also occurs for unstable nuclei with deficient neutrons
+
+[![electron capture](img/electron.capture.jpg)](https://uwaterloo.ca/safety-office/sites/ca.safety-office/files/resize/uploads/images/beta-plus-decay-22na-to-22ne-282x200.gif)
+
+The K shell electron (not free) is absorbed by the nucleus to convert the proton to a neutron 
+
+Sometimes nucleus decays to excited state and then emits a gamma ray (for any kind of radiation)
+---
+class: center,middle
+
+![electron capture shell](img/ec.shell.jpg)
+---
+## Electron capture and beta(+) are competing processes
+
+![electron capture](img/electron.capture.jpg)  
+![positron](img/positron.jpg)
+
+### $Q=2.842 MeV$
+
+#### $Q>1.022 MeV$ positron favored    
+#### $Q<1.022 MeV$ electron capture favored  
+
+**Why?**
+---
+## Gamma-ray emission is not a decay mode, but superfast de-excitation of the nucleus
+
+Interactions of gamma rays with matter is a very important branch of nuclear physics
+---
+class: center,middle
+
+[![chart of the nuclides](img/chart.jpg)(https://www.nndc.bnl.gov/chart/)
+---
+
+---
+class: center,middle
+![doggehs](img/final.jpg)
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script type="text/javascript">
+        var options = {};
+        var renderMath = function() {
+            renderMathInElement(document.body, {delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\[", right: "\\]", display: false},
+            ]});
+        }
+        var slideshow = remark.create({
+          // Set the slideshow display ratio
+          // Default: '4:3'
+          // Alternatives: '16:9', ...
+          ratio: '16:9',
+          // Navigation options
+          navigation: {
+          // Enable or disable navigating using scroll
+          // Default: true
+          // Alternatives: false
+          scroll: true,
+          // Enable or disable navigation using touch
+          // Default: true
+          // Alternatives: false
+          touch: true,
+          // Enable or disable navigation using click
+          // Default: false
+          // Alternatives: true
+          click: false
+          },
+          // Customize slide number label, either using a format string..
+          slideNumberFormat: '%current%',
+          // Enable or disable counting of incremental slides in the slide counting
+          countIncrementalSlides: false 
+          }, renderMath);
+    </script>
+    <script type="text/javascript">
+     /**
+      * a simple zoom in/out/reset for remark.js
+      *
+      * Hot key:
+      *   + : zoom in
+      *   - : zoom out
+      *   0 : reset zoom
+      *
+      * CAVEAT: when switching between full screen and normal screen,
+      *         the zoom factor may not function correctly.
+      *         RELOAD the page, if necessary.
+      *
+      * 
+      * @author William Yeh <william.pjyeh@gmail.com>
+      * @date   2015-01-15
+      *
+      * @license Apache License, Version 2.0.
+      * Copyright © 2015 William Yeh.
+      */
+      var ZOOM_TEXT_SELECTOR =
+       ".remark-slide-content p"
+       + "," + ".remark-slide-content .remark-code-line"
+       ;
+
+      var ZOOM_IMG_SELECTOR =
+       ".remark-slide-content img:hover"
+       ;
+
+      var ZOOM_IMG_RULE;
+
+      var zoom_factor = 100.0;
+      document.body.style.zoom = "100%"
+    
+      function init_zoom_rule() {
+       // @see http://davidwalsh.name/add-rules-stylesheets
+       var styles = document.styleSheets[0];
+       var index = styles.insertRule(
+        ZOOM_IMG_SELECTOR + ' { transform:scale(1); }',
+        styles.cssRules.length
+        );
+
+        ZOOM_IMG_RULE = styles.cssRules.item(index);
+       }
+    
+      function apply_zoom() {
+       var elements = document.querySelectorAll(ZOOM_TEXT_SELECTOR);
+       //console.log('length:', elements.length);
+       for (var i = 0; i < elements.length; ++i) {
+        var item = elements[i];
+        item.style.fontSize = zoom_factor.toString() + '%';
+        }
+
+        ZOOM_IMG_RULE.style.transform = 'scale(' + (zoom_factor / 100) + ')';
+      }
+
+      function zoom_in() {
+       zoom_factor += 10;
+       if (zoom_factor >= 200.0)  zoom_factor = 200.0;
+       apply_zoom();
+      }
+    
+      function zoom_out() {
+       zoom_factor -= 10;
+       if (zoom_factor <= 50.0)  zoom_factor = 50.0;
+       apply_zoom();
+      }
+
+      function zoom_reset() {
+       zoom_factor = 100.0;
+       apply_zoom();
+      }
+
+      init_zoom_rule();
+      window.addEventListener("keydown", function(event) {
+       //console.log(event.keyCode);
+       switch (event.keyCode) {
+        case 187:  // '+': 187 in Chrome & Safari, 61 in FF
+        case 61:  // '+': 187 in Chrome, 61 in FF
+         zoom_in(); 
+         break;
+
+        case 189:  // '-': 189 in Chrome & Safari, 173 in FF
+        case 173:  // '-': 189 in Chrome, 173 in FF
+         zoom_out();
+         break;
+        case 48:   // '0'
+         zoom_reset();
+         break;
+       }
+      }, false);
+    </script>
+  </body>
+</html>
