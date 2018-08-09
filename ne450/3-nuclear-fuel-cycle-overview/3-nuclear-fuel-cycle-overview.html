@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>3. Nuclear fuel cycle overview</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Open Sans', sans-serif; }
+      h1, h2, h3 {
+        font-family: 'Ubuntu';
+        font-weight: normal;
+        }
+      .remark-container {background-color: #F5F5F5; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { background-color: #FFFAF0; font-size: 26px; 
+                         h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
+       }
+      .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+    </style>
+  </head>
+  <body>
+<textarea id="source">
+class: center, middle
+
+# NE450
+## PRINCIPLES OF NUCLEAR ENGINEERING  
+### Nuclear fuel cycle overview
+
+#### 3
+
+##### .right[
+Bob Borrelli  
+@TheDoctorRAB  
+]
+---
+# Learning objectives
+
+Demonstrating how the nuclear fuel cycle is an holistic system
+
+Explaining why the nuclear fuel cycle is what it is
+
+Some of Chapter 4 in the book
+
+Read [The Nuclear Fuel Cycle: Waste, Risk, and Economics](http://nature.berkeley.edu/er100/lectures/L16-Nuclear-Fuel-Cycle%20copy.pdf)
+
+Check out [Pandora's promise](http://pandoraspromise.com/) if it's still on Netflix
+---
+class: center,middle
+
+![Nuclear fuel cycle 1](img/nuclear.fuel.cycle1.jpg)
+---
+class: center,middle
+
+![Nuclear fuel cycle 2](img/nuclear.fuel.cycle2.jpg)
+---
+class: center,middle
+
+![Reactor sites](img/nuclear.reactor.sites.jpg)
+---
+class: center,middle
+
+![Plant closures](img/plant.closures.jpg)
+---
+class: center,middle
+
+### Check out [plant closure videos](https://courses.candelalearning.com/x84x9/chapter/fuel-cycle-overview/) on the OER
+---
+class: center,middle
+
+[![Plant life cycle](img/plant.life.cycle.jpg)](https://media.mnn.com/assets/images/2011/03/power-reactors-map-sm.jpg)
+---
+class: center,middle
+
+## Let's look at other nations
+---
+class: center,middle
+
+![Europe](img/europe.jpg)
+---
+class: center,middle
+
+![Japan](img/japan.jpg)
+---
+<img src=img/japan2.jpg align="left">
+
+Where are they going to dispose of everything?
+---
+class: center,middle
+
+![Korea](img/korea.jpg)
+
+Same problem for disposal
+---
+class: center,middle
+
+![Asia](img/asia.jpg)
+---
+class: center,middle
+
+![Asia 2](img/asia2.jpg)
+---
+## Look at the fuel cycle from systems engineering pov
+
+Mining
+
+Making the fuel (saw Areva plant in Richland)
+
+What a reactor does and the different kinds
+
+Recycling (what kinds and how)
+
+Back-end management (storage and disposal)
+
+The fuel cycle has a lot of technical but institutional issues too
+
+How are they functionally dependent? 
+---
+## The fuel used in the commercial reactors is $UO_2$ or $ (Pu+U)O_2$
+
+<img src=img/cycle.components.jpg align="left">
+
+**Front end:** making the fuel and putting it in the reactor
+
+**Back end:** what happens when you take it out of the reactor
+---
+## We have to find uranium first - [$U_3O_8$](https://www.uxc.com/p/prices/UxCPrices.aspx)
+
+<img src=img/uranium.world.jpg align="left">
+
+What do you do if you don't have it? 
+
+Check out Australia
+---
+## Uranium mining extracts ore from the ground, and then is refined by milling
+
+The ore contains $UO_2, UO_3$, and other heavy metal oxides
+
+Usually using solvents to leach it from the ground
+
+Then it is chemically treated to obtain [‘yellowcake’](http://ibankcoin.com/zeropointnow/files/2017/11/c5fbed2f-575a-41bb-886e-f26700d43255-2060x1236-2.jpeg) $U_3O_8$
+
+Lots of contaminated scrap is produced though (mill tailings)
+
+Usually dumped as sludge in ponds (lots)
+
+Radioisotopes (radon), heavy metals, chemicals, etc.
+
+We have plenty of uranium resources  
+But what if we decide it is too harmful to mine?
+---
+## $U_3O_8$ is converted to $UF_6$ prior to enrichment with $^{235}U$
+
+Mined U contains $^{234}U$, $^{235}U$, $^{238}U$, .0054%, .72%
+
+Because it is a gas at not so high temperature which is easier for enrichment
+
+Anyone know how this is done?
+
+Enriched to 3% to 5%
+
+The byproduct is depleted uranium DU  
+Used for armor and bullets
+
+Any idea why?
+---
+class: center,middle
+
+![centrifuges](img/centrifuges.jpg)
+---
+class: center,middle
+
+[![centrifuge cross section view](img/centrifuge.jpg)](https://www.cameco.com/uranium_101/static/images/fuel-processing/centrifuge.jpg)
+---
+## [Separative work unit](https://courses.candelalearning.com/x84x9/chapter/swu/) (SWU) tells of the amount of work to enrich uranium from natural abundance to reactor/weapon grade
+
+Dumb acronyms are why people hate nuclear
+
+### $x_F = 0.0072$   
+### $x_P = 0.03 - 0.05$  
+### $x_W = 0.0002 - 0.0003$ (operator determined)
+
+Amount of feed for target product increases linearly with $x_P$ by mass conservation
+---
+<img src=img/mass.conservation.jpg align="left">
+
+$~$
+$~$
+$~$
+
+$F = P + W$
+
+$F \cdot x_F = P \cdot x_P + W \cdot x_W$
+---
+## SWU measures thermodynamic work to separate isotopes
+
+### $SWU \equiv [P \cdot V(x_P)+W \cdot V(x_W)]-F \cdot V(x_F)$   
+SWU has units of kg because of course it does
+
+Where the ['value function'](https://drive.google.com/file/d/0B1ENwqH9aCq5UnZ4NHNCdHZfN1U/view) is defined as:
+
+### $V(x_i) \equiv (2x_i - 1) \cdot ln \frac{x_i}{1-x_i}$
+
+The derivation is based on entropy changes
+
+It's a bit much
+---
+
+
+---
+class: center,middle
+![doggehs](img/final.jpg)
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script type="text/javascript">
+        var options = {};
+        var renderMath = function() {
+            renderMathInElement(document.body, {delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\[", right: "\\]", display: false},
+            ]});
+        }
+        var slideshow = remark.create({
+          // Set the slideshow display ratio
+          // Default: '4:3'
+          // Alternatives: '16:9', ...
+          ratio: '16:9',
+          // Navigation options
+          navigation: {
+          // Enable or disable navigating using scroll
+          // Default: true
+          // Alternatives: false
+          scroll: true,
+          // Enable or disable navigation using touch
+          // Default: true
+          // Alternatives: false
+          touch: true,
+          // Enable or disable navigation using click
+          // Default: false
+          // Alternatives: true
+          click: false
+          },
+          // Customize slide number label, either using a format string..
+          slideNumberFormat: '%current%',
+          // Enable or disable counting of incremental slides in the slide counting
+          countIncrementalSlides: false 
+          }, renderMath);
+    </script>
+    <script type="text/javascript">
+     /**
+      * a simple zoom in/out/reset for remark.js
+      *
+      * Hot key:
+      *   + : zoom in
+      *   - : zoom out
+      *   0 : reset zoom
+      *
+      * CAVEAT: when switching between full screen and normal screen,
+      *         the zoom factor may not function correctly.
+      *         RELOAD the page, if necessary.
+      *
+      * 
+      * @author William Yeh <william.pjyeh@gmail.com>
+      * @date   2015-01-15
+      *
+      * @license Apache License, Version 2.0.
+      * Copyright © 2015 William Yeh.
+      */
+      var ZOOM_TEXT_SELECTOR =
+       ".remark-slide-content p"
+       + "," + ".remark-slide-content .remark-code-line"
+       ;
+
+      var ZOOM_IMG_SELECTOR =
+       ".remark-slide-content img:hover"
+       ;
+
+      var ZOOM_IMG_RULE;
+
+      var zoom_factor = 100.0;
+      document.body.style.zoom = "100%"
+    
+      function init_zoom_rule() {
+       // @see http://davidwalsh.name/add-rules-stylesheets
+       var styles = document.styleSheets[0];
+       var index = styles.insertRule(
+        ZOOM_IMG_SELECTOR + ' { transform:scale(1); }',
+        styles.cssRules.length
+        );
+
+        ZOOM_IMG_RULE = styles.cssRules.item(index);
+       }
+    
+      function apply_zoom() {
+       var elements = document.querySelectorAll(ZOOM_TEXT_SELECTOR);
+       //console.log('length:', elements.length);
+       for (var i = 0; i < elements.length; ++i) {
+        var item = elements[i];
+        item.style.fontSize = zoom_factor.toString() + '%';
+        }
+
+        ZOOM_IMG_RULE.style.transform = 'scale(' + (zoom_factor / 100) + ')';
+      }
+
+      function zoom_in() {
+       zoom_factor += 10;
+       if (zoom_factor >= 200.0)  zoom_factor = 200.0;
+       apply_zoom();
+      }
+    
+      function zoom_out() {
+       zoom_factor -= 10;
+       if (zoom_factor <= 50.0)  zoom_factor = 50.0;
+       apply_zoom();
+      }
+
+      function zoom_reset() {
+       zoom_factor = 100.0;
+       apply_zoom();
+      }
+
+      init_zoom_rule();
+      window.addEventListener("keydown", function(event) {
+       //console.log(event.keyCode);
+       switch (event.keyCode) {
+        case 187:  // '+': 187 in Chrome & Safari, 61 in FF
+        case 61:  // '+': 187 in Chrome, 61 in FF
+         zoom_in(); 
+         break;
+
+        case 189:  // '-': 189 in Chrome & Safari, 173 in FF
+        case 173:  // '-': 189 in Chrome, 173 in FF
+         zoom_out();
+         break;
+        case 48:   // '0'
+         zoom_reset();
+         break;
+       }
+      }, false);
+    </script>
+  </body>
+</html>
