@@ -42,6 +42,8 @@ Demonstrating how the nuclear fuel cycle is an holistic system
 
 Explaining why the nuclear fuel cycle is what it is
 
+Model a nominal solvent extraction system
+
 Some of Chapter 4 in the book
 
 Read [The Nuclear Fuel Cycle: Waste, Risk, and Economics](http://nature.berkeley.edu/er100/lectures/L16-Nuclear-Fuel-Cycle%20copy.pdf)
@@ -590,6 +592,106 @@ Waste is vitrified into a borosilicate glass waste form for disposal
 Well characterized material with 50+ years of scientific study
 
 Very stable
+---
+class: center, middle
+
+![PUREX flow](img/purex.flow.jpg)
+---
+## Typical mass conservation is used to model [solvent extraction](https://courses.candelalearning.com/x84x9/chapter/countercurrent-solvent-extraction/)
+
+This is from Benedict 
+
+Distribution coefficient = organic/aqueous phase concentration at equilibrium
+
+### $D \equiv \frac{y}{x}$
+
+When an aqueous solution of an extractable component is brought into equilibrium with an immiscible solvent for the component and the two phases are then separated, the component will be found distributed between the two phases
+---
+## We then derive the material balance on the extractable component
+
+### $Fz = Fx + Ey$
+
+With $D$ for the system defined before
+---
+class: center,middle
+
+![single stage extraction](img/single.stage.jpg)
+---
+## Derive the concentration that is extracted
+
+### $D \equiv \frac{y}{x}$
+
+### $Fz = Fx + Ey$
+
+### $\therefore y = \frac{Dz}{1+\frac{ED}{F}}$
+
+And the fraction extracted is 
+
+### $\rho = \frac{Ey}{Fz} = \frac{1}{1+\frac{F}{ED}}$
+
+For design then, you only need 3 parameters
+---
+## Derive the solvent feed needed for a given extraction
+
+### $\frac{E}{F} = \frac{\rho}{D(1-\rho)}$
+
+What is the functional dependence of $E(\rho)$?
+
+Amount of used fuel isn't actually a variable 
+---
+## Reduce the amount of solvent needed by using multiple contact stages
+
+With many stages, high extraction fraction can be obtained
+
+Solvent is expensive, so recycling stages are also added to strip out extract
+
+Multiple components can be extracted from organic phase if D is different enough  
+So this would be needed to completely separated U, Pu
+
+Physical conditions affecting D:  
+Element extracted  
+Redox potential of aqueous phase  
+Solvent  
+Concentrations  
+[H+]aq 
+---
+class: center, middle
+
+[![PUREX flowsheet](img/purex.jpg)](http://www.paducahvision.org/img/uranium/uranium4.jpg)
+---
+class: center, middle
+
+![PUREX multistage](img/multistage.jpg)
+---
+class: center,middle
+
+![PUREX engineering flowsheet](img/engineering.flow.jpg)
+---
+## Now apply same mass conservation to multistage extraction
+
+Assume equilibrium between phases
+
+Material balance on extractable component below stage n
+
+![multistage mass balance](img/multistage.mass.balance.jpg)
+
+### $y_{n-1} - y_0 = \frac{F}{E}(x_n-x_1)$
+
+For any stage
+
+### $y_n \equiv D_nx_n$
+---
+### McCabe-Thiele diagram can be used for constructing graphical solution for for stage concentrations
+
+Basically gives the number of stages for an extraction concentration $x_F$
+
+By graphing $y_{n-1} - y_0 = \frac{F}{E}(x_n-x_1)$ on y versus x
+
+Construct operating line to satisfy the above and pass through $x_1,y_0$ with slope $\frac{F}{E}$ relative to equilibrium line $y_n = D_nx_n$
+
+Cannot really change equilibrium line because it is based on $D$
+---
+
 ---
 class: center,middle
 ![doggehs](img/final.jpg)
