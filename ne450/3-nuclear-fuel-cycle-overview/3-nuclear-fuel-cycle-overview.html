@@ -681,7 +681,7 @@ For any stage
 
 ### $y_n \equiv D_nx_n$
 ---
-### McCabe-Thiele diagram can be used for constructing graphical solution for for stage concentrations
+### [McCabe-Thiele diagram](http://ljs.academicdirect.org/A20/079_094.pdf) can be used for constructing graphical solution for for stage concentrations
 
 Basically gives the number of stages for an extraction concentration $x_F$
 
@@ -690,7 +690,172 @@ By graphing $y_{n-1} - y_0 = \frac{F}{E}(x_n-x_1)$ on y versus x
 Construct operating line to satisfy the above and pass through $x_1,y_0$ with slope $\frac{F}{E}$ relative to equilibrium line $y_n = D_nx_n$
 
 Cannot really change equilibrium line because it is based on $D$
+
+Reduce the concentration of the extractable component from $x_F$ to $x_1$ with $\frac{F}{E}$
+
+Start at $x_1,y_0$ and move up
 ---
+class: center,middle
+
+[![McCabe Thiele](img/mccabe.jpg)](http://www.tsijournals.com/articles-images/chemical-technology-McCabe-Thiele-uranium-11-5-102-g015.png)
+---
+## Derive the extraction factor for multiple stages
+
+### $\rho \equiv \frac{Ey_N}{Fx_F}$
+
+Or
+
+### $1 - \rho = \frac{x_1}{x_F}$
+
+What does this tell us? 
+
+And feed ratio can be defined in terms of $f(\rho)$ as 
+
+### $\frac{E}{F} = \frac{\rho x_F}{y_N-y_0}$
+
+What about here?
+---
+class: center,middle
+
+## How many stages for complete extraction?
+
+## What does that look like on McCabe-Thiele?
+---
+## Apply these concepts to model multistage extraction based on [Kremser equation](http://facstaff.cbu.edu/rprice/lectures/kremser.html)
+
+From before  
+$y_{n-1} - y_0 = \frac{F}{E}(x_n-x_1)$  
+$y_n \equiv D_nx_n$
+
+And the extraction factor is   
+$\beta \equiv \frac{DE}{F}$
+
+Then 
+
+![extaction equation](img/extraction.equation.jpg)
+
+### $y_N = \frac{\beta^N - 1}{\beta - 1}(Dx_1-y_0) +y_0$
+---
+## This can also be applied if there are two extractable components in the feed
+
+Given
+
+### $D_A,D_B,\beta_A,\beta_B$
+
+Define decontamination factor. What does this mean?
+
+### $f_{AB} \equiv \frac{\rho_A}{\rho_B}$
+
+### $f_{AB} = \frac{\beta_A}{\beta_B}(\frac{\beta^N_A - 1}{\beta^N_B - 1})(\frac{\beta^{N+1}_B - 1}{\beta^{N+1}_A - 1})$ for $y_0 = 0$
+---
+class: center,middle
+
+## Back-end management overview
+---
+## What do you do with the fuel when you take it out of the reactor?
+
+Either the used fuel is reprocessed or disposed
+
+But there is always going to be some high-level waste
+
+High-level waste = highly radioactive, some long-lived, toxic
+
+So far in USA, used fuel is stored in the pool and in dry casks
+
+What’s the problem with keeping the spent fuel just lying around?
+
+Who has 'active' repositories? How is safety determined?
+
+Watch 'Into Eternity' if you can
+---
+## So what is supposed to be done with the waste?
+
+NAS in 1957 recommended deep disposal in salt
+
+Why salt?
+
+Lyons KS was investigated 1957-72, but scrapped due to public opposition
+
+Why would the public possibly be opposed?
+
+WIPP authorized in 1980 and received waste first in 1999  
+Zero accidents recorded, not counting the moron who lost his badge when we were there
+
+WIPP = TRU waste (from weapons program)
+
+[WIPP accident](https://courses.candelalearning.com/x84x9/chapter/back-end-of-the-fuel-cycle/)
+---
+## Nuclear waste policy act (1982) is the basis for HLW management in USA
+
+Established disposal in geologic formation  
+Sites studied: Hanford, Yucca Mountain, Texas
+
+Amendment in 1987: only Yucca Mountain (70000 MTHM)  
+Supposed to start in 1998
+
+A license application was submitted to NRC in 2008  
+Obama Administration withdrew any further funding
+
+August 2013 U.S. Court of Appeals DC  NRC resumed work on  safety review 
+ 
+January 2015 NRC Safety Evaluation Report  
+Working Environmental Impact Statement early [2016](https://www.nrc.gov/waste/hlw-disposal/key-documents.html)
+---
+class: center,middle
+
+## But what happens if the license is granted?
+---
+class: center, middle
+
+## How should nuclear facilities be cited?
+---
+## [Blue Ribbon Commission](https://courses.candelalearning.com/x84x9/chapter/back-end-of-the-fuel-cycle/) was formed to review back-end policy
+
+Really, because there wasn't any policy
+
+1- A new, consent-based approach to siting future nuclear waste management facilities.
+
+2- A new organization dedicated solely to implementing the waste management program and empowered with the authority and resources to succeed.
+
+3- Access to the funds nuclear utility ratepayers are providing for the purpose of nuclear waste management.
+
+4- Prompt efforts to develop one or more geologic disposal facilities.
+
+5- Prompt efforts to develop one or more consolidated storage facilities.
+---
+6- Prompt efforts to prepare for the eventual large-scale transport of spent nuclear fuel and high-level waste to consolidated storage and disposal facilities when such facilities become available.
+
+7- Support for continued U.S. innovation in nuclear energy technology and for workforce development.
+
+8- Active U.S. leadership in international efforts to address safety, waste management, non-proliferation, and
+security concerns.
+
+Not particularly revolutionary (Peterson), but what other nations are doing around the world
+
+The point of the BRC was to establish consensus
+---
+## The Energy Policy Act in (1992) set regulatory framework for repositories
+
+40CFR197: EPA radioactivity releases
+
+10CFR63: Construction, operation, closure
+
+NAS review in 1995  
+Extended time frame of peak risk to 1 million years (of adverse health effects)
+
+So what do you do to demonstrate compliance out to 1 million years?
+
+[Summary of TSPA](https://courses.candelalearning.com/x84x9/chapter/back-end-of-the-fuel-cycle/) by Peter Swift
+
+More in depth discussion repository design later
+---
+class:center, middle
+
+![Doctor Evil](img/doctor.evil.jpg)
+---
+class: center, middle
+
+![Yucca Mountain TSPA](img/yucca.mountain.jpg)
 ---
 class: center,middle
 ![doggehs](img/final.jpg)
