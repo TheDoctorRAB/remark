@@ -80,6 +80,128 @@ Critical size is determined based on material and geometry
 
 Add a reflector
 ---
+class: center,middle
+
+## Four factor formula
+---
+### Neutron reproduction factor is ratio of neutrons produced due to fission per neutron absorbed in by the fuel
+
+## $\eta \equiv \frac{\nu \Sigma_F}{\Sigma_A}$
+
+Average number of neutrons released per fission is dependent on material
+
+Prompt and delayed neutrons (important to control)
+
+Average number of neutrons per thermal fission times the probability a fission occurs when a thermal neutron is absorbed by the fuel
+
+Needs to be greater than 1 - Why?
+---
+## Contemporary reactors use $^{235}U$
+
+However, in nature only about 0.7%
+
+Reactors need 3% to 5% 
+
+Enrichment processes
+---
+## Fuel utilization factor is ratio of neutrons absorbed in fuel to fuel + moderator
+
+## $f \equiv \frac{\Sigma^{FUEL}_A}{\Sigma^{FUEL}_A + \Sigma^{MOD}_A}$
+
+## $0 < f < 1$
+---
+## Resonance escape is probability neutron is not absorbed in the resonance region
+
+Most neutrons are absorbed by $^{238}U$ when slowing down in commercial reactors
+
+Empirical results are typically used because it is extremely difficult to compute 
+---
+class: center,middle
+
+![Fission cross section](img/fission.cross.section.jpg)
+---
+### Fast fission factor is ratio of the total number of fast and thermal neutrons produced to number produced by just thermal fission
+
+Again, very hard to calculate
+---
+## Critical configurations are needed to design reactors
+
+But $k$ is used to determine subcritical assemblies as well
+
+Like used fuel pool storage
+
+Or any kind of storage
+---
+class: center,middle
+
+![Used fuel pool](img/used.fuel.pool.jpg)
+---
+class: center, middle
+
+[![Neutron generation](img/neutron.generation.jpg)](http://knowledgepublications.com/doe/images/DOE_Nuclear_Neutron_Life_Cycle.gif)
+---
+## Burnup is a measure of the total energy released in fission by the fuel
+
+Typically given as GWD/MTU
+
+1.05 g $^{235}U$ = 1 MWD
+
+Also called 'depletion analysis' - BURN card on MCNPX - or ORIGEN
+
+Serpent better
+
+Korean Generation III+ design is 55 GWD/MTU
+
+Higher burnup means more fissions, more fuel consumed
+
+But the build up of fission product poisons means that refueling is needed
+---
+## $^{239}Pu$ is actually produced in the reactor due to $^{238}U$ neutron absorption
+
+Quantity depends on burnup
+
+At the end of a fuel campaign, some Pu is fissioning as well
+
+This is extracted by reprocessing to make recycled fuel (MOX)
+
+Taking advantage of this, reactors can be designed to make plutonium
+
+Fast reactors are used
+---
+class: center,middle
+
+## Neutron diffusion and moderation
+---
+## Define energy dependent neutron interaction rate
+
+### $F \equiv \int^\infty_0 \Sigma_T(E) \phi(E) dE$
+
+Total interaction rate over all neutron energies
+
+Typically assume monoenergetic neutrons 
+
+Derived in 5.1
+---
+## We assume neutron diffusion follows Fick's law
+
+Which is a good assumption because nearly everything does
+
+### $J_i \equiv -D \frac{d \phi}{di}$
+
+### $D \equiv [L]$
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\huge&space;$\underline{J}&space;\equiv&space;-\underline{\underline{D}}&space;\nabla&space;\phi$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\huge&space;$\underline{J}&space;\equiv&space;-\underline{\underline{D}}&space;\nabla&space;\phi$" title="\huge $\underline{J} \equiv -\underline{\underline{D}} \nabla \phi$" /></a>
+
+The book calls J 'current'
+---
+## There are conditions when Fick's law is not valid
+
+Strongly absorbing medium  
+
+Three mean free paths of source or medium surface
+
+Anisotropic scattering
+---
 
 ---
 class: center,middle
