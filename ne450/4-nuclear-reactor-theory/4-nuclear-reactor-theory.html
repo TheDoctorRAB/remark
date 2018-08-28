@@ -202,6 +202,177 @@ Three mean free paths of source or medium surface
 
 Anisotropic scattering
 ---
+class: center, middle
+
+![current](img/current.jpg)
+---
+## Equation of continuity for neutrons describes behavior in a reactor
+
+Concept applied to describe many physical phenomena
+
+Material passing through a control volume must be accounted for 
+
+Sometimes how the control volume is defined is important
+
+Typically just a fixed volume
+---
+#### [rate of change of neutrons] = [production rate] - [absorption rate] - [leakage rate]
+
+$\int_V ndV$ - total number of neutrons  
+
+$\frac{d}{dt} \int_V ndV = \int_V \frac{\partial n}{\partial t} dV$ - rate of change
+
+$\int_V sdV$ - production rate
+
+$\int_V \Sigma_A \phi dV$ - absorption rate
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\int_A&space;\underline{J}&space;\cdot&space;\underline{n}&space;dA&space;=&space;\int_V&space;\nabla&space;\underline{J}&space;dV" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\int_A&space;\underline{J}&space;\cdot&space;\underline{n}&space;dA&space;=&space;\int_V&space;\nabla&space;\underline{J}&space;dV" title="\int_A \underline{J} \cdot \underline{n} dA = \int_V
+\nabla \underline{J} dV" /></a> - leakage rate
+---
+class: center,middle
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\LARGE&space;\frac{\partial{n}}{\partial{t}}&space;=&space;s&space;-&space;\Sigma_A\phi&space;-&space;\nabla\underline{J}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\LARGE&space;\frac{\partial{n}}{\partial{t}}&space;=&space;s&space;-&space;\Sigma_A\phi&space;-&space;\nabla\underline{J}" title="\LARGE \frac{\partial{n}}{\partial{t}} = s - \Sigma_A\phi - \nabla\underline{J}"
+   /></a>
+---
+## Use the equation of continuity to obtain the diffusion equation
+
+Substitute in Fick's law
+
+$D \nabla^2 \phi - \Sigma_A \phi + s = \frac{\partial{n}}{\partial{t}}$
+
+$\phi = nv$
+
+$D \nabla^2 \phi - \Sigma_A \phi + s = \frac{1}{v} \frac{\partial{\phi}}{\partial{t}}$
+
+$\nabla^2 \phi - \frac{\Sigma_A}{D} \phi + \frac{s}{D} = \frac{1}{D} \frac{1}{v} \frac{\partial{\phi}}{\partial{t}}$
+
+$\nabla^2 \phi - \frac{1}{L^2} \phi + \frac{s}{D} = \frac{1}{D} \frac{1}{v} \frac{\partial{\phi}}{\partial{t}}$
+
+$\nabla^2 \phi - \frac{1}{L^2} \phi + \frac{s}{D} = 0$
+---
+## Use the equation of continuity to obtain the diffusion equation
+
+L is defined as the 'diffusion length' (5.7)
+
+Average(ish) distance traveled by neutron before absorption
+
+Not quite the same as mean free path
+
+There are several typical solutions in 5.6
+
+s = 0 since the medium itself does not produce neutrons
+
+We are basically talking about moderator behavior
+
+With more math, these are valid for thermal neutrons
+---
+## Neutrons have an energy distribution
+
+Emitted in fission with continuous energy spectrum
+
+To get around this ranges of neutrons grouped into 'bins'
+
+Group diffusion theory
+
+Each group has averaged parameters
+
+Continuity equation then needs more terms
+
+Scatter out of the group
+
+Scatter into the group
+
+Three group diffusion, four group, five, etc.
+---
+class: center,middle
+
+![neutron energy groups](img/groups.jpg)
+---
+## Group theory useful for fast neutrons and thermal neutrons
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\LARGE&space;D_F&space;\nabla^2&space;\phi_F&space;-&space;\Sigma_{F&space;\rightarrow&space;T}^S&space;\phi_F&space;=&space;0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\LARGE&space;D_F&space;\nabla^2&space;\phi_F&space;-&space;\Sigma_{F&space;\rightarrow&space;T}^S&space;\phi_F&space;=&space;0" title="\LARGE D_F \nabla^2 \phi_F - \Sigma_{F \rightarrow T}^S \phi_F = 0"
+       /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\LARGE&space;\nabla^2&space;\phi_T&space;-\frac{1}{L^2}&space;\phi_T&space;&plus;&space;\frac{\Sigma_{F&space;\rightarrow&space;T}^S&space;\phi_F}{D_T}&space;=&space;0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\LARGE&space;\nabla^2&space;\phi_T&space;-\frac{1}{L^2}&space;\phi_T&space;&plus;&space;\frac{\Sigma_{F&space;\rightarrow&space;T}^S&space;\phi_F}{D_T}&space;=&space;0" title="\LARGE \nabla^2 \phi_T -\frac{1}{L^2} \phi_T + \frac{\Sigma_{F \rightarrow T}^S \phi_F}{D_T} = 0" /></a>
+
+What is going on here?
+---
+class: center,middle
+
+## Nuclear reactor design
+---
+## Consider a bare fast reactor, homogeneous mix of fuel and coolant
+
+Bare = no reflector
+
+### $D \nabla^2 \phi - \Sigma_A \phi + s = 0$
+
+This time s is not 0
+
+Cross section is for the mixture
+
+Source neutrons emitted due to fission not absorbed
+
+### $\therefore s = \eta f \Sigma_A \phi$
+---
+## Assume an infinite reactor
+
+### $\therefore k_\infty = \eta f$
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\LARGE&space;\nabla^2&space;\phi&space;-&space;\Sigma_A&space;\phi&space;&plus;&space;k_\infty&space;\Sigma_A&space;\phi&space;=&space;0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\LARGE&space;\nabla^2&space;\phi&space;-&space;\Sigma_A&space;\phi&space;&plus;&space;k_\infty&space;\Sigma_A&space;\phi&space;=&space;0" title="\LARGE \nabla^2 \phi - \Sigma_A \phi +
+k_\infty \Sigma_A \phi = 0" /></a>
+
+## $\nabla^2 \phi + B^2 \phi = 0$
+
+One group reactor equation
+---
+## Solve buckling for different geometries 
+
+## $B^2 \equiv \frac{k_\infty - 1}{L^2}$
+
+## $B^2 = (\frac{\pi}{R})^2$
+---
+## Buckling determines critical geometry
+
+Solve for whatever geometry
+
+Integrate over the volume for power
+
+## $P = E_R \Sigma_F \int \phi dV$
+
+Use power to find the constant of integration
+
+## $E_R = 3.2 \times 10^{-11} J$ per fission
+
+See chapter 6 and table
+---
+## 'Real' reactors have leakage
+
+Even neutrons absorbed can birth the next generation
+
+Leaked neutrons are just gone
+
+$B^2 = \frac{k_\infty - 1}{L^2}$ is a necessary conditon for critical reactor
+
+$\frac{k_\infty}{1+B^2L^2}=1$ just rearrange the equation to see the leakage term
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;k_{EFF}&space;=&space;k_\infty&space;P_L" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;k_{EFF}&space;=&space;k_\infty&space;P_L" title="k_{EFF} = k_\infty P_L" /></a> one group critical equation for a bare reactor
+
+Neutrons either leak out or absorbed
+---
+## But we want to account for all the neutrons that will not leak
+
+$\int_V \Sigma_A \phi dV$ - absorption rate in the reactor
+
+$- \int_V D \nabla^2 \phi dV$ - leakage rate
+
+So the probability of absorption; i.e., non leakage is 
+
+### $P_L \equiv \frac{\int_V \Sigma_A \phi dV}{\int_V \Sigma_A \phi dV - \int_V D \nabla^2 \phi dV}$
+
+### $\therefore P_L = \frac{\Sigma_A}{\Sigma_A + D B^2} = \frac{1}{1+B^2L^2}$
+
+Because $- \int_V D \nabla^2 \phi dV = \int_V DB^2 \phi dV$
 
 ---
 class: center,middle
