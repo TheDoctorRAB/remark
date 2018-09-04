@@ -373,7 +373,91 @@ So the probability of absorption; i.e., non leakage is
 ### $\therefore P_L = \frac{\Sigma_A}{\Sigma_A + D B^2} = \frac{1}{1+B^2L^2}$
 
 Because $- \int_V D \nabla^2 \phi dV = \int_V DB^2 \phi dV$
+---
+## Criticality is technically different for thermal reactors
 
+### $\eta_T \equiv \frac{\int \eta(E) \sigma_F \phi(E) dE}{\int \eta(E) \sigma_A \phi(E) dE}$
+
+Slowly varying with T
+
+But just look it up
+
+It's the same procedure = FUEL + MODERATOR
+
+Four factor formula is the same
+
+Resonance escape is an important parameter
+
+Why?
+---
+## Need two group theory for thermal criticality 
+
+This is like two group diffusion except the source is now nonzero
+
+### $D_1 \nabla^2 \phi_1 -\Sigma_1 \phi_1 + s_1=0$
+### $D_T \nabla^2 \phi_T -\Sigma_A \phi_T + s_T=0$
+
+Assume most fissions are induced by thermal neutrons
+---
+## Derive the source terms
+
+Thermal fission neutron birth rate
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\eta_T&space;f&space;\epsilon&space;\Sigma_A&space;\phi_T&space;=&space;\frac{k_\infty}{p}&space;\Sigma_A&space;\phi_T&space;=&space;s_1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\eta_T&space;f&space;\epsilon&space;\Sigma_A&space;\phi_T&space;=&space;\frac{k_\infty}{p}&space;\Sigma_A&space;\phi_T&space;=&space;s_1" title="\LARGE \eta_T f \epsilon
+\Sigma_A \phi_T = \frac{k_\infty}{p} \Sigma_A \phi_T = s_1" /></a>
+
+Scattered neutrons from fast group are source in thermal group
+
+But only those that escape resonances
+
+### $s_T = p \Sigma_1 \phi_1$
+
+For bare thermal reactor
+---
+class: center,middle
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\huge&space;D_1&space;\nabla^2&space;\phi_1&space;-\Sigma_1&space;\phi_1&plus;\frac{k_\infty}{p}&space;\Sigma_A&space;\phi_T&space;=&space;0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\huge&space;D_1&space;\nabla^2&space;\phi_1&space;-\Sigma_1&space;\phi_1&plus;\frac{k_\infty}{p}&space;\Sigma_A&space;\phi_T&space;=&space;0" title="\huge D_1 \nabla^2 \phi_1 -\Sigma_1
+\phi_1+\frac{k_\infty}{p} \Sigma_A \phi_T = 0" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\huge&space;D_T&space;\nabla^2&space;\phi_T&space;-\Sigma_A&space;\phi_T&space;&plus;&space;p&space;\Sigma_1&space;\phi_1=0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\huge&space;D_T&space;\nabla^2&space;\phi_T&space;-\Sigma_A&space;\phi_T&space;&plus;&space;p&space;\Sigma_1&space;\phi_1=0" title="\huge D_T \nabla^2 \phi_T -\Sigma_A \phi_T + p \Sigma_1 \phi_1=0" /></a>
+---
+## Solving it is not as hard as it might seem
+
+Assume all group fluxes have same spatial dependence in bare reactor
+
+### $\phi_1=A_1\phi$
+### $\phi_T=A_2\phi$
+
+Necessary condition for criticality
+
+### $\nabla^2\phi+B^2=0$
+---
+## Substitute these into the two group equations
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;-(D_1B^2&plus;\Sigma_1)A_1&space;&plus;&space;\frac{k_\infty}{p}\Sigma_AA_2=0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;-(D_1B^2&plus;\Sigma_1)A_1&space;&plus;&space;\frac{k_\infty}{p}\Sigma_AA_2=0" title="\LARGE -(D_1B^2+\Sigma_1)A_1 + \frac{k_\infty}{p}\Sigma_AA_2=0" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;p\Sigma_1A_1-(D_TB^2&plus;\Sigma_A)A_2=0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;p\Sigma_1A_1-(D_TB^2&plus;\Sigma_A)A_2=0" title="\LARGE p\Sigma_1A_1-(D_TB^2+\Sigma_A)A_2=0" /></a>
+
+Apply Cramer's rule
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\frac{k_\infty}{(1&plus;B^2L^2)(1&plus;B^2\tau)}=1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\frac{k_\infty}{(1&plus;B^2L^2)(1&plus;B^2\tau)}=1" title="\LARGE \frac{k_\infty}{(1+B^2L^2)(1+B^2\tau)}=1" /></a>
+
+### $\tau \equiv \frac{D_1}{\Sigma_1}$ is the neutron age
+---
+## This gives the six factor formula
+
+### $P_F \equiv \frac{1}{1+B^2\tau}$
+
+Probability that the fission neutron does not escape while slowing down
+
+### $\therefore k = k_\infty P_L P_F$
+
+Or multiply out the denominator from before
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\frac{k_\infty}{1&plus;B^2M^2}=1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\frac{k_\infty}{1&plus;B^2M^2}=1" title="\LARGE \frac{k_\infty}{1+B^2M^2}=1" /></a>
+
+Thermal migration area
+---
 ---
 class: center,middle
 ![doggehs](img/final.jpg)
