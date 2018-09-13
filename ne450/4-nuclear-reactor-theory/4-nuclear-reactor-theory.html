@@ -492,7 +492,80 @@ class: center,middle
 ---
 ## Multigroup theory is applied in the same way
 
+### $\Sigma_F^g$ group averaged fission cross section
+### $\nu_g$ fission neutrons released per induced in the group
+### $\chi_g$ fraction of fission neutrons emitted in the group
+### $\Sigma_F^h \phi_h$ fission density in h group (adjacent to g)
+### $\nu_h \Sigma_F^h \phi_h$ neutrons released from h group fissions
+### $\sum \nu_h \Sigma_F^h \phi_h$ total neutrons emitted due to fission all groups
+---
+## And the source term is 
 
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;s_g&space;=&space;\sum_{h=1}^N&space;\nu_h&space;\Sigma_F^h&space;\phi_h" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;s_g&space;=&space;\sum_{h=1}^N&space;\nu_h&space;\Sigma_F^h&space;\phi_h" title="\LARGE s_g = \sum_{h=1}^N \nu_h \Sigma_F^h \phi_h" /></a>
+
+For group g
+---
+## Then put that all together
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;D_g\nabla^2\phi_g-\Sigma_A^g\phi_g-\sum_{h=g&plus;1}^N\Sigma_{g\rightarrow&space;h}\phi_g&plus;\sum_{h=1}^{g-1}\Sigma_{h\rightarrow&space;g}\phi_h&plus;\chi_g\sum_{h=1}^N\nu_h\Sigma_F^h\phi_h=0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;D_g\nabla^2\phi_g-\Sigma_A^g\phi_g-\sum_{h=g&plus;1}^N\Sigma_{g\rightarrow&space;h}\phi_g&plus;\sum_{h=1}^{g-1}\Sigma_{h\rightarrow&space;g}\phi_h&plus;\chi_g\sum_{h=1}^N\nu_h\Sigma_F^h\phi_h=0" title="D_g\nabla^2\phi_g-\Sigma_A^g\phi_g-\sum_{h=g+1}^N\Sigma_{g\rightarrow h}\phi_g+\sum_{h=1}^{g-1}\Sigma_{h\rightarrow g}\phi_h+\chi_g\sum_{h=1}^N\nu_h\Sigma_F^h\phi_h=0" /></a>
+---
+## Unfortunately, real reactors aren't homogeneous and it make calculating k hard
+
+Fortunately the theory is the same
+
+Current LWR fuel is enriched uranium dioxide
+
+And they're all thermal
+
+### $\eta_T = \frac{\nu^{25}\Sigma_F^{25}}{\Sigma_A^{25}+\Sigma_A^{28}}$
+---
+## And for fuel utilization
+
+Neutron absorption rate in fuel
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\int_{V_F}\Sigma_A^F\phi_TdV" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\int_{V_F}\Sigma_A^F\phi_TdV" title="\LARGE \int_{V_F}\Sigma_A^F\phi_TdV" /></a>  
+
+Neutron absorption rate in moderator
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\int_{V_M}\Sigma_A^M\phi_TdV" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\int_{V_M}\Sigma_A^M\phi_TdV" title="\LARGE \int_{V_M}\Sigma_A^M\phi_TdV" /></a>
+---
+## By definition
+
+### $f=\frac{\Sigma_A^F\overline{\phi}_T^FV_F}{\Sigma_A^F\overline{\phi}_T^FV_F+\Sigma_A^M\overline{\phi}_T^MV_M}$
+
+Hard to compute for real because of flux, so they developed approximations
+
+### $\frac{1}{f}=\frac{\Sigma_A^MV_M}{\Sigma_A^FV_F}\cdot F+E$
+
+Of course they had to use F to confuse everyone
+
+Lattice constants, Bessel functions p264 for F,E
+---
+## Wigner-Seitz equivalent cylindrical cell
+
+![lattice unit cell](img/lattice.unit.cell.jpg)
+---
+## Then for resonance escape
+
+### $p=e^{-\frac{N_FV_FI}{\xi_M\Sigma_S^MV_M}}$
+
+$N_F$ is the fuel atom density
+
+$\xi_M$ is the average increase in lethary in the moderator
+
+$I = A + \frac{C}{\sqrt{a\rho}}$ is the resonance integral
+
+$A,C$ are constants, $a$ is fuel rod radius, $\rho$ is fuel density
+
+p266
+
+So basically there are a bunch of semi empirical expressions needed
+
+Very typical in engineering
+---
+class: center,middle
+
+## Reactor kinetics
 ---
 class: center,middle
 ![doggehs](img/final.jpg)
