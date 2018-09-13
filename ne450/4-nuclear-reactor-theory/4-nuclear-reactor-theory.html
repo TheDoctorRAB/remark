@@ -540,6 +540,8 @@ Hard to compute for real because of flux, so they developed approximations
 Of course they had to use F to confuse everyone
 
 Lattice constants, Bessel functions p264 for F,E
+
+p265 for lattice and unit cell
 ---
 ## Wigner-Seitz equivalent cylindrical cell
 
@@ -555,9 +557,7 @@ $\xi_M$ is the average increase in lethary in the moderator
 
 $I = A + \frac{C}{\sqrt{a\rho}}$ is the resonance integral
 
-$A,C$ are constants, $a$ is fuel rod radius, $\rho$ is fuel density
-
-p266
+$A,C$ are constants, $a$ is fuel rod radius, $\rho$ is fuel density - p266
 
 So basically there are a bunch of semi empirical expressions needed
 
@@ -566,6 +566,71 @@ Very typical in engineering
 class: center,middle
 
 ## Reactor kinetics
+---
+## Reactor kinetics is about what happens when the reactor shuts down or starts up
+
+### $\therefore \frac{\partial{n}}{\partial{t}} \neq 0$
+
+Changes in temperature affect changes in neutron multiplication
+
+Reactor is initially loaded with more than the minimum critical mass due to burnup
+
+Criticality affected by fission products
+
+Many are gaseous and have to be trapped
+---
+## Fission poisons accumulate with burnup
+
+[![fission product yield](img/fission.product.yield.jpg)](http://hyperphysics.phy-astr.gsu.edu/hbase/NucEne/fisfrag.html)
+---
+## There are different kinds of neutrons to account for
+
+Prompt neutrons are emitted at the instant of fission
+
+Delayed neutrons emitted after the fission event
+
+These control reactor kinetics
+---
+## Prompt neutron lifetime is the average time between emission and absorption
+
+Time for neutron to slow to thermal is small compared to time as thermal 
+
+Prompt neutron lifetime $l_P$ = mean diffusion time $t_D$ in the infinite thermal reactor
+---
+## Reason out the reactor physics to derive $t_D$
+
+Neutron travels an absorption mean free path before actually being absorbed
+
+### $t(E) = \frac{\lambda_A(E)}{v(E)}$ energy dependent to start
+
+### $t(E) = \frac{1}{\Sigma_A(E)v(E)}$
+
+### $t_D \equiv \overline{t(E)}$
+
+Assuming Maxwell in the thermal region $\frac{1}{v}$ 
+
+$t(E)$ isn't energy dependent anymore because 
+$E = 0.0253 eV$ and $v = 2200 m/s$ and a constant
+---
+## Reason out the reactor physics to derive $t_D$
+
+### $\therefore t_D = \frac{\sqrt{\pi}}{2} \cdot \frac{1}{\Sigma_A v_T}$
+
+For fuel and moderator
+
+### $t_D = \frac{\sqrt{\pi}}{2 v_T} \cdot \frac{1}{\Sigma_A^F + \Sigma_A^M}$
+
+Or
+
+### $t_D = \frac{\sqrt{\pi}}{2 v_T} \cdot \frac{\Sigma_A^M}{\Sigma_A^M} \cdot \frac{1}{\Sigma_A^F + \Sigma_A^M}$
+---
+## Reason out the reactor physics to derive $t_D$
+
+### $t_D = \frac{\sqrt{\pi}}{2 v_T \Sigma_A^M} \cdot \frac{\Sigma_A^M}{\Sigma_A^F + \Sigma_A^M}$
+
+### $\therefore t_D = \frac{\sqrt{\pi}}{2 v_T \Sigma_A^M}(1-f)$
+
+Prompt neutron lifetime is much shorter in fast reactors than thermal $10^{-7} s$
 ---
 class: center,middle
 ![doggehs](img/final.jpg)
