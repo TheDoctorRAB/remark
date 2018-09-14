@@ -632,6 +632,46 @@ Or
 
 Prompt neutron lifetime is much shorter in fast reactors than thermal $10^{-7} s$
 ---
+## What role do delayed neutrons play in reactor kinetics?
+
+Consider an infinite thermal reactor with only prompt neutrons
+
+Prompt neutron lifetime $l_P$ then is time between successive neutron generations
+
+Absorption of a neutron at $t=t_0$ 
+
+means absorption of $k_\infty$ neutrons  
+
+at $t=t_0+l_P$
+---
+## How to we derive a measure of this time?
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;N_F(t&plus;l_P)&space;=&space;k_\infty&space;N_F(t)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;N_F(t&plus;l_P)&space;=&space;k_\infty&space;N_F(t)" title="\LARGE N_F(t+l_P) = k_\infty N_F(t)" /></a>
+
+Take a Taylor expansion of the left side
+
+### $N_F(t+l_P) \approx N_F(t)+l_p\frac{dN_F(t)}{dt}$
+
+Substitute back in
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\frac{dN_F(t)}{dt}=\frac{k_\infty-1}{l_P}N_F(t)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\frac{dN_F(t)}{dt}=\frac{k_\infty-1}{l_P}N_F(t)" title="\LARGE \frac{dN_F(t)}{dt}=\frac{k_\infty-1}{l_P}N_F(t)" /></a>
+---
+## How to we derive a measure of this time?
+
+### $N_F(t)=N_F(0)e^{\frac{t}{T}}$
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;T=\frac{l_P}{k_\infty-1}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;T=\frac{l_P}{k_\infty-1}" title="\LARGE T=\frac{l_P}{k_\infty-1}" /></a>
+
+$T$ is called the reactor period (in the absence of delayed neutrons)
+
+What is this telling us? 
+
+So if $l_p = 10^{-4} s$, what is $T$ going from 
+
+### $k_\infty = 1 \rightarrow 1.001$
+
+
+---
 class: center,middle
 ![doggehs](img/final.jpg)
 </textarea>
