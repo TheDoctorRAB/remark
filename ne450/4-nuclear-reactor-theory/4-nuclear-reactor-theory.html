@@ -669,6 +669,79 @@ What is this telling us?
 So if $l_p = 10^{-4} s$, what is $T$ going from 
 
 ### $k_\infty = 1 \rightarrow 1.001$
+---
+class: center,middle
+
+![WPI bridge](img/wpi.bridge.jpg)
+---
+class: center,middle
+
+![WPI control panel](img/wpi.control.panel.jpg)
+---
+## Delayed neutrons control reactor operation
+
+Six groups of delayed neutron precursors with characteristic half life p75
+
+Fission products that produce neutrons as part of decay process
+
+For infinite homogenous thermal reactor (not necessarily critical) one group of delayed neutrons
+
+The diffusion equation for thermal neutrons is (5.21)
+
+### $\frac{dn}{dt}=s_T-\Sigma_A\phi_T$
+
+Assume thermal flux is independent of position
+---
+## Deriving rate of change for delayed neutrons
+
+From 5.9 based on Maxwellian distribution
+
+### $\phi_T=\frac{2}{\sqrt{\pi}}nv_T$
+
+### $l_P \approx t_D = \frac{\sqrt{\pi}}{2} \cdot \frac{1}{\Sigma_A v_T}$
+
+### $l_P\frac{d\phi_T}{dt}=\frac{s_T}{\Sigma_A}-\phi_T$
+---
+## The source has two contributions
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;s_T^P=(1-\beta)k_\infty\Sigma_A\phi_T" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;s_T^P=(1-\beta)k_\infty\Sigma_A\phi_T" title="\LARGE s_T^P=(1-\beta)k_\infty\Sigma_A\phi_T" /></a> from prompt neutrons 
+
+$\beta \equiv$ fraction of fission neutrons that are delayed
+---
+## Delayed neutron slows down really fast after emission
+
+### $s_T^D=p\lambda C$
+
+$p=$ resonance escape and $\lambda C$ is decay of precursor (like Bateman)
+
+This means the source is based on the production from the precusor and the probability it escaped through the resonance region
+---
+### Combining everything
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;l_P\frac{d\phi_T}{dt}=(1-\beta)k_\infty\Sigma_A\phi_T&plus;\frac{p}{\Sigma_A}\lambda&space;C-\phi_T" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;l_P\frac{d\phi_T}{dt}=(1-\beta)k_\infty\Sigma_A\phi_T&plus;\frac{p}{\Sigma_A}\lambda&space;C-\phi_T" title="\LARGE l_P\frac{d\phi_T}{dt}=(1-\beta)k_\infty\Sigma_A\phi_T+\frac{p}{\Sigma_A}\lambda C-\phi_T" /></a>
+---
+## Derive the precursor equation
+
+Fission neutron production rate
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\eta_T\epsilon&space;f\Sigma_A\phi_T=\frac{1}{p}k_\infty\Sigma_A\phi_T" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\eta_T\epsilon&space;f\Sigma_A\phi_T=\frac{1}{p}k_\infty\Sigma_A\phi_T" title="\LARGE \eta_T\epsilon f\Sigma_A\phi_T=\frac{1}{p}k_\infty\Sigma_A\phi_T" /></a>
+
+Delayed neutron production rate is then
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\beta\cdot\frac{1}{p}k_\infty\Sigma_A\phi_T" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\beta\cdot\frac{1}{p}k_\infty\Sigma_A\phi_T" title="\LARGE \beta\cdot\frac{1}{p}k_\infty\Sigma_A\phi_T" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\frac{dC}{dt}=\beta\cdot\frac{1}{p}k_\infty\Sigma_A\phi_T-\lambda&space;C" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\frac{dC}{dt}=\beta\cdot\frac{1}{p}k_\infty\Sigma_A\phi_T-\lambda&space;C" title="\LARGE \frac{dC}{dt}=\beta\cdot\frac{1}{p}k_\infty\Sigma_A\phi_T-\lambda C" /></a>
+---
+## Solve the system simultaneously
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;l_P\frac{d\phi_T}{dt}=(1-\beta)k_\infty\Sigma_A\phi_T&plus;\frac{p}{\Sigma_A}\lambda&space;C-\phi_T" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;l_P\frac{d\phi_T}{dt}=(1-\beta)k_\infty\Sigma_A\phi_T&plus;\frac{p}{\Sigma_A}\lambda&space;C-\phi_T" title="\LARGE l_P\frac{d\phi_T}{dt}=(1-\beta)k_\infty\Sigma_A\phi_T+\frac{p}{\Sigma_A}\lambda C-\phi_T" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\frac{dC}{dt}=\beta\cdot\frac{1}{p}k_\infty\Sigma_A\phi_T-\lambda&space;C" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\frac{dC}{dt}=\beta\cdot\frac{1}{p}k_\infty\Sigma_A\phi_T-\lambda&space;C" title="\LARGE \frac{dC}{dt}=\beta\cdot\frac{1}{p}k_\infty\Sigma_A\phi_T-\lambda C" /></a>
+
+Also known as point kinetics equations (sometimes in a different form [n])
+
+Leo M. Bobek, R. A. Borrelli, PLC-based reactivity measurements using inverse point kinetics, Transactions of the American Nuclear Society, 74, Annual meeting of the American Nuclear Society, 16-20 June, 1996, Reno, Nevada.
+---
 
 
 ---
