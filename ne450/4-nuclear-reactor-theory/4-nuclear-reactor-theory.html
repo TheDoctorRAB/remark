@@ -742,8 +742,69 @@ Also known as point kinetics equations (sometimes in a different form [n])
 
 Leo M. Bobek, R. A. Borrelli, PLC-based reactivity measurements using inverse point kinetics, Transactions of the American Nuclear Society, 74, Annual meeting of the American Nuclear Society, 16-20 June, 1996, Reno, Nevada.
 ---
+## Solve the system simultaneously
 
+Assume $k_\infty = 1$ at $t=0$
 
+Step change then made to change $k_\infty$
+
+Assume
+
+### $\phi = Ae^{\omega t} \rightarrow \frac{d\phi}{dt} = \omega Ae^{\omega t}$
+
+### $C = C_0e^{\omega t} \rightarrow \frac{dC}{dt} = \omega C_0e^{\omega t}$
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\omega&space;C_0e^{\omega&space;t}=(\beta\frac{1}{p}k_\infty\Sigma_A)(Ae^{\omega&space;t})-\lambda&space;(C_0e^{\omega&space;t})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\omega&space;C_0e^{\omega&space;t}=(\beta\frac{1}{p}k_\infty\Sigma_A)(Ae^{\omega&space;t})-\lambda&space;(C_0e^{\omega&space;t})" title="\LARGE \omega C_0e^{\omega
+t}=(\beta\frac{1}{p}k_\infty\Sigma_A)(Ae^{\omega t})-\lambda (C_0e^{\omega t})" /></a>
+---
+## [Solve the system simultaneously](https://courses.candelalearning.com/x84x9/chapter/nuclear-reactor-kinetics-2/)
+
+Continuing gives us reactivity equation for one group of delayed neutrons
+
+### $\rho = \frac{\omega l_P}{1+\omega l_P} + \frac{\omega}{1+\omega l_p}\frac{\beta}{\omega+\lambda}$
+
+### $\rho \equiv \frac{k-1}{k}$
+
+What is the range of $\rho$?
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\rho&space;=&space;\frac{\omega&space;l_P}{1&plus;\omega&space;l_P}&space;&plus;&space;\frac{\omega}{1&plus;\omega&space;l_p}\sum_{i=1}^6{\frac{\beta_i}{\omega&plus;\lambda_i}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\rho&space;=&space;\frac{\omega&space;l_P}{1&plus;\omega&space;l_P}&space;&plus;&space;\frac{\omega}{1&plus;\omega&space;l_p}\sum_{i=1}^6{\frac{\beta_i}{\omega&plus;\lambda_i}}" title="\LARGE \rho = \frac{\omega l_P}{1+\omega l_P} + \frac{\omega}{1+\omega l_p}\sum_{i=1}^6{\frac{\beta_i}{\omega+\lambda_i}}" /></a>
+
+---
+## We still need to figure out $\omega$
+
+Figure 7.1
+
+### $\phi_T = A_1e^{\omega_1 t} + A_2e^{\omega_2 t}$
+
+For either $\rho < 1$ or $\rho > 1$ the second term dies out
+
+### $\phi_T \rightarrow e^{\omega_1 t}$
+
+This gives reactor period as 
+
+### $T = \frac{1}{\omega_1}$
+---
+## Let's look at the prompt critical reactor state
+
+If the reactor would be critical only on prompt neutrons
+
+### $(1-\beta)k=1$
+
+The period is very short and you can't control the reactor
+
+The reactivity corresponding to prompt critial is just
+
+### $\rho = \beta$
+
+See table 7.2
+---
+## We need the reactivity insertion to actually control the reactor
+
+If there isn't much to 'give', there isn't proper reactor kinetic control
+
+Units of dollars are used because of course they are to normalize reactivity per prompt critical
+
+Talk about [South Korean research reactor experiment at ATR](https://www.osti.gov/servlets/purl/1374731)
 ---
 class: center,middle
 ![doggehs](img/final.jpg)
