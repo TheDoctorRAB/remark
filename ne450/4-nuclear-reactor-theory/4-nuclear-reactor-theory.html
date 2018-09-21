@@ -806,6 +806,54 @@ Units of dollars are used because of course they are to normalize reactivity per
 
 Talk about [South Korean research reactor experiment at ATR](https://www.osti.gov/servlets/purl/1374731)
 ---
+## Insertion of reactivity gives a sudden rise in the flux and vice versa
+
+### $\phi_T = A_1e^{\omega_1 t} + A_2e^{\omega_2 t}$
+
+with 7 exponentials if all groups are concerned 
+
+Those terms die away liked we talked about before
+
+Then stable period is achieved
+
+We want to know what that rise/drop is  (prompt jump approximation)
+
+The rapid die-away gives sudden rise/drop to the flux before stability
+---
+## Assume precursor concentrations do not change over the rise/drop
+
+### $\therefore \frac{dC}{dt}=0$
+
+### $C=\beta \frac{1}{p} \frac{1}{\lambda} \Sigma_A \phi_T^0$
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;l_P\frac{d\phi_T}{dt}=(1-\beta)k_\infty\Sigma_A\phi_T&plus;\frac{p}{\Sigma_A}\lambda&space;C-\phi_T" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;l_P\frac{d\phi_T}{dt}=(1-\beta)k_\infty\Sigma_A\phi_T&plus;\frac{p}{\Sigma_A}\lambda&space;C-\phi_T" title="\LARGE l_P\frac{d\phi_T}{dt}=(1-\beta)k_\infty\Sigma_A\phi_T+\frac{p}{\Sigma_A}\lambda C-\phi_T" /></a>
+---
+## Solve for flux
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;l_P\frac{d\phi_T}{dt}=(1-\beta)k_\infty\Sigma_A\phi_T&plus;\frac{p}{\Sigma_A}\lambda&space;C-\phi_T" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;l_P\frac{d\phi_T}{dt}=(1-\beta)k_\infty\Sigma_A\phi_T&plus;\frac{p}{\Sigma_A}\lambda&space;C-\phi_T" title="\LARGE l_P\frac{d\phi_T}{dt}=(1-\beta)k_\infty\Sigma_A\phi_T+\frac{p}{\Sigma_A}\lambda C-\phi_T" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;l_P\frac{d\phi_T}{dt}=[(1-\beta)k_\infty-1]\phi_T&plus;\beta\phi_T^0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;l_P\frac{d\phi_T}{dt}=[(1-\beta)k_\infty-1]\phi_T&plus;\beta\phi_T^0" title="\LARGE l_P\frac{d\phi_T}{dt}=[(1-\beta)k_\infty-1]\phi_T+\beta\phi_T^0" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\phi_T=\phi_T^0e^{\frac{(1-\beta)k_\infty-1}{l_P}t}&plus;\frac{\beta\phi_T^0}{1-(1-\beta)k_\infty}[1-e^{\frac{(1-\beta)k_\infty-1}{l_P}t}]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\phi_T=\phi_T^0e^{\frac{(1-\beta)k_\infty-1}{l_P}t}&plus;\frac{\beta\phi_T^0}{1-(1-\beta)k_\infty}[1-e^{\frac{(1-\beta)k_\infty-1}{l_P}t}]" title="\LARGE \phi_T=\phi_T^0e^{\frac{(1-\beta)k_\infty-1}{l_P}t}+\frac{\beta\phi_T^0}{1-(1-\beta)k_\infty}[1-e^{\frac{(1-\beta)k_\infty-1}{l_P}t}]" /></a>
+---
+## For reactivity less than prompt critical the exponentials die out
+
+That is 
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\phi_T=\frac{\beta}{1-(1-\beta)k_\infty}\phi_T^0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\phi_T=\frac{\beta}{1-(1-\beta)k_\infty}\phi_T^0" title="\LARGE \phi_T=\frac{\beta}{1-(1-\beta)k_\infty}\phi_T^0" /></a>
+
+Then
+
+### $\phi_T=\frac{\beta(1-\rho)}{\beta-\rho} \cdot \phi_T^0$
+---
+### Figure 7.3 p287
+
+![prompt jump](img/prompt.jump.jpg)
+---
+## What does this mean?
+
+
+---
 class: center,middle
 ![doggehs](img/final.jpg)
 </textarea>
