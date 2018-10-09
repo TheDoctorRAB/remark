@@ -990,8 +990,86 @@ For constant pressure and $\omega$ is coolant flow rate
 
 So this is heat removal rate
 ---
+## Spatial distribution of fission energy depends on reactor structure
 
+Most of recoverable fission energy is deposited in the fuel
 
+The rest in the coolant/moderator (20 MeV)
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;q^{'''}(\underline{r})=E_D\int_0^{\infty}\Sigma_F(E)\phi(\underline{r},E)dE" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;q^{'''}(\underline{r})=E_D\int_0^{\infty}\Sigma_F(E)\phi(\underline{r},E)dE" title="\LARGE q^{'''}(\underline{r})=E_D\int_0^{\infty}\Sigma_F(E)\phi(\underline{r},E)dE" /></a>
+
+Power density in fuel
+
+Rate of heat production
+---
+## Spatial distribution of fission energy depends on reactor structure
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;q^{'''}(\underline{r})=E_D\int_0^{\infty}\Sigma_F(E)\phi(\underline{r},E)dE" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;q^{'''}(\underline{r})=E_D\int_0^{\infty}\Sigma_F(E)\phi(\underline{r},E)dE" title="\LARGE q^{'''}(\underline{r})=E_D\int_0^{\infty}\Sigma_F(E)\phi(\underline{r},E)dE" /></a>
+
+Then look up the flux based on geometry
+
+A single fuel rod would just be a finite cylinder
+
+Similar model for gamma ray heat
+
+Cooling after shutdown is important due to fission product heat
+---
+## Heat is removed from the reactor by conduction and convection
+
+Heat transfer from fuel rod to rod surface by conduction
+
+Heat at rod surface transferred into the coolant and moved out of system by convection
+---
+## We use Fourier's law for conduction  
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\underline{q}^{''}=-k\nabla&space;T" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\underline{q}^{''}=-k\nabla&space;T" title="\LARGE \underline{q}^{''}=-k\nabla T" /></a>
+
+Based on heat conservation through a control volume  
+
+Heat flow out of the surface  
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\int_A\underline{q}^{''}\cdot\underline{n}dA=\int_V\nabla\underline{q}^{''}dV" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\int_A\underline{q}^{''}\cdot\underline{n}dA=\int_V\nabla\underline{q}^{''}dV" title="\LARGE
+\int_A\underline{q}^{''}\cdot\underline{n}dA=\int_V\nabla\underline{q}^{''}dV" /></a>
+
+Heat production  
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\int_V\underline{q}^{'''}dV" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\int_V\underline{q}^{'''}dV" title="\LARGE \int_V\underline{q}^{'''}dV" /></a>
+---
+## Then we get the steady state heat equation
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;k\nabla^2&space;T&plus;\underline{q}^{'''}=0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;k\nabla^2&space;T&plus;\underline{q}^{'''}=0" title="\LARGE k\nabla^2 T+\underline{q}^{'''}=0" /></a>
+
+And then solve for different geometries and sources
+
+With no heat sources
+
+### $\nabla^2 T=0$
+
+This is Laplace's equation used for all sorts of modeling 
+---
+## Newton's law describes heat transfer from a solid to a moving fluid
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;q^{''}=h(T_C-T_B)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;q^{''}=h(T_C-T_B)" title="\LARGE q^{''}=h(T_C-T_B)" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;q=hA(T_C-T_B)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;q=hA(T_C-T_B)" title="\LARGE q=hA(T_C-T_B)" /></a>
+
+Similar to Ohm's law where hA = "thermal resistance"
+
+Can have spatial dependence T(z) for a rod
+
+Heat flow into a coolant channel can be derived based on this
+---
+## Coolant flows under turbulent conditions to maximize heat transfer
+
+### $Re \equiv \frac{D_E v \rho}{\mu}$ for $Re > 10^4$
+
+### $Nu \equiv \frac{hD_E}{k}$ convective:conductive
+
+### $Pr \equiv \frac{c_p\mu}{k}$ viscous diffusion:thermal diffusion
+
+### $Nu = CRe^mPr^n$
+
+Design relationship for convective heat transfer  
+Heat transfer for liquid metals is mostly by conduction
+---
 ---
 class: center,middle
 ![doggehs](img/final.jpg)
