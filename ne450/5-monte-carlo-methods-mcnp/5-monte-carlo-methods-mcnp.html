@@ -33,13 +33,13 @@ class: center, middle
 ---
 # Outcomes for the lecture
 
-Understanding modeling of nuclear systems
+Modeling of nuclear systems
 
-Get started with MCNP 
+Demonstrating skill with with MCNP
 
-Not in book
+Developing input files
 
-Just literature researched commonly used material
+Interpreting output
 
 Materials posted on [OER](https://courses.candelalearning.com/x84x9/)
 ---
@@ -49,7 +49,7 @@ Like neutrons
 
 Because we're engineers we are going to focus more on application than theory 
 
-There are a lot of Monte Carlo codes
+There are a lot of Monte Carlo codes (OpenMC)
 
 We will use MCNPX, MCNP6
 ---
@@ -71,11 +71,10 @@ MCNP can be run on just about all architectures
 ---
 # Monte Carlo methods solve the transport equation
 
-So we don't have to
-
 Mathematical approach is for importance sampling, convergence, variance reduction, random sampling techniques, eigenvalue calculation schemes
 
 Simulation approach is for collision physics, tracking, tallying  
+
 Monte Carlo methods solve integral problems, so consider the integral form of the Boltzmann equation
 
 Most theory on Monte Carlo deals with fixed-source problems  
@@ -181,7 +180,7 @@ fixed source + fission
     \Psi(\underline{r},\underline{v}')F(\underline{v}'\rightarrow\underline{v},\underline{r})d\underline{v}'" /></a>  
 eigenvalue
 ---
-# But, if you did, start with some assumptions
+# Start with some assumptions
 
 Static, homogeneous medium  
 
@@ -199,6 +198,84 @@ Particles 'fly' in straight lines
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\large&space;R(p'\rightarrow&space;p)&space;\equiv&space;C(\underline{v}'\rightarrow&space;\underline{v},\underline{r}')\cdot&space;T(\underline{r}'\rightarrow&space;\underline{r},\underline{v})" target="_blank"><img
     src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;R(p'\rightarrow&space;p)&space;\equiv&space;C(\underline{v}'\rightarrow&space;\underline{v},\underline{r}')\cdot&space;T(\underline{r}'\rightarrow&space;\underline{r},\underline{v})" title="\large R(p'\rightarrow p) \equiv C(\underline{v}'\rightarrow \underline{v},\underline{r}')\cdot T(\underline{r}'\rightarrow \underline{r},\underline{v})" /></a>
+---
+# Use some math tricks
+
+Define this
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\Psi(p)=\sum_{k=0}^{\infty}\Psi_k(p)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\Psi(p)=\sum_{k=0}^{\infty}\Psi_k(p)" title="\LARGE \Psi(p)=\sum_{k=0}^{\infty}\Psi_k(p)" /></a>
+
+And then we know this
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\Psi_0(p)=\int&space;Q(r',v)T(r'&space;\rightarrow&space;r,v)dr'" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\Psi_0(p)=\int&space;Q(r',v)T(r'&space;\rightarrow&space;r,v)dr'" title="\LARGE \Psi_0(p)=\int Q(r',v)T(r' \rightarrow r,v)dr'" /></a>
+---
+So that
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\Psi_k(p)=\int&space;\Psi_{k-1}(p')&space;\cdot&space;R(p'\rightarrow&space;p)dp'" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\Psi_k(p)=\int&space;\Psi_{k-1}(p')&space;\cdot&space;R(p'\rightarrow&space;p)dp'" title="\LARGE \Psi_k(p)=\int \Psi_{k-1}(p') \cdot R(p'\rightarrow p)dp'" /></a>
+
+Note that collision (k) then only depends on (k-1)
+
+That's the trick of Markov
+---
+## Then, develop several histories, or sequence of states
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\large&space;\Psi_k(p)=\int&space;\Psi_{k-1}(p')&space;\cdot&space;R(p'\rightarrow&space;p)dp'&space;\\&space;\Psi_k(p)=\int&space;\Psi_0(p_0)&space;\cdot&space;R(p_0\rightarrow&space;p_1)R(p_1\rightarrow&space;p_2)\cdots&space;R(p_{k-1}\rightarrow&space;p_k)dp_0&space;\cdots&space;dp_{k-1}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\large&space;\Psi_k(p)=\int&space;\Psi_{k-1}(p')&space;\cdot&space;R(p'\rightarrow&space;p)dp'&space;\\&space;\Psi_k(p)=\int&space;\Psi_0(p_0)&space;\cdot&space;R(p_0\rightarrow&space;p_1)R(p_1\rightarrow&space;p_2)\cdots&space;R(p_{k-1}\rightarrow&space;p_k)dp_0&space;\cdots&space;dp_{k-1}" title="\large \Psi_k(p)=\int \Psi_{k-1}(p') \cdot R(p'\rightarrow p)dp' \\ \Psi_k(p)=\int \Psi_0(p_0) \cdot
+    R(p_0\rightarrow p_1)R(p_1\rightarrow p_2)\cdots R(p_{k-1}\rightarrow p_k)dp_0 \cdots dp_{k-1}" /></a>
+
+'Tally' the occurrences for each collision of each history
+
+Generate $(p_0,p_1,p_2,...)$ by randomly sampling from pdfs for source and transition
+---
+## Simulate particle history from birth to death
+
+Random walk for a single particle  
+Collisions are modeled by physics equations and cross sections
+
+Again, here is data science and data management  
+Model free-flight between collisions using computational geometry
+
+Tally the occurrences of events in each region  
+Save any secondary particles, analyze them later
+
+Then do tons of histories  
+History = original particle + progeny
+
+Geometry then is extremely important and ridiculously difficult
+---
+class: center,middle
+
+## Skipping ahead
+---
+## Random number generation (26-49)
+
+Linear congruential random number generators  
+
+Lots of history of use
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;s_{k&plus;1}=[g&space;\cdot&space;s_k&plus;c]~mod(2^N)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;s_{k&plus;1}=[g&space;\cdot&space;s_k&plus;c]~mod(2^N)" title="\LARGE s_{k+1}=[g \cdot s_k+c]~mod(2^N)" /></a>
+
+Don't want to repeat numbers  
+
+MCNP uses $g=5^{19},N=63$ adjustable
+---
+## Random number generation and testing (50-81)  
+Cannot have repeating random numbers
+
+## Random sampling (82-117)  
+Probability and statistics  
+Key to monte carlo is random sampling  
+Gives several routines for common distributions 
+
+## Computational geometry (118-126)
+Relationship between geometry, physics, tallies
+
+All solid theoretical material
+---
+class: center,middle
+
+## MCNP
+---
+
 
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
