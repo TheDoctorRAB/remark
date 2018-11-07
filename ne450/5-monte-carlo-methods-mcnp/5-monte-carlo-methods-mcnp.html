@@ -275,6 +275,249 @@ class: center,middle
 
 ## MCNP
 ---
+## MCNP is a very useful code to do all sorts of particle analysis
+
+Calculating critical core size for all different types of reactors
+
+Nearly anything statistically physics based
+
+Skill in MCNP will help with other coding adventures
+
+Good for a basis in nuclear engineering research and other courses
+
+More interested in getting to use it for basic problems than higher level techniques
+---
+## Geometry is fickle and an acquired skill (126)
+
+Define surfaces  
+Define cells using surfaces & operators (intersection, union, complement)
+
+Can also group cells together into a universe, and embed that universe inside another cell
+
+Can also group cells together into a universe, repeat that universe in a lattice arrangement, and embed that universe inside another cell
+
+Repeat universes in a lattice
+
+Assign materials to cells  
+Assign other properties to cells (e.g., importance weights)
+
+Define tallies using cell or surface numbers
+---
+class: center,middle
+
+## [Show neutron flux example](https://github.com/TheDoctorRAB/mcnpx.decks)
+---
+## Surfaces can be lots of different geometries
+
+#### $F(x,y,z)=ax^2+by^2+cz^2+dxy+eyz+fxz+gx+hy+jz+k=0$
+
+[$F(x,y,z)=0$](https://www.mne.k-state.edu/~jks/MCNPprmr.pdf) defines the surface
+
+It is infinite and closed  
+But you just specify constants on the cards (nothing to actually solve)
+
+For a cylinder:  
+$x^2+y^2-R^2=0$
+
+```
+10     CZ 20
+```
+Just a vertical cylinder (infinite) with 20 cm radius
+
+Keep access to the manual to look up surface cards - see 128
+---
+## Here's where things get weird
+
+'Sense' is how a point is defined relative to a surface
+
+For a given point in space $(x,y,z)$, the sense is where it is wrt surface
+
+$F(x,y,z) < 0$ means inside
+
+$F(x,y,z) > 0$ means outside
+
+$F(x,y,z) = 0$ means on
+
+```
+10     CZ  22.23         $metal/cathode basket radius
+11     PZ  100            $metal/cathode basket above the floor
+12     PZ  122.23       $metal/cathode basket height+floor height
+```
+---
+## Finite cylinder with equal radius and height
+
+100 cm above the floor
+
+-10 11 -12 is the interior (intersection of surfaces)
+
+Let's draw this out
+---
+![basic surface](img/mcnp_basic.surface.jpg)
+---
+## Use the union operator to assemble larger geometries or get around harder shapes
+
+```
+0      CZ  22.23         $metal/cathode basket radius
+11     PZ  100           $metal/cathode basket above the floor
+12     PZ  122.23        $metal/cathode basket height+floor height
+13     CZ  27.23         $5 cm thick MgO cathode basket
+14     PZ  95            $height above the floor/cathode basket bottom
+
+100    (10:-11)  -12 -13 14   $MgO cathode basket (union of surfaces and intersection)
+```
+
+BUT
+
+Use of ["NOT cell"](https://github.com/TheDoctorRAB/igem/blob/master/neutronics-shielding/low-burnup/L-3030/container/air/3cm/25wt/30wt/6cm/inp/single.assembly_7815.inp) is actually cleaner if you can
+---
+![surface union](img/mcnp_surface.union.jpg)
+---
+## Use surfaces to define cells
+
+Each has a distinct volume because they are defined by density (134-5)
+
+Intersection, union, of defined surfaces; NOT cell
+
+```
+100    1 -2.03                -10 11 -12                 $metal/salt-filled cathode basket
+
+101    2 -3.58    (10:-11)    -12 -13 14                 $MgO cathode basket
+
+102    3 -0.00178 (12:13:-14) -15 16 -17                 $Ar content in equipment
+
+103    4 -7.92    (15:-16:17) -18 -19 20                 $steel equipment
+
+104    3 -0.00178 (18:19:-20) -50 51 -52 53 54 -55       $rest of SE hot cell
+
+110    3 -0.00178 -52 53 54 -55 -61 70                   $SW hot cell 
+
+111    3 -0.00178  54 -55 -61 62 70 -72                  $NW hot cell
+
+112    3 -0.00178 -50 51 54 -55 62 -72                   $NE hot cell
+```
+---
+## Universes are useful for repeating units
+
+Or "nested geometries" at multiple levels
+
+For a reactor core
+
+Remember 'unit cells' from reactor theory?
+
+Group a collection of cells into a universe
+
+Use VisEd for help on geometries
+---
+![lattice and universe](img/mcnp_universe.jpg)
+---
+## Other tips
+
+Someone already has made the same error as you - look it up
+
+Do not have coinciding surfaces
+
+Check the model space with VisEd
+
+It will show where there are problems
+
+Use the [compendium](http://www.pnl.gov/main/publications/external/technical_reports/PNNL-15870.pdf) in the OER to get weight fractions of common materials
+
+Then look up the cross section IDs in Appendix G of the manual (MCNP5)
+---
+## What happens to a particle?
+
+Born in the source or emerges from a collision  
+Sample flight distance using total cross sections; i.e., probabilities
+
+Determine which isotope the interaction is with using cross sections  
+Determine which interaction type for that isotope using cross sections
+
+Determine the energy and direction of the exiting particle with random sampling
+
+Determine if secondary particles were produced
+Biasing + weight adjustments
+
+Tallies of quantities of interest
+
+This of course is all material dependent
+
+On top of all that there are variance reduction, weighting, splitting, etc.
+---
+## Additional information in the slides
+
+**HTGR modeling (148-165)**  
+TRISO pebbles  
+Example of embedded universes  
+**Collision physics (166-205)**  
+How particles travel  
+Interactions  
+Determine which isotope the interaction is with  
+Determine which interaction type for that isotope  
+Determine the energy & direction of the exiting particle  
+Determine if secondary particles were produced  
+Sample flight distance  
+Biasing + weight adjustments  
+Tallies of quantities of interest  
+Based on pdfs
+---
+## How the flight distance is sampled
+
+Particle at $(x_0,y_0,z_0)$ traveling with direction $(u,v,w)$
+
+Sample free flight distance
+
+pdf for flight distance s is
+
+$f(s)=\Sigma_T e^{-\Sigma_T s}$
+
+cdf is
+
+$F(s)=1-e^{-\Sigma_T s}$
+
+Find s by random sampling
+
+$s=-\frac{ln(1-\xi)}{\Sigma_T}$
+---
+## What does mcnp actually tally? (206)
+
+During a history, tally the events of interest  
+
+Upon completing a history, accumulate total scores and squares
+
+After completing all histories, compute mean scores and standard deviations
+
+Can change particle 'weights' to make some regions more important
+
+Average flux in a cell (see paper)
+
+Current or flux through a cell wall
+
+Criticality (KCODE)
+
+Detectors
+---
+## Really we only need mean and variance for most problems
+
+For random variable $x$ of function $r(x)$ with pdf $f(x)$
+
+### $\mu = \int r(x)f(x)dx$
+
+### $\sigma^2 = \int r^2(x)f(x)dx -\mu^2$
+---
+## Monte Carlo randomly samples to get moments
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\overline{r}&space;\approx&space;\frac{1}{N}\sum_{j=1}^N&space;r(x_j)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\overline{r}&space;\approx&space;\frac{1}{N}\sum_{j=1}^N&space;r(x_j)" title="\LARGE \overline{r} \approx \frac{1}{N}\sum_{j=1}^N r(x_j)" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\sigma^2_{\overline{r}}&space;\approx&space;\frac{1}{N-1}(\frac{1}{N}\sum_{j=1}^N&space;r(x_j)-\overline{r}^2)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\sigma^2_{\overline{r}}&space;\approx&space;\frac{1}{N-1}(\frac{1}{N}\sum_{j=1}^N&space;r(x_j)-\overline{r}^2)" title="\LARGE \sigma^2_{\overline{r}} \approx
+\frac{1}{N-1}(\frac{1}{N}\sum_{j=1}^N r(x_j)-\overline{r}^2)" /></a>
+
+This is based on the law of large numbers  
+Sample average will approach the true expected value with increasing N 
+
+Central limit theorem states it will take on a normal distribution on 210  
+So the tally is the most probable result (basically)
+---
+
 
 
 </textarea>
