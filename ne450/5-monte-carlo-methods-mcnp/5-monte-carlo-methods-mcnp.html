@@ -517,9 +517,209 @@ Sample average will approach the true expected value with increasing N
 Central limit theorem states it will take on a normal distribution on 210  
 So the tally is the most probable result (basically)
 ---
+## Statistical checks are provided for each tally
 
+Relative error (R) = standard deviation/mean  
+R should decrease with increasing sqrt N smoothly
 
+FOM is a measure of relative error and computer time  
+FOM should be roughly constant
 
+Variance of variance (VOV) is relative variance of R  
+Essentially verifies the central limit theorem
+
+Decrease smoothly with N  
+Explained in depth in the manual
+
+Statistical checks are to avoid undersampling  
+(Show sample output from wall shielding)
+---
+## More about statistical checks from the manual (2-132)
+
+**MEAN**
+1. a nonmonotonic behavior (no up or down trend) in the estimated mean as a function of the number histories N for the last half of the problem
+---
+**R**  
+2.an acceptable magnitude of the estimated R of the estimated mean (< 0.05 for a
+point detector tally or < 0.10 for a non-point detector tally)
+
+3.a monotonically decreasing R as a function of the number histories N for the last
+   half of the problem
+
+4.a $N^{-0.5}$ decrease in the R as a function of N for the last half of the problem
+---
+**VOV**  
+5.the magnitude of the estimated VOV should be less than 0.10 for all types of tallies
+
+6.a monotonically decreasing VOV as a function of N for the last half of the problem
+
+7.a $\frac{1}{N} decrease in the VOV as a function of N for the last half of the problem
+---
+**FOM**  
+8.a statistically constant value of the FOM as a function of N for the last half of the
+   problem
+
+9.a nonmonotonic behavior in the FOM as a function of N for the last half of the
+   problem
+
+$FOM \equiv \frac{1}{R^2 T}$
+
+**f(x)**  
+10.the SLOPE (see page 2–127 Pareto fit) of the 25 to 201 largest positive (negative with a negative DBCN(16) entry) history scores x should be greater than 3.0 so that the second moment will exist if the SLOPE is extrapolated to infinity
+---
+## Eigenvalue calculations (238-47)
+
+For problems separable in space and time (basically)
+
+Used for keff and criticality
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;[\underline{\Omega}\cdot\nabla&plus;\Sigma_T(\underline{r},E)]\Psi_k(\underline{r},E,\underline{\Omega})=&space;\\&space;\int\int&space;\Psi(\underline{r},E,\underline{\Omega}')\Sigma_S(\underline{r},E'\rightarrow&space;E,\underline{\Omega}\cdot\underline{\Omega}')d\underline{\Omega}'dE'&plus;&space;\\&space;\frac{1}{k}\frac{\chi(E)}{4\pi}\int\int\nu\Sigma_F(\underline{r},E')\Psi_k(\underline{r},E',\underline{\Omega'})d\underline{\Omega}'dE'"target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;[\underline{\Omega}\cdot\nabla&plus;\Sigma_T(\underline{r},E)]\Psi_k(\underline{r},E,\underline{\Omega})=&space;\\&space;\int\int&space;\Psi(\underline{r},E,\underline{\Omega}')\Sigma_S(\underline{r},E'\rightarrow&space;E,\underline{\Omega}\cdot\underline{\Omega}')d\underline{\Omega}'dE'&plus;&space;\\&space;\frac{1}{k}\frac{\chi(E)}{4\pi}\int\int\nu\Sigma_F(\underline{r},E')\Psi_k(\underline{r},E',\underline{\Omega'})d\underline{\Omega}'dE'"title="\large [\underline{\Omega}\cdot\nabla+\Sigma_T(\underline{r},E)]\Psi_k(\underline{r},E,\underline{\Omega})= \\ \int\int \Psi(\underline{r},E,\underline{\Omega}')\Sigma_S(\underline{r},E'\rightarrow E,\underline{\Omega}\cdot\underline{\Omega}')d\underline{\Omega}'dE'+ \\ \frac{1}{k}\frac{\chi(E)}{4\pi}\int\int\nu\Sigma_F(\underline{r},E')\Psi_k(\underline{r},E',\underline{\Omega'})d\underline{\Omega}'dE'"
+       /></a>
+
+leakage = scatter + fission
+---
+## Jointly find k and angular flux
+
+### $(L+T)\Psi = S\Psi + \frac{1}{k}M\Psi$
+
+### $\Psi = \frac{1}{k}\cdot (L+T-S^{-1}) M\Psi$
+
+### $\Psi = \frac{1}{k} \cdot F\Psi$
+
+Solve until solution converges (275)
+---
+## For criticality, a little different (247)
+
+Assume an initial k (k = 1, just use default KCODE; KSRC = x y z for a point in the middle of the source)  
+M fission sites are sampled from the initial source distribution
+
+Follow a 'batch' of histories to estimate k effective (collectively cycles)  
+When they converge, discard the tallies  
+Then start the new iterations until variances decrease   
+The idea is to run from 1 to N+D cycles (D = discard number) to converge the initial guess
+
+Then run for N cycles to get a confident k effective  
+The gist is when obtaining k effective, the value is statistically robust
+
+Typically, just start with the mcnp defaults and that should be good enough   
+Having some reasonable idea of the theory can help with higher level problems
+---
+## MCNP also comes with many many variance reduction techniques (310)
+
+Increase NPS for the first move
+
+**Modified sampling**  
+Modify the PDFs for physics interactions to favor events/tallies of interest
+
+**Population control**  
+Use splitting/rouletting to increase particles in certain geometric regions  
+Control number of samples taken in specified regions of the phase space  
+WWG (weight window generator) and importance functions  
+---
+**Truncation**  
+Kill particles in uninteresting parts of problem  
+May be necessary in order to sample rare events  
+More samples (with less weight each) —> smaller variance in tallies
+
+**Deterministic methods**  
+Replace portions of a particle random walk by the expected results  
+obtained from a deterministic calculation
+
+Not a huge problem with basic criticality problems
+---
+## There are cards to do this so you don't have to actually code
+
+### $\mu = \int r(x)\frac{f(x)}{g(x)}g(x)dx$
+
+### $\sigma^2 = [r(x)\frac{f(x)}{g(x)}]^2g(x)dx - \mu^2$
+
+Choose g(x) to reduce variance; i.e., relative error, VOV
+
+Favor directions more important to tallies
+
+Change weights, importance, bias pdfs, and so much more
+
+It isn't a science and comes with experience
+---
+## Different problems have different approaches
+
+1. Time and energy cutoffs
+2. Geometry splitting & roulette
+3. Weight windows
+4. Exponential transform
+5. Forced collisions
+6. Energy splitting & roulette
+7. Time splitting & roulette
+8. Point and ring detectors
+9. DXTRAN
+10. Implicit capture
+11. Weight cutoff
+12. General source biasing
+13. Secondary particle biasing
+14. Bremsstrahlung energy biasing
+---
+## Making the input deck is not that hard
+
+**Geometry**  
+Cylinders are the easiest to do  
+Visual Editor
+
+**Materials**  
+See compendium
+
+**Source**
+SDEF card for sources  
+KCODE for criticality
+
+**Scores/Tallies**  
+Designate flux, detector, etc.
+
+Variance reduction
+---
+## MCNP is FORTRAN based so it is fickle
+
+Length in cm  
+Energy in MeV  
+Mass density in g/cc
+
+**Do NOT use tabs**  
+Use the space bar
+
+Start in 7th column at the least to 80th column
+
+```
+One Line Problem Title Card  
+Cell cards  
+.  
+.  
+BLANK LINE  
+Surface cards  
+.  
+.  
+BLANK LINE  
+Data cards  
+```
+---
+class: center,middle
+
+### Show example, data (per source neutron conversion)
+
+### This is one of those things that you just have to do to learn
+---
+class: center,middle
+
+## Keep the manual handy
+---
+## Jezebel example
+
+[Deck on git](https://github.com/TheDoctorRAB/mcnpx.decks/blob/master/criticality/jezebel.inp)
+
+Set up examples with radii
+
+[Criticality guide](http://www.mcnp.ir/admin/imgs/1354173299.Criticality%20Calculations%20with%20MCNP5%20A%20Primer%202nd%20Edition.pdf)
+---
+class: center,middle
+![doggehs](img/final.jpg)
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
