@@ -246,6 +246,75 @@ Lower returns from less risky investments
 
 Warranty?
 ---
+class: center,middle
+
+![Bridge modification scenario](img/bridge.mods.jpg)
+---
+## What is the best decision for bridge modifications?
+
+Maximize the minimum gain
+
+Minimize the maximum loss
+
+Maximize the maximum gain
+
+'Do nothing' decision must be included 
+
+30M cost to repair
+
+50M cost to replace
+
+Different losses based on the scenario and decision made
+---
+class: center,middle
+
+![Bridge modification expected value](img/bridge.mods.expected.jpg)
+---
+## How does the use of expected value affect decision making?
+
+The do nothing option has the largest loss
+
+Going just by expected loss replacing the bridge is the best option
+
+Are there other factors affecting the decision besides money? 
+
+What other metrics could be used?
+
+For more complicated analysis, Bayes theory is often applied
+---
+### Hurwicz criterion is designed to model a range of decision-making attitudes from the most conservative to the most optimistic
+
+### $v(a_i,s_j) \equiv payoff$
+
+### $Max(\alpha \: max \: v(a_i,s_j)+(1-\alpha) \: min \: v(a_i,s_j))$
+
+0 = minimax; risk averse
+
+1 = maximax; risk seeking
+
+Maximize by taking the derivative and finding the optimality index and measure risk aversion
+---
+class: center, middle
+
+![Land use template](img/land.use.template.jpg)
+---
+## How can we determine the best option for land use? 
+
+I did not include the do nothing option because I assumed doing nothing would result in zero for all scenarios, but more detailed analysis might be useful
+
+### $M(a_1)=60 \alpha-20(1-\alpha)$
+### $M(a_2)=50 \alpha-0(1-\alpha)$
+### $M(a_3)=100 \alpha-50(1-\alpha)$
+### $M(a_4)=15 \alpha-10(1-\alpha)$
+---
+class:center,middle
+
+![Land use Hurwicz](img/land.use.hurwicz.jpg)
+---
+class: center,middle
+
+![Land use expected value](img/land.use.expected.jpg)
+---
 ![doggehs](img/final.jpg)
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
