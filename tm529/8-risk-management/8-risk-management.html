@@ -384,8 +384,111 @@ Buy in is based on level of personal risk
 
 ### $a>0$
 ---
+class:center,middle
 
+![Decision tree - risk averse](img/decision.tree_risk.averse.jpg)
 ---
+class:center,middle
+
+![Decision tree - risk averse](img/decision.tree_risk.seeker.jpg)
+---
+class: center,middle
+
+![Hurwicz - risk seeker](img/hurwicz_risk.seeker.jpg)
+---
+class:center,middle
+
+![Land use Hurwicz](img/land.use.hurwicz.jpg)
+---
+class: center,middle
+
+![Hurwicz - risk seeker](img/hurwicz_risk.averse.jpg)
+---
+## The [Arrow-Pratt coefficient](http://public.econ.duke.edu/~rek8/econ604/lecturenotes/topic2notesparttwo.pdf) measures risk aversion
+
+### $r_A(x) \equiv -\frac{u''(x)}{u'(x)}$
+
+### $u(x)=x^2 \rightarrow r_A(x) = -\frac{1}{x}$
+
+### $u(x)=\sqrt{x} \rightarrow r_A(x) = \frac{1}{2x}$
+
+### $u(x)=1-e^{-\lambda x} \rightarrow r_A(x) = \lambda$
+
+Who is the most risk averse?
+---
+## What is risk aversion like as wealth increases?
+
+$r_A$ is positive for risk averse individuals
+
+Measure of curvature of preference scaling function
+
+Certainty equivalent is less for the more curved function
+
+Square root, Weibull, power law, ln(x) are common risk averse utility functions
+
+The higher ARA, the more favorable odds the investor will demand in order to be willing to accept the risky bet
+---
+## What happens when you have to measure utility for multiple attributes?
+
+$u(x_1,x_2,x_3,...,x_n)$  
+Previously we have been trying to find the utility of wealth  
+What else would we want to characterize in terms of utility?
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\large&space;u(x_1,x_2,x_3,...,x_n)=\sum_{i=1}^n&space;w_iu_i(x_i),&space;\;&space;0&space;\leq&space;w_i&space;\leq&space;1,&space;\;&space;0&space;\leq&space;u_i(x_i)&space;\;&space;1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\large&space;u(x_1,x_2,x_3,...,x_n)=\sum_{i=1}^n&space;w_iu_i(x_i),&space;\;&space;0&space;\leq&space;w_i&space;\leq&space;1,&space;\;&space;0&space;\leq&space;u_i(x_i)&space;\;&space;1" title="\large u(x_1,x_2,x_3,...,x_n)=\sum_{i=1}^n w_iu_i(x_i), \; 0 \leq w_i \leq 1, \; 0 \leq u_i(x_i) \; 1" /></a>
+
+Assumes independence of attributes (preferences) and linearity 
+
+Postulate assumptions about the preference attitudes of the decision maker
+
+Derive functional forms of multiattribute utility function consistent with assumptions
+---
+class: center,middle
+
+## Analytic hierarchy process
+---
+## AHP is a multiattribute decision analysis method that uses subjective judgments
+
+[Saaty T L](http://www.stat.uchicago.edu/~lekheng/meetings/mathofranking/ref/saaty1.pdf) (1980) [The Analytic Hierarchy Process](https://scholar.google.com/scholar?q=saaty+the+analytic+hierarchy+process&hl=en&as_sdt=0&as_vis=1&oi=scholart), McGraw Hill International
+
+Alternate approach to expected utility  
+Really good for multi criteria
+
+Identify goal  
+Establish criteria affecting goal  
+Derive factors affecting each criteria  
+Generate alternatives
+---
+## Make pairwise comparisons with alternatives under each criteria
+
+Make a relative assessment between two items at a time (only 2)  
+Use objective information if possible
+
+1: elements are equally important  
+3: one element is weakly more important  
+5: one element is strongly more important  
+7: one element is demonstrably important  
+9: one element is absolutely more important
+
+Values of 2,4,6,8 are compromises between defined categories
+
+Then arrange values into a matrix
+---
+## AHP is a fairly qualitative and kind of an expert judgment 
+
+Derive consistency ratio less than 0.100
+
+AHP does not require perfect consistency  
+Provides a measure of consistency
+
+Develop weights based on criteria and score each alternative
+
+Saaty suggests that hierarchies be limited to six levels and nine items per level.  
+
+Psychological result that people can consider 7 +/- 2 items simultaneously
+
+You can actually compare apples and oranges so tell people to shut up when they say that
+---
+
 ![doggehs](img/final.jpg)
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
