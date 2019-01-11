@@ -488,7 +488,156 @@ Psychological result that people can consider 7 +/- 2 items simultaneously
 
 You can actually compare apples and oranges so tell people to shut up when they say that
 ---
+class: center,middle
 
+![AHP first try](img/ahp_first.try.jpg)
+---
+## This first try was overly complicated
+
+Goal - recommendation to DOE
+
+Criteria - environmental impact and public perception
+
+Under environmental impact I put EPA, NRC compliance with the TSPA
+
+**Alternatives**  
+Delay - delay to accept and construct  
+No action - do nothing  
+Construct - start to construct  
+Alt. Tech. - alternative technologies (didn't consider dry cask at the time)  
+Diff. site - start over with a different site  
+Modify - modify YM design (drip shield, backfill)
+---
+## Five criteria and six alternatives is a lot of pairwise comparisons
+
+Simplify this diagram  
+Could lead to high inconsistency  
+
+**No action 1**  
+Onsite storage under institutional control for 10000 y
+
+**No action 2**  
+Onsite storage under institutional control for 100 y
+
+Combine delay and modify so they can modify existing design while delaying shipments
+
+In hindsight, with dry cask storage, this would change a lot
+---
+class: center,middle
+
+![AHP final](img/ahp_final.jpg)
+---
+## This AHP is more straighforward
+
+NRC criterion removed because it kicks in after construction
+
+EPA and TSPA criteria folded into Environmental Impact because they all really deal with the environmental impact
+
+No action split into 1 and 2 based on analysis of EIS
+
+Delay and Modify can be combined
+---
+class: center,middle
+
+## Let's look at another example
+---
+class: center,middle
+
+![AHP car](img/ahp.car.jpg)
+---
+class: center,middle
+
+## Is there anything missing in your decision to buy a car?
+---
+## First, weight the criteria
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\begin{bmatrix}&space;&A1&space;&A2&space;&A3&space;\\&space;A1&a_{11}&space;&a_{12}&space;&a_{13}&space;\\&space;A2&a_{21}&space;&a_{22}&space;&a_{23}&space;\\&space;A3&a_{31}&space;&a_{32}&space;&a_{33}&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\begin{bmatrix}&space;&A1&space;&A2&space;&A3&space;\\&space;A1&a_{11}&space;&a_{12}&space;&a_{13}&space;\\&space;A2&a_{21}&space;&a_{22}&space;&a_{23}&space;\\&space;A3&a_{31}&space;&a_{32}&space;&a_{33}&space;\end{bmatrix}" title="\LARGE \begin{bmatrix} &A1 &A2 &A3 \\ A1&a_{11} &a_{12} &a_{13} \\ A2&a_{21} &a_{22} &a_{23} \\ A3&a_{31} &a_{32} &a_{33} \end{bmatrix}" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;a_{ii}=1" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;a_{ii}=1" title="\LARGE a_{ii}=1" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;a_{ij}=a^{-1}_{ji}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;a_{ij}=a^{-1}_{ji}" title="\LARGE a_{ij}=a^{-1}_{ji}" /></a>
+---
+## Public perception is weakly more important than environmental impact
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\begin{bmatrix}&space;&ENV&space;&PP&space;\\&space;ENV&1&space;&1/3&space;\\&space;PP&3&space;&1&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\begin{bmatrix}&space;&ENV&space;&PP&space;\\&space;ENV&1&space;&1/3&space;\\&space;PP&3&space;&1&space;\end{bmatrix}" title="\LARGE \begin{bmatrix} &ENV &PP \\ ENV&1 &1/3 \\ PP&3 &1 \end{bmatrix}" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\begin{bmatrix}&space;ENV&space;\\&space;PP&space;\end{bmatrix}&space;=&space;\begin{bmatrix}&space;0.25&space;\\&space;0.75&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\begin{bmatrix}&space;ENV&space;\\&space;PP&space;\end{bmatrix}&space;=&space;\begin{bmatrix}&space;0.25&space;\\&space;0.75&space;\end{bmatrix}" title="\LARGE \begin{bmatrix} ENV \\ PP \end{bmatrix} = \begin{bmatrix} 0.25 \\ 0.75 \end{bmatrix}" /></a>
+---
+## Doing the same for the car
+
+![AHP car criteria](img/ahp_car.criteria.jpg)
+
+<p>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\begin{bmatrix}&space;STY&space;\\&space;REL&space;\\&space;FE&space;\end{bmatrix}&space;=&space;\begin{bmatrix}&space;0.3196&space;\\&space;0.5584&space;\\&space;0.1220&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\begin{bmatrix}&space;STY&space;\\&space;REL&space;\\&space;FE&space;\end{bmatrix}&space;=&space;\begin{bmatrix}&space;0.3196&space;\\&space;0.5584&space;\\&space;0.1220&space;\end{bmatrix}"title="\LARGE \begin{bmatrix} STY \\ REL \\ FE \end{bmatrix} = \begin{bmatrix} 0.3196 \\ 0.5584 \\ 0.1220 \end{bmatrix}" /></a>
+---
+## Let's check the consistency of the criteria (more later)
+
+### $CI \equiv \frac{\lambda_m - n}{n-1}$
+
+### $CI = \frac{3.0183-3}{3-1} = 0.0091$
+
+![CR table](img/cr.table.jpg)
+
+### $CR = 0.158$
+---
+## To rank the criteria, determine the eigenvector
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\underline{\underline{A}}&space;\:&space;\underline{x}&space;=&space;\lambda&space;\underline{x}$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\underline{\underline{A}}&space;\:&space;\underline{x}&space;=&space;\lambda&space;\underline{x}$" title="\LARGE \underline{\underline{A}} \: \underline{x} = \lambda \underline{x}$" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;|A-\lambda&space;I|=0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;|A-\lambda&space;I|=0" title="\LARGE |A-\lambda I|=0" /></a>
+
+A is the pairwise matrix
+---
+## Find *normalized* eigenvector for greatest eigenvalue (real valued)
+
+Eigenvalue should be slightly > n
+
+python of course (one line of code) but plenty of online tools 
+
+There are n eigenvalues/vectors for an n x n matrix
+
+Because the judgment cannot be truly consistent, we assume it exhibits a small perturbation and can satisfy the eigenvalue equation
+
+Measure consistency to prove this
+
+Deviation should only be small
+---
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\begin{bmatrix}&space;ENV&space;&NA1&space;&NA2&space;&ALT&space;&DIF&space;&CST&space;&D/M&space;&EIG&space;\\&space;NA1&space;&1&space;&5&space;&3&space;&3&space;&2&space;&1/2&space;&0.2572&space;\\&space;NA2&space;&1/5&space;&1&space;&1/3&space;&1/3&space;&1/3&space;&1/5&space;&0.0464&space;\\&space;ALT&space;&1/3&space;&3&space;&1&space;&1&space;&1/2&space;&1/3&space;&0.0997&space;\\&space;DIF&space;&1/3&space;&3&space;&1&space;&1&space;&1/3&space;&1/3&space;&0.0950&space;\\&space;CST&space;&1/2&space;&3&space;&2&space;&3&space;&1&space;&1/2&space;&0.1766&space;\\&space;D/M&space;&2&space;&5&space;&3&space;&3&space;&2&space;&1&space;&0.3251&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{151}&space;\LARGE&space;\begin{bmatrix}&space;ENV&space;&NA1&space;&NA2&space;&ALT&space;&DIF&space;&CST&space;&D/M&space;&EIG&space;\\&space;NA1&space;&1&space;&5&space;&3&space;&3&space;&2&space;&1/2&space;&0.2572&space;\\&space;NA2&space;&1/5&space;&1&space;&1/3&space;&1/3&space;&1/3&space;&1/5&space;&0.0464&space;\\&space;ALT&space;&1/3&space;&3&space;&1&space;&1&space;&1/2&space;&1/3&space;&0.0997&space;\\&space;DIF&space;&1/3&space;&3&space;&1&space;&1&space;&1/3&space;&1/3&space;&0.0950&space;\\&space;CST&space;&1/2&space;&3&space;&2&space;&3&space;&1&space;&1/2&space;&0.1766&space;\\&space;D/M&space;&2&space;&5&space;&3&space;&3&space;&2&space;&1&space;&0.3251&space;\end{bmatrix}" title="\LARGE \begin{bmatrix} ENV &NA1 &NA2 &ALT &DIF &CST &D/M &EIG \\ NA1 &1 &5 &3 &3 &2 &1/2 &0.2572 \\ NA2 &1/5 &1 &1/3 &1/3 &1/3 &1/5 &0.0464 \\ ALT &1/3 &3 &1 &1 &1/2 &1/3 &0.0997 \\ DIF &1/3 &3 &1 &1 &1/3 &1/3 &0.0950 \\ CST &1/2 &3 &2 &3 &1 &1/2 &0.1766 \\ D/M &2 &5 &3 &3 &2 &1 &0.3251 \end{bmatrix}" /></a>
+
+### $CI = \frac{6.1789-6}{6-1} = 0.0358$
+
+### $CR=0.289$
+---
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\begin{bmatrix}&space;PP&space;&NA1&space;&NA2&space;&ALT&space;&DIF&space;&CST&space;&D/M&space;&EIG&space;\\&space;NA1&space;&1&space;&5&space;&3&space;&5&space;&1&space;&1/3&space;&0.2392&space;\\&space;NA2&space;&1/5&space;&1&space;&1/2&space;&1/2&space;&1/2&space;&1/5&space;&0.0551&space;\\&space;ALT&space;&1/3&space;&2&space;&1&space;&1/2&space;&1/2&space;&1/3&space;&0.0825&space;\\&space;DIF&space;&1/5&space;&2&space;&2&space;&1&space;&1/3&space;&1/3&space;&0.0930&space;\\&space;CST&space;&1&space;&2&space;&2&space;&3&space;&1&space;&1/2&space;&0.1803&space;\\&space;D/M&space;&3&space;&5&space;&3&space;&3&space;&2&space;&1&space;&0.3500&space;\end{bmatrix}"target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\begin{bmatrix}&space;PP&space;&NA1&space;&NA2&space;&ALT&space;&DIF&space;&CST&space;&D/M&space;&EIG&space;\\&space;NA1&space;&1&space;&5&space;&3&space;&5&space;&1&space;&1/3&space;&0.2392&space;\\&space;NA2&space;&1/5&space;&1&space;&1/2&space;&1/2&space;&1/2&space;&1/5&space;&0.0551&space;\\&space;ALT&space;&1/3&space;&2&space;&1&space;&1/2&space;&1/2&space;&1/3&space;&0.0825&space;\\&space;DIF&space;&1/5&space;&2&space;&2&space;&1&space;&1/3&space;&1/3&space;&0.0930&space;\\&space;CST&space;&1&space;&2&space;&2&space;&3&space;&1&space;&1/2&space;&0.1803&space;\\&space;D/M&space;&3&space;&5&space;&3&space;&3&space;&2&space;&1&space;&0.3500&space;\end{bmatrix}" title="\LARGE \begin{bmatrix} PP &NA1 &NA2 &ALT &DIF &CST &D/M &EIG \\ NA1 &1 &5 &3 &5 &1 &1/3 &0.2392 \\ NA2 &1/5 &1 &1/2 &1/2 &1/2 &1/5 &0.0551 \\ ALT &1/3 &2 &1 &1/2 &1/2 &1/3 &0.0825 \\ DIF &1/5 &2 &2 &1 &1/3 &1/3 &0.0930 \\ CST &1 &2 &2 &3 &1 &1/2 &0.1803 \\ D/M &3 &5 &3 &3 &2 &1 &0.3500 \end{bmatrix}" /></a>
+
+### $CI = \frac{6.3716-6}{6-1} = 0.0743$
+
+### $CR = 0.599$
+---
+class: center,middle
+
+![AHP car ranking](img/ahp_car.rank.jpg)
+---
+class: center,middle
+
+![AHP final car ranking](img/ahp_car.priority.jpg)
+---
+## Then for some reason they brough in cost at the end
+
+![AHP car cost benefit ratio](img/ahp_cost.jpg)
+
+Do not agree
+
+No pairwise comparison of cost with other criteria
+---
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\begin{bmatrix}&space;PP:ENV&space;\;&space;(3:1)&space;\;\;\;\;\;\;&space;&EIG&space;\\&space;NA1&space;&0.242&space;\\&space;NA2&space;&0.055&space;\\&space;ALT&space;&0.090&space;\\&space;DIF&space;&0.098&space;\\&space;CST&space;&0.178&space;\\&space;D/M&space;&\bold{0.338}&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\begin{bmatrix}&space;PP:ENV&space;\;&space;(3:1)&space;\;\;\;\;\;\;&space;&EIG&space;\\&space;NA1&space;&0.242&space;\\&space;NA2&space;&0.055&space;\\&space;ALT&space;&0.090&space;\\&space;DIF&space;&0.098&space;\\&space;CST&space;&0.178&space;\\&space;D/M&space;&\bold{0.338}&space;\end{bmatrix}" title="\LARGE \begin{bmatrix} PP:ENV \; (3:1) \;\;\;\;\;\; &EIG \\ NA1 &0.242 \\ NA2 &0.055 \\ ALT &0.090 \\ DIF &0.098 \\ CST &0.178 \\ D/M &\bold{0.338} \end{bmatrix}" /></a>
+---
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\begin{bmatrix}&space;PP:ENV&space;\;&space;(1:1)&space;\;\;\;\;\;\;&space;&EIG&space;\\&space;NA1&space;&0.247&space;\\&space;NA2&space;&0.052&space;\\&space;ALT&space;&0.094&space;\\&space;DIF&space;&0.097&space;\\&space;CST&space;&0.177&space;\\&space;D/M&space;&\bold{0.332}&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\begin{bmatrix}&space;PP:ENV&space;\;&space;(1:1)&space;\;\;\;\;\;\;&space;&EIG&space;\\&space;NA1&space;&0.247&space;\\&space;NA2&space;&0.052&space;\\&space;ALT&space;&0.094&space;\\&space;DIF&space;&0.097&space;\\&space;CST&space;&0.177&space;\\&space;D/M&space;&\bold{0.332}&space;\end{bmatrix}" title="\LARGE \begin{bmatrix} PP:ENV \; (1:1) \;\;\;\;\;\; &EIG \\ NA1 &0.247 \\ NA2 &0.052 \\ ALT &0.094 \\ DIF &0.097 \\ CST &0.177 \\ D/M &\bold{0.332} \end{bmatrix}" /></a>
+---
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\begin{bmatrix}&space;PP:ENV&space;\;&space;(1:3)&space;\;\;\;\;\;\;&space;&EIG&space;\\&space;NA1&space;&0.251&space;\\&space;NA2&space;&0.050&space;\\&space;ALT&space;&0.097&space;\\&space;DIF&space;&0.097&space;\\&space;CST&space;&0.177&space;\\&space;D/M&space;&\bold{0.328}&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\begin{bmatrix}&space;PP:ENV&space;\;&space;(1:3)&space;\;\;\;\;\;\;&space;&EIG&space;\\&space;NA1&space;&0.251&space;\\&space;NA2&space;&0.050&space;\\&space;ALT&space;&0.097&space;\\&space;DIF&space;&0.097&space;\\&space;CST&space;&0.177&space;\\&space;D/M&space;&\bold{0.328}&space;\end{bmatrix}" title="\LARGE \begin{bmatrix} PP:ENV \; (1:3) \;\;\;\;\;\; &EIG \\ NA1 &0.251 \\ NA2 &0.050 \\ ALT &0.097 \\ DIF &0.097 \\ CST &0.177 \\ D/M &\bold{0.328} \end{bmatrix}" /></a>
+---
+---
 ![doggehs](img/final.jpg)
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
