@@ -856,6 +856,122 @@ class: center,middle
 # Technical design of a repository
 ---
 class: center,middle
+
+## What is there to design for the repository?
+---
+## What is there to design for the repository?
+
+The canisters - How far apart they should be - Why?  
+HLW is vitrified (not the used fuel) to a glass waste form  
+Very stable long term and slow dissolution  
+Specifications developed by DOE Environmental Management for the high level waste (HLW) form producers as their Waste Acceptance Program  
+Drift spacing of 81 meters  
+Mid-pillar peak temperature of 96° C  
+Waste package spacing of 0.1 meters  
+Average emplacement drift line load of 1.45 kW/m  
+Maximum waste package thermal output of 18.0 kW  
+Ventilation flow rate of 15 m3/s  
+23 years of waste emplacement followed by 50 years of forced ventilation following emplacement of the last waste package  
+Design of the process and the waste form determines thermal load
+---
+### Specifications developed by DOE Environmental Management for the high level waste (HLW) form producers as their Waste Acceptance Program
+
+Chemical  
+Waste form is borosilicate waste glass: 20-40 w/o waste oxides, 35-65 w/o silica, 5-10 w/o boron oxide, 10-20 w/o alkali oxides, and other oxide constituents.
+
+Chemical composition, crystalline phases expected to be present, and the amount of each crystalline phase should be identified
+
+Oxide composition of waste form should be reported, including all elements (excluding oxygen) present in concentrations greater than 0.5% of the glass
+---
+Radionuclide inventory  
+Half-lives longer than 10 years that are or will be present in concentrations greater than 0.05% of total
+are, be, 0.05% radioactive inventory shall be reported (indexed to the year 2015 and 3115)
+
+Total quantities of individual radionuclides to be shipped to the repository
+
+Upper limit of these radionuclides for any canistered waste form calculated
+
+Average calculated radionuclide inventory per canister
+
+Quality control by comparing to Environmental Assessment Benchmark Glass
+
+At time of shipment, temperature has to be below 400C
+
+Rules for nonradionuclide hazardous waste
+
+For fissile content for all the isotopes
+---
+## There are multi dimensional constraints on canister loading
+
+waste composition in canister
+
+number of canisters
+
+materials
+
+canister dimensions
+
+radiation
+
+repository conditions
+
+storage conditions
+---
+### Linear programming is a good modeling approach
+
+Waste composition  
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\overline{N}_W=[x_{W_1},...,x_{W_i},...,x_{W_n}]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\overline{N}_W=[x_{W_1},...,x_{W_i},...,x_{W_n}]" title="\LARGE \overline{N}_W=[x_{W_1},...,x_{W_i},...,x_{W_n}]" /></a>
+
+Glass composition  
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\overline{N}_G=[x_{G_1},...,x_{G_i},...,x_{G_n}]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\overline{N}_G=[x_{G_1},...,x_{G_i},...,x_{G_n}]" title="\LARGE \overline{N}_G=[x_{G_1},...,x_{G_i},...,x_{G_n}]" /></a>
+
+Total mass of solid waste  
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;M_S=M_W&plus;M_G" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;M_S=M_W&plus;M_G" title="\LARGE M_S=M_W+M_G" /></a>
+
+Solid form composition  
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\overline{N}_S=\theta\overline{N}_W&plus;(1-\theta)\overline{N}_G" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\overline{N}_S=\theta\overline{N}_W&plus;(1-\theta)\overline{N}_G" title="\LARGE \overline{N}_S=\theta\overline{N}_W+(1-\theta)\overline{N}_G" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\theta\equiv&space;M_W/M_S" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\theta\equiv&space;M_W/M_S" title="\LARGE \theta\equiv M_W/M_S" /></a>
+---
+## Linear programming is used for optimization problems
+
+Objective function  
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;max(f)=\underline{c}&space;\;&space;\underline{x}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;max(f)=\underline{c}&space;\;&space;\underline{x}" title="\LARGE max(f)=\underline{c} \; \underline{x}" /></a>
+
+Constraints  
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\underline{\underline{A}}\;\underline{x}\leq\underline{b}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\underline{\underline{A}}\;\underline{x}\leq\underline{b}" title="\LARGE \underline{\underline{A}}\;\underline{x}\leq\underline{b}" /></a>
+
+c = row vector of coefficients of objective function  
+x = column vector of independent variables  
+A = matrix of coefficients of constraint inequalities  
+b = column vector of RHS of constraint inequalities  
+A and b would be based on the regulations for the waste form/canister
+---
+class: center,middle
+
+## Let's do an example
+---
+# Maximize profit for a gas processing plant
+
+A gas processing plant receives a fixed amount of raw gas each week
+
+Either regular or premium quality is processed, but only one grade at a time
+The plant is open 80 hours per week
+
+Decision variables are quantity of regular gas produced per week and premium gas produced each week
+
+Objective function is to maximize profit under given constraints
+---
+|Resource&nbsp; &nbsp;|Regular heating gas [t/w]&nbsp; &nbsp;|Premium heating gas [t/w]&nbsp; &nbsp;|Availability    |
+|:--------------------|:------------------------------------:|:------------------------------------:|:--------------:|
+|Raw gas              |$7 \; m^3/ton$                        |$11 \; m^3/ton$                       |$77 \; m^3/week$|
+|Production time      |10 hours/ton                          |8 hours/ton                           |80 hours/week   |
+|Storage              |9 tons                                |6 tons                                |                |
+|Profit               |150/ton                               |175/ton                               |                |
+---
+
+---
+class: center,middle
 ![doggehs](img/final.jpg)
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
