@@ -955,7 +955,7 @@ class: center,middle
 
 A gas processing plant receives a fixed amount of raw gas each week
 
-Either regular or premium quality is processed, but only one grade at a time
+Either regular or premium quality is processed, but only one grade at a time  
 The plant is open 80 hours per week
 
 Decision variables are quantity of regular gas produced per week and premium gas produced each week
@@ -969,7 +969,50 @@ Objective function is to maximize profit under given constraints
 |Storage              |9 tons                                |6 tons                                |                |
 |Profit               |150/ton                               |175/ton                               |                |
 ---
+## Develop objective function and constraints
 
+Independent variables  
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\underline{G}=\begin{bmatrix}&space;r&space;\\&space;p&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\underline{G}=\begin{bmatrix}&space;r&space;\\&space;p&space;\end{bmatrix}" title="\LARGE \underline{G}=\begin{bmatrix} r \\ p \end{bmatrix}" /></a>
+
+Coefficients of objective functions  
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\underline{c}=[150&space;\;&space;\;&space;175]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\underline{c}=[150&space;\;&space;\;&space;175]" title="\LARGE \underline{c}=[150 \; \; 175]" /></a>
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\begin{bmatrix}&space;7&space;&&space;11&space;\\&space;10&space;&&space;8&space;\\&space;1&space;&&space;0&space;\\&space;0&space;&&space;1&space;\end{bmatrix}&space;\cdot&space;\begin{bmatrix}r&space;\\&space;p\end{bmatrix}&space;\leq&space;\begin{bmatrix}77&space;\\&space;80&space;\\&space;9&space;\\&space;6&space;\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\begin{bmatrix}&space;7&space;&&space;11&space;\\&space;10&space;&&space;8&space;\\&space;1&space;&&space;0&space;\\&space;0&space;&&space;1&space;\end{bmatrix}&space;\cdot&space;\begin{bmatrix}r&space;\\&space;p\end{bmatrix}&space;\leq&space;\begin{bmatrix}77&space;\\&space;80&space;\\&space;9&space;\\&space;6&space;\end{bmatrix}" title="\LARGE \begin{bmatrix} 7 & 11 \\ 10 & 8 \\ 1 & 0 \\ 0 & 1   \end{bmatrix} \cdot \begin{bmatrix}r \\ p\end{bmatrix} \leq \begin{bmatrix}77 \\ 80 \\ 9 \\ 6 \end{bmatrix}" /></a>
+---
+## Develop objecive functions and contraints
+
+Then
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;max(P)&space;=&space;[150&space;\;&space;\;&space;175]&space;\cdot&space;\begin{bmatrix}r&space;\\&space;p\end{bmatrix}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;max(P)&space;=&space;[150&space;\;&space;\;&space;175]&space;\cdot&space;\begin{bmatrix}r&space;\\&space;p\end{bmatrix}" title="\LARGE max(P) = [150 \; \; 175] \cdot
+\begin{bmatrix}r \\ p\end{bmatrix}" /></a>
+---
+![Gas volume constraint](img/gas.volume.jpg)
+---
+![Gas production constraint](img/gas.production.jpg)
+---
+![Gas storage constraint](img/gas.storage.jpg)
+---
+## Then max(P)
+
+Typically, it's a good idea to plot the 'break even' function
+### $P = 150r+175p=0$ (not in feasible space)
+
+We know the points of intersection bounding the feasible space  
+(0,0) - (0,6) - (1.7,6) - (4.9,3.9) - (0,8)
+
+Substitute into the objective function - Where is the max profit?   
+$P(0,0) = 0$  
+$P(0,6) = 1050$  
+$P(1.7,6) = 1305$  
+$P(4.9,3.9) = 1418$  
+$P(0,8) = 1400$
+---
+![Gas profit constraint](img/gas.profit.jpg)
+---
+class: center,middle
+---
+## Now let's do it for waste oxide loading
+---
 ---
 class: center,middle
 ![doggehs](img/final.jpg)
