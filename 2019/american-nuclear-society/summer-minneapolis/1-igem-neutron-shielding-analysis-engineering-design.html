@@ -49,7 +49,7 @@ class: center, middle
 Bob Borrelli  
 University of Idaho-Idaho Falls  
 Center for Advanced Energy Studies  
-@TheDoctorRAB
+@TheDoctorRAB ![git](img/git.png) ![twitter](img/twitter.png)
 ]
 
 ##### .right[
@@ -195,7 +195,7 @@ United States could go either way
 
 Ideally would like to talk to US energy companies
 ---
-## We have several challenges to design 
+## We have several functional requirements 
 
 Effective heat removal - Rich+Winfred
 
@@ -203,41 +203,55 @@ Materials optimization - Brian+Sam
 About 12% $B_4C$ solid solution with $Al$ but pouring problems
 
 Shielding - How thick will the cask be? How much $^{10}B$ do we need? - Coming up  
-Occupational safety (dose)
+Occupational safety - dose rate less than $10 \; \mu Sv/h$
 
 Licensing - What are the right regulations? What is needed for licensing? - Coming up
 
 Market penetration - Who wants it? - Sakae - Next
 
 Realistically, the cask probably will only be effective for certain fuel types
-
 ---
 ## Sakae attended several exhibitions worldwide to engage companies
 
 This was a discussion we had with the IGEM council
 
+World Nuclear Exhibition in Paris (June 2018)
 
+Talked to...  
+Doosan, KEPCO, NESS (South Korea)  
+Hitachi GE (Japan)  
+EDF Energy (UK)  
+Orano TN (USA)
+
+Consensus was that there is interest but want to see specific design data, cost analysis, and safety assessment
 ---
-## I used ORIGEN for burnup and depletion
+class: center,middle
 
-Thanks to Steve Skutnik for some slides
+### Let's move on to the technical portion of the show
+---
+### I used ORIGEN for burnup and depletion
+
+Thanks to Steve Skutnik for help
 
 Divided the cases in to low burnup, typical burnup, high burnup  
 
 (Read - N-XXYY - X.X% and YY GWD/MTU)
 
 **L-3030**,L-3530,L-3033,L-3133,L-3233,L-3533,L-3240,L-3540,L-4040  
-T-4045,T-4545,T-5045,T-4050,T-4250,T-42550,T-4550,T-5050  
+**T-4045**,T-4545,T-5045,T-4050,T-4250,T-42550,T-4550,T-5050  
 H-4555,H-5055,H-4560,**H-5060**
 
 Westinghouse 17x17 PWR  
 515 day cycle length and pool cooling (decay) from discharge out to 20 years
 ---
 class: middle,center
-![Low burnup curies](img/low.burnup.curies.png)
+![Radioactivity per assembly](img/Radioactivity of used fuel per assembly.png)
 ---
 class: middle,center
-![High burnup curies](img/high.burnup.curies.png)
+![Decay heat per assembly](img/Decay heat of used fuel per assembly.png)
+---
+class: middle,center
+![Spontaneous fission per assembly](img/Spontaneous fission rate per assembly.png)
 ---
 class: center,middle
 
@@ -247,54 +261,64 @@ class: center,middle
 ---
 # What's the plan?
 
-I decided that the cask probably would only be useful for older fuel
+I decided that the cask probably would only be useful for older fuel (20 y)
 
 I wanted to start with a neutron shielding model  
 
-Cm-144 shown in ORIGEN simulations to be dominant emitter across the board
+Cm-244 shown in ORIGEN simulations to be dominant emitter across the board (SDEF)
 
-Start with initial Sakae cask design
+Plate thickness - 1.5, 3, 6, 12, 18, 30 cm
 
-Simulate neutron emission for dose
+$B_4C$ - 10, 30, 50, 70, 90 wt% in Al per plate thickness
 
-Vary $B_4C$ weight percent in the plates
-
-Vary thickness
+$^{10}B$ loading in $B_4C$ - 5, 10, 25, 50, 75 wt%
 ---
 class: center,middle
 
 ## VISED views
-
-#### Got started with help from Seth Dustin
 ---
 class: center,middle
-![Assembly](img/single.assembly_plan.view.jpg)
+![Assembly](img/single.assembly_plan.view.guide.jpg)
+---
+## #FancyMCNP
+
+```
+c      ---  
+105    0 -93  94 -95  96                u=3 lat=1 fill=0:16 0:16 0:0  
+       1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1  
+       1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1  
+       1 1 1 1 1 2 1 1 2 1 1 2 1 1 1 1 1  
+       1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1  
+       1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1  
+       1 1 2 1 1 2 1 1 2 1 1 2 1 1 2 1 1  
+       1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1  
+       1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1  
+       1 1 2 1 1 2 1 1 2 1 1 2 1 1 2 1 1  
+       1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1  
+       1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1  
+       1 1 2 1 1 2 1 1 2 1 1 2 1 1 2 1 1  
+       1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1  
+       1 1 1 2 1 1 1 1 1 1 1 1 1 2 1 1 1  
+       1 1 1 1 1 2 1 1 2 1 1 2 1 1 1 1 1  
+       1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1  
+       1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1  
+       imp:n,p=1  
+c      ---  
+```
 ---
 class: center,middle
 ![Assembly](img/single.assembly_side.view_fuel.jpg)
 ---
 class: center,middle
-![Assembly](img/single.assembly_side.view_pipe.jpg)
----
-class: center,middle
 ![Assembly](img/single.assembly_side.view_pipe.zoom.jpg)
 ---
-# MCNP modeling notes for your interest
+## More MCNP modeling notes for your interest
 
-<img src="img/single.assembly_plan.view_small.jpg" align="left">
+Backfill - air, water, helium, borosilicate glass
 
-Cask has backfill   
-Filled with different materials
+Lattice card 17x17 unit cells - 269 rods - pitch 12.54 mm
 
-Lattice card 17x17 unit cells - pitch 12.54 mm
-
-Material card taken from ORIGEN output 
-
-Pipes equally positioned on plates  
-More can be added
-
-"Welds" are separate cells  
-Material can be changed independently
+Material card taken from ORIGEN output with 1E-08 wt% cutoff
 ---
 # MCNP output notes for your interest
 
@@ -306,17 +330,13 @@ ERG = Spontaneous Cm fission energy distribution
 
 F2 tally for outward normal on each plate
 
-NPS 1E6 passed all tests for error and VOV  
+NPS 2E6 passed all tests for error and VOV  
 
-Few where cap and plug had slope 2.9
-
-Few where FOM trend during last half of problem
-
-Equal(ish) dose rates off plates - showing results for west plate
+Equal dose rates off plates - isotropic
 ---
 class: center,middle
 
-## Results so far
+## Results
 ---
 ## Low burnup 3030 results
 
