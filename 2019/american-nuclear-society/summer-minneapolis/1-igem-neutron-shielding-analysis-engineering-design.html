@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>IGEM - MCNP</title>
+    <title>ANS - IGEM Update</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style type="text/css">
       @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
@@ -197,7 +197,7 @@ Ideally would like to talk to US energy companies
 ---
 ## We have several functional requirements 
 
-Effective heat removal - Rich+Winfred
+Effective heat removal - Rich+Winfred  
 
 Materials optimization - Brian+Sam   
 About 12% $B_4C$ solid solution with $Al$ but pouring problems
@@ -272,6 +272,10 @@ Plate thickness - 1.5, 3, 6, 12, 18, 30 cm
 $B_4C$ - 10, 30, 50, 70, 90 wt% in Al per plate thickness
 
 $^{10}B$ loading in $B_4C$ - 5, 10, 25, 50, 75 wt%
+
+For each enrichment-burnup
+
+Then a second set of simulations emplaced in concrete - 3, 5, 10, 15, 20 cm
 ---
 class: center,middle
 
@@ -279,6 +283,9 @@ class: center,middle
 ---
 class: center,middle
 ![Assembly](img/single.assembly_plan.view.guide.jpg)
+---
+class: center,middle
+![Assembly](img/single.assembly_plan.view.guide_container.jpg)
 ---
 ## #FancyMCNP
 
@@ -330,66 +337,95 @@ ERG = Spontaneous Cm fission energy distribution
 
 F2 tally for outward normal on each plate
 
-NPS 2E6 passed all tests for error and VOV  
+NPS 2E6 (bare) and 3E6 (container) passed all tests
 
 Equal dose rates off plates - isotropic
 ---
 class: center,middle
 
 ## Results
----
-## Low burnup 3030 results
 
-International Commission on Radiological Protection limit $10 \mu Sv/h$ for neutrons
-
-||L-3030||10wt%||30wt%||50wt%||70wt%||90wt%||
-|:-------|:----:|:----:|:----:|:----:|:----:|
-||1.5 cm||3.4E3||3.4E3||3.4E3||3.3E3||3.3E3||
-||3 cm  ||3.0E3||2.9E3||2.8E3||2.7E3||2.6E3||
-||6 cm  ||2.3E3||2.0E3||1.9E3||1.6E3||1.5E3||
-||12 cm ||1.3E3||1.0E3||8.0E2||6.7E2||5.7E2||
-||18 cm ||7.2E2||4.9E2||3.6E2||2.8E2||2.3E2||
-||30 cm ||2.4E2||1.3E2||7.7E1||5.2E1||4.8E1||
+### (so many pretty pretty graphs - how to choose?)
 ---
 class: center,middle
-![L-3030 west plate](img/l3030_west.plate.png)
----
-## High burnup 5060 results
-
-International Commission on Radiological Protection limit $10 \mu Sv/h$ for neutrons
-
-||H-5060||10wt%||30wt%||50wt%||70wt%||90wt%||
-|:-------|:----:|:----:|:----:|:----:|:----:|
-||1.5 cm||2.7E4||2.7E4||2.6E4||2.6E4||2.5E4||
-||3 cm  ||2.3E4||2.3E4||2.2E4||2.0E4||2.0E4||
-||6 cm  ||1.8E4||1.6E4||1.4E4||1.3E4||1.2E4||
-||12 cm ||9.9E3||7.8E3||6.2E3||5.1E3||4.2E3||
-||18 cm ||5.5E3||3.8E3||2.8E3||2.1E3||1.8E3||
-||30 cm ||1.8E3||9.8E2||5.9E2||4.0E2||3.5E2||
+![Assembly](img/single.assembly_plan.view.guide.jpg)
 ---
 class: center,middle
-![H-5060 west plate](img/h5060_west.plate.png)
+![Assembly](img/single.assembly_plan.view.guide_container.jpg)
+---
+## How I choose
+
+Helium and air backfill results basically the same
+
+Haven't gotten to glass or T-4045 yet (HPC has been down almost month)
+
+Didn't know about the 12 wt% $B_4C$ until 2 weeks ago
+
+Showing results for 25 wt% $^{10}B$
+
+Looking for dose rate below $10 \; \mu Sv/h$
+---
+class: center,middle
+![L-3030](img/l3030_bare.air_25.png)
+---
+class: center,middle
+![L-3030](img/l3030_bare.water_25.png)
+---
+class: center,middle
+![L-3030](img/l3030_container.air_25.png)
+---
+class: center,middle
+![L-3030](img/l3030_container.water_25.png)
+---
+class: center,middle
+![H-5060](img/h5060_container.air_25.png)
+---
+class: center,middle
+![H-5060](img/h5060_container.water_25.png)
+---
+## What do the results mean for design? 
+
+Greater than 25 wt% $^{10}B$ might be cost prohibitive
+
+Plate thickness greater than 20 cm might be too much to actually cast
+
+Use of water backfill may be criticality risk if there are multiple casks
+
+12 wt% $B_4C$ constraint may be difficult to overcome
+
+High burnup fuel may not be feasible
 ---
 class: center,middle
 
+## Brief comments on regulatory compliance
+---
+## I suggested NRC certification to enhance marketability
+
+Currently 4 companies have obtained compliance each with different models
+
+NUHOMS, MAGNASTOR, HI-STAR, HI-STORM (51 total)
+
+10CFR72 is the relevant regulation
+
+In short, the regulation is highly performance based
+
+Demonstrate subcriticality, heat removal, occupational safety, etc.
+
+Much of 10CFR72 is devoted to QA, which we can't do at this time
+
+Important - 72.236f stipulates passive cooling which will need to be addressed
+---
 ## What's next?
----
-## What design and modeling enhancements can be made? 
 
-Stick with modeling L-3030 and H-5060
+Largely out of time
 
-Design review with the team to bound realistic boron loading and plate thickness
+Need to meet with all to determine actual casting capabilities and design review
 
-Add Cs-137 source
-
-Vary backfill material
-
-Put the cask in something else 
+Glass backfill may yield more promising results 
 
 Determine significance of neutron activation of aluminum  
-Beta emission at 2.7 MeV and gamma emission at 1.8 MeV
 
-Find students I can actually pay to help me 
+Prepare second year application
 ---
 class: center,middle
 ![doggehs](img/final.jpg)
