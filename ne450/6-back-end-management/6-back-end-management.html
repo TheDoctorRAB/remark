@@ -308,6 +308,7 @@ The status of the application was locked up in legal actions
 ## Nuclear waste policy act (1982) is the basis for HLW management in USA
 
 2013: Circuit Court ruled for NRC to continue safety evaluation
+
 2016: EIS completed in 2016
 
 But what happens if the license is granted?
@@ -361,7 +362,7 @@ Based on long term stability of the geologic environment
 ---
 class: center,middle
 
-# Functional components and technical basis
+## Functional components and technical basis
 ---
 # A conceptual process model is the basis for performance assessment
 
@@ -1010,9 +1011,31 @@ $P(0,8) = 1400$
 ![Gas profit constraint](img/gas.profit.jpg)
 ---
 class: center,middle
----
+
 ## Now let's do it for waste oxide loading
 ---
+## Let's look at the Japanese waste concept because nuclear is a multicultural family
+
+**Objective function**  
+We want to maximize the amount of waste oxide that can be loaded into a high level waste form of glass in a stainless steel canister  
+
+**Decision variables**  
+Waste Oxide Mass in the canister and Glass Oxide Mass in the canister  
+$M_W,M_G$
+---
+**Constraints**  
+1. Total canister weight is 500 kg of waste mass + glass mass, but include 100 kg for mass of the canister   
+
+2. Volume of waste and glass is 0.15 cubic meters   
+
+3. Empirical formula for volume constraint   
+$\rho = 1230r + 2419 \; \frac{kg}{m^3}$  
+r = mass fraction of waste in the waste glass
+
+4. Heat generation limit is 2300 Watts  
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\large&space;[CN_A&space;\sum_i&space;\frac{E_i\lambda_i&space;x_i}{A_i}]\cdot&space;M_W&space;\leq&space;2300" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;[CN_A&space;\sum_i&space;\frac{E_i\lambda_i&space;x_i}{A_i}]\cdot&space;M_W&space;\leq&space;2300" title="\large [CN_A \sum_i \frac{E_i\lambda_i x_i}{A_i}]\cdot M_W \leq 2300" /></a>  
+This is tedious to find or compute all the data and not particularly constructive  
+Just use 9.652
 ---
 class: center,middle
 ![doggehs](img/final.jpg)
