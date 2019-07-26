@@ -55,6 +55,7 @@ $X(0)=0$
 \section{Solutions}
 \subsection{Iodine}
 Laplace \\
+$\frac{dI}{dt}=\gamma_I \Sigma_F \phi_T-\lambda_I I$ \\ \\
 $s\tilde{I}=\frac{1}{s}\gamma_I\Sigma_F\phi_T-\lambda_I\tilde{I}$ \\
 
 \noindent Rearrange \\
@@ -64,8 +65,14 @@ $\tilde{I}=\frac{1}{s(s+\lambda_I)}\gamma_I\Sigma_F\phi_T$ \\
 $I(t)=\frac{\gamma_I\Sigma_F\phi_T}{\lambda_I}(1-e^{-\lambda_I t})$
 
 \subsection{Xenon}
+Laplace \\
+$\frac{dX}{dt}=\lambda_I \frac{\gamma_I\Sigma_F\phi_T}{\lambda_I}(1-e^{-\lambda_I t}) + \gamma_X \Sigma_F \phi_T - \lambda_X X - \sigma_A \phi_T X$ \\ \\
+$\frac{dX}{dt}=\gamma_I\Sigma_F\phi_T(1-e^{-\lambda_I t}) + \gamma_X \Sigma_F \phi_T - \lambda_X X - \sigma_A \phi_T X$ \\ \\
+$\frac{dX}{dt}=\gamma_I\Sigma_F\phi_T - \gamma_I\Sigma_F\phi_T e^{-\lambda_I t} + \gamma_X \Sigma_F \phi_T - \lambda_X X - \sigma_A \phi_T X$ \\ \\
+$\frac{dX}{dt}=\gamma_I\Sigma_F\phi_T - \gamma_I\Sigma_F\phi_T e^{-\lambda_I t} + \gamma_X \Sigma_F \phi_T - (\lambda_X + \sigma_A \phi_T) X$ \\ \\
+
+
 $s\tilde{X}=\lambda_I\tilde{I}+\frac{1}{s}\gamma_X\Sigma_F\phi_T-\lambda_X\tilde{X}-\sigma_A\phi_T\tilde{X}$ \\
-$s\tilde{X}=\lambda_I\tilde{I}+\frac{1}{s}\gamma_X\Sigma_F\phi_T-(\lambda_X-\sigma_A\phi_T)\tilde{X}$ \\
 
 \noindent Rearrange \\
 $(s+[\lambda_X+\sigma_A\phi_T])\tilde{X}=\lambda_I\frac{1}{s(s+\lambda_I)}\gamma_I\Sigma_F\phi_T+\frac{1}{s}\gamma_X\Sigma_F\phi_T$ \\ \\
