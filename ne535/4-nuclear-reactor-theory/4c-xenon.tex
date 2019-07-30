@@ -1,0 +1,90 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+\usepackage[pagewise]{lineno} %line numbering
+\usepackage{setspace}
+\usepackage{ulem} %strikethrough
+\usepackage{xcolor} %change font color
+\usepackage{graphicx}
+\usepackage{filecontents}
+\usepackage{tablefootnote}
+\usepackage{subfig}
+\usepackage[yyyymmdd]{datetime}
+\renewcommand{\dateseparator}{.}
+\graphicspath{{../img/}}
+\setcounter{secnumdepth}{5} %set subsection to nth level
+\usepackage{caption}
+\captionsetup[table]{skip=11pt} %sets a space after table caption
+\usepackage{times}
+\usepackage{enumitem}
+
+\usepackage[round]{natbib} %parenthesis instead of brackets for inline citations
+
+%%%move page number to bottom right
+\usepackage{fancyhdr}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\rfoot{\thepage}
+\pagestyle{fancy}
+%%%
+
+\begin{document}
+
+\begin{titlepage}
+            \title{Xenon Equilibrium Equations}
+            \author{
+                R. A. BORRELLI \\
+                Nuclear Engineering Program, University of Idaho-Idaho Falls \\
+                Center for Advanced Energy Studies \\
+                995 MK Simpson Boulevard, Idaho Falls, Idaho \\
+                r.angelo.borrelli@gmail.com
+            }
+\clearpage % not have page number on title page
+\maketitle
+\thispagestyle{empty} % start with page number 1 on second page
+\end{titlepage}
+
+\section{Mathematical models}
+\subsection{Iodine}
+$\frac{dI}{dt}=\gamma_I \Sigma_F \phi_T-\lambda_I I$ \\
+$I(0)=0$
+
+\subsection{Xenon}
+$\frac{dX}{dt}=\lambda_I I + \gamma_X \Sigma_F \phi_T - \lambda_X X - \sigma_A \phi_T X$ \\
+$X(0)=0$
+
+\newpage
+
+\section{Solutions}
+\subsection{Iodine}
+Laplace \\
+$\frac{dI}{dt}=\gamma_I \Sigma_F \phi_T-\lambda_I I$ \\ \\
+$s\tilde{I}=\frac{1}{s}\gamma_I\Sigma_F\phi_T-\lambda_I\tilde{I}$ \\
+
+\noindent Rearrange \\
+$\tilde{I}=\frac{1}{s(s+\lambda_I)}\gamma_I\Sigma_F\phi_T$ \\
+
+\noindent Solve \\
+$I(t)=\frac{\gamma_I\Sigma_F\phi_T}{\lambda_I}(1-e^{-\lambda_I t})$
+
+\subsection{Xenon}
+Laplace \\
+$\frac{dX}{dt}=\lambda_I \frac{\gamma_I\Sigma_F\phi_T}{\lambda_I}(1-e^{-\lambda_I t}) + \gamma_X \Sigma_F \phi_T - \lambda_X X - \sigma_A \phi_T X$ \\ \\
+$\frac{dX}{dt}=\gamma_I\Sigma_F\phi_T(1-e^{-\lambda_I t}) + \gamma_X \Sigma_F \phi_T - \lambda_X X - \sigma_A \phi_T X$ \\ \\
+$\frac{dX}{dt}=\gamma_I\Sigma_F\phi_T - \gamma_I\Sigma_F\phi_T e^{-\lambda_I t} + \gamma_X \Sigma_F \phi_T - \lambda_X X - \sigma_A \phi_T X$ \\ \\
+$\frac{dX}{dt}=\gamma_I\Sigma_F\phi_T - \gamma_I\Sigma_F\phi_T e^{-\lambda_I t} + \gamma_X \Sigma_F \phi_T - (\lambda_X + \sigma_A \phi_T) X$ \\ \\
+$s\tilde{X}=\frac{1}{s}\gamma_I\Sigma_F\phi_T - \frac{1}{s+\lambda_I}\gamma_I\Sigma_F\phi_T + \frac{1}{s}\gamma_X\Sigma_F\phi_T - (\gamma_X+\sigma_A\phi_T)\tilde{X}$ \\ \\
+
+\noindent Rearrange \\
+$(s+[\gamma_X+\sigma_A\phi_T])\tilde{X}=\frac{1}{s}\gamma_I\Sigma_F\phi_T - \frac{1}{s+\lambda_I}\gamma_I\Sigma_F\phi_T + \frac{1}{s}\gamma_X\Sigma_F\phi_T$ \\ \\
+$\tilde{X}=\frac{1}{s(s+[\gamma_X+\sigma_A\phi_T])}\gamma_I\Sigma_F\phi_T - \frac{1}{(s+\lambda_I)(s+[\gamma_X+\sigma_A\phi_T])}\gamma_I\Sigma_F\phi_T + \frac{1}{s(s+[\gamma_X+\sigma_A\phi_T])}\gamma_X\Sigma_F\phi_T$ \\ \\
+
+\noindent Solve \\
+$X(t)=\frac{\gamma_I\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T}(1-e^{-(\gamma_X+\sigma_A)t})-\frac{\gamma_I\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T-\lambda_I}(e^{-\lambda_I t}-e^{-(\gamma_X+\sigma_A\phi_T)t})+\frac{\gamma_X\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T}(1-e^{-(\gamma_X+\sigma_A\phi_T)t})$ \\
+
+\newpage
+
+\section{Equilibrium time}
+$X(t)=\frac{\gamma_I\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T}(1-e^{-(\gamma_X+\sigma_A)t})-\frac{\gamma_I\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T-\lambda_I}(e^{-\lambda_I t}-e^{-(\gamma_X+\sigma_A\phi_T)t})+\frac{\gamma_X\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T}(1-e^{-(\gamma_X+\sigma_A\phi_T)t})$ \\
+
+
+\end{document}
