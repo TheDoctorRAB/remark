@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>2. Tokaimura case study</title>
+    <title>3. Safety standards</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style type="text/css">
       @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
@@ -27,9 +27,9 @@ class: center, middle
 
 # NE535   
 ## NUCLEAR CRITICALITY SAFETY I 
-### [Tokaimura case study](https://courses.lumenlearning.com/uidaho-nuclear/chapter/criticality-safety/)
+### Safety standards 
 
-#### 2
+#### 3
 
 ##### .right[
 Bob Borrelli  
@@ -40,140 +40,130 @@ Center for Advanced Energy Studies
 ---
 # Learning objectives
 
-Explaining the events and sequences leading to the accident
+Interpreting the nuclear physics behind safety standards
 
-Analyzing the nuclear physics governing  the accident
+Applying standards to criticality accidents
 
-Compiling alternative actions or procedures to avert the accident
+Assessing safety standards effectiveness
 ---
-## Japan Nuclear Fuel Conversion Company (JCO) facility is located in [Tokaimura, Japan](https://goo.gl/maps/5htZb8XW1WrLdRWLA)
+## What is special nuclear material?
 
-30 September 1999
+Defined by [Title I of the Atomic Energy Act of 1954](https://www.nrc.gov/docs/ML1327/ML13274A489.pdf)
 
-Materials - $UF_6$ and $U_3O_8$ was converted to $UO_2$ and $UO_2(NO_3)_2$
+$Pu$, $^{233}U$, $^{235}U$ or $U$ enriched in those isotopes
 
-Plant commissioned for 20% enriched uranium but usually less than 5% 
+Or any other material determined to be special nuclear material 
 
-This was 18.8% enriched U in $UO_2(NO_3)_2$
+So far that hasn't happened
 
-Not routine operation
+Similar to IAEA definitions
 
-Workers were not well trained and no emergency procedures
+IAEA also adds a timeliness of detection
 ---
-class: center,middle
+## Who can possess nuclear material?
 
-![JCO fuel cycle](img/jco.fuel.cycle.gif)
+EPA
+
+FDA
+
+NRC
+
+State governments
+
+DOE
 ---
-## JCO is a reconversion plant to prepare materials for JOYO fuel (fast reactor)
+## What are the relevant regulations?
 
-Homogenous uranium nitrate solution from $U_3O_8$ powder
+[10 CFR 20 - Standards for protection against radiation](https://www.nrc.gov/reading-rm/doc-collections/cfr/part020/)
+
+[10 CFR 50 - Domestic licensing of production and utilization facilties](https://www.nrc.gov/reading-rm/doc-collections/cfr/part050/)
+
+[10 CFR 70 - Domestic licensing of special nuclear material](https://www.nrc.gov/reading-rm/doc-collections/cfr/part070/)
+
+Of note [10 CFR 70.3 - License requirements](https://www.nrc.gov/reading-rm/doc-collections/cfr/part070/part070-0003.html)  
+*No person subject to the regulations in this part shall receive title to, own, acquire, deliver, receive, possess, use, or transfer special nuclear material except as authorized in a license issued by the Commission pursuant to these regulations.*
 ---
-# The standard procedure was designed for subcriticality
+### [ANS standard 8.1](https://www.techstreet.com/ans/subgroups/55483) contains administrative practices
 
-Criticality controlled by mass and geometry
+But we don't really know because there's hundreds of dollars
 
-Column tanks were used to control criticality
+Safety Responsibility and criteria established by management
 
-Pumps used to transfer specific amounts of uranium in solution to precipitation tank
+Process analysis that includes the effects of credible abnormal conditions
 
-Time in the tanks allowed for dissolution of uranium
+Written procedure for pertinent operations
 
-Water jacket around precipitation tank provided heat removal
+Controlled movement of fissionable materials
 
-2.4 kg limit for each [process step](http://www.dinamica-de-sistemas.com/paper/08_04.pdf) see figure 1
+Prompt reporting, investigation and correction of process deviations
+
+Frequent independent operational reviews
+
+Emergency procedures and training
 ---
-# So what happened?
+ANS-8.1 also stipulates that geometric control should be prioritized over administrative control
 
-Procedure change was approved without proper authorization from the regulatory oversight committee
-
-Allowed dissolution of uranium oxide to occur in a stainless steel bucket rather than in the dissolution (geometrically safe) tanks
-
-To make the process more 'efficient', the dissolved solution was poured directly from the bucket into the precipitation tank
-
-Upon the addition of the 7th batch, with about 16 kg U in the precipitation tank, the solution went critical
+Why?
 ---
-class: center, middle
+## ANS-8.1 defines the subcritical limit
 
-![Process model](img/tokaimura.process.png)
----
-# Nuclear data from the accident
+In terms of mass, dimensions, concentration
 
-1 mg uranium fissioned
+Includes compensation for uncertainties in experimental results
 
-$2.5 \times 10^{18}$ fissions
+However, the subcritical limit does not include a margin for misapplication
 
-$1.2 \times 10^{18}$ fissions in the first 25 minutes
----
-# Abbreviated [timeline](https://ansn.iaea.org/common/topics/opentopic.aspx?id=13110)
+Subcritical limits are modified by conservative safety margins
 
-1035 - Criticality - gamma ray area monitors alarmed  
-1046 - Firefighters arrive  
-1102 - JCO informs workers suffered exposure  
-1115 - Sent fax to local government - 'nuclear criticality might occur'  
-1230 - Residents of Tokaimura advised to stay inside  
-1500 - Evacuations within 350 m radius 
-2230 - Residents ordered to stay in within 10 km radius   
-0030 - Drain water jacket on the tank  
-0630 - Reaction shutdown
+Generally subcritical limits are set to keep $k_{EFF}$ less than $0.95$ 
 
-[Museum exhibit](https://www.vill.tokai.ibaraki.jp/as-tokai/13_pamphlet/pdf/jco_eng/jco_pamp_eng.pdf)
----
-# What happened to the workers?
-
-Hisashi Ouchi - 1700 rem - death in 12 weeks
-
-Masato Shinohara - 1000 rem - death in 7 months
-
-Yutaka Yokokawa - 300 rem - recovered
-
-27 workers exposed
-
-No off-site risk (INES level 4)
----
-class: center,middle
-
-![INES](img/tokaimura.ines.png)
----
-## What was the fallout from the accident?
-
-(See what I did there?)
-
-[Six company officials arrested](https://physicstoday.scitation.org/doi/pdf/10.1063/1.1341919)
-
-All pled guilty to charges of negligence resulting in death
-
-Plant manager went to prison for 2 years
-
-Other 5 given suspended 3 year prison terms
-
-136M dollars in claims
-
-Permanently shutdown facility
----
-*'This accident is not about technical failure, but about a sheer lack of safety culture and poor morale at the plant.'*   
-Keiji Naito, Professor Emeritus, Nuclear Engineering, Nagoya University
-
-*'The company lacks both fundamental knowledge of nuclear matters and safety measures and it is mind-boggling to think how both the JCO and the **government**  allowed this to happen.'*  
-Nobuo Oda, Professor Emeritus, Radiation Physics, Tokyo Institute of Technology
+Contingency planning
 ---
 class: center, middle
 
-||Source     ||Release (Bq)||
-|:------------|:-----------:|
-||Noble gases||1.6E14      ||
-||Iodines    ||1.3E10      ||
+**Typical subcritical values**
+
+||Element  ||Cylinder diameter (in)||Minimum critical concentration (g/L)||Critical mass (g)||
+|:----------|:---------------------:|:-----------------------------------:|:----------------:|
+||$^{233}U$||6.41                  ||7.8                                 ||531              ||
+||$^{235}U$||5.63                  ||11.8                                ||820              ||
+||Pu       ||2.01                  ||11.2                                ||570              ||
 ---
-## What are the [takeaways](https://ansn.iaea.org/common/topics/opentopic.aspx?id=13110) from the accident?
+# [MAGICMERV](https://digitalscholarship.unlv.edu/cgi/viewcontent.cgi?article=2978&context=thesesdissertations) is a ridiculous acronym
 
-Poor safety culture - many workers did not carry dosimeter
+9 parameters that govern criticality safety
 
-Human factors
+Mass - source material   
+Absorption - neutron poisons  
+Geometry - system
+Interaction - source of outside neutrons  
+Concentration - source material in solution  
+Moderation - material to slow down neutrons 
+Enrichment - source material  
+Reflection - reduce leakage   
+Volume - system size  
 
-Unintended consequences - poor risk assessment
+What lowers or raises $k_{EFF}$?
 
-Operations v safety
+Also [this](https://soundcloud.com/djmagicmerv)
+---
+class: center, middle
 
-Lack of training and knowledge
+![Tokai k](img/tokaimura.k.jpg)
+---
+## Accidents with similar themes can be grouped together
+
+Unfavorable Geometry
+
+Procedural – (not following procedures, or inadequate review of procedure changes)
+
+Abnormal Conditions
+
+Material Accountability
+
+Training
+
+Communication with various independent organizations (operations, safety, training)
 ---
 class: center,middle
 ![doggehs](img/final.jpg)
