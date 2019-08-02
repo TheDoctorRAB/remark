@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>7. Hand calculations</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Open Sans', sans-serif; }
+      h1, h2, h3 {
+        font-family: 'Ubuntu';
+        font-weight: normal;
+        }
+      .remark-container {background-color: #F5F5F5; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { background-color: #FFFAF0; font-size: 26px; 
+                         h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
+       }
+      .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+    </style>
+  </head>
+  <body>
+<textarea id="source">
+class: center, middle
+
+# NE535   
+## NUCLEAR CRITICALITY SAFETY I 
+### [Hand calculations](https://mcnp.lanl.gov/pdf_files/la-ur-16-23533.pdf)
+
+#### 7
+
+##### .right[
+Bob Borrelli  
+University of Idaho-Idaho Falls  
+Center for Advanced Energy Studies  
+@TheDoctorRAB ![git](img/git.png) ![twitter](img/twitter.png)
+]
+---
+# Learning objectives
+
+Understanding why hand calculations are needed 
+
+---
+### Before high speed computers, hand calculations were widely used
+
+As a starting point for complex calculations
+
+As a sanity check
+
+To aid in understanding the relationships
+
+*The few criticality accidents that have occurred in industrial operations have resulted from failure to anticipate conditions that might arise; none has resulted from a faulty calculation*
+---
+### Hand calculations provide insight into the physics behind neutron interactions
+
+Faster and less expensive than computer calculations
+
+With technology today, computers are relatively cheap, but labor hours are not
+
+Good for boundary (worst case) conditions
+---
+### Though computational tools do require verification
+
+ANS-8.1 - If the method involves a computer program, checks shall be performed to confirm that the mathematical operations are performed as intended
+
+And validation 
+
+Bias is systematic disagreement between calculated and experimental data
+
+Bias shall be established by correlating the results of critical and exponential experiments with results obtained for these same systems by the calculational method being validated
+
+Uncertainty in the bias shall contain allowances for uncertainties in the experimental conditions, for lack of accuracy and precision in the calculational method and for extension of the area (or areas) of applicability
+
+But - everything is benchmarked by MCNP or SCALE
+---
+### Validation tests calculational tools
+
+Evaluation of method and cross section data
+
+Assure yourself that methods and data can calculate the relevant experiments
+
+Establish range of applicability
+
+Establish bias
+
+Uncertainty may be caused by uncertainties in analytical data
+
+Or unknown parameters in system configurations
+
+Validation indicates reliability of calculation as compared to known real conditions
+
+*Conditions predicted to be subcritical would be expected to be subcritical*
+---
+### Verification is about the process
+
+Indication of reliability that the mathematical operations are being performed as expected
+
+Discuss [finite element method](https://docs.google.com/presentation/d/1QB_6KhX6MGmjgTA7REBUFsCLwYpZ48Ble-zDhVuIW7I/edit?usp=sharing) verification
+---
+### The upper subcritical limit bounds the problem 
+
+$USL \equiv k_{EFF} + 2 \sigma$
+
+Highest value of calculated that is considered subcritical in evaluation
+
+Bias is calculated as the average calculated
+---
+### Bias uncertainty is a measure of precision of calculation and accuracy of experiment
+
+Uncertainty in experiment
+
+Lack of precision in calculational method
+
+Extension to conditions out range of experiments
+
+Calculated as some multiple (usually 3) of the standard deviation of the calculated values
+---
+### The area of applicability is the range covered by experiments in variable space
+
+Variable space is the range of independent parameters where the model will produce acceptable results
+
+Determine values for important parameters
+
+Fissile material  
+Enrichment (% range)  
+Absorbers  
+Moderation (H:X range)  
+Moderating material  
+Reflection material
+
+Find benchmarks containing these nuclides to bound the conditions
+
+Then do the problem to see if it is in bounds
+---
+### Minimum subcritical margin is an extra safety margin applied to USL
+
+Does a thorough validation exist?
+
+Have independent experimenters been used?
+
+How do conditions compare to AOA?
+
+Is the system/process simple or complex?
+
+Does fissile material maintain its shape?
+
+Are the physics/chemistry well understood?
+
+How sensitive is reactivity to changes?
+---
+### Methods stem from basic nuclear theory
+
+One group diffusion theory is suitable for large, homogeneous systems with isotopes that have low neutron absorption
+
+Diffusion theory is not a good method to use for small systems, near boundaries, or in or near strong neutron absorbing materials
+
+Buckling conversion is suitable for simple geometries such as spherical, slab, or cylindrical systems
+
+Can convert the neutron leakage characteristics for a critical simple geometry to another simple geometry that has equivalent leakage characteristics, as long as critical data exist for a particular system
+---
+Core density conversions can be applied to homogeneous, critical systems if the volume or density of the system changes uniformly
+
+Applicable to bare systems or those with a close-fitting reflector, as long as the reflector density remains constant
+---
+### [Buckling](https://www.nuclear-power.net/nuclear-power/reactor-physics/neutron-diffusion-theory/geometrical-material-buckling/) uses critical data for a fissile system with simple geometries to determine the critical dimensions for other geometries
+
+See table in Lamarsh
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;D&space;\nabla^2&space;\phi&space;-&space;\Sigma_A&space;\phi&space;&plus;&space;k_{\infty}&space;\Sigma_A&space;\phi&space;=&space;0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;D&space;\nabla^2&space;\phi&space;-&space;\Sigma_A&space;\phi&space;&plus;&space;k_{\infty}&space;\Sigma_A&space;\phi&space;=&space;0" title="\LARGE D \nabla^2 \phi - \Sigma_A \phi + k_{\infty} \Sigma_A \phi = 0" /></a>
+
+$\nabla^2 \phi + B^2 \phi = 0$
+
+When a time-independent neutron flux can be sustained in the reactor with no sources other than fission
+
+Diffusion theory treats leakage as being proportional to the geometric buckling of the system
+
+Geometries with the same geometric buckling have the same leakage
+
+Allows comparison of systems with the same materials
+---
+## Convert a cylinder to an equivalent sphere
+
+h = 25 cm, d = 15 cm
+
+$B^2 = (\frac{\pi}{h})^2+(\frac{2.405}{r})^2 = 0.44666$
+
+$B^2 = (\frac{\pi}{r})^2 = 0.44666$
+
+$r = 4.7 cm$
+
+I neglected extrapolation distance
+
+Applicable to simple geometries
+---
+### Core density conversion is used for uniform density changes
+
+$\frac{r}{r_0}=\frac{\rho_0}{\rho}$
+
+System must be uniform and homogeneous
+
+May not be used for heterogeneities 
+
+May not be used for reflected systems, if either the reflector density, or if the core density changes are not uniform
+---
+class: center, middle
+
+![Core density table](img/core.density.table.jpg)
+---
+## Find new critical dimension due to density change
+
+16.8 kg metal sphere of plutonium has a density of 19.8 g/cc at room temperature
+
+Upon heating the sphere will expand to a new density of 15.6 g/cc
+
+$16.8(\frac{19.8}{15.6})^{-2} = 10.4 \; kg$ new critical mass
+
+Derived in the [primer](https://ncsp.llnl.gov/docs/LA-14244-M.pdf)
+---
+class: center,middle
+![doggehs](img/final.jpg)
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script type="text/javascript">
+        var options = {};
+        var renderMath = function() {
+            renderMathInElement(document.body, {delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\[", right: "\\]", display: false},
+            ]});
+        }
+        var slideshow = remark.create({
+          // Set the slideshow display ratio
+          // Default: '4:3'
+          // Alternatives: '16:9', ...
+          ratio: '16:9',
+          // Navigation options
+          navigation: {
+          // Enable or disable navigating using scroll
+          // Default: true
+          // Alternatives: false
+          scroll: true,
+          // Enable or disable navigation using touch
+          // Default: true
+          // Alternatives: false
+          touch: true,
+          // Enable or disable navigation using click
+          // Default: false
+          // Alternatives: true
+          click: false
+          },
+          // Customize slide number label, either using a format string..
+          slideNumberFormat: '%current%',
+          // Enable or disable counting of incremental slides in the slide counting
+          countIncrementalSlides: false 
+          }, renderMath);
+    </script>
+    <script type="text/javascript">
+     /**
+      * a simple zoom in/out/reset for remark.js
+      *
+      * Hot key:
+      *   + : zoom in
+      *   - : zoom out
+      *   0 : reset zoom
+      *
+      * CAVEAT: when switching between full screen and normal screen,
+      *         the zoom factor may not function correctly.
+      *         RELOAD the page, if necessary.
+      *
+      * 
+      * @author William Yeh <william.pjyeh@gmail.com>
+      * @date   2015-01-15
+      *
+      * @license Apache License, Version 2.0.
+      * Copyright © 2015 William Yeh.
+      */
+      var ZOOM_TEXT_SELECTOR =
+       ".remark-slide-content p"
+       + "," + ".remark-slide-content .remark-code-line"
+       ;
+
+      var ZOOM_IMG_SELECTOR =
+       ".remark-slide-content img:hover"
+       ;
+
+      var ZOOM_IMG_RULE;
+
+      var zoom_factor = 100.0;
+      document.body.style.zoom = "100%"
+    
+      function init_zoom_rule() {
+       // @see http://davidwalsh.name/add-rules-stylesheets
+       var styles = document.styleSheets[0];
+       var index = styles.insertRule(
+        ZOOM_IMG_SELECTOR + ' { transform:scale(1); }',
+        styles.cssRules.length
+        );
+
+        ZOOM_IMG_RULE = styles.cssRules.item(index);
+       }
+    
+      function apply_zoom() {
+       var elements = document.querySelectorAll(ZOOM_TEXT_SELECTOR);
+       //console.log('length:', elements.length);
+       for (var i = 0; i < elements.length; ++i) {
+        var item = elements[i];
+        item.style.fontSize = zoom_factor.toString() + '%';
+        }
+
+        ZOOM_IMG_RULE.style.transform = 'scale(' + (zoom_factor / 100) + ')';
+      }
+
+      function zoom_in() {
+       zoom_factor += 10;
+       if (zoom_factor >= 200.0)  zoom_factor = 200.0;
+       apply_zoom();
+      }
+    
+      function zoom_out() {
+       zoom_factor -= 10;
+       if (zoom_factor <= 50.0)  zoom_factor = 50.0;
+       apply_zoom();
+      }
+
+      function zoom_reset() {
+       zoom_factor = 100.0;
+       apply_zoom();
+      }
+
+      init_zoom_rule();
+      window.addEventListener("keydown", function(event) {
+       //console.log(event.keyCode);
+       switch (event.keyCode) {
+        case 187:  // '+': 187 in Chrome & Safari, 61 in FF
+        case 61:  // '+': 187 in Chrome, 61 in FF
+         zoom_in(); 
+         break;
+
+        case 189:  // '-': 189 in Chrome & Safari, 173 in FF
+        case 173:  // '-': 189 in Chrome, 173 in FF
+         zoom_out();
+         break;
+        case 48:   // '0'
+         zoom_reset();
+         break;
+       }
+      }, false);
+    </script>
+  </body>
+</html>
