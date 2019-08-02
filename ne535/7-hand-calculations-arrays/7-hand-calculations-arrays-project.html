@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Project 6: Criticality experiments and subcritical limits</title>
+<title>Project 7: Hand calculations for arrays</title>
 <style> p {font-size: 24px } </style>
 <script type="text/x-mathjax-config"> MathJax.Hub.Config({ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]} }); </script>
 <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
@@ -38,25 +38,29 @@
 <body>
 <xmp>
 # NE535: Criticality safety I 
-## Project 6
-### Criticality experiments and subcritical limits 
-####[100]
+## Project 7
+### Hand calculations for arrays 
+####[]
+
+Use the information contained in [LA-14244-M](https://ncsp.llnl.gov/docs/LA-14244-M.pdf).
 
 <p>
-1. [50] *Try* to determine $k_{EFF}$ for the Sarov experiment.
+1. [50] We want to store an array of 4x4x4 units of 9 kg of $U(70)O_2$ with $H:U = 10$. Using the limiting surface density method (Section 7) plot d for the range of $k_{EFF}$ (0.8,0.95).
 
 <p>
-2. [50] Determine the rod height for criticality by constructing a $\frac{1}{M}$ plot using the following data.
+2. [50] Find the critical mass for fully enriched U metal for a 4x4x4 array with d = 20 in. Then find $k_{EFF} for storing 17 kg U in the array.
 
-||Rod withdrawal (in)||Count rate (cps)||
-|:--------------------|:---------------:|
-||0                  ||50              ||              
-||2                  ||55              ||
-||4                  ||67              ||
-||6                  ||86              ||
-||8                  ||120             || 
-||10                 ||192             ||
-||12                 ||500             ||
+<p>
+3. [100] *Try* to confirm the result from 1 with MCNP. Find the concentration of uranium oxide using [Figure 2.1](https://inis.iaea.org/collection/NCLCollectionStore/_Public/10/487/10487876.pdf).
+
+<p>
+4. [100] If the containers are cylinders, construct a realistic storage array for $k_{EFF}=0.8$ and $k_{EFF}=0.95$.
+
+<p>
+5. [100] *Try* to confirm the result in 2.
+
+<p>
+6. [50] Comment on the usefulness (or not) of the hand calculation method. 
 </xmp>
 
 <script type="text/javascript" src="../../../strapdown.min.js?theme=readable"></script>

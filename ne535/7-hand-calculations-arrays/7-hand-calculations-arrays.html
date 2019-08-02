@@ -172,12 +172,72 @@ Assuming a cubic formation is conservative because it would be the tightest pack
 ---
 ### Limiting surface density method is for when you don't assume large N
 
-$m = m_0[\frac{n}{c_2 d^2}(1-\frac{c}{\sqrt{N}})^2]^{-1}
+$m = m_0[\frac{n}{c_2 d^2}(1-\frac{c}{\sqrt{N}})^2+1]^{-1}$
+
+N has to be more than 64 units though
 
 Note there is not a built in $k_{EFF}$ constraint
 
+These results give the pitch (mass) for a critical array
 
+[7.3.2 Limiting surface density relationships for subcritical arrays](https://ncsp.llnl.gov/docs/LA-14244-M.pdf) derives $k_{EFF}$
 
+$m = k^{3}_{EFF}m_0[\frac{n}{c_2 d^2}(1-\frac{c}{\sqrt{N}})^2+1]^{-1}$
+---
+### Obviously, it's more common that storage arrays aren't cubic
+
+![Shifted array](img/array.jpg)
+---
+## Define a shape factor for array shape change
+
+Ratio of surface ara to volume for non cubic array to cubic array
+
+$R \equiv \frac{1}{3} N^{\frac{1}{3}} (\frac{1}{n_x}+\frac{1}{n_y}+\frac{1}{n_z})$
+
+[R cannot exceed 5.34](https://ans.tandfonline.com/doi/10.13182/NSE77-A26982#.XURdhPJKhhE)
+
+Corresponding to a linear-reflected array of 512 units
+---
+## Account for increased leakage using the shape factor
+
+$c^{'}_2 \equiv \frac{4n^{'}}{n}(\frac{c_2}{5R^{-0.672}-1})$
+
+This was developed for U(93.2) metal spheres so an additional calculation is needed to convert for other enrichments (p121)
+---
+### Solid angle method accounts for neutron leakage and subsequent interaction
+
+Probability that a neutron leaks out of a fissile unit to intersect another is dependent upon the solid angle occupied at the most central unit by all the other units of the array
+
+$\Omega \equiv 9-10k_{EFF}$
+
+Allowable solid angle that may be subtended at the center fissile unit of the array
+---
+class: center, middle
+
+![Solid angle 1](img/solid.angle1.jpg)
+---
+class: center, middle
+
+![Solid angle 2](img/solid.angle2.jpg)
+---
+### There are several limitations to the method
+
+Small numbers of moderated fissile units
+
+Applying this method to large arrays of metal or oxide systems with intermediate or fast neutron spectrum should be cautioned that the results obtained from the solid angle method can be non-conservative
+
+$k_{EFF}$ should not exceed 0.80
+
+Each unit considered should be subcritical with thick water reflection
+
+Minimum separation distance between fissile units should be 0.3 m
+
+Allowed solid angle according to the method shall not exceed 6 steradians
+
+Reflector surrounding the array of fissile units should not be more effective than a thick water reflector located at the boundary of the array
+---
+[Example problem](https://www.nrc.gov/docs/ML1214/ML12146A213.pdf)
+---
 class: center,middle
 ![doggehs](img/final.jpg)
 </textarea>
