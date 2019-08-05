@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>10. Limits and controls</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Open Sans', sans-serif; }
+      h1, h2, h3 {
+        font-family: 'Ubuntu';
+        font-weight: normal;
+        }
+      .remark-container {background-color: #F5F5F5; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { background-color: #FFFAF0; font-size: 26px; 
+                         h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
+       }
+      .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+    </style>
+  </head>
+  <body>
+<textarea id="source">
+class: center, middle
+
+# NE535   
+## NUCLEAR CRITICALITY SAFETY I 
+### Limits and controls 
+
+#### 10
+
+##### .right[
+Bob Borrelli  
+University of Idaho-Idaho Falls  
+Center for Advanced Energy Studies  
+@TheDoctorRAB ![git](img/git.png) ![twitter](img/twitter.png)
+]
+---
+# Learning objectives
+
+Calculating appropriate limts to maintain criticality safety 
+
+Developing controls to maintain criticality safety
+---
+### A limit is a numerical value of a parameter that must be controlled within a defined allowable range
+
+Critical limits, sometimes called failure limits, represent quantities or dimensions needed before a self-sustaining chain reaction is possible
+
+Depending on these other conditions the operation could be critical
+
+Limits are -  
+1000 g U  
+1 L container   
+H:U = 0.088
+
+Limits don't necessarily have numerical values 
+
+Provide drain holes in plastic bags
+---
+### Subcritical limits and process limits
+
+**Subcritical limits are - **
+Just maintain subcriticality   
+No contingencies considered  
+No margin of safety  
+About 1% margin of subcriticality (beyond the uncertainties)
+
+**Process limits are -**  
+Must account for contingencies  
+Must define a safety margin in terms of margin of safety or margin of subcriticality  
+Many parameters may need to be limited  
+Usually permits an increase in the ANS Standards subcritical  value because multiple parameters are being controlled 
+---
+### Focusing on process limits 
+
+What is available to be limited?
+
+What value should it be limited to?
+
+How to determine the value of the limit?
+
+What safety margin should be included?
+
+How to proceed from identifying limits to identifying controls?   
+---
+### A control is the apparatus, instructions, process, actions by which the limit is maintained
+
+Within its allowable range to ensure a system is subcritical
+
+Geometrically favorable process vessel  
+Work Control Procedure that specifies a limit or verification action  
+Implementation of a training program   
+Implementation of a criticality safety program
+---
+### Detailed analyses are performed to determine criticality controls
+
+Controls must be designed to accommodate the worst credible change in condition
+
+Type and number of controls vary with the system considered
+
+Most controls are very systems specific
+---
+### Engineering controls are a physical design that reliably serves as a criticality safety control
+
+Geometrically favorable equipment
+
+Piping
+
+Process vessels
+
+Storage arrays
+
+Permanently fixed neutron absorbers
+
+Engineering controls must be carefully considered
+---
+### Divide up parameters for control
+
+**Physical**  
+Mass  
+Density  
+Enrichment  
+Geometry  
+Volume  
+Reflection  
+Interaction  
+Moderation  
+Poisons
+
+**Nuclear**  
+Neutron generation   
+Neutron leakage  
+Neutron absorption 
+---
+### Most parameters are not independent variables
+
+Changes in - 
+
+Mass changes volume   
+Density changes composition and geometry   
+Internal moderation changes composition, density, volume  
+
+A change in any parameter will probably cause changes in at least one other parameter
+
+A single parameter may impact more than one nuclear characteristic
+
+Internal moderation will change absorption and generation
+---
+### Same thing for nuclear characteristics
+
+Changes in - 
+
+Neutron production rate changes absorption and leakage 
+
+Neutron leakage rate changes production and absorption
+
+Neutron absorption rate changes production and leakage
+---
+### What controls can be instituted?
+
+**Mass**  
+Established limits for fissionable material  
+Favorable volumes
+
+**Volume**  
+Fixed Geometry  
+Established Limits   
+Favorable geometry
+
+**Enrichment**  
+Equipment must be designed to the highest possible enrichment  
+Separation of areas for different enrichments or treat all enrichment as maximum
+
+**Subcritical geometry**
+---
+**Interaction**  
+Specially designed equipment that maintains desired spacing
+
+**Moderation**  
+Limiting or excluding moderating materials  
+Controlling concentration
+
+**Reflection**  
+Maintaining spacing limits to control proximity of reflectors to fissionable material  
+Using physical barriers
+
+**Density and concentration**  
+Established and posted limits  
+Procedures for sampling  
+Instrumentation that measures concentration and prevents buildup
+---
+**Poisons**  
+Chemical analysis  
+Concentration control  
+Procedures   
+Scheduled monitoring for presence and effectiveness
+---
+![Controls chart](img/controls.jpg)
+---
+The criticality safety analyst (you) must understand the interdependency of changes in a parameter upon the other parameters, and the effect these changes will have upon the nuclear characteristics of the system
+---
+### Conduct parametric studies on $k_{EFF}$
+
+How it changes as a parameter changes
+
+How the other parameters are effected by the changes
+
+Sensitivity of $k_{EFF}$ to the change
+
+Selection of the right parameters for the analysis under consideration
+
+Fix as many of the parameters as possible  
+Other parameters may not be independent
+---
+### A 4 L beaker is used to dissolve uranium oxide in acid
+
+Which of the control parameters can be fixed?
+
+Which are variable?
+---
+### What safety margin should be included?
+
+Reference to facility guides and handbooks
+
+[Y-12 handbook](https://www.osti.gov/servlets/purl/4671484)
+
+[Minimum critical masses at the Portsmouth gaseous diffusion plant](https://inis.iaea.org/collection/NCLCollectionStore/_Public/26/033/26033356.pdf)
+
+Use of the hand calculations
+
+Computational tools
+
+$k_{EFF} + 2\sigma \leq 0.90$ for normal conditions
+
+$k_{EFF} + 2\sigma \leq 0.95$ for accident conditions
+
+Data comparisons found in ANS standards
+---
+### Nuclear criticality safety is achieved by exercising control
+
+Mass and distribution of fissile material
+
+And all other materials associated with the fissile material
+
+Parametric studies can identify what parameters to control, limits
+
+But not how to control them
+---
+### Engineered controls are passive or active
+
+Passive safety is also part of safety goals for reactors
+
+Subcriticality is maintained without human or mechanical intervention
+
+Active controls contain actuated systems the sense the process variable state and provides a response
+
+Administrative controls require operator performance
+---
+### Engineering controls require oversight
+
+Initial design
+
+Correctly install
+
+Pre operational verification
+
+Ongoing (operational) effectiveness
+
+Detecting any changes
+---
+### Active controls can be engaged by a sensor
+
+Thermostat turns heater off  
+Liquid level sensor starts pump  
+Load cell closes supply line  
+Pressure switch starts pump  
+Computer controlled
+
+Do these facilities use PLCs?
+---
+### Active controls of course need maintenance
+
+Sensor - tolerance, drift, calibration
+
+Actuator - motive force, time response
+
+Detecting malfunctions or failures
+
+Calibration
+---
+### Operators will affect material parameters as part of administrative controls
+
+Set mass limits
+
+Set spacing limits
+
+Set compositon limits
+
+Count product pieces (materials accounting)
+
+Undergo periodic training
+---
+### Operator performance falls under human reliability studies
+
+Human factors
+
+Same as reactors in principle
+
+Requires operator thought and action each time control function is needed
+
+Difficult to determine double contingency state
+
+Requires quick judgement sometimes and quick action
+
+Ideal controls preferences move from minimum human intervention to total human intervention
+
+Likely always going to need human intervention
+---
+### Controls must be functionally achievable 
+
+Mass - Scales, records, logs
+
+Composition (H/U) - Lab analyses
+
+Temperature, pressure, environmentals - Dials, indicators
+
+Fixed poisons - Visual, concentration control
+---
+class: center,middle
+![doggehs](img/final.jpg)
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script type="text/javascript">
+        var options = {};
+        var renderMath = function() {
+            renderMathInElement(document.body, {delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\[", right: "\\]", display: false},
+            ]});
+        }
+        var slideshow = remark.create({
+          // Set the slideshow display ratio
+          // Default: '4:3'
+          // Alternatives: '16:9', ...
+          ratio: '16:9',
+          // Navigation options
+          navigation: {
+          // Enable or disable navigating using scroll
+          // Default: true
+          // Alternatives: false
+          scroll: true,
+          // Enable or disable navigation using touch
+          // Default: true
+          // Alternatives: false
+          touch: true,
+          // Enable or disable navigation using click
+          // Default: false
+          // Alternatives: true
+          click: false
+          },
+          // Customize slide number label, either using a format string..
+          slideNumberFormat: '%current%',
+          // Enable or disable counting of incremental slides in the slide counting
+          countIncrementalSlides: false 
+          }, renderMath);
+    </script>
+    <script type="text/javascript">
+     /**
+      * a simple zoom in/out/reset for remark.js
+      *
+      * Hot key:
+      *   + : zoom in
+      *   - : zoom out
+      *   0 : reset zoom
+      *
+      * CAVEAT: when switching between full screen and normal screen,
+      *         the zoom factor may not function correctly.
+      *         RELOAD the page, if necessary.
+      *
+      * 
+      * @author William Yeh <william.pjyeh@gmail.com>
+      * @date   2015-01-15
+      *
+      * @license Apache License, Version 2.0.
+      * Copyright © 2015 William Yeh.
+      */
+      var ZOOM_TEXT_SELECTOR =
+       ".remark-slide-content p"
+       + "," + ".remark-slide-content .remark-code-line"
+       ;
+
+      var ZOOM_IMG_SELECTOR =
+       ".remark-slide-content img:hover"
+       ;
+
+      var ZOOM_IMG_RULE;
+
+      var zoom_factor = 100.0;
+      document.body.style.zoom = "100%"
+    
+      function init_zoom_rule() {
+       // @see http://davidwalsh.name/add-rules-stylesheets
+       var styles = document.styleSheets[0];
+       var index = styles.insertRule(
+        ZOOM_IMG_SELECTOR + ' { transform:scale(1); }',
+        styles.cssRules.length
+        );
+
+        ZOOM_IMG_RULE = styles.cssRules.item(index);
+       }
+    
+      function apply_zoom() {
+       var elements = document.querySelectorAll(ZOOM_TEXT_SELECTOR);
+       //console.log('length:', elements.length);
+       for (var i = 0; i < elements.length; ++i) {
+        var item = elements[i];
+        item.style.fontSize = zoom_factor.toString() + '%';
+        }
+
+        ZOOM_IMG_RULE.style.transform = 'scale(' + (zoom_factor / 100) + ')';
+      }
+
+      function zoom_in() {
+       zoom_factor += 10;
+       if (zoom_factor >= 200.0)  zoom_factor = 200.0;
+       apply_zoom();
+      }
+    
+      function zoom_out() {
+       zoom_factor -= 10;
+       if (zoom_factor <= 50.0)  zoom_factor = 50.0;
+       apply_zoom();
+      }
+
+      function zoom_reset() {
+       zoom_factor = 100.0;
+       apply_zoom();
+      }
+
+      init_zoom_rule();
+      window.addEventListener("keydown", function(event) {
+       //console.log(event.keyCode);
+       switch (event.keyCode) {
+        case 187:  // '+': 187 in Chrome & Safari, 61 in FF
+        case 61:  // '+': 187 in Chrome, 61 in FF
+         zoom_in(); 
+         break;
+
+        case 189:  // '-': 189 in Chrome & Safari, 173 in FF
+        case 173:  // '-': 189 in Chrome, 173 in FF
+         zoom_out();
+         break;
+        case 48:   // '0'
+         zoom_reset();
+         break;
+       }
+      }, false);
+    </script>
+  </body>
+</html>
