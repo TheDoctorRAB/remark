@@ -27,7 +27,7 @@ class: center, middle
 
 # NE535   
 ## NUCLEAR CRITICALITY SAFETY I 
-### [Hand calculations](https://mcnp.lanl.gov/pdf_files/la-ur-16-23533.pdf)
+### [Hand calculations](https://mcnp.lanl.gov/pdf_files/SU-class_2019.pdf)
 
 #### 7
 
@@ -75,7 +75,7 @@ Uncertainty in the bias shall contain allowances for uncertainties in the experi
 
 But - everything is benchmarked by MCNP or SCALE
 ---
-### Validation tests calculational tools
+### Validation involves comparing calculation vs experiment for many benchmarks similar to the application of interest
 
 Evaluation of method and cross section data
 
@@ -93,6 +93,20 @@ Validation indicates reliability of calculation as compared to known real condit
 
 *Conditions predicted to be subcritical would be expected to be subcritical*
 ---
+ANSI/ANS-8.24 Foreword: “…the industry need to optimize operations and reduce unnecessary conservatism has increased. Thus, the scrutiny and importance placed on validation has increased in recent years.”
+---
+### Direct use of experimental data is preferred (ANSI/ANS-8.1-2014 4.2.7)
+
+Where applicable data are available, subcritical limits shall be established on bases derived from experiments, with adequate allowance for uncertainties in the data
+
+In the absence of directly applicable experimental measurements, the limits may be derived from calculations made by a method shown by comparison with experimental data to be valid in accordance with Sec. 4.3
+---
+## (ANSI/ANS-8.1-2014 4.3)
+
+Validation shall be performed by comparison to experiments and AoA should be established from this comparison
+
+Use of subcritical limit data provided in ANSI/ANS standards or accepted reference publications does not require further validation
+---
 ### Verification is about the process
 
 Indication of reliability that the mathematical operations are being performed as expected
@@ -101,11 +115,23 @@ Discuss [finite element method](https://docs.google.com/presentation/d/1QB_6KhX6
 ---
 ### The upper subcritical limit bounds the problem 
 
+$k_{EFF}$ less than 1 is not sufficient to ensure subcriticality
+
+Bias = calculated - experiment  for defined experiments
+
+Bias uncertainty - 95%,99% confidence level
+
+Code and data uncertainties
+
+Uncertainty if benchmarks are not similar enough to application
+
 $USL \equiv k_{EFF} + 2 \sigma$
 
-Highest value of calculated that is considered subcritical in evaluation
+USL = 1 + bias - bias uncertainty - benchmark
 
-Bias is calculated as the average calculated
+Set positive bias to 0
+
+Can look up USL for the right experiments
 ---
 ### Bias uncertainty is a measure of precision of calculation and accuracy of experiment
 
@@ -133,6 +159,18 @@ Reflection material
 Find benchmarks containing these nuclides to bound the conditions
 
 Then do the problem to see if it is in bounds
+---
+### Sensitivity analysis quantifies how variation of material properties or nuclear data affects $k_{EFF}$
+
+Change material densities or temperatures
+
+Change dimensions
+
+Used to justify simplifications and to quantify the impact of manufacturing tolerances and uncertainties
+
+Used to support margin adopted for validation weaknesses
+
+Perturbation theory methods
 ---
 ### Minimum subcritical margin is an extra safety margin applied to USL
 
