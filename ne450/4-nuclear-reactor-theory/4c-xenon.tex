@@ -86,6 +86,13 @@ $X(t)=\frac{\gamma_I\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T}(1-e^{-(\gamma_X+\si
 \section{Equilibrium time}
 $X(t)=\frac{\gamma_I\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T}(1-e^{-(\gamma_X+\sigma_A\phi_T)t})-\frac{\gamma_I\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T-\lambda_I}(e^{-\lambda_I t}-e^{-(\gamma_X+\sigma_A\phi_T)t})+\frac{\gamma_X\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T}(1-e^{-(\gamma_X+\sigma_A\phi_T)t})$ \\
 
-\noindent $\frac{dX}{dt}=[\frac{\gamma_I\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T}]((\gamma_X+\sigma_A\phi_T)e^{-(\gamma_X+\sigma_A\phi_T)t})
-$
+\noindent $\frac{dX}{dt}=[\frac{\gamma_I\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T}]((\gamma_X+\sigma_A\phi_T)e^{-(\gamma_X+\sigma_A\phi_T)t})-[\frac{\gamma_I\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T-\lambda_I}]((\gamma_X+\sigma_A\phi_T)e^{-(\gamma_X+\sigma_A\phi_T)t}-\lambda_Ie^{-\lambda_I t}) \\ +[\frac{\gamma_X\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T}]((\gamma_X+\sigma_A\phi_T)e^{-(\gamma_X+\sigma_A\phi_T)t})$ \\ \\
+
+\noindent $\frac{dX}{dt}=\gamma_I\Sigma_F\phi_T e^{-(\gamma_X+\sigma_A\phi_T)t} \\
+-\frac{(\gamma_I\Sigma_F\phi_T)(\gamma_X+\sigma_A\phi_T)}{(\gamma_X+\sigma_A\phi_T-\lambda_I)}e^{-(\gamma_X+\sigma_A\phi_T)t} \\
++\frac{(\gamma_I\Sigma_F\phi_T)(\lambda_I)}{(\gamma_X+\sigma_A\phi_T-\lambda_I)}e^{-\lambda_I t} \\
++\gamma_X\Sigma_F\phi_T e^{-(\gamma_X+\sigma_A\phi_T)t}$ \\ \\
+
+
+
 \end{document}
