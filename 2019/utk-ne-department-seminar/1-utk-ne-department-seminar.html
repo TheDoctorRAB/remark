@@ -35,6 +35,9 @@
 
       .split-60 .column:first-of-type {width: 60%}
       .split-60 .column:last-of-type {width: 40%}
+
+      .split-50 .column:first-of-type {width: 50%}
+      .split-50 .column:last-of-type {width: 50%}
     </style>
   </head>
   <body>
@@ -189,7 +192,9 @@ Take advantage of inherent design features
 **Systems assessment = Safeguardability quantification**  
 Risk-informed approach
 
-Time may have passed me by, but I still want to develop it 
+Time may have passed me by, but I still want to develop it  
+
+Also want to correct the record
 ---
 class: center, middle
 
@@ -293,6 +298,72 @@ Average 30 cm - 45 cm thickness concrete
 Maintenance, storage buffers located in proximity to process cells  
 
 Material transfer paths and facility footprint reduced
+---
+### Part 2 - Apply discrete event simulation to facility design
+
+![DES fuel fabrication 1](img/des_fuel1.jpg)
+---
+### Discrete event simulation describes state changes of system variables over time
+
+![DES fuel fabrication 2](img/des_fuel2.jpg)
+---
+### Discrete event simulation lends itself well to object oriented programming
+
+This is what I think is the key to safeguards-by-design
+
+Jieun revamped the code
+
+Model flow of Pu for each processing state; different times, batch size
+
+Determine materials accounting due to operation, failure, maintenance
+
+Connect to Type I error
+
+$\Phi^{-1}(1-\alpha)+\Phi^{-1}(1-\beta)=\frac{SQ}{\sigma}$
+---
+### What can discrete simulation say about safeguardability (in terms of design)?
+
+Results showed material flow not a function of equipment failure
+
+Safeguardability shown as a function of material flow and design
+
+For these proposed designs, operational goals are not affected - equal campaigns
+
+SEID less than 2.4 kg for varying $1-\beta$
+
+First build that showed designs can be evaluated quantitatively
+
+Jieun then added error propagation and increased accounting 
+
+First build calculated inventory difference at end of campaign
+
+Now, at end of every material balance area/unit process
+---
+class: center, middle
+
+![DES objects](img/des_objects.jpg)
+---
+class: split-50
+
+.column[#### Total material processed  
+![DES material](img/des_material.jpg)
+]
+.column[#### Total campaigns completed  
+![DES campaign](img/des_campaign.jpg)
+]
+---
+### Safeguardability - what capabilities are needed?
+
+Someone who can and likes to code  
+I feel like Diogenes over here
+
+Verification, benchmarking of the current model form
+
+Funding
+
+Development of a GUI
+
+Which we have capabilities for already
 ---
 class: center, middle
 ![doggehs](img/final.jpg)
