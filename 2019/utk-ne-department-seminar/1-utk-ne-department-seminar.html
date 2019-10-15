@@ -483,8 +483,142 @@ Means that common cause or cascading type 'failures' (attacks) increase risk
 
 Traditional PRA kind of breaks down at this point
 
-Solutions still should be within a performance based context
+Solutions still should be within a performance based (vendor agnostic) context
 ---
+### We also modeled a man in the middle attack for a plant
+
+Boron monitoring system setpoint 
+
+![Boron monitoring system](img/bms.jpg)
+
+Showed 2 out of 3 circuit could mitigate the attack 
+---
+### Cybersecurity - what capabilities are needed?
+
+Someone who can and likes to code  
+
+Funding
+
+Replicating past cyberattacks into WSC simulator
+
+Development of new envelope of attacks as a design basis
+
+I&C design and testing
+
+Situational awareness (which is a human factors issue)
+
+Interface with INL HSSL (with Ron, Katya et al.)
+---
+class: center, middle
+
+### Idaho Global Entrepreneurial Mission
+
+### State of Idaho Department of Commerce
+
+#### Used fuel cask with Sakae Casting, LLC (Ibaraki)
+---
+### IGEM funds products to market
+
+Collaboration with UIdaho, Boise State, Sakae
+
+Sakae has unique aluminum casting capabilities
+
+We proposed an intermediate storage cask of borated aluminum
+
+UIdaho - Neutrons, heat removal, regulations
+
+Boise St - Materials science - solid solution of $B_4C$ and $Al$
+
+IGEM is a typical proposal process
+
+Everyone gets up in your business
+
+Present to the IGEM council and they vote on it
+---
+### We argue some used fuel pools filling up
+
+Assemblies need several years cooling before transfer to standard dry casks
+
+Understand that some are transferred sooner - not necessarily internationally
+
+Design a cask pool and dry storage
+
+I did the market research (IGEM requirement) 
+
+Turns out hard numbers on used fuel pool capacities were really hard to find
+
+Active NPP nations that are once through and not phasing out
+
+For the most part, Europe doesn't seem to be a potential market
+
+Most Asian countries lack robust dry storage
+
+United States could go either way
+---
+### I used ORIGEN for burnup and depletion
+
+Thanks to Steve Skutnik for help
+
+Divided the cases in to low burnup, typical burnup, high burnup  
+
+Based on literature review
+
+(Read - N-XXYY - X.X% and YY GWD/MTU)
+
+L-3030, T-4045, H-5060
+
+Westinghouse 17x17 PWR  
+
+515 day cycle length and pool cooling (decay) from discharge out to 20 years
+---
+class: middle,center
+![Decay heat per assembly](img/Decay heat of used fuel per assembly.png)
+---
+### Then I ran many many many MCNP simulations for dose rate
+
+I decided that the cask probably would only be useful for older fuel (20 y)
+
+ORIGEN shows Cm-244 to be dominant emitter across the board (SDEF)
+
+Plate thickness - 1.5, 3, 6, 12, 18, 30 cm
+
+$B_4C$ - 10, 30, 50, 70, 90 wt% in Al per plate thickness
+
+$^{10}B$ loading in $B_4C$ - 5, 10, 25, 50, 75 wt%
+
+For each enrichment-burnup
+
+Then a second set of simulations emplaced in concrete - 3, 5, 10, 15, 20 cm
+
+Looking for plate thickness for dose rate below $10 \mu Sv/h$
+---
+class: center,middle
+![Assembly](img/single.assembly_plan.view.guide.jpg)
+---
+class: center,middle
+![Assembly](img/single.assembly_plan.view.guide_container.jpg)
+---
+### More MCNP modeling notes for your interest
+
+Backfill - air, water, helium, borosilicate glass
+
+Lattice card 17x17 unit cells - 269 rods - pitch 12.54 mm
+
+Material card taken from ORIGEN output with 1E-08 wt% cutoff
+
+Standard defaults for dose card
+
+SDEF card - 5 source points per rod (POS)
+
+ERG = Spontaneous Cm fission energy distribution
+
+F2 tally for outward normal on each plate
+
+NPS 2E6 (bare) and 3E6 (container) passed all tests
+
+Equal dose rates off plates - isotropic
+---
+see igem summary presentation for graphs
 ---
 class: center, middle
 ![doggehs](img/final.jpg)
@@ -536,7 +670,16 @@ J. Lee, R. A. Borrelli, Sensitivity analysis and application of advanced nuclear
 **Cybersecurity**  
 J. Peterson, M. Haney, R. A. Borrelli, An overview of methodologies for cyber security vulnerability assessments conducted in nuclear power plants, Nuclear Engineering and Design 346, 75 (2019).
 
-T. MacLean, +M. Haney, R. A. Borrelli, Cybersecurity modeling of non-critical nuclear power plant digital instrumentation. Critical Infrastructure Protection XIII, J. Staggs, S. Shenoi, eds. Chapter 15, 277.
+T. MacLean, M. Haney, R. A. Borrelli, Cybersecurity modeling of non-critical nuclear power plant digital instrumentation. Critical Infrastructure Protection XIII, J. Staggs, S. Shenoi, eds. Chapter 15, 277.
+---
+## Relevant publications
+
+**IGEM**  
+R. A. Borrelli, Updates on borated aluminum cask design for onsite used fuel storage, Proc., American Nuclear Society Annual Meeting, 09-13 June, 2019, Minneapolis, Minnesota.
+
+R. A. Borrelli, J. S. Dustin, S. Pedersen, B. J. Jaques, Design of a borated aluminum cask design for onsite used fuel storage, Proc., American Nuclear Society Annual Meeting, 17-21 June, 2018 Philadelphia, Pennsylvania.
+
+R. A. Borrelli, M. S. Delligatti, Regulatory licensing pathway for a borated aluminum cask design for onsite used fuel storage, Proc., American Nuclear Society Annual Meeting, 17-21 June, 2018, Philadelphia, Pennsylvania.
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
