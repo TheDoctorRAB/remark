@@ -75,7 +75,7 @@ and
 <p>
 2. Use MCNP to compute the volume averaged (F4) flux tallies for the SE cell and SW cell.   
 
-Use a neutron emission rate of $1.1 \times 10^7 n/s/g$ for 24 g of material. 
+Use a neutron emission rate of $1.1 \times 10^7 n/s/g$ for 24 g of material. Increase NPS from the original files to reduce standard error. 
 
 <p>
 3. Start with a wall thickness of 15 cm using the material already included in the deck. It is a form of borated concrete that is common to these kinds of facilities. Increase the wall thickness until the dose rate falls below 1 $\mu Sv/h$ and the relative flux falls below 0.01. 
@@ -95,6 +95,15 @@ For the criticality models:
 
 <p>
 3. Report the final table: keff, standard deviation, 68% confidence, 95% confidence, 99% confidence
+
+<p>
+4. Use finite geometries
+
+<p>
+5. For criticality, try to get to 4 9s or 0s (.9999x, 1.0000x) for the mean, and 3 9s,0s for each confidence interval. 
+
+<p>
+PROTIP - k can vary weird when your trying to get the critical radius to 4 or 5 decimal places. Study the KCODE parameters. You could also add more particles on KSRC, but be careful where you place them. 
 
 <p>
 5. [20] What is the critical mass of a bare sphere of plutonium containing (1) 95.5% $^{239}Pu$ and (2) 80% $^{239}Pu$? Where the rest is $^{238}Pu$.
