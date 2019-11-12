@@ -83,24 +83,30 @@ Use a neutron emission rate of $1.1 \times 10^7 n/s/g$ for 24 g of material. Inc
 <p>
 4. Plot the dose rate $\mu Sv/h$ versus wall thickness and the ‘relative flux’; i.e., SW tally/SE tally versus wall thickness. 
 
-Is this wall thickness reasonable? As in, could a facility be practically built like this using current engineering design techniques? 
+Is this wall thickness reasonable? As in, could a facility be practically built like this using current engineering design techniques? Include the mcnp file at the end in an appendix. 
 
 <p>
 For the criticality models:  
 <p>
-1. Include a screenshot of the model from the Vised
+1. Include a screenshot of the model from the Vised/plotter.
 
 <p>
 2. Include the input deck
 
 <p>
-3. Report the final table: keff, standard deviation, 68% confidence, 95% confidence, 99% confidence
+3. Report the final table: $k_{EFF}$, standard deviation, 68% confidence, 95% confidence, 99% confidence
 
 <p>
 4. Use finite geometries
 
 <p>
-5. For criticality, try to get to 4 9s or 0s (.9999x, 1.0000x) for the mean, and 3 9s,0s for each confidence interval. 
+5. For criticality, try to get to 4 9s or 0s (.9999x, 1.0000x) for the mean, and 68% confidence; 3 9s,0s for each remaining confidence interval. 
+
+<p>
+6. Design geometries that will minimize leakage. Show (as part of making the mcnp file and results; not calculating by hand) that leakage has been minimized. 
+
+<p>
+7. Include the mcnp input file at the end of the report in an appendix. 
 
 <p>
 PROTIP - k can vary weird when your trying to get the critical radius to 4 or 5 decimal places. Study the KCODE parameters. You could also add more particles on KSRC, but be careful where you place them. 
