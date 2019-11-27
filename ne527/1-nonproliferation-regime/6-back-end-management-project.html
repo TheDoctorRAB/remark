@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project 6: Back end management </title>
+<style> p {font-size: 24px } </style>
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]} }); </script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+</head>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <h3><a class="navbar-brand" href="../ne527.html" target="_blank">NE527: Nuclear material storage, transport, disposal </a></h3>
+        </div>
+
+        <div class="nav navbar-nav navbar-right" id="bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <h3><a class="navbar-brand" href="6-back-end-management.html">Project 6: Back-end management</a></h3>
+        </div>
+    </div>
+</nav>
+
+<body>
+<xmp>
+# NE527: Nuclear material storage, transport, disposal 
+## Project 6
+### Back end management 
+####[]
+
+<p>
+1. [25] The United States has about 70000 metric tons of used fuel, stored onsite at the reactors. Even if Yucca Mountain opened tomorrow, it would be filled immediately and there would still be used fuel left over. Therefore, a second and third repository are going to be needed. Reprocessing aside, which significantly reduces waste volume, and given the high-level geologic criteria for a repository, where might a second or third repository be sited in the United States and why? Given the
+culture of the local population, how likely would they consent to a repository?
+
+<p>
+2. [20] Is there a natural analogue to a geologic repository?
+
+<p>
+3. [25] Use the linear programming procedure to maximize the waste oxide mass for the glass waste form of the Japanese concept, subject to the six constraints in the slides. 
+
+<p>
+4. [20] 78 kg/MTU of used fuel is produced during reprocessing. If there are 15,000 MTU used fuel in Japan, how many waste canisters are needed? The Rokkasho reprocessing plant can hold 2880 canisters at any one time. Would the plant have enough space to store the canisters? If not, what should be done?
+
+<p>
+5. [30] Rokkasho can store 3000 MTU onsite and process 800 MTU/year. A typical reactor produces 20 MTU/year, and Japan has 50 reactors. 1500 MTU can be stored onsite per reactor. Derive a process model for the production of canisters per year. Assume the 15000 MTU equally distributed over all the reactors in the nation, and Rokkasho is totally empty at TIME = 0. Make any other reasonable assumptions. Produce several useful plots from the model simulation. Based on the results, offer
+some insight into a back end management plan/policy for a small nation like Japan. What would apply to larger nations?
+
+<p>
+6. [20] Real life does not typically provide analytical solutions to modeling physical phenomena. Use of these models relies on assumptions. For repository performance assessment, when might the use of analytical modeling be justified?
+
+<p>
+7. [20] If available, write an op-ed style piece on Into Eternity. Is safety of a repository feasible centuries into the future? What would you say to future society about the repository?
+
+<p>
+8. [20] Everyone agrees that a 'consent-based' approach must be used when siting any nuclear facility. They won't shut up about it. However, when asked what that looks like, no one knows. From an engineering perspective, we want models and quantifiable metrics. Within this context, what might a consent-based approach look like?
+
+<p>
+9. [30] Solve the transport equation with the assumption D = 0 in a semi infinite domain. What is the unique feature of this solution? What physical conditions would this model represent? Use cartesian coodinates. 
+
+<p>
+10. [30] Solve the transport equation with the assumption that v = 0 in a semi infinite domain. Use the Laplace transform and apply the 'sigma integral transformation' from the OER. What physical conditions would this model represent? Use cartesian coordinates.
+
+<p>
+11. [30] Solve the transport equation for $\lambda = 0$ in a semi infinite domain. What physical conditions would this model represent? Use cartesion coordinates. 
+
+<p>
+12. [25] Plot the solution for all three transport models for a typical saturated repository concept. (Just look up any nation and use their data). Plot for the following radionuclides - $^{237}Np, \; ^{99}Tc, \; ^{129}I, \; ^{135}Cs$, in the x direction all on one plot at $t = 10^1, \; 10^2, \; 10^3,...,10^6 \; y$. Use a normalized concentration - $\frac{N(x,0)}{N^*} = 1$ and $\rho = 2.7 \; Mg/m^3$ for the porous medium. Analyze the results in terms of repository safety. Is a steady
+state achieved?
+
+<p>
+13. [25] Similarly plot the same radionuclides in the time domain for selected fixed x. (*Hint - see breakthrough curves*).
+
+<p>
+*Supah rock star bonus*
+
+Finish the transport derivation in the notes by evaluating the final integral analytically. 
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\tiny&space;N(x,t)=\frac{\lambda&space;N^*}{2}\int_0^t&space;[e^{(\frac{xv}{D}-\lambda\tau)}~erfc(\frac{Kx&plus;v\tau}{\sqrt{4KD\tau}})&plus;e^{-\lambda\tau}~erfc(\frac{Kx-v\tau}{\sqrt{4KD\tau}})]d\tau&plus;\frac{N^*}{2}[e^{(\frac{xv}{D}-\lambda&space;t)}~erfc(\frac{Kx&plus;vt}{\sqrt{4KDt}})&plus;e^{-\lambda&space;t}~erfc(\frac{Kx-vt}{\sqrt{4KDt}})]" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\tiny&space;N(x,t)=\frac{\lambda&space;N^*}{2}\int_0^t&space;[e^{(\frac{xv}{D}-\lambda\tau)}~erfc(\frac{Kx&plus;v\tau}{\sqrt{4KD\tau}})&plus;e^{-\lambda\tau}~erfc(\frac{Kx-v\tau}{\sqrt{4KD\tau}})]d\tau&plus;\frac{N^*}{2}[e^{(\frac{xv}{D}-\lambda&space;t)}~erfc(\frac{Kx&plus;vt}{\sqrt{4KDt}})&plus;e^{-\lambda&space;t}~erfc(\frac{Kx-vt}{\sqrt{4KDt}})]" title="\tiny N(x,t)=\frac{\lambda N^*}{2}\int_0^t [e^{(\frac{xv}{D}-\lambda\tau)}~erfc(\frac{Kx+v\tau}{\sqrt{4KD\tau}})+e^{-\lambda\tau}~erfc(\frac{Kx-v\tau}{\sqrt{4KD\tau}})]d\tau+\frac{N^*}{2}[e^{(\frac{xv}{D}-\lambda t)}~erfc(\frac{Kx+vt}{\sqrt{4KDt}})+e^{-\lambda t}~erfc(\frac{Kx-vt}{\sqrt{4KDt}})]" /></a>
+</xmp>
+
+<script type="text/javascript" src="../../../strapdown.min.js?theme=readable"></script>
+
+</body>
+</html>
