@@ -40,41 +40,41 @@
 # NE527: Nuclear material storage, transport, disposal 
 ## Project 1
 ### Nonproliferation regime
-####[]
+####[400]
 
 <p>
-1. How can nuclear energy be expanded on a wide scale around the world without contibuting to weapons development andproliferation?
+1. [25] How can nuclear energy be expanded on a wide scale around the world without contibuting to weapons development and proliferation?
 
 <p>
-2. What USA facilities have been placed under safeguards? What materials? 
+2. [25] What USA facilities have been placed under safeguards? What materials? 
 
 <p>
-3. What are the major nuclear security incidents over last decade? Identify commonalities and what could have been done to prevent them.
+3. [25] What are the major nuclear security incidents over last decade? Identify commonalities and what could have been done to prevent them.
 
 <p>
-4. Derive the Type I and Type II errors.
+4. [50] Derive the Type I and Type II errors.
 
 <p>
-5. Compute $FOM_1$ and $FOM_2$ for the fuel fabrication product based on the  pyroprocessing flowsheet in the slides. The [material](https://www.sciencedirect.com/science/article/pii/S0029549313001672?via%3Dihub) is based on 4.5% $^{235}U$ enrichment, 55 GWD/MTU burnup and a 10 year cooling time. Use the material composition in the [M1 material card](https://github.com/TheDoctorRAB/mcnpx.decks/blob/master/neutron.flux/input/4d_ff.alloy.inp). Assume $^{244}Cm$ for the neutron emitter. 
+5. [50] Compute $FOM_1$ and $FOM_2$ for the fuel fabrication product based on the pyroprocessing flowsheet in the slides. The [material](https://www.sciencedirect.com/science/article/pii/S0029549313001672?via%3Dihub) is based on 4.5% $^{235}U$ enrichment, 55 GWD/MTU burnup and a 10 year cooling time. Use the material composition in the [M1 material card](https://github.com/TheDoctorRAB/mcnpx.decks/blob/master/neutron.flux/input/4d_ff.alloy.inp). Assume $^{244}Cm$ for the neutron emitter. 
 
 <p>
-6. Compute $FOM_2$ for the materials listed in [Table B.II].
+6. [25] Compute $FOM_2$ for the materials listed in [Table B.II].
 
 <p>
-7. Compare $FOM_1$ and $FOM_2$ for the materials in Table B.II with the pyroprocessing material from 5 and discuss what this means within the context of proliferation resistance.
+7. [25] Compare $FOM_1$ and $FOM_2$ for the materials in Table B.II with the pyroprocessing material from 5 and discuss what this means within the context of proliferation resistance.
 
 <p>
-8. Determine intrinsic design features that will reduce the materials attractiveness from 7 such that $FOM_x \leq 1$ and discuss the feasibility of these measures.
+8. [50] Determine and show intrinsic design features that will reduce the materials attractiveness from 7 such that $FOM_x \leq 1$ and discuss the feasibility of these measures.
 
 <p>
-9. Discuss shortcomings of using the FOMs within the context of proliferation resistance and physical protection.
+9. [25] Discuss shortcomings of using the FOMs within the context of proliferation resistance and physical protection.
 
 <p>
 *$\beta$ test problems*  
 Refer to [Avenhaus](http://pure.iiasa.ac.at/id/eprint/689/1/XB-77-102.pdf) and [NUREG/CR-4604](https://www.nrc.gov/docs/ML1116/ML11161A056.pdf) for help.
 
 <p>
-10. An inspector selects 50 containers of uranium oxide powder at random to weigh. The goal is to compare the weight from the equipment the inspector is using to the book weight provided by the operator. If there is a difference greater than 50 g, this is labeled a defect. Within the context of safeguards, this might indicate that the operator is cooking the books to divert some material. The inspector finds 3 defects. Let $p$ be defined as the fraction of defects in the selected
+10. [50] An inspector selects 50 containers of uranium oxide powder at random to weigh. The goal is to compare the weight from the equipment the inspector is using to the book weight provided by the operator. If there is a difference greater than 50 g, this is labeled a defect. Within the context of safeguards, this might indicate that the operator is cooking the books to divert some material. The inspector finds 3 defects. Let $p$ be defined as the fraction of defects in the selected
 population. Assume the probability density function for the number of defects is a binomial distribution. 
 
 Test the hypothesis that $p \leq 0.045$ against $p > 0.045$ with $\alpha = 0.05$.
@@ -84,8 +84,27 @@ How many containers should be reweighed to detect $p = 0.12$ with a probability 
 In the original 50 sample size, how many defects can exist before rejecting the hypothesis of $p = 0$? What is the value of $\alpha$? If there are no defects found, can you conclude $p = 0$? What would you conclude in your inspection report?
 
 <p>
-11. 
+11. [50] For a quarterly inventory difference (ID):  
+$ID_i=M_i + \delta + \epsilon_i -(\eta_i - \eta_{i-1})$
 
+$M_i$ = amount diverted/lost
+
+$\delta$ = systematic error measuring net flow
+
+$\epsilon_i$ = random measurement error in net flow
+
+$\eta_i$ = random error in measuring ending inventory
+
+$\delta, \; \epsilon, \; \eta$ are random variables
+
+$E(\delta) = E(\epsilon) = E(\eta) = 0$  
+$\sigma_{\delta} = 15, \; \sigma_{\epsilon} = 20, \; \sigma_{\eta} = 40$
+
+What is the SEID for a given quarter?
+
+What is the SEID cumulatively summed over 3 quarters?
+
+For a given quarter, what is the probability of detecting a diversion of 100 if $\alpha = 0.05$?
 </xmp>
 
 <script type="text/javascript" src="../../../strapdown.min.js?theme=readable"></script>
