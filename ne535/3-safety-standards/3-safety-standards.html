@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>3. Safety standards</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Open Sans', sans-serif; }
+      h1, h2, h3 {
+        font-family: 'Ubuntu';
+        font-weight: normal;
+        }
+      .remark-container {background-color: #F5F5F5; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { background-color: #FFFAF0; font-size: 26px; 
+                         h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
+       }
+      .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+    </style>
+  </head>
+  <body>
+<textarea id="source">
+class: center, middle
+
+# NE535   
+## NUCLEAR CRITICALITY SAFETY I 
+### [Safety standards](https://www.nrc.gov/docs/ML1214/ML12146A211.pdf)
+
+#### 3
+
+##### .right[
+Bob Borrelli  
+University of Idaho-Idaho Falls  
+Center for Advanced Energy Studies  
+@TheDoctorRAB ![git](img/git.png) ![twitter](img/twitter.png)
+]
+---
+# Learning objectives
+
+Interpreting the nuclear physics behind safety standards
+
+Applying standards to criticality accidents
+
+Assessing safety standards effectiveness
+---
+## What is special nuclear material?
+
+Defined by [Title I of the Atomic Energy Act of 1954](https://www.nrc.gov/docs/ML1327/ML13274A489.pdf)
+
+$Pu$, $^{233}U$, $^{235}U$ or $U$ enriched in those isotopes
+
+Or any other material determined to be special nuclear material 
+
+So far that hasn't happened
+
+Similar to IAEA definitions
+
+IAEA also adds a timeliness of detection
+---
+## Who can possess nuclear material?
+
+EPA
+
+FDA
+
+NRC
+
+State governments
+
+DOE
+---
+## What are the relevant regulations?
+
+[10 CFR 20 - Standards for protection against radiation](https://www.nrc.gov/reading-rm/doc-collections/cfr/part020/)
+
+[10 CFR 50 - Domestic licensing of production and utilization facilties](https://www.nrc.gov/reading-rm/doc-collections/cfr/part050/)
+
+[10 CFR 70 - Domestic licensing of special nuclear material](https://www.nrc.gov/reading-rm/doc-collections/cfr/part070/)
+
+Of note [10 CFR 70.3 - License requirements](https://www.nrc.gov/reading-rm/doc-collections/cfr/part070/part070-0003.html)  
+*No person subject to the regulations in this part shall receive title to, own, acquire, deliver, receive, possess, use, or transfer special nuclear material except as authorized in a license issued by the Commission pursuant to these regulations.*
+---
+### [ANS standard 8.1](https://www.techstreet.com/ans/subgroups/55483) contains administrative practices
+
+But we don't really know because the cost hundreds of dollars
+
+Safety Responsibility and criteria established by management
+
+Process analysis that includes the effects of credible abnormal conditions
+
+Written procedure for pertinent operations
+
+Controlled movement of fissionable materials
+
+Prompt reporting, investigation and correction of process deviations
+
+Frequent independent operational reviews
+
+Emergency procedures and training
+---
+ANS-8.1 also stipulates that geometric control should be prioritized over administrative control
+
+Why?
+---
+## ANS-8.1 defines the subcritical limit
+
+In terms of mass, dimensions, concentration
+
+Includes compensation for uncertainties in experimental results
+
+However, the subcritical limit does not include a margin for misapplication
+
+Subcritical limits are modified by conservative safety margins
+
+Generally subcritical limits are set to keep $k_{EFF}$ less than $0.95$ 
+
+Contingency planning
+
+States requirements for establishing the validity and areas of :1
+applicability of any calculational method used in assessing nuclear criticality safety
+---
+class: center, middle
+
+**Typical subcritical values**
+
+||Element  ||Cylinder diameter (in)||Minimum critical concentration (g/L)||Critical mass (g)||
+|:----------|:---------------------:|:-----------------------------------:|:----------------:|
+||$^{233}U$||6.41                  ||7.8                                 ||531              ||
+||$^{235}U$||5.63                  ||11.8                                ||820              ||
+||Pu       ||2.01                  ||11.2                                ||570              ||
+---
+# [MAGICMERV](https://digitalscholarship.unlv.edu/cgi/viewcontent.cgi?article=2978&context=thesesdissertations) is a ridiculous acronym
+
+9 parameters that govern criticality safety
+
+Mass - source material   
+Absorption - neutron poisons  
+Geometry - system
+Interaction - source of outside neutrons  
+Concentration - source material in solution  
+Moderation - material to slow down neutrons 
+Enrichment - source material  
+Reflection - reduce leakage   
+Volume - system size  
+
+What lowers or raises $k_{EFF}$?
+
+Also [this](https://soundcloud.com/djmagicmerv)
+---
+class: center, middle
+
+![Tokai k](img/tokaimura.k.jpg)
+---
+## Accidents with similar themes can be grouped together
+
+Unfavorable Geometry
+
+Procedural – (not following procedures, or inadequate review of procedure changes)
+
+Abnormal Conditions
+
+Material Accountability
+
+Training
+
+Communication with various independent organizations (operations, safety, training)
+---
+class: center,middle
+![doggehs](img/final.jpg)
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script type="text/javascript">
+        var options = {};
+        var renderMath = function() {
+            renderMathInElement(document.body, {delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\[", right: "\\]", display: false},
+            ]});
+        }
+        var slideshow = remark.create({
+          // Set the slideshow display ratio
+          // Default: '4:3'
+          // Alternatives: '16:9', ...
+          ratio: '16:9',
+          // Navigation options
+          navigation: {
+          // Enable or disable navigating using scroll
+          // Default: true
+          // Alternatives: false
+          scroll: true,
+          // Enable or disable navigation using touch
+          // Default: true
+          // Alternatives: false
+          touch: true,
+          // Enable or disable navigation using click
+          // Default: false
+          // Alternatives: true
+          click: false
+          },
+          // Customize slide number label, either using a format string..
+          slideNumberFormat: '%current%',
+          // Enable or disable counting of incremental slides in the slide counting
+          countIncrementalSlides: false 
+          }, renderMath);
+    </script>
+    <script type="text/javascript">
+     /**
+      * a simple zoom in/out/reset for remark.js
+      *
+      * Hot key:
+      *   + : zoom in
+      *   - : zoom out
+      *   0 : reset zoom
+      *
+      * CAVEAT: when switching between full screen and normal screen,
+      *         the zoom factor may not function correctly.
+      *         RELOAD the page, if necessary.
+      *
+      * 
+      * @author William Yeh <william.pjyeh@gmail.com>
+      * @date   2015-01-15
+      *
+      * @license Apache License, Version 2.0.
+      * Copyright © 2015 William Yeh.
+      */
+      var ZOOM_TEXT_SELECTOR =
+       ".remark-slide-content p"
+       + "," + ".remark-slide-content .remark-code-line"
+       ;
+
+      var ZOOM_IMG_SELECTOR =
+       ".remark-slide-content img:hover"
+       ;
+
+      var ZOOM_IMG_RULE;
+
+      var zoom_factor = 100.0;
+      document.body.style.zoom = "100%"
+    
+      function init_zoom_rule() {
+       // @see http://davidwalsh.name/add-rules-stylesheets
+       var styles = document.styleSheets[0];
+       var index = styles.insertRule(
+        ZOOM_IMG_SELECTOR + ' { transform:scale(1); }',
+        styles.cssRules.length
+        );
+
+        ZOOM_IMG_RULE = styles.cssRules.item(index);
+       }
+    
+      function apply_zoom() {
+       var elements = document.querySelectorAll(ZOOM_TEXT_SELECTOR);
+       //console.log('length:', elements.length);
+       for (var i = 0; i < elements.length; ++i) {
+        var item = elements[i];
+        item.style.fontSize = zoom_factor.toString() + '%';
+        }
+
+        ZOOM_IMG_RULE.style.transform = 'scale(' + (zoom_factor / 100) + ')';
+      }
+
+      function zoom_in() {
+       zoom_factor += 10;
+       if (zoom_factor >= 200.0)  zoom_factor = 200.0;
+       apply_zoom();
+      }
+    
+      function zoom_out() {
+       zoom_factor -= 10;
+       if (zoom_factor <= 50.0)  zoom_factor = 50.0;
+       apply_zoom();
+      }
+
+      function zoom_reset() {
+       zoom_factor = 100.0;
+       apply_zoom();
+      }
+
+      init_zoom_rule();
+      window.addEventListener("keydown", function(event) {
+       //console.log(event.keyCode);
+       switch (event.keyCode) {
+        case 187:  // '+': 187 in Chrome & Safari, 61 in FF
+        case 61:  // '+': 187 in Chrome, 61 in FF
+         zoom_in(); 
+         break;
+
+        case 189:  // '-': 189 in Chrome & Safari, 173 in FF
+        case 173:  // '-': 189 in Chrome, 173 in FF
+         zoom_out();
+         break;
+        case 48:   // '0'
+         zoom_reset();
+         break;
+       }
+      }, false);
+    </script>
+  </body>
+</html>

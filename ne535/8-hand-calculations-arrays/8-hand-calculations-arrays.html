@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>8. Hand calculations for arrays</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Open Sans', sans-serif; }
+      h1, h2, h3 {
+        font-family: 'Ubuntu';
+        font-weight: normal;
+        }
+      .remark-container {background-color: #F5F5F5; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { background-color: #FFFAF0; font-size: 26px; 
+                         h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
+       }
+      .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+    </style>
+  </head>
+  <body>
+<textarea id="source">
+class: center, middle
+
+# NE535   
+## NUCLEAR CRITICALITY SAFETY I 
+### Hand calculations for arrays 
+
+#### 8
+
+##### .right[
+Bob Borrelli  
+University of Idaho-Idaho Falls  
+Center for Advanced Energy Studies  
+@TheDoctorRAB ![git](img/git.png) ![twitter](img/twitter.png)
+]
+---
+# Learning objectives
+
+Calculating criticality safety limits for arrays of materials
+
+Though it isn't clear why you don't just MCNP it
+---
+## Multiple methods exist to calculate the criticality relationships in arrays
+
+First of all, why would we be concerned with arrays? 
+
+Surface Density  
+
+Density Analog
+
+Limiting Surface Density
+
+Solid Angle Method
+---
+### The [surface density](https://ncsp.llnl.gov/docs/LA-14244-M.pdf) method judges subcriticality of a facility loading
+
+We compute mass per unit area of fissile material by comparison to that of a critical reflected infinite slab of the same material
+
+Used to evaluate arrays of units containing fissile material
+
+The fissile material density is projected onto a bounding plane
+
+Assumes the array of fuel is compressed to form a slab on the floor and is reflected by water
+
+Assumes array size is limited in one direction
+---
+class: middle, center
+
+![Surface density diagram](img/surface.density.png)
+---
+### The calculated array center-to-center spacing will result in a subcritical array configuration
+
+This would be the pitch if we were talking about reactor fuel rods in an assembly
+
+The maximum ratio the mass of a unit in the array to the critical mass of the un-reflected sphere of the same fissile material is 0.73
+
+Based on constraint $k_{EFF} = 0.9$
+
+Can be used in situations where the fissile units have irregular geometries such as where equipment containing fissile materials is stored on a process floor
+
+Useful for this situation because the surface density of an infinite, water-reflected slab bounds the mass of each fissile unit in the array
+---
+### Fraction critical may be used to determine the approximate multiplication factor
+
+Defined as the ratio of the mass to the critical mass of the same material conditions
+
+$f \equiv \frac{m}{m_0}$
+
+For fast systems, both bare and reflected, a reasonable approximation is
+
+$k_{EFF} = f^{\frac{1}{3}}$
+
+For thermal systems - 
+
+$k_{EFF} = f^{\frac{1}{4}}$
+---
+### Surface density method assumes an infinite planar array that is of finite height  
+
+$\sigma = c_2(m_0-m) = c_2 m_0 (1-\frac{m}{m_0})$
+
+$c_2$ = constant dependent on material properties
+
+$m_0$ = critical mass of unreflected, single fissile unit in the array
+
+$m$ = mass of a fissile unit in the array
+---
+It's also this - 
+
+$\sigma = \frac{nm}{d^2}(1-\frac{c}{\sqrt{N}})^2$
+
+$n$ = least number of units along array edge
+
+$d$ = pitch
+
+$c$ = emprical constant
+
+$N$ = total number of units
+---
+### Make use of $f$
+
+$\sigma = c_2 m_0 (1-f)$
+
+Building in the constraint $k_{EFF} = 0.9$
+
+$\sigma = c_2 m_0 (1-1.37 f)$
+
+For f = 0.73, $\sigma = 0$
+
+Surface density method cannot be used to define a safe spacing for this array because the multiplication factor for each unit in the array is too high
+---
+Finally 
+
+$\sigma = 0.54\sigma_0 (1-1.37 f)$
+
+Coefficient is array shape and reflector material
+
+[Limits the allowed surface density to 54% (4.5)](https://inis.iaea.org/collection/NCLCollectionStore/_Public/10/487/10487876.pdf)
+
+This seems like a back of the envelope calculation because the arrays are assumed infinite and can't be stacked
+---
+## Then derive a relationship for pitch
+
+For large N
+
+$d^2 = \frac{nm}{0.54\sigma_0 (1-1.37 f)}$
+
+Three paramters can be optimized - d, n, m
+
+$\sigma_0$ is computed by looking up on charts
+
+It's water-reflected infinte slab height by fissile concentration
+
+[Example 5.4.1 p77](https://ncsp.llnl.gov/docs/LA-14244-M.pdf)
+---
+### Density analog method addresses criticality limits regardless of actual arrangement
+
+Depicts the number of fissile units or total mass of all the fissile units in a critical, reflected array as a function of the average fissile material density in the array
+
+It's the same basic derivation
+
+$d^2 = \frac{nm}{2.1\sigma_0 (1-1.37 f)}$
+
+The 2.1 is essentially a fudge factor for experimental and calculational data for cubic arrangements of fissile materials
+
+$\sigma_0$ is computed in the same way
+
+Assuming a cubic formation is conservative because it would be the tightest packing
+---
+### Limiting surface density method is for when you don't assume large N
+
+$m = m_0[\frac{n}{c_2 d^2}(1-\frac{c}{\sqrt{N}})^2+1]^{-1}$
+
+N has to be more than 64 units though
+
+Note there is not a built in $k_{EFF}$ constraint
+
+These results give the pitch (mass) for a critical array
+
+[7.3.2 Limiting surface density relationships for subcritical arrays](https://ncsp.llnl.gov/docs/LA-14244-M.pdf) derives $k_{EFF}$
+
+$m = k^{3}_{EFF}m_0[\frac{n}{c_2 d^2}(1-\frac{c}{\sqrt{N}})^2+1]^{-1}$
+---
+### Obviously, it's more common that storage arrays aren't cubic
+
+![Shifted array](img/array.jpg)
+---
+## Define a shape factor for array shape change
+
+Ratio of surface ara to volume for non cubic array to cubic array
+
+$R \equiv \frac{1}{3} N^{\frac{1}{3}} (\frac{1}{n_x}+\frac{1}{n_y}+\frac{1}{n_z})$
+
+[R cannot exceed 5.34](https://ans.tandfonline.com/doi/10.13182/NSE77-A26982#.XURdhPJKhhE)
+
+Corresponding to a linear-reflected array of 512 units
+---
+## Account for increased leakage using the shape factor
+
+$c^{'}_2 \equiv \frac{4n^{'}}{n}(\frac{c_2}{5R^{-0.672}-1})$
+
+This was developed for U(93.2) metal spheres so an additional calculation is needed to convert for other enrichments (p121)
+---
+### Solid angle method accounts for neutron leakage and subsequent interaction
+
+Probability that a neutron leaks out of a fissile unit to intersect another is dependent upon the solid angle occupied at the most central unit by all the other units of the array
+
+$\Omega \equiv 9-10k_{EFF}$
+
+Allowable solid angle that may be subtended at the center fissile unit of the array
+---
+class: center, middle
+
+![Solid angle 1](img/solid.angle1.jpg)
+---
+class: center, middle
+
+![Solid angle 2](img/solid.angle2.jpg)
+---
+### There are several limitations to the method
+
+Small numbers of moderated fissile units
+
+Applying this method to large arrays of metal or oxide systems with intermediate or fast neutron spectrum should be cautioned that the results obtained from the solid angle method can be non-conservative
+
+$k_{EFF}$ should not exceed 0.80
+
+Each unit considered should be subcritical with thick water reflection
+
+Minimum separation distance between fissile units should be 0.3 m
+
+Allowed solid angle according to the method shall not exceed 6 steradians
+
+Reflector surrounding the array of fissile units should not be more effective than a thick water reflector located at the boundary of the array
+---
+[Example problem](https://www.nrc.gov/docs/ML1214/ML12146A213.pdf)
+---
+class: center,middle
+![doggehs](img/final.jpg)
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script type="text/javascript">
+        var options = {};
+        var renderMath = function() {
+            renderMathInElement(document.body, {delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\[", right: "\\]", display: false},
+            ]});
+        }
+        var slideshow = remark.create({
+          // Set the slideshow display ratio
+          // Default: '4:3'
+          // Alternatives: '16:9', ...
+          ratio: '16:9',
+          // Navigation options
+          navigation: {
+          // Enable or disable navigating using scroll
+          // Default: true
+          // Alternatives: false
+          scroll: true,
+          // Enable or disable navigation using touch
+          // Default: true
+          // Alternatives: false
+          touch: true,
+          // Enable or disable navigation using click
+          // Default: false
+          // Alternatives: true
+          click: false
+          },
+          // Customize slide number label, either using a format string..
+          slideNumberFormat: '%current%',
+          // Enable or disable counting of incremental slides in the slide counting
+          countIncrementalSlides: false 
+          }, renderMath);
+    </script>
+    <script type="text/javascript">
+     /**
+      * a simple zoom in/out/reset for remark.js
+      *
+      * Hot key:
+      *   + : zoom in
+      *   - : zoom out
+      *   0 : reset zoom
+      *
+      * CAVEAT: when switching between full screen and normal screen,
+      *         the zoom factor may not function correctly.
+      *         RELOAD the page, if necessary.
+      *
+      * 
+      * @author William Yeh <william.pjyeh@gmail.com>
+      * @date   2015-01-15
+      *
+      * @license Apache License, Version 2.0.
+      * Copyright © 2015 William Yeh.
+      */
+      var ZOOM_TEXT_SELECTOR =
+       ".remark-slide-content p"
+       + "," + ".remark-slide-content .remark-code-line"
+       ;
+
+      var ZOOM_IMG_SELECTOR =
+       ".remark-slide-content img:hover"
+       ;
+
+      var ZOOM_IMG_RULE;
+
+      var zoom_factor = 100.0;
+      document.body.style.zoom = "100%"
+    
+      function init_zoom_rule() {
+       // @see http://davidwalsh.name/add-rules-stylesheets
+       var styles = document.styleSheets[0];
+       var index = styles.insertRule(
+        ZOOM_IMG_SELECTOR + ' { transform:scale(1); }',
+        styles.cssRules.length
+        );
+
+        ZOOM_IMG_RULE = styles.cssRules.item(index);
+       }
+    
+      function apply_zoom() {
+       var elements = document.querySelectorAll(ZOOM_TEXT_SELECTOR);
+       //console.log('length:', elements.length);
+       for (var i = 0; i < elements.length; ++i) {
+        var item = elements[i];
+        item.style.fontSize = zoom_factor.toString() + '%';
+        }
+
+        ZOOM_IMG_RULE.style.transform = 'scale(' + (zoom_factor / 100) + ')';
+      }
+
+      function zoom_in() {
+       zoom_factor += 10;
+       if (zoom_factor >= 200.0)  zoom_factor = 200.0;
+       apply_zoom();
+      }
+    
+      function zoom_out() {
+       zoom_factor -= 10;
+       if (zoom_factor <= 50.0)  zoom_factor = 50.0;
+       apply_zoom();
+      }
+
+      function zoom_reset() {
+       zoom_factor = 100.0;
+       apply_zoom();
+      }
+
+      init_zoom_rule();
+      window.addEventListener("keydown", function(event) {
+       //console.log(event.keyCode);
+       switch (event.keyCode) {
+        case 187:  // '+': 187 in Chrome & Safari, 61 in FF
+        case 61:  // '+': 187 in Chrome, 61 in FF
+         zoom_in(); 
+         break;
+
+        case 189:  // '-': 189 in Chrome & Safari, 173 in FF
+        case 173:  // '-': 189 in Chrome, 173 in FF
+         zoom_out();
+         break;
+        case 48:   // '0'
+         zoom_reset();
+         break;
+       }
+      }, false);
+    </script>
+  </body>
+</html>

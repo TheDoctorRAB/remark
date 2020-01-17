@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>11. Criticality safety evaluations</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Open Sans', sans-serif; }
+      h1, h2, h3 {
+        font-family: 'Ubuntu';
+        font-weight: normal;
+        }
+      .remark-container {background-color: #F5F5F5; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { background-color: #FFFAF0; font-size: 26px; 
+                         h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
+       }
+      .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+    </style>
+  </head>
+  <body>
+<textarea id="source">
+class: center, middle
+
+# NE535   
+## NUCLEAR CRITICALITY SAFETY I 
+### Criticality safety evaluations 
+
+#### 11
+
+##### .right[
+Bob Borrelli  
+University of Idaho-Idaho Falls  
+Center for Advanced Energy Studies  
+@TheDoctorRAB ![git](img/git.png) ![twitter](img/twitter.png)
+]
+---
+# Learning objectives
+
+Evaluating criticality safety 
+
+Constructing documentation related to criticality safety 
+---
+### There is a host of regulations over criticality safety
+
+[DOE O 420.1C, Facility Safety](https://www.directives.doe.gov/news/new-doe-o-420-1c-chg-2-minchg-facility-safety) - Requirement for criticality safety program
+
+[ANSI/ANS-8.19-2014](https://webstore.ansi.org/standards/ansi/ansians192014) - Administrative practices for nuclear criticality safety
+
+[DOE-STD-3007-2017](https://www.standards.doe.gov/standards-documents/3000/3007-AStd-2017) - Preparing Criticality Safety Evaluations at Department of Energy Nonreactor Nuclear Facilities
+
+[10 CFR 830 Subpart B](https://www.govinfo.gov/app/details/CFR-2011-title10-vol4/CFR-2011-title10-vol4-part830/context) - Safety basis requirements, 'documented safety analysis' that is system/facility specific and covers all facility hazards
+
+[10 CFR 70](https://www.nrc.gov/reading-rm/doc-collections/cfr/part070/) - Domestic licensing of special nuclear material
+
+DSA can be provided as a supplement to the SAR
+
+CSE is a small part of the overall DSA
+---
+### The CSE is usually a stand alone document
+
+It serves as the technical basis for the accident scenario, mitigation strategy, and control requirements
+
+The CSE(s) will feed directly into the SAR
+
+Engineering evaluation(s) will feed into the CSE(s)
+
+Document methodologies, calculations, and research activities that are used to develop the controls used to ensure a system remains sub-critical during normal and credible accident/abnormal conditions
+
+**ANSI/ANS-8.1 requires -**  
+*Before a new operation with fissionable material is begun, or before an existing operation is changed, it shall be determined that the entire process will be subcritical under both normal and credible abnormal conditions*
+---
+### Definitions
+
+**Credible** - the attribute of being believable on the basis of commonly acceptable engineering judgment  
+
+Due to the general lack of statistically reliable data, assigning numerical probabilities to events is not usually justifiable and when used should be backed up with references
+
+This seems surprising
+
+**Unlikely** - the attribute of being improbable on the basis of commonly acceptable engineering judgment
+
+An unlikely event is an event that is not expected to occur more than once in the lifetime of a facility (like design basis)
+
+Still no probabilities though
+---
+### The use of should, shall, and may have very specific meanings regarding nuclear operations
+
+**Should** - means that a process is highly recommended
+
+**Shall** - used to delineate a requirement
+
+**May** - the owner/operators discretion and any acceptable practice is considered adequate
+---
+### The CSE purpose is to communicate the analysis used to derive the limits and controls that will ensure safe operation
+
+Explain the basis for the assumptions and conclusions
+
+Support the conclusions with appropriately validated calculations and references
+
+Provide enough detail and clarity such that another Criticality Safety Professional with a similar background and familiarity with the process can read, understand, and judge the conclusions
+---
+### CSE flowchart
+
+1. Familiarization with operations and the facility
+
+2. Description of methodology
+
+3. Identification of the scope of normal operations
+
+4. Identification of contingencies (abnormal) that could affect criticality safety
+
+5. Analysis of normal operations and contingencies
+
+6. Derivation of controls and operating limits 
+
+7. Prepare the document
+---
+### Let's break it down some more
+
+Gather information about the process/system 
+
+Understand the physical, chemical, and radiological parameters used in the systems including the primary and auxiliary systems
+
+Examine neighboring systems to ensure no cross effects by establishing system boundaries
+
+**Identify the potential criticality accident scenarios by applying risk assessment techniques -**  
+HAZOP  
+Preliminary hazards analysis  
+Failure modes and effects  
+Event trees might be useful for outcomes happening in sequence
+
+Interviews with personnel, process data, and system operational experiences
+---
+### This is really a form of risk assessment
+
+Once accident scenarios have been identified look for ways to eliminate the hazard
+
+Modify the facility/system or process to eliminate the initiating event
+
+**Select accident scenario(s) -**  
+Apply passive controls  
+Apply active controls  
+Apply administrative controls
+
+Administrative controls can be used to reinforce the reliability of the engineered systems
+---
+Document the technical basis for nuclear criticality safety including the elements necessary for compliance with ANSI/ANS-8.1 Section 4.1.2
+
+*Entire process will be subcritical under both normal and credible abnormal conditions*
+---
+### 1. Understanding the system
+
+Rely on operational personnel as a starting point, but the analyst must remain objective
+
+Good communication is critical (see what I did there?)   
+
+**Obtain existing documents -**    
+SAR  
+Prior DSA  
+Procedures  
+Historical records  
+Walkthrough and interviews with personnel  
+
+Determine processes, their boundaries, connection points, feedthroughs, adjacent facilities, technical parameters, human factors
+
+Understand personnel qualifications, training programs
+---
+### 2. Describe the methodology
+
+Start with simplistic models and develop more complexity over time
+
+Simple approximations, computer models or hand calculations
+
+Make sure the computer code used is validated for the specific conditions/parameters being studied
+
+MCNP should be good enough for most problems
+---
+### 3. Identify normal conditions
+### 4. Identify contingencies
+
+**Failure modes -**     
+Structure  
+Piping  
+Containment  
+Mechanical hazards  
+Moderators  
+Geometry
+
+Use defined methodology to identify contingencies - What we know from risk asessment
+---
+### 5. Analysis of (ab)normal conditions
+
+Determine what is credible vs not
+
+**Operations -**  
+Quantities
+Batching
+Process Flow
+What is needed to complete the operation
+What happens to the operation if something unexpectedly changes
+
+Facility response to increses in mass, moderator, reflection
+---
+### 6. Derive controls and limits
+
+Include a concise summary of the limits and controls
+
+Clearly state assumptions
+
+Communicate effectively with personnel about controls 
+---
+### 7. Prepare documentation
+
+Conveys the results of the safety evaluation
+
+Must go through a review and independent approval process
+
+Always a great idea to include personnel in the reviews
+
+Not all CSEs are the same
+
+Very site/facility/process dependent
+---
+### Summary of CSE contents
+
+[Report template](../project/template/NE535-project-template.pdf)
+
+[Additional guidance](https://ncsp.llnl.gov/docs/training/ncset/NCSET_Module_12_100803_1.pdf)
+---
+class: center,middle
+![doggehs](img/final.jpg)
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script type="text/javascript">
+        var options = {};
+        var renderMath = function() {
+            renderMathInElement(document.body, {delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\[", right: "\\]", display: false},
+            ]});
+        }
+        var slideshow = remark.create({
+          // Set the slideshow display ratio
+          // Default: '4:3'
+          // Alternatives: '16:9', ...
+          ratio: '16:9',
+          // Navigation options
+          navigation: {
+          // Enable or disable navigating using scroll
+          // Default: true
+          // Alternatives: false
+          scroll: true,
+          // Enable or disable navigation using touch
+          // Default: true
+          // Alternatives: false
+          touch: true,
+          // Enable or disable navigation using click
+          // Default: false
+          // Alternatives: true
+          click: false
+          },
+          // Customize slide number label, either using a format string..
+          slideNumberFormat: '%current%',
+          // Enable or disable counting of incremental slides in the slide counting
+          countIncrementalSlides: false 
+          }, renderMath);
+    </script>
+    <script type="text/javascript">
+     /**
+      * a simple zoom in/out/reset for remark.js
+      *
+      * Hot key:
+      *   + : zoom in
+      *   - : zoom out
+      *   0 : reset zoom
+      *
+      * CAVEAT: when switching between full screen and normal screen,
+      *         the zoom factor may not function correctly.
+      *         RELOAD the page, if necessary.
+      *
+      * 
+      * @author William Yeh <william.pjyeh@gmail.com>
+      * @date   2015-01-15
+      *
+      * @license Apache License, Version 2.0.
+      * Copyright © 2015 William Yeh.
+      */
+      var ZOOM_TEXT_SELECTOR =
+       ".remark-slide-content p"
+       + "," + ".remark-slide-content .remark-code-line"
+       ;
+
+      var ZOOM_IMG_SELECTOR =
+       ".remark-slide-content img:hover"
+       ;
+
+      var ZOOM_IMG_RULE;
+
+      var zoom_factor = 100.0;
+      document.body.style.zoom = "100%"
+    
+      function init_zoom_rule() {
+       // @see http://davidwalsh.name/add-rules-stylesheets
+       var styles = document.styleSheets[0];
+       var index = styles.insertRule(
+        ZOOM_IMG_SELECTOR + ' { transform:scale(1); }',
+        styles.cssRules.length
+        );
+
+        ZOOM_IMG_RULE = styles.cssRules.item(index);
+       }
+    
+      function apply_zoom() {
+       var elements = document.querySelectorAll(ZOOM_TEXT_SELECTOR);
+       //console.log('length:', elements.length);
+       for (var i = 0; i < elements.length; ++i) {
+        var item = elements[i];
+        item.style.fontSize = zoom_factor.toString() + '%';
+        }
+
+        ZOOM_IMG_RULE.style.transform = 'scale(' + (zoom_factor / 100) + ')';
+      }
+
+      function zoom_in() {
+       zoom_factor += 10;
+       if (zoom_factor >= 200.0)  zoom_factor = 200.0;
+       apply_zoom();
+      }
+    
+      function zoom_out() {
+       zoom_factor -= 10;
+       if (zoom_factor <= 50.0)  zoom_factor = 50.0;
+       apply_zoom();
+      }
+
+      function zoom_reset() {
+       zoom_factor = 100.0;
+       apply_zoom();
+      }
+
+      init_zoom_rule();
+      window.addEventListener("keydown", function(event) {
+       //console.log(event.keyCode);
+       switch (event.keyCode) {
+        case 187:  // '+': 187 in Chrome & Safari, 61 in FF
+        case 61:  // '+': 187 in Chrome, 61 in FF
+         zoom_in(); 
+         break;
+
+        case 189:  // '-': 189 in Chrome & Safari, 173 in FF
+        case 173:  // '-': 189 in Chrome, 173 in FF
+         zoom_out();
+         break;
+        case 48:   // '0'
+         zoom_reset();
+         break;
+       }
+      }, false);
+    </script>
+  </body>
+</html>

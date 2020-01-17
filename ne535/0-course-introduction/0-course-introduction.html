@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>0. Course introduction</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu:500);
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Open Sans', sans-serif; }
+      h1, h2, h3 {
+        font-family: 'Ubuntu';
+        font-weight: normal;
+        }
+      .remark-container {background-color: #F5F5F5; }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .remark-slide-content { background-color: #FFFAF0; font-size: 26px; 
+                         h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
+       }
+      .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+    </style>
+  </head>
+  <body>
+<textarea id="source">
+class: center, middle
+
+# NE535
+## NUCLEAR CRITICALITY SAFETY I   
+### Course introduction
+
+#### 0
+
+##### .right[
+Bob Borrelli  
+University of Idaho-Idaho Falls  
+Center for Advanced Energy Studies  
+@TheDoctorRAB ![git](img/git.png) ![twitter](img/twitter.png)
+]
+---
+# Outcomes for the course
+
+What is criticality safety?
+
+How do we determine what is safe enough? 
+
+Why have there been so many criticality accidents?
+
+What  are current and future challenges to nuclear criticality safety?
+---
+# What to get out of the course
+
+Understanding criticality safety problems  
+
+Skills to solve them  
+
+Scientific computing concepts  
+
+The usual Bob style class 
+
+You're adults. You get what you put in. 
+---
+# Workload - 3 credit course
+
+How much time do you think you'll put in each week?
+
+Assignments require outside research
+
+Collaboration is encouraged because that is what happens in the real world
+
+Everyone hands in their own assignments though
+
+Email homework as pdf to gmail address with NE535 in the subject title
+
+Or send an overleaf link
+
+Try to have a fast turnaround with grading
+---
+# Textbook requirements
+
+LMITCO Criticality Safety Organization, 1999. [Criticality safety basics, A study guide](https://www.osti.gov/servlets/purl/751136). INEEL/EXT-98-00895.
+
+McLaughlin, Thomas P., et al., 2000. [A review of criticality accidents](https://www.orau.org/ptp/Library/accidents/la-13638.pdf). LA-13638.
+
+[Nuclear critiality safety guide reference set](https://ncsp.llnl.gov/LA12808/LA12808.html). LA-12808.
+
+DOE Fundamentals Handbook, 1993. Nuclear physics and reactor theory, [Volume 1](https://www.steamtablesonline.com/pdf/Nuclear-Volume1.pdf). DOE-HDBK-1019/1-93.
+
+DOE Fundamentals Handbook, 1993. Nuclear physics and reactor theory, [Volume 2](http://large.stanford.edu/courses/2014/ph241/alnoaimi2/docs/Nuclear-Volume2.pdf) DOE-HDBK-1019/2-93.
+
+Knief, R., 1982. Nuclear criticality safety. [*Optional*] [*Hard to find*] [*Expensive*]
+---
+## Pedagogical approach (I actually have one)
+
+Context based learning
+
+That means 'student-driven'
+
+Research is a higher form of learning 
+
+I also can't talk for three hours  
+
+Talking at you isn't the best use of our time
+
+Homework presentations for each class
+---
+# Class management 
+
+We will use [piazza](piazza.com/uidaho/fall2019/ne535/home)
+
+[Signup](piazza.com/uidaho/fall2019/ne535)
+
+Piazza will contain all the course materials
+
+We also use this for discussion outside of class 
+
+This is a very good platform for a nontraditional student body
+
+Don't email class questions
+
+Someone else might have the same question
+
+Someone else might have a better answer than me
+---
+# Prerequisites (ish)
+
+Assumed you've had most engineering courses (linear algebra, statics, etc.)
+
+NE450 
+
+MCNP
+
+Learn a real graphing program - NO EXCEL GRAPHS
+
+VLab has some software 
+
+Use my python [all in one](https://github.com/TheDoctorRAB/plot/blob/master/src/general/plot_all.in.one_general.py) graphing code if you want for windows
+
+Use [this one](https://github.com/TheDoctorRAB/plot/blob/master/src/igem/plot_all.in.one_cask.thickness_dose.rate.py) for linux
+
+[OER](https://courses.lumenlearning.com/uidaho-nuclear/)
+---
+# Learning modules
+
+I would like to get to these but we usually don't
+
+Criticality accidents  
+Fission  
+Neutron muliplication  
+Reflection and moderation  
+Criticality issues  
+Experiments  
+Safety practices, controls, limits    
+Reports and CSEs  
+Standards and regulations  
+
+Class project - see [OER] and [Historical accidents](https://www.nrc.gov/docs/ML1214/ML12146A217.pdf)
+---
+## Aristotle also had something to say about engineering education apparently
+
+**Techne**  
+Human skill based on a set of principles derived from practices and capable of being taught 
+
+**Epistme**  
+Knowledge, which consists of knowing why or knowing that 
+
+**Praxis**  
+The end of which is realized in the very doing of the activity
+
+**Phronesis**  
+Practical wisdom
+---
+class: center,middle
+![doggehs](img/final.jpg)
+</textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/contrib/auto-render.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+    <script type="text/javascript">
+        var options = {};
+        var renderMath = function() {
+            renderMathInElement(document.body, {delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false},
+                    {left: "\\[", right: "\\]", display: true},
+                    {left: "\\[", right: "\\]", display: false},
+            ]});
+        }
+        var slideshow = remark.create({
+          // Set the slideshow display ratio
+          // Default: '4:3'
+          // Alternatives: '16:9', ...
+          ratio: '16:9',
+          // Navigation options
+          navigation: {
+          // Enable or disable navigating using scroll
+          // Default: true
+          // Alternatives: false
+          scroll: true,
+          // Enable or disable navigation using touch
+          // Default: true
+          // Alternatives: false
+          touch: true,
+          // Enable or disable navigation using click
+          // Default: false
+          // Alternatives: true
+          click: false
+          },
+          // Customize slide number label, either using a format string..
+          slideNumberFormat: '%current%',
+          // Enable or disable counting of incremental slides in the slide counting
+          countIncrementalSlides: false 
+          }, renderMath);
+    </script>
+    <script type="text/javascript">
+     /**
+      * a simple zoom in/out/reset for remark.js
+      *
+      * Hot key:
+      *   + : zoom in
+      *   - : zoom out
+      *   0 : reset zoom
+      *
+      * CAVEAT: when switching between full screen and normal screen,
+      *         the zoom factor may not function correctly.
+      *         RELOAD the page, if necessary.
+      *
+      * 
+      * @author William Yeh <william.pjyeh@gmail.com>
+      * @date   2015-01-15
+      *
+      * @license Apache License, Version 2.0.
+      * Copyright © 2015 William Yeh.
+      */
+      var ZOOM_TEXT_SELECTOR =
+       ".remark-slide-content p"
+       + "," + ".remark-slide-content .remark-code-line"
+       ;
+
+      var ZOOM_IMG_SELECTOR =
+       ".remark-slide-content img:hover"
+       ;
+
+      var ZOOM_IMG_RULE;
+
+      var zoom_factor = 100.0;
+      document.body.style.zoom = "100%"
+    
+      function init_zoom_rule() {
+       // @see http://davidwalsh.name/add-rules-stylesheets
+       var styles = document.styleSheets[0];
+       var index = styles.insertRule(
+        ZOOM_IMG_SELECTOR + ' { transform:scale(1); }',
+        styles.cssRules.length
+        );
+
+        ZOOM_IMG_RULE = styles.cssRules.item(index);
+       }
+    
+      function apply_zoom() {
+       var elements = document.querySelectorAll(ZOOM_TEXT_SELECTOR);
+       //console.log('length:', elements.length);
+       for (var i = 0; i < elements.length; ++i) {
+        var item = elements[i];
+        item.style.fontSize = zoom_factor.toString() + '%';
+        }
+
+        ZOOM_IMG_RULE.style.transform = 'scale(' + (zoom_factor / 100) + ')';
+      }
+
+      function zoom_in() {
+       zoom_factor += 10;
+       if (zoom_factor >= 200.0)  zoom_factor = 200.0;
+       apply_zoom();
+      }
+    
+      function zoom_out() {
+       zoom_factor -= 10;
+       if (zoom_factor <= 50.0)  zoom_factor = 50.0;
+       apply_zoom();
+      }
+
+      function zoom_reset() {
+       zoom_factor = 100.0;
+       apply_zoom();
+      }
+
+      init_zoom_rule();
+      window.addEventListener("keydown", function(event) {
+       //console.log(event.keyCode);
+       switch (event.keyCode) {
+        case 187:  // '+': 187 in Chrome & Safari, 61 in FF
+        case 61:  // '+': 187 in Chrome, 61 in FF
+         zoom_in(); 
+         break;
+
+        case 189:  // '-': 189 in Chrome & Safari, 173 in FF
+        case 173:  // '-': 189 in Chrome, 173 in FF
+         zoom_out();
+         break;
+        case 48:   // '0'
+         zoom_reset();
+         break;
+       }
+      }, false);
+    </script>
+  </body>
+</html>

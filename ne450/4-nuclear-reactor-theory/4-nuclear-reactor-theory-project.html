@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Project 4: Nuclear reactor theory</title>
+<style> p {font-size: 24px } </style>
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]} }); </script>
+<script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+</head>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <h3><a class="navbar-brand" href="../ne450.html" target="_blank">NE450: Principles of nuclear engineering</a></h3>
+        </div>
+
+        <div class="nav navbar-nav navbar-right" id="bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <h3><a class="navbar-brand" href="4-nuclear-reactor-theory.html">Project 4: Nuclear reactor theory</a></h3>
+        </div>
+    </div>
+</nav>
+
+<body>
+<xmp>
+# NE450: Principles of nuclear engineering 
+## Project 4
+### Nuclear reactor theory
+####[450]
+
+<p>
+1. [25] Find the neutron multiplication factor for a fuel of (1) 90% $^{235}U$ and 10% $^{238}U$, (2) pure $^{239}Pu$, and (3) pure $^{233}U$ for thermal neutrons. Do the same for fast neutrons (~2 MeV). Calculate $\eta$; don't just look it up in the book. **Comment on any major characteristics of these results.**
+
+<p>
+2. [30] What is the minimum $^{235}U$ enrichment needed for a critical assembly of a homogenous core of $^{235}U$ and $^{238}U$? Assume $\epsilon p$ is approximately unity and a thermal core. Comment on the results. This is kind of a trick question. 
+
+<p>
+3. [25] What is the fission rate, in fissions per day, for a 1000 MWe reactor? Assume 200 MeV is released per fission. If 1.16 atoms of $^{235}U$ are consumed per fission, then how many atoms are consumed per day due to fission? How many grams of $^{235}U$ per day is this? Given how much your last monthly electric bill was, how much $^{235}U$ did you consume per day?  Assume uranium costs ($100/kg.) **Comment on the results.**
+
+<p>
+4. [25] Derive the expression for neutron flux and current density for a point source [S n/s] ] in an infinite vacuum $[D = 0]$.
+
+<p>
+5. [30] If three isotropic point sources of equal strength in an infinite vacuum are located at three corners of an equilateral triangle, what is the flux and current at the midpoint of one side of the triangle? The center of the triangle? _D does not equal zero here._ 
+
+<p>
+6. [25] For the infinite, bare slab geometry of thickness [2a] with source $S \; n/cm^2/s$, derive the maximum flux. In the 2nd edition, it's on p203, eq. 5.41, but should be just around there in the other editions.
+
+<p>
+7. [25] For the infinite bare slab geometry again, with fast source $s \; n/cm^2/s$, derive the thermal flux using two group theory as follows:
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;D_1\nabla^2{\phi_1}-\Sigma_A^1\phi_1-\Sigma_{1&space;\rightarrow&space;2}\phi_1&plus;\Sigma_{2&space;\rightarrow&space;1}\phi_2&plus;s=0" title="\large D_1\nabla^2{\phi_1}-\Sigma_A^1\phi_1-\Sigma_{1 \rightarrow 2}\phi_1+\Sigma_{2 \rightarrow 1}\phi_2+s=0" />
+
+<img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;D_2\nabla^2{\phi_2}-\Sigma_A^2\phi_2-\Sigma_{2&space;\rightarrow&space;1}\phi_2&plus;\Sigma_{1&space;\rightarrow&space;2}\phi_1=0" title="\large D_2\nabla^2{\phi_2}-\Sigma_A^2\phi_2-\Sigma_{2 \rightarrow 1}\phi_2+\Sigma_{1 \rightarrow 2}\phi_1=0" />
+
+*Hints and tips*  
+1. There is only a fast source. Leave it as *s*.  
+2. Don't worry about boundary conditions. Leave in the constants and just get the general solution.  
+3. Don't assume either absorption cross is zero. 
+
+This differential equation system is very common to many engineering problems. There is a standard solution approach that can be found with some research. The solution procedure is not tricky, but it can be tedious. Ask for hints **after** putting in some work. 
+
+<p>
+8. [30] Derive the flux for a rectangular parallelepiped. See the section on the slab reactor, 6.2 and assume a separable solution. Show the buckling. Compute maximum to average flux.
+
+<p>
+9. [25] What is the critical size of this reactor for a homogeneous mixture of $^{239}Pu$ and $Na$, with atom densities of $0.00395 \times 10^{24}$ and $0.0234 \times 10^{24}$, respectively. Make assumptions on the relationship between the x, y, z dimensions. 
+
+<p>
+10. [25] A spherical thermal reactor of R = 50 cm contains a homogenous core of $^{235}U$ and water. Find the mass of $^{235U}$. It is reflected by graphite. Find the new critical mass. Use room temperature; i.e., standard cross sections.
+
+<p>
+11. [30] Derive the reactivity equation. Work through the derivation in the book (or wherever) and explain the steps sufficiently in terms of the physics of what is going on. 
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\large&space;\rho=\frac{\omega&space;l_P}{1&plus;\omega&space;l_P}&plus;\frac{\omega}{1&plus;\omega&space;l_P}\cdot\frac{\beta}{\omega&plus;\lambda}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\large&space;\rho=\frac{\omega&space;l_P}{1&plus;\omega&space;l_P}&plus;\frac{\omega}{1&plus;\omega&space;l_P}\cdot\frac{\beta}{\omega&plus;\lambda}" title="\large
+\rho=\frac{\omega l_P}{1+\omega l_P}+\frac{\omega}{1+\omega l_P}\cdot\frac{\beta}{\omega+\lambda}" /></a>
+
+Prove that $\omega$ is the reciprocal of the stable period with math. Why is there an asymptote at $\rho = 1$?
+
+<p>
+12. [25] Plot reactor period versus absolute value of reactivity for $l_P = 10^{-6},10^{-5},...,10^{-1}$ seconds for the six groups of delayed neutrons for fast fission in $^{235}U$. What observations can be drawn regarding *reactor operation?* Compare to the figure at the beginning of chapter 7 (The Time-Dependent Reactor). It's 7.2 in the 2nd edition. 
+
+<p>
+13. [30] Using the six group reactivity equation for $^{235}U$, show with math that for increasingly negative reactivity, the period is limited (controlled) by the decay of the longest lived precursor. At about what reactivity does this occur? What is the period?
+
+<p>
+14. [30] Solve for the $^{135}Xe$ and $^{135}I$ concentrations, assuming a constant, average thermal flux of $10^{14} n/cm^2/s$. Plot the concentration as a function of time and note any important trends from t = 0 to 500 h. From t = 0 to 200 h, the reactor operates at full power. The reactor is instantaneously scrammed at t = 200 h. Assume a reactor with solely $^{235}U$ with no resonance absorbers or fissionable material. (Just solve the two equations and make whatever simplifying
+assumptions).
+
+<p>
+15. [20] Derive the expression for the temperature profile of a single, TRISO fuel pebble of $^{235}U$ core with only a carbon coating as cladding. Plot the temperature profile for an assumed central temperature of $1500^o C$. Note any interesting observations.
+
+<p>
+16. [15] What is the period for a critical reactor?
+
+<p>
+17. [50] What is the equilibrium time for $^{135}Xe$? +50 for showing with math. 
+</xmp>
+
+<script type="text/javascript" src="../../../strapdown.min.js?theme=readable"></script>
+
+</body>
+</html>
