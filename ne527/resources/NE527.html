@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <title>Tab Session Manager - Session list</title>
+  <link rel="icon" type="image/png" href="moz-extension://57cef155-ae51-4c58-a476-bbb2cb89bf67/icons/icon_min.svg" sizes="16x16">
+  <link rel="icon" type="image/png" href="moz-extension://57cef155-ae51-4c58-a476-bbb2cb89bf67/icons/icon.svg" sizes="64x64">
+<style type="text/css">.donationMessage {
+  white-space: pre-line; }
+  .donationMessage .buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .donationMessage .buttons a {
+      margin: 5px 0px; }
+</style><style type="text/css">#header {
+  padding: 10px;
+  background-color: var(--line);
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  -moz-user-select: none;
+  -webkit-user-select: none; }
+  #header .title {
+    font-size: 17px;
+    font-weight: 400;
+    color: #666;
+    cursor: default;
+    flex-shrink: 0; }
+  #header .rightButtons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    height: 20px; }
+    #header .rightButtons button {
+      display: flex;
+      align-items: center;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      padding: 0;
+      margin-left: 10px; }
+    #header .rightButtons .heartButton:hover svg {
+      fill: var(--confirm); }
+    #header .rightButtons .openInTabButton svg {
+      fill: none;
+      stroke: var(--sub-text);
+      stroke-width: 3; }
+    #header .rightButtons .openInTabButton:hover svg {
+      stroke: var(--highlight); }
+    #header .rightButtons .settingsButton:hover svg {
+      fill: var(--highlight);
+      transform: rotate(90deg); }
+    #header .rightButtons svg {
+      height: 20px;
+      width: 20px;
+      fill: var(--sub-text);
+      transition: fill 100ms, transform 300ms ease; }
+
+#popupPage.isInTab .openInTabButton {
+  display: none; }
+</style><style type="text/css">#optionsArea {
+  padding: 10px; }
+  #optionsArea .line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0; }
+    #optionsArea .line .filter {
+      flex-grow: 1;
+      margin-right: 5px; }
+    #optionsArea .line .sort {
+      flex-shrink: 0; }
+    #optionsArea .line .selectWrap {
+      position: relative; }
+      #optionsArea .line .selectWrap select {
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        background-color: var(--main-bg);
+        color: var(--main-text);
+        text-overflow: ellipsis;
+        border: var(--button) solid 1px;
+        border-radius: 2px;
+        padding: 3px 20px 3px 5px;
+        width: 100%;
+        height: 30px;
+        outline: none;
+        transition: border-color 100ms; }
+        #optionsArea .line .selectWrap select:hover {
+          border-color: var(--highlight); }
+      #optionsArea .line .selectWrap::before {
+        pointer-events: none;
+        content: "";
+        z-index: 1;
+        position: absolute;
+        top: 40%;
+        right: 7px;
+        width: 5px;
+        height: 5px;
+        transform: rotate(45deg);
+        border-bottom: 2px solid var(--sub-text);
+        border-right: 2px solid var(--sub-text); }
+      #optionsArea .line .selectWrap:hover::before {
+        border-bottom: 2px solid var(--highlight);
+        border-right: 2px solid var(--highlight); }
+</style><style type="text/css">#searchBar {
+  display: flex;
+  padding-bottom: 5px;
+  width: calc(100% - 1px); }
+  #searchBar .inputForm {
+    height: 30px; }
+    #searchBar .inputForm input {
+      border-radius: 2px;
+      padding-left: 25px;
+      padding-right: 25px;
+      z-index: 0; }
+  #searchBar button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    cursor: pointer;
+    margin: 0;
+    padding: 0; }
+  #searchBar .searchButton,
+  #searchBar .clearButton {
+    width: 25px;
+    z-index: 1; }
+    #searchBar .searchButton svg,
+    #searchBar .clearButton svg {
+      height: 14px;
+      fill: var(--sub-text); }
+    #searchBar .searchButton:hover svg,
+    #searchBar .clearButton:hover svg {
+      fill: var(--highlight); }
+  #searchBar .searchButton {
+    margin-right: -25px; }
+  #searchBar .clearButton {
+    margin-left: -25px; }
+    #searchBar .clearButton svg {
+      transform: rotate(45deg); }
+</style><style type="text/css">.sessionItem {
+  position: relative;
+  background-color: var(--main-bg); }
+  .sessionItem .selectButton {
+    border: none;
+    border-bottom: 1px solid var(--line);
+    padding: 8px 5px;
+    width: 100%;
+    text-align: left;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer; }
+    .sessionItem .selectButton .name {
+      display: block;
+      color: var(--main-text);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal; }
+      .sessionItem .selectButton .name.isTruncate {
+        white-space: nowrap; }
+    .sessionItem .selectButton .lineContainer {
+      display: flex;
+      justify-content: space-between; }
+      .sessionItem .selectButton .lineContainer .windowsInfo,
+      .sessionItem .selectButton .lineContainer .date {
+        font-size: 11px;
+        color: var(--sub-text);
+        overflow: hidden;
+        word-break: break-all; }
+    .sessionItem .selectButton .tagsContainer {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      list-style-type: none; }
+      .sessionItem .selectButton .tagsContainer .tag {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-width: 30px;
+        font-size: 11px;
+        height: 14px;
+        color: var(--sub-text);
+        background-color: var(--line);
+        border-radius: 2px;
+        padding: 3px 5px;
+        margin-bottom: 2px;
+        margin-right: 2px;
+        overflow: hidden; }
+        .sessionItem .selectButton .tagsContainer .tag svg {
+          width: 11px;
+          margin-right: 3px;
+          fill: var(--sub-text); }
+        .sessionItem .selectButton .tagsContainer .tag span {
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden; }
+  .sessionItem.isSelected {
+    background-color: var(--highlight-bg); }
+  .sessionItem:not(.isSelected):hover {
+    background-color: var(--line); }
+  .sessionItem .buttonsContainer {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(50px);
+    background-color: rgba(255, 255, 255, 0.8);
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    flex-shrink: 1;
+    transition: all 300ms; }
+    .sessionItem .buttonsContainer button {
+      display: flex;
+      align-items: center;
+      padding: 5px;
+      margin: 5px;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      transition: all 200ms; }
+      .sessionItem .buttonsContainer button svg {
+        width: 13px;
+        fill: var(--highlight); }
+      .sessionItem .buttonsContainer button:hover {
+        background-color: var(--button); }
+      .sessionItem .buttonsContainer button.remove:hover svg {
+        fill: var(--confirm); }
+  .sessionItem:hover .buttonsContainer {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 300ms; }
+</style><style type="text/css">#sessionsArea {
+  padding: 0px 10px 0px 10px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -moz-user-select: none;
+  -webkit-user-select: none; }
+  #sessionsArea .noSession p {
+    color: var(--sub-text);
+    margin: 0; }
+</style><style type="text/css">.textInputModalContent {
+  position: relative; }
+  .textInputModalContent input {
+    background-color: var(--main-bg);
+    color: var(--main-text);
+    width: 100%;
+    padding: 5px;
+    margin: 10px 0px;
+    box-sizing: border-box;
+    border: var(--button) solid 1px;
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 150ms ease; }
+  .textInputModalContent input:focus {
+    border-color: var(--highlight); }
+  .textInputModalContent .buttons {
+    display: flex;
+    justify-content: flex-end; }
+    .textInputModalContent .buttons button {
+      background-color: var(--main-bg);
+      color: var(--main-text);
+      border: var(--button) solid 1px;
+      border-radius: 2px;
+      padding: 5px;
+      margin-left: 10px;
+      transition: border-color 150ms ease;
+      cursor: pointer; }
+      .textInputModalContent .buttons button:hover {
+        border-color: var(--highlight); }
+    .textInputModalContent .buttons .saveButton {
+      background-color: var(--highlight);
+      color: var(--main-bg);
+      border-color: var(--highlight); }
+</style><style type="text/css">.nameContainer {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  min-height: 1.5em;
+  width: 100%; }
+  .nameContainer .sessionName {
+    display: block;
+    color: #444;
+    font-weight: bold;
+    font-size: 16px;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden; }
+  .nameContainer.isTruncate .sessionName {
+    white-space: nowrap; }
+  .nameContainer button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    text-align: left;
+    max-width: 100%; }
+    .nameContainer button:hover {
+      text-decoration: underline; }
+</style><style type="text/css">#sessionDetailArea .tagsContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  min-height: 22px; }
+  #sessionDetailArea .tagsContainer .tag {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 30px;
+    font-size: 11px;
+    height: 14px;
+    color: var(--sub-text);
+    background-color: var(--line);
+    border-radius: 2px;
+    padding: 3px 5px;
+    margin-bottom: 2px;
+    margin-right: 5px;
+    overflow: hidden; }
+    #sessionDetailArea .tagsContainer .tag .tagIcon {
+      width: 11px;
+      margin-right: 3px;
+      fill: var(--sub-text);
+      flex-shrink: 0; }
+    #sessionDetailArea .tagsContainer .tag span {
+      display: block;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 100%;
+      transition: all 100ms ease 0ms; }
+    #sessionDetailArea .tagsContainer .tag .removeTagButton {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      border: var(--line) 1px solid;
+      border-radius: 2px;
+      height: 15px;
+      width: 15px;
+      padding: 0;
+      margin-left: 3px;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: all 100ms ease 0ms; }
+      #sessionDetailArea .tagsContainer .tag .removeTagButton svg {
+        height: 9px;
+        width: 9px;
+        transform: rotate(45deg);
+        fill: var(--sub-text);
+        transition: all 100ms ease 0ms; }
+      #sessionDetailArea .tagsContainer .tag .removeTagButton:hover, #sessionDetailArea .tagsContainer .tag .removeTagButton:focus {
+        border: var(--confirm) 1px solid;
+        transition: all 100ms ease 0ms; }
+        #sessionDetailArea .tagsContainer .tag .removeTagButton:hover svg, #sessionDetailArea .tagsContainer .tag .removeTagButton:focus svg {
+          fill: var(--confirm);
+          transition: all 100ms ease 0ms; }
+  #sessionDetailArea .tagsContainer .addTagButton {
+    color: var(--highlight);
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    word-break: break-all;
+    transition: all 100ms; }
+    #sessionDetailArea .tagsContainer .addTagButton svg {
+      width: 11px;
+      margin-right: 3px;
+      fill: var(--highlight); }
+    #sessionDetailArea .tagsContainer .addTagButton:hover {
+      text-decoration: underline; }
+</style><style type="text/css">.detailsContainer {
+  overflow-y: auto;
+  margin-top: 10px; }
+  .detailsContainer .windowContainer {
+    margin-bottom: 10px; }
+    .detailsContainer .windowContainer .windowInfo,
+    .detailsContainer .windowContainer .tabs .tabContainer {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 3px 0px;
+      width: 100%; }
+      .detailsContainer .windowContainer .windowInfo .favIcon,
+      .detailsContainer .windowContainer .tabs .tabContainer .favIcon {
+        width: 16px;
+        height: 16px;
+        padding-right: 8px;
+        flex-shrink: 0; }
+      .detailsContainer .windowContainer .windowInfo .removeButton,
+      .detailsContainer .windowContainer .tabs .tabContainer .removeButton {
+        width: 15px;
+        height: 15px;
+        opacity: 0;
+        margin-left: 10px;
+        margin-right: 2px;
+        transition: opacity 100ms; }
+        .detailsContainer .windowContainer .windowInfo .removeButton svg,
+        .detailsContainer .windowContainer .tabs .tabContainer .removeButton svg {
+          width: 13px;
+          height: 12px;
+          fill: var(--sub-text);
+          transform: rotate(45deg); }
+        .detailsContainer .windowContainer .windowInfo .removeButton:hover svg,
+        .detailsContainer .windowContainer .tabs .tabContainer .removeButton:hover svg {
+          fill: var(--confirm); }
+      .detailsContainer .windowContainer .windowInfo:hover .removeButton,
+      .detailsContainer .windowContainer .tabs .tabContainer:hover .removeButton {
+        opacity: 1; }
+    .detailsContainer .windowContainer .windowInfo .leftWrapper {
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      width: 100%; }
+      .detailsContainer .windowContainer .windowInfo .leftWrapper .collapseButton {
+        margin-right: 5px;
+        transform: rotate(180deg);
+        transition: transform 100ms; }
+        .detailsContainer .windowContainer .windowInfo .leftWrapper .collapseButton svg {
+          width: 16px;
+          height: 16px; }
+      .detailsContainer .windowContainer .windowInfo .leftWrapper .windowTitle {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        line-height: 1.5em; }
+      .detailsContainer .windowContainer .windowInfo .leftWrapper .tabsNumber {
+        color: var(--sub-text);
+        margin-left: 10px;
+        flex-shrink: 0; }
+    .detailsContainer .windowContainer .tabs {
+      margin-left: 32px; }
+      .detailsContainer .windowContainer .tabs .tabContainer .tabButton {
+        display: flex;
+        align-items: center;
+        max-width: 100%;
+        overflow: hidden; }
+        .detailsContainer .windowContainer .tabs .tabContainer .tabButton .tabTitle {
+          line-height: 1.3em;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap; }
+    .detailsContainer .windowContainer.isCollapsed .windowInfo .collapseButton {
+      transform: rotate(90deg); }
+    .detailsContainer .windowContainer.isCollapsed .tabs {
+      display: none; }
+  .detailsContainer button {
+    display: block;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    text-align: left; }
+    .detailsContainer button:hover {
+      text-decoration: underline; }
+</style><style type="text/css">#sessionDetailArea {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  -moz-user-select: none;
+  -webkit-user-select: none; }
+  #sessionDetailArea .sessionHeader {
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 5px; }
+    #sessionDetailArea .sessionHeader .lineContainer {
+      display: flex;
+      justify-content: space-between;
+      line-height: 1.5em; }
+    #sessionDetailArea .sessionHeader .sessionName {
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 1.5em; }
+    #sessionDetailArea .sessionHeader .menuButton {
+      flex-shrink: 0;
+      padding: 0;
+      padding-left: 10px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      transition: opacity 200ms; }
+      #sessionDetailArea .sessionHeader .menuButton svg {
+        width: 5px;
+        height: 16px;
+        fill: var(--sub-text);
+        transition: fill 100ms; }
+      #sessionDetailArea .sessionHeader .menuButton:hover svg {
+        fill: var(--highlight); }
+    #sessionDetailArea .sessionHeader .date {
+      flex-shrink: 0;
+      color: var(--sub-text);
+      overflow: hidden;
+      word-break: break-all;
+      display: inline-block; }
+    #sessionDetailArea .sessionHeader .windowsInfo {
+      color: var(--sub-text); }
+    #sessionDetailArea .sessionHeader .buttonsContainer {
+      display: flex;
+      flex-direction: row;
+      flex-shrink: 1; }
+      #sessionDetailArea .sessionHeader .buttonsContainer button {
+        display: flex;
+        align-items: center;
+        padding: 0;
+        margin-left: 15px;
+        color: var(--highlight);
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        transition: all 100ms; }
+        #sessionDetailArea .sessionHeader .buttonsContainer button svg {
+          width: 13px;
+          margin-right: 2px;
+          fill: var(--highlight); }
+        #sessionDetailArea .sessionHeader .buttonsContainer button:hover {
+          text-decoration: underline; }
+        #sessionDetailArea .sessionHeader .buttonsContainer button.remove:hover {
+          color: var(--confirm); }
+          #sessionDetailArea .sessionHeader .buttonsContainer button.remove:hover svg {
+            fill: var(--confirm); }
+  #sessionDetailArea .noSession p {
+    color: var(--sub-text);
+    margin: 0; }
+</style><style type="text/css">#notificationArea {
+  position: relative;
+  width: 100%; }
+  #notificationArea #notification {
+    display: flex;
+    position: absolute;
+    width: 300px;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    margin: auto;
+    flex-direction: row;
+    flex-shrink: 0;
+    justify-content: space-between;
+    background-color: var(--confirm);
+    color: #fff;
+    padding: 10px;
+    max-height: 90px;
+    overflow: hidden;
+    transition-property: transform, opacity;
+    transition-duration: 200ms; }
+    #notificationArea #notification.isOpen {
+      transform-origin: top;
+      opacity: 1;
+      transform: scaleY(1); }
+    #notificationArea #notification.isClose {
+      transform-origin: top;
+      opacity: 0;
+      transform: scaleY(0); }
+    #notificationArea #notification[data-type="error"] {
+      background-color: var(--error); }
+    #notificationArea #notification[data-type="warn"] {
+      background-color: var(--warn); }
+    #notificationArea #notification[data-type="success"] {
+      background-color: var(--success); }
+    #notificationArea #notification[data-type="info"] {
+      background-color: var(--info); }
+    #notificationArea #notification .message {
+      flex-shrink: 1; }
+    #notificationArea #notification .buttons {
+      display: flex;
+      flex-direction: row;
+      flex-shrink: 0; }
+      #notificationArea #notification .buttons button {
+        display: block;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        padding: 0;
+        text-align: left;
+        color: #fff;
+        flex-shrink: 0; }
+        #notificationArea #notification .buttons button:hover {
+          text-decoration: underline; }
+        #notificationArea #notification .buttons button svg {
+          width: 12px;
+          height: 12px;
+          fill: var(--main-bg);
+          transform: rotate(45deg); }
+      #notificationArea #notification .buttons .closeButton {
+        margin-left: 10px; }
+</style><style type="text/css">#saveArea {
+  padding: 10px; }
+  #saveArea .inputForm {
+    height: 30px; }
+    #saveArea .inputForm input {
+      padding-left: 3px;
+      padding-right: 3px; }
+    #saveArea .inputForm .saveButton {
+      width: auto;
+      padding: 5px 1px 5px 10px;
+      border-radius: 0px;
+      margin-right: -1px;
+      border-right: var(--main-bg) solid 1px; }
+      #saveArea .inputForm .saveButton:hover + .saveOptionButton {
+        border: var(--highlight) solid 1px;
+        border-left: var(--main-bg) solid 0px; }
+    #saveArea .inputForm .saveOptionButton {
+      padding: 0px;
+      width: 16px;
+      border-left: var(--main-bg) solid 1px; }
+      #saveArea .inputForm .saveOptionButton:hover {
+        border-left: var(--highlight) solid 1px; }
+      #saveArea .inputForm .saveOptionButton svg {
+        width: 10px;
+        transform: rotate(270deg);
+        fill: var(--sub-text); }
+</style><style type="text/css">.inputForm {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-shrink: 0;
+  height: 20px;
+  width: 100%;
+  max-width: inherit; }
+  .inputForm input {
+    font-family: inherit;
+    font-size: inherit;
+    background-color: var(--main-bg);
+    color: var(--main-text);
+    width: 100%;
+    max-width: inherit;
+    min-width: 10px;
+    height: calc(100% - 4px);
+    border: var(--button) solid 1px;
+    border-radius: 2px 0px 0px 2px;
+    margin-right: -1px;
+    outline: none;
+    transition: border-color 150ms ease; }
+  .inputForm input:focus {
+    border-color: var(--highlight);
+    z-index: 1; }
+  .inputForm .submitButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background-color: var(--main-bg);
+    color: var(--main-text);
+    border: var(--button) solid 1px;
+    border-radius: 0px 2px 2px 0px;
+    height: 100%;
+    width: 20px;
+    max-width: inherit;
+    padding: 0px;
+    cursor: pointer;
+    transition: border-color 150ms ease; }
+    .inputForm .submitButton svg {
+      width: 8px;
+      height: 8px;
+      transition: fill 150ms ease; }
+    .inputForm .submitButton:hover {
+      border-color: var(--highlight); }
+      .inputForm .submitButton:hover svg {
+        fill: var(--highlight); }
+</style><style type="text/css">#menu {
+  position: absolute;
+  z-index: 1;
+  background-color: var(--main-bg);
+  color: var(--main-text);
+  padding: 5px 0px;
+  border: solid 1px var(--line);
+  border-radius: 2px;
+  box-shadow: 0px 2px 3px 0 rgba(0, 0, 0, 0.1);
+  max-width: 250px;
+  width: max-content;
+  transition: opacity, visibility 200ms;
+  -moz-user-select: none;
+  -webkit-user-select: none; }
+  #menu ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none; }
+    #menu ul li {
+      font-size: 13px; }
+      #menu ul li button {
+        cursor: pointer;
+        width: 100%;
+        padding: 2px 10px;
+        border: none;
+        background: inherit;
+        text-align: left;
+        transition: background-color 100ms; }
+        #menu ul li button:hover {
+          background-color: var(--line); }
+      #menu ul li.section {
+        font-size: 12px;
+        color: var(--sub-text);
+        padding: 2px 10px; }
+  #menu hr {
+    background-color: var(--line);
+    height: 1px;
+    border: none;
+    margin: 5px 0px; }
+  #menu .closeMenuButton {
+    border: none;
+    background: rgba(0, 0, 0, 0);
+    position: absolute;
+    padding: 0;
+    top: 0;
+    right: 0;
+    margin: 5px;
+    cursor: pointer; }
+    #menu .closeMenuButton svg {
+      width: 12px;
+      height: 12px;
+      transform: rotate(45deg);
+      fill: var(--sub-text); }
+    #menu .closeMenuButton:hover svg {
+      fill: var(--confirm); }
+</style><style type="text/css">#modalBackground {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  transition: 200ms; }
+  #modalBackground.isClose {
+    visibility: hidden;
+    opacity: 0; }
+    #modalBackground.isClose #modal {
+      transform: translateY(-20px); }
+  #modalBackground.isOpen {
+    visibility: visible;
+    opacity: 1; }
+    #modalBackground.isOpen #modal {
+      transform: translateY(0); }
+  #modalBackground #modal {
+    position: absolute;
+    background-color: var(--main-bg);
+    color: var(--main-text);
+    border: solid 1px var(--line);
+    border-radius: 2px;
+    box-shadow: 0px 2px 3px 0 rgba(0, 0, 0, 0.1);
+    width: 400px;
+    max-width: 80%;
+    max-height: 80%;
+    overflow: auto;
+    padding: 10px;
+    transition: 200ms;
+    -moz-user-select: none;
+    -webkit-user-select: none; }
+    #modalBackground #modal hr {
+      background-color: var(--line);
+      height: 1px;
+      border: none;
+      margin: 5px 0px; }
+    #modalBackground #modal .modalHeader {
+      display: flex;
+      justify-content: space-between; }
+      #modalBackground #modal .modalHeader .modalTitle {
+        font-size: 18px; }
+      #modalBackground #modal .modalHeader .closeModalButton {
+        border: none;
+        background: rgba(0, 0, 0, 0);
+        padding: 0;
+        margin: 5px;
+        cursor: pointer; }
+        #modalBackground #modal .modalHeader .closeModalButton svg {
+          width: 15px;
+          height: 15px;
+          transform: rotate(45deg);
+          fill: var(--sub-text); }
+        #modalBackground #modal .modalHeader .closeModalButton:hover svg {
+          fill: var(--main-text); }
+</style><style type="text/css">.error {
+  padding: 10px; }
+  .error a {
+    color: var(--highlight);
+    cursor: pointer; }
+    .error a:hover {
+      text-decoration: underline; }
+</style><style type="text/css">#popupPage {
+  display: flex;
+  flex-direction: column;
+  height: 100%; }
+  #popupPage #contents {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    height: 100%; }
+    #popupPage #contents .column {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      height: 100%; }
+    #popupPage #contents .sidebar {
+      width: 300px;
+      flex-grow: 0;
+      flex-shrink: 0; }
+  #popupPage ::-moz-selection {
+    background-color: var(--line); }
+  #popupPage ::selection {
+    background-color: var(--line); }
+</style><style type="text/css">html body {
+  margin: 0;
+  font-family: "Segoe UI", "San Francisco", "Ubuntu", "Fira Sans", "Roboto", "Arial", "Helvetica", sans-serif;
+  font-size: 13px;
+  overflow: hidden;
+  background-color: var(--main-bg); }
+  html body #root {
+    height: 100%; }
+
+:root {
+  --main-text: #0c0c0d;
+  --sub-text: #737373;
+  --line: #ededf0;
+  --button: #d7d7db;
+  --highlight: #36b2b2;
+  --main-bg: #ffffff;
+  --highlight-bg: #90dede;
+  --confirm: #ff4f4f;
+  --error: #d70022;
+  --warn: #ff8f00;
+  --success: #058b00;
+  --info: #0a84ff; }
+</style></head>
+
+<body style="width: 700px; height: 500px;">
+  <div id="root"><div id="popupPage" class=""><div id="notificationArea"><div id="notification" class="isClose" data-type="info"><span class="message"></span><div class="buttons"><button class="closeButton"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42"><path d="M42 19H23V0h-4v19H0v4h19v19h4V23h19z"></path></svg></button></div></div></div><div id="header"><div class="title">Tab Session Manager</div><div class="rightButtons"><button class="heartButton" title="Donate"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 492.72 492.72"><path d="M492.72 166c0-73.48-59.57-133.05-133.06-133.05-47.99 0-89.9 25.49-113.3 63.57-23.41-38.08-65.33-63.57-113.32-63.57C59.56 32.95 0 92.52 0 166.01c0 40 17.73 75.8 45.67 100.18l188.55 188.55a17.17 17.17 0 0024.28 0l188.54-188.55C475 241.8 492.72 206.02 492.72 166z"></path></svg></button><button class="openInTabButton" title="Open session list in tab"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"></path></svg></button><button class="settingsButton" title="Settings"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path class="st0" d="M499.45 210l-55.85-2.58c-5.1-.23-9.6-3.4-11.54-8.1l-11.51-27.7a13.18 13.18 0 012.45-13.9l37.67-41.34a13.2 13.2 0 00-.42-18.18l-46.43-46.45a13.2 13.2 0 00-18.2-.4L354.3 89a13.16 13.16 0 01-13.92 2.44l-27.7-11.5a13.12 13.12 0 01-8.09-11.56L302 12.56A13.17 13.17 0 00288.86 0h-65.7A13.18 13.18 0 00210 12.56l-2.57 55.83a13.13 13.13 0 01-8.1 11.57l-27.69 11.49A13.15 13.15 0 01157.72 89l-41.34-37.67a13.18 13.18 0 00-18.2.41L51.77 98.2a13.16 13.16 0 00-.42 18.18L89 157.71a13.13 13.13 0 012.42 13.92l-11.47 27.7a13.15 13.15 0 01-11.56 8.1L12.57 210A13.17 13.17 0 000 223.15v65.7c0 7.02 5.55 12.83 12.57 13.15l55.83 2.58c5.12.23 9.6 3.4 11.56 8.1l11.47 27.7a13.13 13.13 0 01-2.42 13.9L51.35 395.6a13.18 13.18 0 00.4 18.2l46.47 46.45a13.18 13.18 0 0018.18.42l41.31-37.68c3.76-3.44 9.21-4.4 13.93-2.44l27.7 11.48a13.15 13.15 0 018.09 11.58l2.57 55.83A13.19 13.19 0 00223.15 512h65.71c7.02 0 12.81-5.54 13.14-12.56l2.59-55.83a13.15 13.15 0 018.1-11.58l27.69-11.48c4.71-1.95 10.14-1 13.92 2.44l41.31 37.68a13.2 13.2 0 0018.2-.43l46.44-46.44a13.22 13.22 0 00.42-18.2L423 354.3a13.14 13.14 0 01-2.46-13.92l11.51-27.69a13.12 13.12 0 0111.55-8.1l55.85-2.58a13.16 13.16 0 0012.54-13.15v-65.7c0-7.03-5.52-12.83-12.54-13.15zM256.01 339.62A83.63 83.63 0 01172.39 256 83.62 83.62 0 11256 339.62z"></path></svg></button></div></div><div id="contents"><div class="column sidebar" style="width: 300px;"><div id="optionsArea"><div id="searchBar"><button class="searchButton" title="Search"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56.97 56.97"><path d="M55.15 51.89l-13.56-14.1A22.93 22.93 0 0046.99 23c0-12.68-10.32-23-23-23s-23 10.32-23 23 10.31 23 23 23c4.76 0 9.3-1.44 13.17-4.16l13.66 14.2a2.98 2.98 0 004.24.09 3 3 0 00.09-4.24zM23.98 6c9.38 0 17 7.63 17 17s-7.62 17-17 17-17-7.63-17-17 7.63-17 17-17z"></path></svg></button><div class="inputForm"><input type="text" spellcheck="false" placeholder="Search by session name"></div></div><div class="line"><div class="selectWrap filter"><select title="Category filter"><option value="_displayAll" selected="selected">All [1]</option><option value="_user">User Save [1]</option><option value="NE527">NE527 [1]</option></select></div><div class="selectWrap sort"><select title="Sort"><option value="newest" selected="selected">Newest</option><option value="oldest">Oldest</option><option value="aToZ">A-Z</option><option value="zToA">Z-A</option></select></div></div></div><div id="sessionsArea" role="toolbar" tabindex="0"><div class="sessionItem isSelected" style="order: 0;"><button class="selectButton"><span class="name isTruncate"><span>NE527</span></span><ul class="tagsContainer"><li class="tag"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432.54 432.54"><path d="M421.99 229.83L217.85 25.98c-7.24-7.24-16.94-13.37-29.12-18.42C176.54 2.52 165.4 0 155.32 0H36.55c-9.9 0-18.47 3.62-25.7 10.85C3.62 18.08 0 26.65 0 36.55v118.77c0 10.08 2.52 21.22 7.57 33.4s11.18 21.8 18.41 28.84l204.14 204.42c7.04 7.04 15.6 10.56 25.7 10.56 9.89 0 18.55-3.52 25.98-10.56l140.18-140.47c7.04-7.05 10.56-15.6 10.56-25.7 0-9.9-3.52-18.55-10.56-25.98zM117.2 117.2a35.22 35.22 0 01-25.84 10.71 35.21 35.21 0 01-25.84-10.7 35.2 35.2 0 01-10.7-25.85 35.2 35.2 0 0110.7-25.83 35.21 35.21 0 0125.84-10.71c10.09 0 18.7 3.57 25.84 10.7a35.21 35.21 0 0110.7 25.84 35.2 35.2 0 01-10.7 25.84z"></path></svg><span>NE527</span></li></ul><div class="lineContainer"><span class="windowsInfo">3 Windows - 6 Tabs</span><span class="date">2020.01.29 16.01</span></div></button><div class="buttonsContainer"><button class="open" title="Open"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M96 0v416h416V0H96zm376 376H136V112h336v264z"></path><path d="M40 472V96H0v416h416v-40h-40z"></path></svg></button><button class="remove" title="Delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 408.48 408.48"><path d="M87.75 388.78a20.56 20.56 0 0020.54 19.7h191.9a20.56 20.56 0 0020.55-19.7l13.7-289.31H74.04l13.7 289.31zm159.9-217.45a8.35 8.35 0 018.35-8.35h13.36c4.6 0 8.35 3.74 8.35 8.35v165.3a8.35 8.35 0 01-8.35 8.34H256a8.35 8.35 0 01-8.35-8.35v-165.3zm-58.43 0a8.35 8.35 0 018.35-8.35h13.35c4.6 0 8.35 3.74 8.35 8.35v165.3a8.35 8.35 0 01-8.35 8.34h-13.36a8.35 8.35 0 01-8.34-8.35v-165.3zm-58.44 0a8.35 8.35 0 018.34-8.35h13.36a8.35 8.35 0 018.35 8.35v165.3a8.35 8.35 0 01-8.35 8.34h-13.36a8.35 8.35 0 01-8.35-8.35v-165.3zM343.57 21.04h-88.54V4.31a4.3 4.3 0 00-4.3-4.31h-92.97a4.3 4.3 0 00-4.3 4.3v16.74H64.91a12.9 12.9 0 00-12.9 12.9v40.53h304.45V33.94a12.9 12.9 0 00-12.9-12.9z"></path></svg></button></div></div></div><div id="saveArea"><div class="inputForm"><input type="text" spellcheck="false" placeholder="Save current session" value="Index of file:///home/"><button class="submitButton saveButton" title="Save all windows">Save</button><button class="submitButton saveOptionButton" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M2 1v14l12-7z"></path></svg></button></div></div></div><div class="column"><div id="sessionDetailArea"><div class="sessionHeader"><div class="lineContainer"><div class="nameContainer isTruncate"><button title="Rename session"><span class="sessionName">NE527</span></button></div><button class="menuButton" title="Menu"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110.18 512"><circle class="st0" cx="55.09" cy="55.09" r="55.09"></circle><circle class="st0" cx="55.09" cy="256" r="55.09"></circle><circle class="st0" cx="55.09" cy="456.91" r="55.09"></circle></svg></button></div><div class="lineContainer"><div class="tagsContainer"><div class="tag"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432.54 432.54" class="tagIcon"><path d="M421.99 229.83L217.85 25.98c-7.24-7.24-16.94-13.37-29.12-18.42C176.54 2.52 165.4 0 155.32 0H36.55c-9.9 0-18.47 3.62-25.7 10.85C3.62 18.08 0 26.65 0 36.55v118.77c0 10.08 2.52 21.22 7.57 33.4s11.18 21.8 18.41 28.84l204.14 204.42c7.04 7.04 15.6 10.56 25.7 10.56 9.89 0 18.55-3.52 25.98-10.56l140.18-140.47c7.04-7.05 10.56-15.6 10.56-25.7 0-9.9-3.52-18.55-10.56-25.98zM117.2 117.2a35.22 35.22 0 01-25.84 10.71 35.21 35.21 0 01-25.84-10.7 35.2 35.2 0 01-10.7-25.85 35.2 35.2 0 0110.7-25.83 35.21 35.21 0 0125.84-10.71c10.09 0 18.7 3.57 25.84 10.7a35.21 35.21 0 0110.7 25.84 35.2 35.2 0 01-10.7 25.84z"></path></svg><span>NE527</span><button class="removeTagButton" title="Remove tag"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42"><path d="M42 19H23V0h-4v19H0v4h19v19h4V23h19z"></path></svg></button></div><button class="addTagButton"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 432.54 432.54"><path d="M421.99 229.83L217.85 25.98c-7.24-7.24-16.94-13.37-29.12-18.42C176.54 2.52 165.4 0 155.32 0H36.55c-9.9 0-18.47 3.62-25.7 10.85C3.62 18.08 0 26.65 0 36.55v118.77c0 10.08 2.52 21.22 7.57 33.4s11.18 21.8 18.41 28.84l204.14 204.42c7.04 7.04 15.6 10.56 25.7 10.56 9.89 0 18.55-3.52 25.98-10.56l140.18-140.47c7.04-7.05 10.56-15.6 10.56-25.7 0-9.9-3.52-18.55-10.56-25.98zM117.2 117.2a35.22 35.22 0 01-25.84 10.71 35.21 35.21 0 01-25.84-10.7 35.2 35.2 0 01-10.7-25.85 35.2 35.2 0 0110.7-25.83 35.21 35.21 0 0125.84-10.71c10.09 0 18.7 3.57 25.84 10.7a35.21 35.21 0 0110.7 25.84 35.2 35.2 0 01-10.7 25.84z"></path></svg><span>Add tag</span></button></div><span class="date">2020.01.29 16.01</span></div><div class="lineContainer"><span class="windowsInfo">3 Windows - 6 Tabs</span><div class="buttonsContainer"><button class="open" title="Open in new window"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M96 0v416h416V0H96zm376 376H136V112h336v264z"></path><path d="M40 472V96H0v416h416v-40h-40z"></path></svg><span>Open</span></button><button class="remove"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 408.48 408.48"><path d="M87.75 388.78a20.56 20.56 0 0020.54 19.7h191.9a20.56 20.56 0 0020.55-19.7l13.7-289.31H74.04l13.7 289.31zm159.9-217.45a8.35 8.35 0 018.35-8.35h13.36c4.6 0 8.35 3.74 8.35 8.35v165.3a8.35 8.35 0 01-8.35 8.34H256a8.35 8.35 0 01-8.35-8.35v-165.3zm-58.43 0a8.35 8.35 0 018.35-8.35h13.35c4.6 0 8.35 3.74 8.35 8.35v165.3a8.35 8.35 0 01-8.35 8.34h-13.36a8.35 8.35 0 01-8.34-8.35v-165.3zm-58.44 0a8.35 8.35 0 018.34-8.35h13.36a8.35 8.35 0 018.35 8.35v165.3a8.35 8.35 0 01-8.35 8.34h-13.36a8.35 8.35 0 01-8.35-8.35v-165.3zM343.57 21.04h-88.54V4.31a4.3 4.3 0 00-4.3-4.31h-92.97a4.3 4.3 0 00-4.3 4.3v16.74H64.91a12.9 12.9 0 00-12.9 12.9v40.53h304.45V33.94a12.9 12.9 0 00-12.9-12.9z"></path></svg><span>Delete</span></button></div></div></div><div class="detailsContainer"><div class="windowContainer "><div class="windowInfo"><div class="leftWrapper"><button class="collapseButton"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="#000" stroke-width="2" d="M3 15.5l9-9 9 9"></path></svg></button><img class="favIcon" src="NE527_files/window.png"><button class="windowTitle" title="Open in new window">DOE considers Hanford radioactive waste changes | Tri-City Herald - Mozilla Firefox</button><span class="tabsNumber">3 Tabs</span></div><div class="buttonsContainer"><button class="removeButton" title="Delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42"><path d="M42 19H23V0h-4v19H0v4h19v19h4V23h19z"></path></svg></button></div></div><div class="tabs"><div class="tabContainer"><button class="tabButton" title="Idaho, DOE announce deal on spent fuel, waste cleanup | Government | postregister.com
+https://www.postregister.com/news/government/idaho-doe-announce-deal-on-spent-fuel-waste-cleanup/article_b84a25b5-bc3c-5623-877d-bdfe33b99dc2.html"><img class="favIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAAAAACPAi4CAAAErElEQVR4Ae3WA5MrWxQF4H1t27Zt27Y1Nq5tG2Pbtm3bU3mTjrN/wss5o07Sz8Yuzlo9X7oOqhrwN87vBvwP/A9Yrb6op6Oje3zNxo0bN2zede55SLEY6ciN1mrq6Ojon9q0fiMtD2g+D6sUy1WAezBx0fz5C4cDnQ5dZ55/ndUCrIcZC+bPX0wrWnYet/e6N08FyFpOy347Vq5cuXrZnEEAPefuuhNDat8ltOq5fO1KxaxatWAMQI/xq3T8lADkzSJPnZfz+XyGV5Pj/Yz8PXR7FCLWTifVmSYBn5RMfXGoSRdF0PtgPhvAK+QpY2ybmuddFcGQh4j4gFSXkDUh40g0t5QNXCORNrLGgvxOh9eIdqQ6LlbqOpLsMBu4qQbI95KoTxZaqgMMXbORRSzguhrQ/MvwAa3UATxJ19z/x4FgCmihLQdwgQJ+Pw54UcAErdUB2RaSDan4cUCLAl5caxDbh2QH8EeBvP4kWidACzWgfgGJJlf8KFBGH5pbhs3ARVYVR/dgQwGqAYbt++Q+AQC6n6vEFmB7QnpCUlJSamb8t70joFv/nc48VAe2p2Tl5+dlpnsYjwToMeJ4tBRbgR6jRo8YNnTooN4AU40C0+tFiBxA9/49Bw7o17Fj7xGTN+o7V9GiBdgdFRnq4epqdW/30B4HLVMQOYHjsRavXr35aB1SIGCfW+W7kLIQAE6kcAKsy6QKHGt/Z2Y+AAz04gK0OQG1bYymixL/6wHZIZJMF/5qAH2AjOWvB6rnkWiNEnDjlwBoRqLBBb/kDU5IlG56V0XU4TobMCRP6XECNqQ6LWVHog0kmyliAWdJosUJ2NKrK1DK7pCs62cWsIwkqzkBLVINbVDKcofRV+C3ATc6k6CzPqpPYG/gWJ+dNDzTDNTmXYCuA/v1G9ARNjuKVVdgeMd+ihkAmhVK8bAe/fr3hvP1IgSsyrKLLylTTG6Ck6cAlUaWmkSrspzYOnYurVDEpdlxjQSQy1j/IP9HfmAIGgsrUiP4qoU4vyIvIOPnAI3p6+ZoX190h1EuBNpzjn+au8mTFVXky7kAGbMcHOvWsw8iXdbHcAm/ATS1ibXPV/KQTF2jyhrshzjJTPiWet+RwWgbi6IHM73oLbrU8HDYPgnvy+MQLH/3dP0Hi/OiOIsvEY5TTDH4lTVmuD9+4EwA2S7Q1dsa6Dgtfs/lmGk2VmF7wA8R38Fe487HxczynYZDwvYe9YCYa+uZxeZxXvfhg8WAW/1N/Hv1uuNBADwIbo0iwcj1+BgsVw47X6yzrPkeX+ft7B5VDHpJFiVrdRNGZ9wZj0eHr/S378g7MDDYKdEFnCUyBBQ2LAQHRGbFDMGZnpY+z+GU9ggRouQeHEc/mBjbZ48osToOlrjg+cGpdg5jF1tDhilk8CruQThdgxzvRQuvixAz9j3f72F70uNgmOWsQsSa44t21+KhaS4+K158zTXYoLv+6+MdDjucjN7HzHbkb9f4nGI73YECDZXVTBm9A571Cia4CWWVfESmVFBRh9KGIqz3wMK+no0jt8sbpRVB+YgNDYgRmchUffezT6LgidZts4LfcJTlvs8/fWv4G3+t/w/8D3wPkzQdW+7oDQcAAAAASUVORK5CYII="><span class="tabTitle">Idaho, DOE announce deal on spent fuel, waste cleanup | Government | postregister.com</span></button><button class="removeButton" title="Delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42"><path d="M42 19H23V0h-4v19H0v4h19v19h4V23h19z"></path></svg></button></div><div class="tabContainer"><button class="tabButton" title="New Mexico Isn’t Welcoming Nuclear Waste With Open Arms | NRDC
+https://www.nrdc.org/stories/new-mexico-isnt-welcoming-nuclear-waste-open-arms"><img class="favIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAflBMVEX///8XKkwXKUsAAIATJkwVJ0oVKEsVKEsVKEsVKEwVK04VKEoWKEsWKEsQMFAVKEsWKUwUKEsWKEsVKEsWKEsgIEAUKEsUKUcVKUsVJ0oVKEsUKUsVKEsVKEsRK00VKUsTJkwVKEsVKEsWKEsUJ0oXKUkYKk0AK1UVKEv///9vBOVtAAAAKHRSTlMAQywCNkjw876HJMD5jBDrXovt8bEIyBmqqMFL4/we3BvZ/o40OCsG34l28gAAAAFiS0dEAIgFHUgAAAAJcEhZcwAAArwAAAK8AVsG4VkAAAAHdElNRQfgAwsTLy0DkjXCAAAAcElEQVQY02XPyRKCQBAD0CCyKTiAorIoa2P//xcKAwxlm1PqHVIVQMY62KYfHceCy54fnBY4M7sTTAmjyy8wq1gAc2IbSK9abtkG98dTS15sAJTVLK8d8K6XJQNoWgFolACUnQD0GgaicYUPEQ1/779AbhJyez7cOgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNi0wMy0xMVQxOTo0Nzo0NSswMTowMKRBHGkAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTYtMDMtMTFUMTk6NDc6NDUrMDE6MDDVHKTVAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAAFd6VFh0UmF3IHByb2ZpbGUgdHlwZSBpcHRjAAB4nOPyDAhxVigoyk/LzEnlUgADIwsuYwsTIxNLkxQDEyBEgDTDZAMjs1Qgy9jUyMTMxBzEB8uASKBKLgDqFxF08kI1lQAAAABJRU5ErkJggg=="><span class="tabTitle">New Mexico Isn’t Welcoming Nuclear Waste With Open Arms | NRDC</span></button><button class="removeButton" title="Delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42"><path d="M42 19H23V0h-4v19H0v4h19v19h4V23h19z"></path></svg></button></div><div class="tabContainer"><button class="tabButton" title="DOE considers Hanford radioactive waste changes | Tri-City Herald
+https://www.tri-cityherald.com/news/local/hanford/article219498935.html"><img class="favIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAIAAACQkWg2AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpBOUQ0N0NGQTFCNDcxMUU1QUMzMkNGMEUzMjQwNjZFMCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpBOUQ0N0NGQjFCNDcxMUU1QUMzMkNGMEUzMjQwNjZFMCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkE5RDQ3Q0Y4MUI0NzExRTVBQzMyQ0YwRTMyNDA2NkUwIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkE5RDQ3Q0Y5MUI0NzExRTVBQzMyQ0YwRTMyNDA2NkUwIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+wglZjAAAAcVJREFUeNpi1IlZ/ffvPwYM8P//fyDJyMjIxMjwD8xhZGBgYmJi+fXrNwNe8BeZ/fcfCwsL858/UEF5Cd7+fCstRSEg++2nHy/ffnv86suXb7///vtfN/s0UBComAXZsIJwvfeff959+lFMkFOEnwOItJWEHr/8ktVzGKIA6DwUDQ1zT3/88stQTeT8rTdcHCyJPhordt/58OXn37//4WqYgJrgAKg6yk2Vm5MVyJ5RZpforfH24w9k1YyMDEzMzAgdooKcka4qRy4+h4QP1jBg+vcPYUC0m+qNhx/whBgweJmQ+S5mMh8+/2TAq4Pp/z9EQCtL8wnyseNR/+/fP6CTENHMyMBooS0O8dWvP/++/fgDEddSEIRF3B8mIIZrePjiM9Dfyb6aQPafP/8WbrsBZMiI8bhbyMLdxCyhH/rvPzRAhHjZzbTELHTEgUnn4Plnhy48tzOQak03619x6T3Yb6wsTCyMTMwMsMQ3d8sND0s5oE/yw3Th1rYuPHf36Se4q5kFNIPgcr///Ntx4rEwPwfQGSwsTEB1zfPPrtl3D+Hp/wyMOpGL/gHD6j/U10AGIyRKQQ7+B07U0EgGAmYmBoAAAwBAprcQzCOLIwAAAABJRU5ErkJggg=="><span class="tabTitle">DOE considers Hanford radioactive waste changes | Tri-City Herald</span></button><button class="removeButton" title="Delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42"><path d="M42 19H23V0h-4v19H0v4h19v19h4V23h19z"></path></svg></button></div></div></div><div class="windowContainer "><div class="windowInfo"><div class="leftWrapper"><button class="collapseButton"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="#000" stroke-width="2" d="M3 15.5l9-9 9 9"></path></svg></button><img class="favIcon" src="NE527_files/window.png"><button class="windowTitle" title="Open in new window">Log In ‹ Principles of nuclear engineering — Pressbooks - Mozilla Firefox</button><span class="tabsNumber">2 Tabs</span></div><div class="buttonsContainer"><button class="removeButton" title="Delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42"><path d="M42 19H23V0h-4v19H0v4h19v19h4V23h19z"></path></svg></button></div></div><div class="tabs"><div class="tabContainer"><button class="tabButton" title="Log In ‹ Principles of nuclear engineering — Pressbooks
+https://courses.lumenlearning.com/uidaho-nuclear/wp-login.php?redirect_to=https%3A%2F%2Fcourses.lumenlearning.com%2Fuidaho-nuclear%2Fwp-admin%2Fpost.php%3Fpost%3D595%26action%3Dedit&amp;reauth=1"><img class="favIcon" src="NE527_files/favicon.png"><span class="tabTitle">Log In ‹ Principles of nuclear engineering — Pressbooks</span></button><button class="removeButton" title="Delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42"><path d="M42 19H23V0h-4v19H0v4h19v19h4V23h19z"></path></svg></button></div><div class="tabContainer"><button class="tabButton" title="Log In ‹ Principles of nuclear engineering — Pressbooks
+https://courses.lumenlearning.com/uidaho-nuclear/wp-login.php?redirect_to=https%3A%2F%2Fcourses.lumenlearning.com%2Fuidaho-nuclear%2Fwp-admin%2Fpost.php%3Fpost%3D595%26action%3Dedit&amp;reauth=1"><img class="favIcon" src="NE527_files/favicon.png"><span class="tabTitle">Log In ‹ Principles of nuclear engineering — Pressbooks</span></button><button class="removeButton" title="Delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42"><path d="M42 19H23V0h-4v19H0v4h19v19h4V23h19z"></path></svg></button></div></div></div><div class="windowContainer "><div class="windowInfo"><div class="leftWrapper"><button class="collapseButton"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="#000" stroke-width="2" d="M3 15.5l9-9 9 9"></path></svg></button><img class="favIcon" src="NE527_files/window.png"><button class="windowTitle" title="Open in new window">Index of file:///home/ - Mozilla Firefox</button><span class="tabsNumber">1 Tab</span></div><div class="buttonsContainer"><button class="removeButton" title="Delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42"><path d="M42 19H23V0h-4v19H0v4h19v19h4V23h19z"></path></svg></button></div></div><div class="tabs"><div class="tabContainer"><button class="tabButton" title="Index of file:///home/
+file:///home/"><img class="favIcon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8%2F9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAjFJREFUeNqsU8uOElEQPffR3XQ3ONASdBJCSBxHos5%2B3Bg3rvkCv8PElS78gPkO%2FATjQoUdO2ftrJiRh6aneTb9sOpC4weMN6lcuFV16pxDIfI8x12OYIDhcPiu2Wx%2B%2FHF5CW1Z6Jyegt%2FTNEWSJIjjGFEUIQxDrFYrWFSzXC4%2FdLvd95pRKpXKy%2BpRFZ7nwaWo1%2BsGnQG2260BKJfLKJVKGI1GEEJw7ateryd0v993W63WEwjgxfn5obGYzgCbzcaEbdsIggDj8Riu6z6iUk9SYZMSx8W0LMsM%2FSKK75xnJlIq80anQXdbEp0OhcPJ0eiaJnGRMEyyPDsAKKUM9clkYoDo3SZJzzSdp0VSKYmfV1co%2Bz580kw5KDIM8RbRfEnUf1HzxtQyMAGcaGruTKczMzEIaqhKifV6jd%2BzGQQB5llunF%2FM52BizC2K5sYPYvZcu653tjOM9O93wnYc08gmkgg4VAxixfqFUJT36AYBZGd6PJkFCZnnlBxMp38gqIgLpZB0y4Nph18lyWh5FFbrOSxbl3V4G%2BVB7T4ajYYxTyuLtO%2BCvWGgJE1Mc7JNsJEhvgw%2FQV4fo%2F24nbEsX2u1d5sVyn8sJO0ZAQiIYnFh%2BxrfLz%2Fj29cBS%2FO14zg3i8XigW3ZkErDtmKoeM%2BAJGRMnXeEPGKf0nCD1ydvkDzU9Jbc6OpR7WIw6L8lQ%2B4pQ1%2FlPF0RGM9Ns91Wmptk0GfB4EJkt77vXYj%2F8m%2B8y%2FkrwABHbz2H9V68DQAAAABJRU5ErkJggg%3D%3D"><span class="tabTitle">Index of file:///home/</span></button><button class="removeButton" title="Delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42"><path d="M42 19H23V0h-4v19H0v4h19v19h4V23h19z"></path></svg></button></div></div></div></div></div></div></div><div id="menu" style="left: 481px; top: 56px;" role="dialog"><ul><li class="section">Open a session</li><li><button>Open in new window</button></li><li><button>Open in current window</button></li><li><button>Add to current window</button></li><hr><li class="section">Edit a session</li><li><button>Replace with current session</button></li><li><button>Replace with current window</button></li><li><button>Add current window</button></li><li><button>Make a copy of the session</button></li><hr><li><button>Register for startup</button></li><li><button>Export</button></li></ul><button class="closeMenuButton" title="Close the menu"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42"><path d="M42 19H23V0h-4v19H0v4h19v19h4V23h19z"></path></svg></button></div><div id="modalBackground" class="isClose"><div id="modal" role="dialog"><div class="modalHeader"><div class="modalTitle">Title</div><button class="closeModalButton" title="Close"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42"><path d="M42 19H23V0h-4v19H0v4h19v19h4V23h19z"></path></svg></button></div><hr><div class="modalContent"><div></div></div></div></div></div>
+
+</div></body></html>
