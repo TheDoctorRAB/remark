@@ -1,0 +1,60 @@
+[
+    {
+        "windows": {
+            "1": {
+                "6": {
+                    "id": 6,
+                    "index": 0,
+                    "windowId": 1,
+                    "highlighted": true,
+                    "active": true,
+                    "attention": false,
+                    "pinned": false,
+                    "status": "complete",
+                    "hidden": false,
+                    "discarded": false,
+                    "incognito": false,
+                    "width": 1920,
+                    "height": 936,
+                    "lastAccessed": 1583367344308,
+                    "audible": false,
+                    "mutedInfo": {
+                        "muted": false
+                    },
+                    "isArticle": true,
+                    "isInReaderMode": false,
+                    "sharingState": {
+                        "camera": false,
+                        "microphone": false
+                    },
+                    "successorTabId": -1,
+                    "cookieStoreId": "firefox-default",
+                    "url": "https://www.tri-cityherald.com/news/local/hanford/article219498935.html",
+                    "title": "DOE considers Hanford radioactive waste changes | Tri-City Herald"
+                }
+            }
+        },
+        "windowsNumber": 1,
+        "windowsInfo": {
+            "1": {
+                "id": 1,
+                "focused": true,
+                "top": 0,
+                "left": 3060,
+                "width": 1920,
+                "height": 1010,
+                "incognito": false,
+                "type": "normal",
+                "state": "maximized",
+                "alwaysOnTop": false,
+                "title": "DOE considers Hanford radioactive waste changes | Tri-City Herald - Mozilla Firefox"
+            }
+        },
+        "tabsNumber": 1,
+        "name": "DOE considers Hanford radioactive waste changes | Tri-City Herald",
+        "date": 1583367344304,
+        "tag": [],
+        "sessionStartTime": 1583367048570,
+        "id": "97052730-51fa-41fb-bfb0-4bba7cdc3e49"
+    }
+]
