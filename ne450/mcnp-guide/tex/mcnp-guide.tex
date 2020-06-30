@@ -35,6 +35,7 @@
 \usepackage{subcaption}
 \usepackage[labelfont=bf]{caption}
 \usepackage{chngcntr}
+\usepackage{hyperref}
 
 %\counterwithin{table}{section}
 
@@ -49,9 +50,8 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{} %move page number to bottom right
-\renewcommand{\headrulewidth}{0pt} %turn off line in header
-%\lhead{\scriptsize Journal}
-%\chead{\scriptsize Draft Manuscript - \textit{Christensen and Borrelli}}
+\renewcommand{\headrulewidth}{0.5pt} %turn off line in header
+\lhead{\scriptsize Prof. R. A. Borrelli} 
 \rhead{\scriptsize \today}
 \rfoot{\thepage}
 
@@ -67,38 +67,77 @@
         Engineering/Technology Management, Industrial Technology\\and\\Nuclear Engineering Department
         \\ \\ \\
         rborrelli@uidaho.edu
+        \\ \\ \\
+        \includegraphics{twitter.png}\includegraphics{git.png}\\
+        @TheDoctorRAB\\ \\
     }
 \clearpage %not have page number on title page
 \maketitle
 \thispagestyle{empty} %start with page number 1 on second page
 \end{titlepage}
 
-\noindent\textbf{\Large{Preface}}\\
-\noindent\textbf{Who is this guide for?}\\
+\chead{\scriptsize \textit{MCNP walkthrough - Preface}}
+
+\section{Preface} \label{preface}
+\subsection{Who is this walkthrough for?}
 \noindent Advanced undergraduate students and graduate students in any nuclear engineering curriculum. Students should know - 
 \begin{itemize}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
     \item Basic nuclear physics; e.g., cross sections
     \item Interactions of neutrons and photons with matter
-    \item Shielding dose rates
+    \item Shielding, dose rates
     \item Four/six factor formula; e.g., what $k_{EFF}$ is,
     \item How a nuclear reactor works
     \item Solving for buckling
     \item Neutron diffusion
-\end{enumerate}
+\end{itemize}
+\vspace*{\baselineskip}
 
-\noindent Just about every nuclear engineering department has this course. Typically, the Larmarsh or Duderstadt textbooks are used mostly. Sometimes the Shultis textbook is used. It's usually one of the first classes taken prior to the higher-level nuclear engineering courses. However, this course provides all you need to know to run and understand MCNP. I happen to teach this course. I use Lamarsh with Shultis as a reference. I happend to use Lamarsh because that was the textbook when I first took this kind of course.\\
+\noindent Just about every nuclear engineering department has this course. Typically, the Larmarsh or Duderstadt textbooks are used mostly. Sometimes the Shultis textbook is used. It's usually one of the first classes taken prior to the higher-level nuclear engineering courses. However, this course provides all you need to know to run and understand MCNP. I happen to teach this course. I use Lamarsh with Shultis as a reference. I happend to use Lamarsh because that was the textbook when I first took this kind of course. There really is no argument for one over the other.
 
-\noindent\textbf{What is MCNP?}\\
+\subsection{What is MCNP?}
 \noindent Your best friend. Your greatest nemesis. MCNP is a contradiction. It will make you suffer, but it will open doors and present new opportunities. \\
 
-\noindent MCNP is a computational tool - that means you're not coding per se. You set up the input file that the code will read and then execute. MCNP tracks neutrons and photons for specified geometries and produces a wealth of resulting data. That seems simple. It's not. With a little guidance, effective modeling with MCNP is achievable.\\ \\
+\noindent MCNP is a computational tool - that means you're not coding \textit{per se}. You set up the input file that the code will read and then execute. MCNP tracks neutrons and photons for specified geometries and produces a wealth of resulting data. That seems simple. It's not. With a little guidance, effective modeling with MCNP is achievable. 
 
-\noindent\textbf{Why is MCNP so important?}
+\subsection{Why is MCNP so important?}
 \noindent It's not that necessarily MCNP itself is so important. Neutronics modeling is. We can't design any reactor without knowing where the neutrons are going and what they're going to do when they get there. MCNP happens to be the first neutronics computational tool. (They literally used punch cards.) All other tools are benchmarked against MCNP.\\
 
-\noindent Not everyone is going to be a neutronics expert. For those that want to be, mastering MCNP makes it far easier to learn other neutronics codes, like Serpent. Any facility with MCNP provides a fundamental basis for a career in nuclear engineering. Frankly, if you're a graduate student, you're looking for internships. You may not really care what you're going to do; you just want a good position for your CV and a chance to network for future career development. Absolutely nothing wrong with that. On more than one occasion, I have had a researcher come up to me and ask `Do you know any of the students that know MCNP? I have some money for an intern this summer, but I need someone to step in and get right going.'\\
+\noindent Not everyone is going to be a neutronics expert. For those that want to be, mastering MCNP makes it far easier to learn other neutronics codes, like Serpent. Any facility with MCNP provides a fundamental basis for a career in nuclear engineering. Frankly, if you're a graduate student, you're looking for internships. You may not really care what you're going to do; you just want a good position for your CV and a chance to network for future career development. Absolutely nothing wrong with that. On more than one occasion, I have had a researcher come up to me and ask `Do you know any of the students that know MCNP? I have some money for an intern this summer, but I need someone to step in and get right going.' I intend for this walkthrough to give you the skills to step right in and get going.\\
 
 \noindent Learning MCNP will also lend to transferrable skills. Whether it is good coding practices, geometric modeling, or just developing engineering judgement, this will lead to success in higher endeavors. \\
+
+\newpage
+
+\chead{\scriptsize \textit{MCNP walkthrough - Motivation}}
+
+\section{Motivation - Do we \textit{really }need another `How to use MCNP'?} \label{motivation}
+\noindent Don't read this if you don't want to. I'm not losing sleep over it. Due to the virus sweeping the nation in 2020, over the summer, I decided I needed to take the time to prepare my fall course with the contingency for shifting to online delivery. I've taught the course since 2015, so I know the material, have all the slides and assignments, etc., already prepared. This is part of that effort. Students should be able to follow this on their own and learn how to use MCNP. 
+
+\subsection{An embarrassment of riches}
+\noindent There are tons and tons and tons and tons of MCNP resources floating around out there. I have compiled them as I find them in my \href{https://courses.lumenlearning.com/uidaho-nuclear/}{Online educational resources for nuclear engineering.} However, all this decentralization just spreads the materials out so much that there isn't really an orderly way to work through them as a learning process. There are a lot of good problems out there that I use in class. \\
+
+\noindent Probably the closest resource to what I'm trying to do here is the famous \href{https://www.mne.k-state.edu/~jks/MCNPprmr.pdf}{MCNP primer} from Prof. Shultis at Kansas State University. A particularly good feature of the primer is that it corss references to the MCNP manual. I certainly used it when I first learned MCNP. However, I do not know if that manual is shipped with MCNP anymore, and the most recent revision of the primer that I have found is 2011. To be fair, not too much has changed in the ensuing time, but just about all of the resources in addition to the primer that I have found are somewhat dated. The time seems right to develop something new. Another difficulty I have is that most of these resources are gigantic information dumps. It was overwhelming for me when I was first learning MCNP. I like writing, I'm fairly good at it, and given the context of 2020, the time felt right to give this a shot. \\
+
+\newpage
+
+\chead{\scriptsize \textit{MCNP walkthrough - Personal}}
+
+\section{Experience - And who do you think you are?} \label{experience}
+\noindent Well, I'm an actual nuclear engineering professor. I've taught the Lamarsh class with an MCNP learning module every year since 2015. Students have attained solid success with publications, internships, and gainful employment from the course. I have many publications applying MCNP in a variety of topics. My expertise in MCNP has led to several funded projects. Ask about me. \\
+
+\noindent I am by no means the leading expert in MCNP. I'm probably not a leading anything unless I'm leading you to happy hour. I can name probably 12 - 15 people I know personally that are better at neutronics modeling than me. However, actually \textit{teaching} MCNP formally is a different paradigm, altogether. I am confident that I'm on a short list of being able to teach \textit{how to use MCNP effectively}. I am purposely very specific in claiming what I can actually do here. 
+
+\section{Style - What's wrong with you?}
+\noindent Plenty, but now's not that time for that. \\
+
+\noindent As you may have gathered so far, my tone is intended to be conversational and not overly ponderous. So, not like a journal paper. I'm writing in the way I have been lecturing on MCNP. I'm trying to ease you through the learning process and not just dump everything on to the page. I'm not trying to talk down to anyone. I know the difficulties I had with learning MCNP, so I'm writing in a way that I would have wanted to be spoken to. Even that's a bad sentence, but this isn't meant to be a formally reviewed and published document.
+
+\newpage
+
+\chead{\scriptsize \textit{MCNP walkthrough - Intent and direction}}
+
+\section{Teaching MCNP for \textit{engineers}}
+\noindent There is a reason why I chose the title that I did. 
 
 
 
