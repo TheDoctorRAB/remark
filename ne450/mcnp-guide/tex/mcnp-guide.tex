@@ -97,7 +97,7 @@
 \end{itemize}
 \vspace*{\baselineskip}
 
-\noindent Just about every nuclear engineering department has this course. Typically, the Larmarsh or Duderstadt textbooks are used mostly. Sometimes the Shultis textbook is used. It's usually one of the first classes taken prior to the higher-level nuclear engineering courses. However, this course provides all you need to know to run and understand MCNP. I happen to teach this course. I use Lamarsh with Shultis as a reference. I happend to use Lamarsh because that was the textbook when I first took this kind of course. There really is no argument for one over the other.
+\noindent Just about every nuclear engineering department has this course. Typically, the Lamarsh or Duderstadt textbooks are used mostly. Sometimes the Shultis textbook is used. It's usually one of the first classes taken prior to the higher-level nuclear engineering courses. However, this course provides all you need to know to run and understand MCNP. I happen to teach this course. I use Lamarsh with Shultis as a reference. I happened to use Lamarsh because that was the textbook when I first took this kind of course. There really is no argument for one over the other.
 
 \subsection{What is MCNP?}
 \noindent Your best friend. Your greatest nemesis. MCNP is a contradiction. It will make you suffer, but it will open doors and present new opportunities. \\
@@ -109,7 +109,7 @@
 
 \noindent Not everyone is going to be a neutronics expert. For those that want to be, mastering MCNP makes it far easier to learn other neutronics codes, like Serpent. Any facility with MCNP provides a fundamental basis for a career in nuclear engineering. Frankly, if you're a graduate student, you're looking for internships. You may not really care what you're going to do; you just want a good position for your CV and a chance to network for future career development. Absolutely nothing wrong with that. On more than one occasion, I have had a researcher come up to me and ask `Do you know any of the students that know MCNP? I have some money for an intern this summer, but I need someone to step in and get right going.' I intend for this walkthrough to give you the skills to step right in and get going.\\
 
-\noindent Learning MCNP will also lend to transferrable skills. Whether it is good coding practices, geometric modeling, or just developing engineering judgement, this will lead to success in higher endeavors. \\
+\noindent Learning MCNP will also lend to transferable skills. Whether it is good coding practices, geometric modeling, or just developing engineering judgement, this will lead to success in higher endeavors. \\
 
 \newpage
 
@@ -122,7 +122,7 @@
 \subsection{An embarrassment of riches}
 \noindent There are tons and tons and tons and tons of MCNP resources floating around out there. I have compiled them as I find them in my \href{https://courses.lumenlearning.com/uidaho-nuclear/}{Online educational resources for nuclear engineering.} However, all this decentralization just spreads the materials out so much that there isn't really an orderly way to work through them as a learning process. There are a lot of good problems out there that I use in class. \\
 
-\noindent Probably the closest resource to what I'm trying to do here is the famous \href{https://www.mne.k-state.edu/~jks/MCNPprmr.pdf}{MCNP primer} from Prof. Shultis at Kansas State University. A particularly good feature of the primer is that it corss references to the MCNP manual. I certainly used it when I first learned MCNP. However, I do not know if that manual is shipped with MCNP anymore, and the most recent revision of the primer that I have found is 2011. To be fair, not too much has changed in the ensuing time, but just about all of the resources in addition to the primer that I have found are somewhat dated. The time seems right to develop something new. Another difficulty I have is that most of these resources are gigantic information dumps. It was overwhelming for me when I was first learning MCNP. I like writing, I'm fairly good at it, and given the context of 2020, the time felt right to give this a shot. \\
+\noindent Probably the closest resource to what I'm trying to do here is the famous \href{https://www.mne.k-state.edu/~jks/MCNPprmr.pdf}{MCNP primer} from Prof. Shultis at Kansas State University. A particularly good feature of the primer is that it cross references to the MCNP manual. I certainly used it when I first learned MCNP. However, I do not know if that manual is shipped with MCNP anymore, and the most recent revision of the primer that I have found is 2011. To be fair, not too much has changed in the ensuing time, but just about all of the resources in addition to the primer that I have found are somewhat dated. The time seems right to develop something new. Another difficulty I have is that most of these resources are gigantic information dumps. It was overwhelming for me when I was first learning MCNP. I like writing, I'm fairly good at it, and given the context of 2020, the time felt right to give this a shot. \\
 
 \newpage
 
@@ -136,15 +136,47 @@
 \section{Style - What's wrong with you?}
 \noindent Plenty, but now's not that time for that. \\
 
-\noindent As you may have gathered so far, my tone is intended to be conversational and not overly ponderous. So, not like a journal paper. I'm writing in the way I have been lecturing on MCNP. I'm trying to ease you through the learning process and not just dump everything on to the page. I'm not trying to talk down to anyone. I know the difficulties I had with learning MCNP, so I'm writing in a way that I would have wanted to be spoken to. Even that's a bad sentence, but this isn't meant to be a formally reviewed and published document.
+\noindent As you may have gathered so far, my tone is intended to be conversational and not overly ponderous. So, not like a journal paper. I'm writing in the way I have been lecturing on MCNP. I'm trying to ease you through the learning process and not just dump everything on to the page. I'm not trying to talk down to anyone. I know the difficulties I had with learning MCNP, so I'm writing in a way that I would have wanted to be spoken to. Even that's a bad sentence, but this isn't meant to be a formally reviewed and published document.\\
 
 \newpage
 
 \chead{\scriptsize \textit{MCNP walkthrough - Intent and direction}}
 
 \section{Teaching MCNP for \textit{engineers}}
-\noindent There is a reason why I chose the title that I did. 
+\noindent There is a reason why I chose the title that I did. I'm interested in getting students and other researchers the guidance they need to run MCNP. If I were going to prepare a course, then, sure, I would spend a significant time on Monte Carlo theory. And I'll have a brief section in here about that. I'm not arguing that a scientific approach isn't valuable in comparison to engineering. I have found most MCNP resources include a ton of material on the theory behind MCNP. I'm assuming you know that already. If you feel like you need some background on the theory behind MCNP, I direct you to \href{https://laws.lanl.gov/vhosts/mcnp.lanl.gov/pdf_files/la-ur-05-4983.pdf}{Fundamentals of Monte Carlo particle transport} by Dr. Forrest B. Brown at Los Alamos National Laboratory. If there's only one expert in MCNP and Monte Carlo theory, he is probably that person. 
 
+\section{\textit{Walkthrough}}
+\noindent I also chose the term `walkthrough' deliberately. Here's where I think I bring some value versus other resources. When I think about a walkthrough, I'm thinking about video games - You're playing a cool game but for the last hour you're stuck in a room looking for a lever or loose tile or you're asking questions to the townspeople and you know you have to do it in a certain order but you're going in circles. The game is starting to get tedious and you need a hint. The walkthrough provides a detailed account of the game - right down to where to look or, not only what weapon to select, but what move to employ. That's what I'm going for here - `Fatal error? Look up.' MCNP is slightly more complex than a video game, but if you can build an input file from scratch and get it to run, then you're well on your way. Building in more complexity isn't as overwhelming. 
 
+\newpage
 
+\chead{\scriptsize \textit{MCNP walkthrough - Getting started}}
+
+\section{Installation}
+\noindent Detailed installation instructions are provided with your MCNP disks. I am not going to repeat them here, but you should follow them to the letter. Run the tests after to make sure everything is all set. Remember, your license only allows you to install MCNP in one place due to export control restrictions. Mine is on my office desktop. I do not recommend installing it on a laptop. If it gets stolen, you could get into some trouble. Your license is granted through your institution. If you change positions and go somewhere else, then you need to apply for another license and you have to uninstall the distribution under the prior license and destroy the disks. 
+
+\section{Operating system}
+\noindent I strongly recommend installing in linux. Over the years, I've experienced either first hand or with students, inexplicable wonkiness with MCNP in a Windows environment. Don't have a linux system? No problem! You can install a `virtual linux machine' on your windows computer. It takes some time, but it's not hard. I have MCNP installed on the virtual machine in my office. I am using the `Oracle VM VirtualBox Manager'. That is basically the holder for your linux environment. I use the CentOS8 linux system. There's others to choose from. If you have the computing power, you can have the box make two screens or more if you have a multiple monitors. I actually use the linux box about 99\% of the time for MCNP, data processing, lecture slides, presentations, papers, all of it. 
+
+\section{Visualization}
+\noindent The linux distribution for MCNP comes with a plotter equipped to view your models. There's nothing extra to do in a standard linux environment. MCNP used to ship VisEd. I started on VisEd, so I am more used to it than the plotter. Both aren't super great. VisEd only runs in windows. You can request a VisEd download separately after you obtain your MCNP license. I would recommend it. Try both. It's kind of a pain to copy your MCNP file from linux to windows, but it's not really that bad.
+
+\section{Text editor}
+\noindent MCNP is a FORTRAN code. \textit{FORTRAN}. That's an old language. O. L. D. That means you have to be really careful in your selection of a text editor. FORTRAN will go sideways fast if there's any whitespace or `$\wedge M$' in there. It is also very column specific. This is because when they first invented the language, they were programming on punch cards. Fortunately, there are plenty of choices in linux that can be used to build your input files. I use \texttt{vim}. I started on \texttt{vi}
+at an internship in undergrad at the Naval Undersea Warfare Center because the particular group I was working in used that. I actually learned FORTRAN there. The other popular editor is \texttt{emacs}. In linux, there are many choices. Use one of these. 
+
+\section{Scientific computing best practices}
+\subsection{Python}
+\noindent As a nuclear engineering graduate student, I know you all have a copy of \href{https://www.google.com/books/edition/Effective_Computation_in_Physics/6IkNCgAAQBAJ?hl=en&gbpv=0}{Effective Computation in Physics: Field Guide to Research with Python}. This book, and I feel like using the term `book' to describe this treatise to a successful research career just falls short, should be your guide to best computing practices. Again, installing MCNP in linux allows for more ready
+postprocessing with the accessibility to python. You can install python in your windows environment, but I just find installing packages to be a lot easier in linux. 
+
+\subsection{Postprocessing}
+\noindent For more complex neutronics and/or photon modeling, effective postprocessing is a necessity. Fortunately, with python, you can find many scripts to edit for your own purposes. I have several on my github. Please feel free to look around my repositories. Additionally, I've found it easier to prepare graphs in python. I have several python graph scripts as well. MCNP comes with plotting capabilities. I never got around to learning how to use them yet. That doesn't mean they aren't useful.
+
+\subsection{Reproducibility}
+\noindent Good computing means your creation can be used by other people. If you make an MCNP file, someone else should be able to run it and produce the same results that you obtained. This provides confidence that you produced research that is scientifically sound. Then, whomever has your MCNP file can modify, enhance, or build upon the model to tackle more problems. We must have this principle in mind when developing MCNP files. As I walkthrough MCNP, I'll make note of this. 
+
+\newpage
+
+scope
 \end{document}
