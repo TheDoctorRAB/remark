@@ -21,3 +21,8 @@
 \BOOKMARK [1][-]{section.13}{A brief discussion on Monte Carlo theory}{}% 21
 \BOOKMARK [2][-]{subsection.13.1}{MCNP solves the transport equation}{section.13}% 22
 \BOOKMARK [2][-]{subsection.13.2}{Using Monte Carlo to compute }{section.13}% 23
+\BOOKMARK [1][-]{section.14}{Jezebel}{}% 24
+\BOOKMARK [2][-]{subsection.14.1}{MCNP input file for a bare Pu sphere}{section.14}% 25
+\BOOKMARK [2][-]{subsection.14.2}{General MCNP input file format}{section.14}% 26
+\BOOKMARK [3][-]{subsubsection.14.2.1}{Title}{subsection.14.2}% 27
+\BOOKMARK [3][-]{subsubsection.14.2.2}{Comments}{subsection.14.2}% 28

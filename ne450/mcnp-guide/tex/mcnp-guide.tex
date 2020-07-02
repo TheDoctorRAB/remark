@@ -131,7 +131,7 @@
 \section{Experience - And who do you think you are?} \label{experience}
 \noindent Well, I'm an actual nuclear engineering professor. I've taught the Lamarsh class with an MCNP learning module every year since 2015. Students have attained solid success with publications, internships, and gainful employment from the course. I have many publications applying MCNP in a variety of topics. My expertise in MCNP has led to several funded projects. Ask about me. \\
 
-\noindent I am by no means the leading expert in MCNP. I'm probably not a leading anything unless I'm leading you to happy hour. I can name probably 12 - 15 people I know personally that are better at neutronics modeling than me. However, actually \textit{teaching} MCNP formally is a different paradigm, altogether. I am confident that I'm on a short list of being able to teach \textit{how to use MCNP effectively}. I am purposely very specific in claiming what I can actually do here. 
+\noindent I am by no means the leading expert in MCNP. I'm probably not a leading anything unless I'm leading you to happy hour. I can name probably 12 - 15 people I know personally that are better at neutronics modeling than me. However, actually \textit{teaching} MCNP formally is a different paradigm, altogether. I am confident that I'm on a short list of being able to teach \textit{how to use MCNP effectively}. I am purposely very specific in claiming what I can actually do here.
 
 \section{Style - What's wrong with you?}
 \noindent Plenty, but now's not that time for that. \\
@@ -273,6 +273,129 @@ MCNP. It's very good. Both the slides and the generation of randomness. I'm not 
 
 \newpage
 
+\chead{\scriptsize \textit{MCNP walkthrough - Getting to know the basics with Jezebel}}
+
+\section{Jezebel}
+\noindent Jezebel is the most basic MCNP problem. Everyone knows it. It is a bare Pu sphere with a Ni reflector. We'll start with a model of just a bare Pu sphere. We want to find the critical size. Download the \href{https://github.com/TheDoctorRAB/mcnpx.decks/blob/master/criticality/jezebel-light.inp}{input file} and open it in your text editor. I'll be referring to line numbers, so turn that on. \\
+
+\noindent The next page has a copy of the input file. 
+
+\newpage
+
+\subsection{MCNP input file for a bare Pu sphere}
+
+\begin{tiny}
+\begin{verbatim}
+Jezebel bare Pu sphere
+c      -----------------------------------------------------------------
+c      R.A.Borrelli
+c      -----------------------------------------------------------------
+c      rev.22.August.2014
+c      -----------------------------------------------------------------
+c
+c      ------------------------- MODEL NOTES ---------------------------
+c
+c      The origin is 000.
+c      
+c      ----------------------- END MODEL NOTES -------------------------
+c
+c      -----------------------------------------------------------------
+c
+c      ------------------------- START CARDS ---------------------------
+c
+c      -----------
+c      cell cards
+c      -----------
+c
+c      ---
+100    1 -19.86       -10       imp:n=1       $plutonium sphere
+c      ---
+c
+c      ---
+150    0               11       imp:n=0       $void
+c      ---
+c
+c      -----------
+c      end cell cards
+c      -----------
+
+c      -----------
+c      surface cards
+c      -----------
+c
+c      ---
+c      geometry
+c      ---
+10     SPH  6.38493     $plutonium sphere
+c      ---
+c      end geometry
+c      ---
+c
+c      -----------
+c      end surface cards
+c      -----------
+
+c      -----------
+c      physics cards
+c      -----------
+c
+c      ---
+MODE   n
+c      ---
+c
+c      ---
+c      end physics cards
+c      ---
+c
+c      ---
+c      source
+c      ---
+c
+c      ---
+KCODE  1000 1.0 30 130
+KSRC   0 0 0
+c      ---
+c
+c      ---
+c      end source
+c      ---
+c
+c      ---
+c      materials
+c      ---
+c
+c      ---
+c      plutonium
+M1     94239.66c 1.0
+c      ---
+c
+c      ---
+c      end materials
+c      ---
+c
+c      ----------- END CARDS -----------
+c
+c      -----------------------------------------------------------------
+\end{verbatim}
+\end{tiny}
+
+\newpage
+
+\subsection{General MCNP input file format}
+\subsubsection{Title}
+\noindent The very first line of the file is the title. MCNP will print the title to the output file. This may be a relic of an old age because you can name the output file when you run MCNP on the command line. I suppose back when you had physical cards, this wasn't the case. 
+
+\subsubsection{Comments}
+\noindent The MCNP input file is separAated into `cards'. I will talk about the format of the MCNP in general and then each card. First of all, note that \texttt{c} designates a commented line; i.e., the code won't read it. I know everyone probably knows this, but I'm being tedious on purpose to walk you through the code. Obviously, anything not commented out is read by the code.\\
+
+\noindent Even for this simple model, you'll see my input file (also called as deck - as in deck of cards) is extensively commented. This is just good coding practice. Anyone not even remotely familiar with MCNP can see in the file what goes where. This is an older file, so I have my name and the date. I made this file before I had github. If you're using github, it's probably not necessary to include the date. I'd also put my github/twitter handle instead of my full name because it's easier
+to find me that way.\\
+
+\noindent I have model notes section to describe what the geometry is, etc. I would strongly recommend to note the origin in the geometry, especially when the geometry becomes increasingly complicated. Here, the origin is the center of the Pu sphere. MCNP doesn't actually care where the origin is because you actually define the geometry relative to the origin. Noting the origin in the comments is helpful in case you forget, or if someone else is going to use the file. \\
+
+\noindent Next, I have a \texttt{START CARDS} comment. This is just so I know where the actual MCNP starts. It helps when the model notes section is extensive because I can just search the keyword in \texttt{vim} and go right to the start. \\
+
+\noindent MCNP contains cell, surface, physics, source, materials, and print cards. These are all indicated in the file comments, except the print cards. We'll do that later when we add the reflector. 
 
 
 \end{document}
