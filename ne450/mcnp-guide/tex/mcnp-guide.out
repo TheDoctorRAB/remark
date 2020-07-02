@@ -1,0 +1,23 @@
+\BOOKMARK [1][-]{section.1}{Preface}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Who is this walkthrough for?}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{What is MCNP?}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Why is MCNP so important?}{section.1}% 4
+\BOOKMARK [1][-]{section.2}{Motivation - Do we really need another `How to use MCNP'?}{}% 5
+\BOOKMARK [2][-]{subsection.2.1}{Maybe?}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.2}{An embarrassment of riches}{section.2}% 7
+\BOOKMARK [1][-]{section.3}{Experience - And who do you think you are?}{}% 8
+\BOOKMARK [1][-]{section.4}{Style - What's wrong with you?}{}% 9
+\BOOKMARK [1][-]{section.5}{Teaching MCNP for engineers}{}% 10
+\BOOKMARK [1][-]{section.6}{Walkthrough}{}% 11
+\BOOKMARK [1][-]{section.7}{Installation}{}% 12
+\BOOKMARK [1][-]{section.8}{Operating system}{}% 13
+\BOOKMARK [1][-]{section.9}{Visualization}{}% 14
+\BOOKMARK [1][-]{section.10}{Manual}{}% 15
+\BOOKMARK [1][-]{section.11}{Text editor}{}% 16
+\BOOKMARK [1][-]{section.12}{Scientific computing best practices}{}% 17
+\BOOKMARK [2][-]{subsection.12.1}{Python}{section.12}% 18
+\BOOKMARK [2][-]{subsection.12.2}{Postprocessing}{section.12}% 19
+\BOOKMARK [2][-]{subsection.12.3}{Reproducibility}{section.12}% 20
+\BOOKMARK [1][-]{section.13}{A brief discussion on Monte Carlo theory}{}% 21
+\BOOKMARK [2][-]{subsection.13.1}{MCNP solves the transport equation}{section.13}% 22
+\BOOKMARK [2][-]{subsection.13.2}{Using Monte Carlo to compute }{section.13}% 23

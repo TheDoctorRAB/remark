@@ -161,9 +161,12 @@
 \section{Visualization}
 \noindent The linux distribution for MCNP comes with a plotter equipped to view your models. There's nothing extra to do in a standard linux environment. MCNP used to ship VisEd. I started on VisEd, so I am more used to it than the plotter. Both aren't super great. VisEd only runs in windows. You can request a VisEd download separately after you obtain your MCNP license. I would recommend it. Try both. It's kind of a pain to copy your MCNP file from linux to windows, but it's not really that bad.
 
+\section{Manual}
+\noindent The MCNP manual is very comprehensive. That's also kind of the problem. When I was learning MCNP on my own, the manual was just overwhemling. It is important to have even if for showing what each card (or command essentially) default is, or what output you want to write. Additionally, it contains several tables for the cross section libraries that you can designate. The 'standard` manual which I think everyoen refers to when they're talking about the manual is the one with the
+\textit{LA-UR-03-1987} designation. Mine was last revised in 2008. I don't know if this is shipped or not with the most current MCNP distribution, but I would recommend to find it. I'm not going to be referring to the manual. The Primer actually does a good job with that. I'm intending this walkthrough to be standalone, where the user can then access more comprehensive resources and not feel deluged with information.
+
 \section{Text editor}
-\noindent MCNP is a FORTRAN code. \textit{FORTRAN}. That's an old language. O. L. D. That means you have to be really careful in your selection of a text editor. FORTRAN will go sideways fast if there's any whitespace or `$\wedge M$' in there. It is also very column specific. This is because when they first invented the language, they were programming on punch cards. Fortunately, there are plenty of choices in linux that can be used to build your input files. I use \texttt{vim}. I started on \texttt{vi}
-at an internship in undergrad at the Naval Undersea Warfare Center because the particular group I was working in used that. I actually learned FORTRAN there. The other popular editor is \texttt{emacs}. In linux, there are many choices. Use one of these. Make sure to turn on line numbers!
+\noindent MCNP is a FORTRAN code. \textit{FORTRAN}. That's an old language. O. L. D. That means you have to be really careful in your selection of a text editor. FORTRAN will go sideways fast if there's any whitespace or `$\wedge M$' in there. It is also very column specific - where to start and end a line. This is because when they first invented the language, they were programming on punch cards. Fortunately, there are plenty of choices in linux that can be used to build your input files. I use \texttt{vim}. I started on \texttt{vi} at an internship in undergrad at the Naval Undersea Warfare Center because the particular group I was working in used that. I actually learned FORTRAN there. The other popular editor is \texttt{emacs}. In linux, there are many choices. Use one of these. Make sure to turn on line numbers!
 
 \section{Scientific computing best practices}
 \subsection{Python}
@@ -180,6 +183,96 @@ postprocessing with the accessibility to python. You can install python in your 
 
 \chead{\scriptsize \textit{MCNP walkthrough - Theory}}
 
-\section{Monte Carlo theory}
+\section{A brief discussion on Monte Carlo theory}
+\noindent The theory behind MCNP is fairly complicated. It would take a semester course to really get into it in depth. I don't really teach much of it at all, just enough so a user knows how MCNP works. Dr. Brown's 400+ slides contain an exhaustive amount of information on Monte Carlo theory, and I have used them for my own lectures in the Lamarsh course. I'm not trying to be glib - it's important to know the theory. However, this is a walkthrough for engineers on how to use MCNP. The theory can be discovered elsewhere.\\
+
+\noindent In short - Monte Carlo in general is a mathematical approach that simulates particle transport using lots of random number generators and statistical distributions. I'm sure the savvy graduate student will quickly understand that the science of random numbers is of critical importance. True randomness can't ever be achieved, but you need your simulation to be as high fidelity as possible. Dr. Brown's slides contain a very in-depth discussion about random number generation in
+MCNP. It's very good. Both the slides and the generation of randomness. I'm not a benchmark expert, but I think this is one of the reasons everything is benchmarked with MCNP. 
+
+\subsection{MCNP solves the transport equation}
+\noindent Monte Carlo methods solve integral problems, and it is very applicable to multi-dimensional integration. This is great for us because we're concerned with where the neutrons are born, where they're going, and what happens when they get there. Lots and lots and lots of times over. \\
+
+\noindent For completeness, the Boltzmann transport equation is - 
+\begin{equation} \label{eq-transport}
+    \Psi(\underline{r},\underline{v})=\int[\int\Psi(\underline{r}',\underline{v}')C(\underline{v}'\rightarrow\underline{v})d\underline{v}'+Q(\underline{r}',\underline{v})]T(\underline{r}'\rightarrow\underline{r})d\underline{r}'
+\end{equation}
+
+\noindent Where - \\
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+    \item[]$\Psi(\underline{r},\underline{v})$ - particle collision density
+    \item[]$Q(\underline{r}',\underline{v})$ - source density; fixed, fission, eigenvalue
+    \item[]$C(\underline{v}'\rightarrow\underline{v})$ - collision density; velocity change at fixed position
+    \item[]$T(\underline{r}'\rightarrow\underline{r})$ - transport density; position change at a fixed velocity
+\end{enumerate}
+\vspace*{\baselineskip}
+
+\noindent Monte Carlo methods will then employ a Markov scheme applying superposition to solve the integral equation. The trick is that the use of Markov makes the solution `memoryless'; the current state of the particle is only dependent on the prior state. Then, \textit{histories} are simulated for a particle, or a sequence of states. Each occurence in the sequence is then \textit{tallied}. These terms are frequently used in MCNP so I wanted to define them here. \\
+
+\noindent MCNP then simulates a single particle history from birth to death by tallying the random walk for the particle. Collisions are modeled by physics equations and cross sections. The free flight of the particle is modeled using the computational geometry of the model. \\
+
+\noindent There are a few assumptions that are inherent in Monte Carlo solutions. 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+    \item The medium is static and homogeneous. Although use of homogeneous here just means it doesn't change. 
+    \item The solution is time independent. 
+    \item Markov principles are appled. 
+    \item Relativistic effects are neglected.
+    \item Particle `fly' in straight lines. 
+\end{enumerate}
+\vspace*{\baselineskip}
+
+\noindent Right off the bat, you can see that for reactor concepts like a molten salt reactor, MCNP isn't the best choice, althought it will produce reasonably meaningful results. However, MCNP can solves a wide variety of problems. Even if using newer Monte Carlo computational tools, I would still recommend learning MCNP first. Everything is built off the modeling concepts. 
+
+\subsection{Using Monte Carlo to compute $\pi$}
+\noindent Computation of $\pi$ by Monte Carlo methods is a classic and fun example to illustrate the theory.\\
+
+\noindent We know $\pi$ has a special relationship with a circle. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.25\textwidth]{circle.png}
+    \caption{A unit circle.}
+    \label{fig-circle}
+\end{figure}
+
+\noindent The equation of the circle is - 
+\begin{equation} \label{eq-circle}
+    x^2 + y^2 = 1
+\end{equation}
+
+\noindent And the area of this circle is - 
+\begin{equation} \label{eq-area}
+    A = \pi r^2 = \pi (1^2) = \pi
+\end{equation}
+
+\noindent The procedure is then - 
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+    \item Sample a random number for $x \in (0,1)$.
+    \item Sample a random number for $y \in (0,1)$.
+    \item Input $x,y$ into Equation \ref{eq-circle}.
+    \item Compute Equation \ref{eq-circle}.
+    \item If the result is greater than 1, then discard.
+    \item If the result is less than 1, then record. (I call it a `hit'.)
+    \item Repeat for N times. 
+    \item Tally the total number of hits. 
+    \item Divide the total hits by N.
+\end{enumerate}
+\vspace*{\baselineskip}
+
+\noindent Looking a Figure \ref{fig-circle}, you'll see we're recording the hits to the first quadrant of the circle. Essentially, we've evaluated the integral - 
+\begin{equation}
+    G = \int_0^1 \sqrt{1-x^2} dx = \frac{1}{2}(x\sqrt{1-x^2} - sin^{-1}x)|_{0,1} = \frac{\pi}{4}
+\end{equation}
+
+\noindent To get $\pi$, multiply the result by 4.\\
+
+\noindent Each `particle' that is generated $(x,y)$ pair is indepentent on the prior particle. Here, the `interaction' is only whether the particle falls within the boundary. With a neutron, this could be a scattering or absorption event, which would be determined by cross sections and probability density functions. The concept is essentially the same on a fundamental level. 
+
+\noindent It should be clear that the choice of N is important. Increasing N will result in solution convergence. I have a \href{https://github.com/TheDoctorRAB/education/blob/master/src/monte.carlo.simple.py}{python routine} where you can experiment with the selection of N and observe the convergence. In fact, that's typically the first option in MCNP when the statistics aren't working out - increase the number of particles to generate more histories. \\
+
+\noindent That's the extent of theory that is really necessary to run MCNP. Of course, as higher level problems pop up, you'll need to learn more, but this discussion should give you enough of a base that you'll be able to understand the theory in more depth if needed. And that's really engineering in a nutshell - learn what you need to solve the problem and whatever else comes after. 
+
+\newpage
+
+
 
 \end{document}
