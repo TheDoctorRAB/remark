@@ -62,7 +62,8 @@
         \textbf{MCNP for Engineers}\\
         A walkthrough on how to use it, get results,\\
         and\\
-        What it all means to a fulfilling life
+        What it all means to a fulfilling life\\
+        Part I - Super simple I promise!
     }
     \author{
         Prof. R. A. Borrelli
@@ -273,9 +274,9 @@ MCNP. It's very good. Both the slides and the generation of randomness. I'm not 
 
 \newpage
 
-\chead{\scriptsize \textit{MCNP walkthrough - Getting to know the basics with Jezebel}}
+\chead{\scriptsize \textit{MCNP walkthrough - Getting to know Jezebel}}
 
-\section{Jezebel}
+\section{Getting to know the MCNP input file}
 \noindent Jezebel is the most basic MCNP problem. Everyone knows it. It is a bare Pu sphere with a Ni reflector. We'll start with a model of just a bare Pu sphere. We want to find the critical size. Download the \href{https://github.com/TheDoctorRAB/mcnpx.decks/blob/master/criticality/jezebel-light.inp}{input file} and open it in your text editor. I'll be referring to line numbers, so turn that on. \\
 
 \noindent The next page has a copy of the input file. 
@@ -295,7 +296,7 @@ c      -----------------------------------------------------------------
 c
 c      ------------------------- MODEL NOTES ---------------------------
 c
-c      The origin is 000.
+c      The origin is the center of the sphere.
 c      
 c      ----------------------- END MODEL NOTES -------------------------
 c
@@ -382,8 +383,8 @@ c      -----------------------------------------------------------------
 \newpage
 
 \subsection{General MCNP input file format}
-\subsubsection{Title}
-\noindent The very first line of the file is the title. MCNP will print the title to the output file. This may be a relic of an old age because you can name the output file when you run MCNP on the command line. I suppose back when you had physical cards, this wasn't the case. 
+\subsubsection{Title card}
+\noindent The very first line of the file is the title card. MCNP will print the title to the output file. This may be a relic of an old age because you can name the output file when you run MCNP on the command line. I suppose back when you had physical cards, this wasn't the case. 
 
 \subsubsection{Comments}
 \noindent The MCNP input file is separAated into `cards'. I will talk about the format of the MCNP in general and then each card. First of all, note that \texttt{c} designates a commented line; i.e., the code won't read it. I know everyone probably knows this, but I'm being tedious on purpose to walk you through the code. Obviously, anything not commented out is read by the code.\\
@@ -395,7 +396,95 @@ to find me that way.\\
 
 \noindent Next, I have a \texttt{START CARDS} comment. This is just so I know where the actual MCNP starts. It helps when the model notes section is extensive because I can just search the keyword in \texttt{vim} and go right to the start. \\
 
+\noindent The dollar sign `\$' is used as an inline comment. Don't use it in column 1. On line 23, there is a comment indicating that this line describes the plutonium sphere. 
+
 \noindent MCNP contains cell, surface, physics, source, materials, and print cards. These are all indicated in the file comments, except the print cards. We'll do that later when we add the reflector. 
 
+\subsubsection{Blank lines}
+\noindent There are only TWO blank lines in the file. Line 34 and line 50. That's it. You will get the dreaded FATAL ERROR if there are more or if they are in the wrong position. One is at the end of the cell cards, and the other at the end of the surface cards. At lines 51,52 where I indicated the physics cards, to the end of the file is collectively called the data cards. I divided it up so I can just search by keyword. \\
+
+\subsubsection{FORTRAN format}
+\noindent Excluding the comments, there are some `commands' that start in column 1. Each of these can be considered a card, specific to the section it is in. On line 82, a material card is designated \texttt{M1}. It is for the plutonium. I include a comment that labels the material. What would \texttt{100} mean? You can see it is in the cell card section, so it is a card designating cell 100. \\
+
+\noindent I use capitals for the card designations. It's not necessary. When the file gets really large though, it's just easier to read. \\
+
+\noindent After each card, there is more information that defines the card. Note that the card information always starts in column 8. This is because of FORTRAN. Similarly, FORTRAN is limited to 80 columns per line. 
+
+\subsection{Detailed card descriptions}
+\subsubsection{Cell cards}
+\noindent Cell cards come first in the file. But what exactly is cell? A cell is an object you want to model or part of the geometry environment. A room could be a cell, but you might want to model the dose rate of material in the room. A cell can be a collection of cells. A fuel rod is a cell. However, the rod is composed of pins, which are also cells. \\
+
+\noindent Cells are defined by an assemblage of surfaces that you define in the surface card section.\\
+
+\noindent For my first cell card, I designate the cell that can't be further decomposed into other cells. There's no required way to list the cell cards, but I recommend to pick a style and stick with it. \\
+
+\noindent I label cells starting with \texttt{100}. This is just a style convention. Cell, surface, and material cards can have the same label, but you can see that this could be confusing for complicated geometries. \\
+
+\noindent In this example, the first cell is the plutonium sphere. After the cell designation (\texttt{100}), the next piece of information is a \texttt{1}. This refers to material 1, which is plutonium. Next, there is a \texttt{-19.86}. This is the material density. Use of the negative sign indicates that the density is given in grams per cubic centimeter. Use of a positive number would indicate units of atom density. A $+$ sign is not used. I like to stick to mass density because it's easy to look up
+quickly. \href{https://www.pnnl.gov/main/publications/external/technical_reports/PNNL-15870Rev1.pdf}{PNNL} has compiled a document of over 350 materials with densities and atom fractions for over 350 materials. \\
+
+\noindent The next piece of information is a \texttt{-10}. This is the surface card that comprises the cell. Here, we only have one surface, which is the sphere. For a room, there would be six surfaces. The negative sign indicates the `sense' of the surface, and this will be discussed separately. \\
+
+\noindent Finally, there is \texttt{imp:n=1}. This denotes the cell importance for neutrons. Just about all MCNP problems will have a cell importance of 1. This just means that a neutron entering or born in the cell will be treated as one neutron when MCNP `tracks' it. Each cell must have an importance. \\
+
+\noindent I've changed the cell importance a grand total of one time in my decades of using MCNP. Leave it as 1. \\
+
+\noindent A second cell is also listed (\texttt{150}). What is different about it when compared to cell \texttt{100}? Because I commented the file well, it is clear that this is void cell. In MCNP, the last cell always has to be a void. It is literally the nothingness that exists outside the model universe. Who knew MCNP was so zen? The material will always be \texttt{0}, and the neutron importance is zero \texttt{imp:n=0}. A neutron entering the void just disappears and is not
+tracked. \\
+
+\noindent How does MCNP know exactly what is the void? This comes back to sense. The void is essentially the complemenatary sense of all the outer cell boundaries to it. This is fairly easy here because the void is just the positive sense to surface 10, which is just the Pu sphere. This will become clearer when we discuss sense. \\
+
+\noindent As a final note, the spacing of each piece if information is not relevant. I like to have everything line up. For teaching, it's just easier for the class to see the information on the card when it's displayed up on the sceen. The order is important. And the material designation must start in column 8.
+
+\noindent\textbf{Review.}\\
+\noindent\texttt{100    1 -19.86       -10       imp:n=1       \$plutonium sphere}\\
+
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+    \item cell label - \texttt{100}
+    \item material definition - \texttt{1}
+    \item mass density - \texttt{-19.86}
+    \item surface definitions and sense - \texttt{-10}
+    \item importance - \texttt{imp:n=1}
+    \item comment
+\end{enumerate}
+\vspace*{\baselineskip}
+
+\noindent It doesn't matter how complicated the geometry gets. The cell cards all have the same format!
+
+\subsubsection{Surface cards}
+\noindent After the cell cards is a \textbf{BLANK LINE}. \\
+
+\noindent Then, the surface cards are defined.\\
+
+\noindent For this problem, the only surface is the Pu sphere. On line 42, similar with the cell cards, it starts with the surface label, \texttt{10}. Again, there isn't any numbering convention. I like to use double digit numbers for the label. I also commented that this surface defined the fission source. \\
+
+\noindent Next, \texttt{SPH} defines the surface, a sphere. Of course, there are numerous surface definitions. These are in the manual. I'm not going to dump them all out here. \\
+
+\noindent When defining any surface, numerical dimensions are required. For \texttt{SPH} only requires a radius - \texttt{6.38493}. That's it! Capitals aren't needed. It is just my style convention. 
+
+\noindent Looking at cell \texttt{100}, you can now see that the cell is comprised of surface \texttt{10} with negative sense. In this case, the cell is the single surface with the defined sense and importance.
+
+\noindent\textbf{Review.}\\
+\noindent\texttt{10     SPH  6.38493     \$plutonium sphere}\\
+
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+    \item surface label - \texttt{10}
+    \item surface definition - \texttt{SPH}
+    \item surface dimensions - \texttt{6.38493}
+    \item comment
+\end{enumerate}
+
+\subsubsection{Physics cards}
+\noindent MCNP allows the user to define all sorts of physics models. I rarely have used any for the problems I've worked on. In this file, I have included \texttt{MODE   n} to designate neutron transport. This is the default so it is not really needed. I include it for completeness. You can add \texttt{MODE   n p e} for photons and electrons, respecively. So, I have the card in place already in case I need to include photons or electrons. Since we are only interested in determining
+the critical mass for the bare Pu sphere, the neutrons are all we care about. It doesn't hurt to be overly deliberate
+though.
+
+\subsubsection{Source cards}
+\noindent MCNP requires a source to be defined. For computations involving $k_{EFF}$, the \texttt{KCODE} and \texttt{KSRC}. The \texttt{SDEF} card can be used in place of the \texttt{KSRC} card for more complicated problems. It actually offers an enormous amount of flexiblity. That is a topic for a higher level walkthrough. \\
+
+\noindent The \texttt{KSRC} card contains x y z coordinates designating a fission source point. Essentially, where each neutron is first `born'. It stands to reason then that you want to make sure you designate the source point within the cell containing the fissile material. This is another reason why it's important to note where the origin is. Here, a source point is designated at the orgin - \texttt{0 0 0}. From experience, I know this is sufficient. However, I could have as many as
+I want. If we had two spheres, source points should be designated in each. \\
+
+\noindent The \texttt{KCODE} card tells MCNP to compute $k_{EFF}$ and how to do it. 
 
 \end{document}

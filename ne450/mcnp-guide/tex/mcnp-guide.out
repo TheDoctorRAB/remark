@@ -21,8 +21,15 @@
 \BOOKMARK [1][-]{section.13}{A brief discussion on Monte Carlo theory}{}% 21
 \BOOKMARK [2][-]{subsection.13.1}{MCNP solves the transport equation}{section.13}% 22
 \BOOKMARK [2][-]{subsection.13.2}{Using Monte Carlo to compute }{section.13}% 23
-\BOOKMARK [1][-]{section.14}{Jezebel}{}% 24
+\BOOKMARK [1][-]{section.14}{Getting to know the MCNP input file}{}% 24
 \BOOKMARK [2][-]{subsection.14.1}{MCNP input file for a bare Pu sphere}{section.14}% 25
 \BOOKMARK [2][-]{subsection.14.2}{General MCNP input file format}{section.14}% 26
-\BOOKMARK [3][-]{subsubsection.14.2.1}{Title}{subsection.14.2}% 27
+\BOOKMARK [3][-]{subsubsection.14.2.1}{Title card}{subsection.14.2}% 27
 \BOOKMARK [3][-]{subsubsection.14.2.2}{Comments}{subsection.14.2}% 28
+\BOOKMARK [3][-]{subsubsection.14.2.3}{Blank lines}{subsection.14.2}% 29
+\BOOKMARK [3][-]{subsubsection.14.2.4}{FORTRAN format}{subsection.14.2}% 30
+\BOOKMARK [2][-]{subsection.14.3}{Detailed card descriptions}{section.14}% 31
+\BOOKMARK [3][-]{subsubsection.14.3.1}{Cell cards}{subsection.14.3}% 32
+\BOOKMARK [3][-]{subsubsection.14.3.2}{Surface cards}{subsection.14.3}% 33
+\BOOKMARK [3][-]{subsubsection.14.3.3}{Physics cards}{subsection.14.3}% 34
+\BOOKMARK [3][-]{subsubsection.14.3.4}{Source cards}{subsection.14.3}% 35
