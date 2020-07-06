@@ -1,0 +1,159 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+\usepackage[pagewise]{lineno} %line numbering
+\usepackage{setspace}
+\usepackage{ulem} %strikethrough - do not \sout{\cite{}}
+\usepackage{xcolor} %change font color
+\usepackage{graphicx}
+\usepackage{filecontents}
+\usepackage{tablefootnote}
+\usepackage{footnotehyper}
+\usepackage{subfig}
+\usepackage[yyyymmdd]{datetime} %date format
+\renewcommand{\dateseparator}{.}
+\graphicspath{{../img/}} %path to graphics
+\setcounter{secnumdepth}{5} %set subsection to nth level
+\usepackage{caption}
+\captionsetup[table]{skip=11pt} %sets a space after table caption
+\usepackage{times}
+\usepackage{tabto} %general tabbed spacing
+\usepackage{longtable} %need to put label at top under caption then \\ - use spacing
+\usepackage[stable,hang,flushmargin]{footmisc} %footnotes in section titles and no indent
+\usepackage[round]{natbib} %parenthesis instead of brackets for inline citations
+\usepackage{enumitem}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{array}
+\usepackage{caption}
+\usepackage[labelfont=bf]{caption}
+\usepackage{chngcntr}
+\usepackage{hyperref}
+
+\newcommand{\edit}[1]{\textcolor{blue}{#1}} %shortcut for changing font color on revised text
+\newcommand{\fn}[1]{\footnote{#1}} %shortcut for footnote tag
+\newcommand*\sq{\mathbin{\vcenter{\hbox{\rule{.3ex}{.3ex}}}}} %makes a small square as a separator $\sq$
+\renewcommand\labelenumi{(\theenumi)} %changes 1. to (1) in enumerated list
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} %move page number to bottom right
+\renewcommand{\headrulewidth}{0.5pt} %turn off line in header
+\lhead{\scriptsize \href{../ne450.html}{NE450 - Principles of nuclear engineering}}
+\chead{\scriptsize \today}
+\rhead{\scriptsize \href{1-nuclear-engineering-basics.html}{Project 1 - Nuclear engineering basics}}
+\rfoot{\thepage}
+
+\begin{filecontents}{references.bib}
+    @misc{
+        ,
+        author = {{}},
+        title = {{}},
+        year = {}
+    }
+    @article{
+        ,
+        author = {{}},
+        journal = {},
+        pages = {},
+        title = {{}},
+        volume = {},
+        year = {}
+    }
+    @techreport{
+        ,
+        author = {{}},
+        title = {{}},
+        year = {},
+        institution = {},
+        number = {}
+    }
+\end{filecontents}
+
+\begin{document}
+
+\begin{titlepage}
+    \title{
+        NE450 - Principles of nuclear engineering\\
+        Project 1 - Nuclear engineering basics\\
+    }
+    \author{
+        Name
+        \\ \\ \\
+        University of Idaho $\sq$ Idaho Falls Center for Higher Education
+        \\ \\
+        Engineering/Technology Management, Industrial Technology\\and\\Nuclear Engineering Department
+        \\ \\ \\
+        email 
+    }
+\clearpage %not have page number on title page
+\maketitle
+\vspace*{\fill}
+\begin{flushright}{
+        Total - 100
+}
+\end{flushright}
+\thispagestyle{empty} %start with page number 1 on second page
+\end{titlepage}
+
+\begin{enumerate}[leftmargin=*,topsep=0pt,font=\bfseries]
+    \item\textbf{(20) The Poisson distribution describes radioactive decay. It is a specific form of the binomial distribution. Derive the Poisson distribution from the binomial distribution. Derive the first and second (central) moments of the Poisson distribution. Briefly comment on their significance. Check out the \href{https://courses.lumenlearning.com/uidaho-riskassessment/chapter/common-statistical-distributions/}{Risk assessment OER} for more information.}
+        \newpage
+    \item\textbf{(20) Find the binding energy per nucleon for $^{235}U$ and $^{252}Cf$. Which radionuclide do you think is more likely to spontaneously fission and why?}
+        \newpage
+    \item\textbf{(20) Derive the \href{https://courses.lumenlearning.com/uidaho-nuclear/chapter/radioactive-decay/}{decay equation} for a three member chain (A, B, C), where the third member is a stable nuclide. At what time is the activity of B maximized? Based on the three member decay chain, when will secular equilibrium be reached if $\lambda_A \ll \lambda_B$ or if $\lambda_B \ll \lambda_A$ Discuss why secular equilibrium is useful.}
+        \newpage
+    \item\textbf{(20) Derive the decay equation for an N member chain, where the Nth member is a stable nuclide. Do it out for at least a fourth member. Plot [\textit{log-log}] the $^{238}U$ decay chain for $0<t<10^8\;y$. Does $^{222}Rn$ reach secular equilibrium with $^{238}U$? Note any interesting observations and subsequent implications.}
+        \newpage
+    \item\textbf{(20) You are given an unknown radioactive sample. (See Table \ref{tab-half-life}.) You record `average counts;' i.e., disintegrations per second, every 30 seconds, for 10 minutes. Using these data, what radionuclide is this? Plot [\textit{semi-log}] the data with error bars; i.e., $\overline{c} \pm 1 \; \sigma$.}
+\end{enumerate}
+
+\newpage
+
+\begin{table}[h!]
+    \centering
+    \caption{Average counts for unknown radioactive sample.}
+        \begin{tabular}{|c|c|}
+            \hline
+            Time(s)&
+            Counts per second\\
+            \hline
+            0&1000\\
+            30&856.7\\
+            60&734.0\\
+            90&628.8\\
+            120&538.8\\
+            150&461.6\\
+            180&395.4\\
+            210&338.8\\
+            240&290.3\\
+            270&248.7\\
+            300&213.0\\
+            330&182.5\\
+            360&156.4\\
+            390&134.0\\
+            420&114.8\\
+            450&98.3\\
+            480&84.2\\
+            510&72.2\\
+            540&61.8\\
+            570&53.0\\
+            600&45.4\\
+            \hline
+        \end{tabular}
+    \label{tab-half-life}
+\end{table}
+
+\newpage
+
+\bibliographystyle{ieeetr}
+\setlength{\bibhang}{0pt}
+\bibliography{references}
+
+\end{document}
