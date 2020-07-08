@@ -19,6 +19,14 @@
                          h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
        }
       .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+      .column:first-of-type {float:left}
+      .column:last-of-type {float:right}
+
+      .split-60 .column:first-of-type {width: 60%}
+      .split-60 .column:last-of-type {width: 40%}
+
+      .split-50 .column:first-of-type {width: 50%}
+      .split-50 .column:last-of-type {width: 50%}
     </style>
   </head>
   <body>
@@ -46,10 +54,47 @@ Derive neutron scattering relationships
 
 Book - Chapter 3
 ---
+class: split-60
+
+# Learning nodes
+
+.column[
+1\. Gamma ray interactions   
+    1.1 Photoelectric effect  
+    1.2 Pair production  
+    1.3 Compton effect  
+
+2\. Fission  
+
+3\. Neutron interactions  
+    3.1 Elastic scattering  
+    3.2 Lethargy - an application of elastic scattering  
+    3.3 Inelastic scattering  
+    3.4 Radiative capture  
+    3.5 Charged particle emission  
+    3.6 Bremsstrahlung radiation  
+]
+
+.column[
+.right[
+4\. Cross sections
+
+5\. Neutron density
+
+6\. Neutron fluence
+
+7\. Neutron flux
+]
+]
+---
 class: center,middle
 
 ### Gamma rays interact with matter in very complicated ways
 #### Fortunately for us we only need to know three
+---
+class: center,middle
+
+# Photoelectric effect
 ---
 ## The photoelectric effect occurs when a high energy photon knocks out an electron
 
@@ -70,6 +115,10 @@ Why?
 class: center,middle
 ![pe](img/pe.jpg)
 ---
+class: center,middle
+
+# Pair production
+---
 ## For pair production, a high energy photon creates a negatron and positron
 
 Only occurs with photon above 1.022 MeV  
@@ -85,6 +134,10 @@ Only in vicinity of Coulomb field
 class: center,middle
 ![pp](img/pp.jpg)
 ---
+class: center,middle
+
+# Compton effect
+---
 ## The Compton effect is elastic scattering of a photon by an electron
 
 Energy and momentum are conserved
@@ -93,18 +146,18 @@ All angles of scattering possible
 
 ![scatter equation](img/scattering.eq.jpg)
 
-hould be able to derive maximum energy
+Should be able to derive maximum energy from this equation
 
 CE causes problems with shielding - Why?
 
-Talk about NE class experiment
+Talk about NE class experiment at WPI
 ---
 class:center, middle
 ![scatter diagram](img/scattering.jpg)
 ---
 class: center,middle
 
-## What is fission?
+## Fission
 ---
 ## What is the energy of fission from thorium and uranium fuel cycles?
 
@@ -112,7 +165,7 @@ class: center,middle
 
 ![U233 fission](img/fission_u233.jpg)
 
-### $Q = 173.3 MeV, 185.4 MeV$
+### $Q = 173.3 \; MeV, \; 185.4 \; MeV$
 
 For comparison, burning a carbon atom releases 4 eV
 
@@ -153,12 +206,14 @@ class: center,middle
 4. Charged-particle reactions
 
 5. Neutron producing reactions
-
-Fission (later)
 ---
 class:center, middle
 
 ![neutron interaction equations](img/neutron.eqs.jpg)
+---
+class: center,middle
+
+# Elastic scattering
 ---
 ## With elastic scattering, the neutron strikes the nucleus, and they scatter (n,n)
 
@@ -191,6 +246,10 @@ So basically the nucleus is ‘at rest’
 ### $\alpha \equiv (\frac{A-1}{A+1})^2$
 
 (p58-9) - but in any edition
+---
+class: center,middle
+
+# Lethargy
 ---
 ## The concept of lethargy was invented for neutron moderation
 
@@ -232,6 +291,10 @@ This means from fast moving to slow
 
 Why? This is a very fundamental reactor design constraint
 ---
+class: center,middle
+
+# Inelastic scattering
+---
 ### With inelastic scattering, it is the same as elastic, but the nucleus is left in excited state (n,n’)
 
 <img align="left" src="img/inelastic.scattering.jpg">
@@ -245,6 +308,10 @@ Energy is lower for heavier nuclei
 
 Kinetic energy and momentum **not** conserved  
 Compound nucleus emits lower energy neutron  
+---
+class: center,middle
+
+# Radiative capture
 ---
 ### With radiative capture, the neutron is captured by the nucleus and gamma rays are emitted (n,gamma)
 
@@ -264,6 +331,10 @@ class: center,middle
 
 ![capture](img/capture.jpg)
 ---
+class: center,middle
+
+# Charged particle emission
+---
 ## The nucleus can also absorb a neutron and emit a charged particle (n,alpha), (n,p), etc.
 
 This can be used to design neutron detectors
@@ -279,6 +350,10 @@ Charged particle production could be adverse
 Neutron depth profiling; surface of semiconductors, etc.
 
 ![charged particle](img/charged.particle.jpg)
+---
+class: center,middle
+
+# Bremsstrahlung radiation
 ---
 ## A consequence of charged particle reactions is the Bremsstrahlung radiation
 
@@ -310,7 +385,7 @@ People dedicate careers to establishing precise cross sections (and good for the
 
 Cross sections are given as a hypothetical area  around the target nucleus (big area, high probability)
 
-### $1 b = 10^{24} cm^2$
+### $1 \; b = 10^{-24} cm^2$
 
 Dependent on speed/energy/temperature
 ---
@@ -320,10 +395,60 @@ Dependent on speed/energy/temperature
 
 Since there is a lot of space in between nuclei, some neutrons just fly by
 
-Radius of a nucleus $~10^{-12} cm^2$, so cross section is $~10^{-24} cm^2$  
+Radius of a nucleus $\sim 10^{-12} \; cm^2$, so cross section is $\sim 10^{-24} cm^2$  
 Which is where they derived barns 
 
 Probability of interaction is the ratio of the total surface area of the atoms to the total area of the medium
+---
+class: center,middle
+
+## So how does cross section vary with temperature?
+
+### What is physically happening?
+---
+## Fission cross sections have this general trend
+
+<img align="left" src="img/u235.fission.cross.section.jpg">
+
+If fission neutrons start at 2 MeV, where would you want them for a reactor?
+---
+class: center,middle
+
+# Neutron density
+---
+## Neutron density in the thermal region follows Maxwellian distribution
+
+As fast neutrons slow down, they eventually come into thermal equilibrium with the thermal motion of the atoms in the medium through which they are moving
+
+Also called the 1/v region
+
+Resonances occur if the compound nucleus is produced in one of its characteristic excited states
+
+And the fast end is a smooth region
+---
+class: center,middle
+
+## $n(E) = n_0 \frac{2\pi\sqrt{E}}{(\pi kT)^{\frac{3}{2}}} \cdot e^{-\frac{E}{kT}}$
+
+## $n(v) = n_0 \frac{4\pi v^2}{(\frac{2\pi kT}{m})^{\frac{3}{2}}} \cdot e^{-\frac{mv^2}{2kT}}$
+---
+## How does this affect reactor operation?
+
+![capture cross section](img/capture.cross.section.jpg)
+---
+![pu239 cross section](img/pu239.cross.section.jpg)
+---
+## How do you choose materials?
+
+<a href="https://sites.wrk.ru/sites/org/wi/wikimedia/upload/wikipedia/commons/thumb/e/ee/Common_light_element_moderators,_reflectors_and_absorbers.svg/760px-Common_light_element_moderators,_reflectors_and_absorbers.svg.png" style="float: left"> <img src="img/moderators.jpg"></a>
+
+solid = scatter
+
+dotted = absorption
+---
+class: center,middle
+
+# Neutron fluence
 ---
 ## How many neutrons/s that strike a target actually interact with target nuclei?
 
@@ -359,49 +484,7 @@ Then the interaction rate is
 ---
 class: center,middle
 
-## So how does cross section vary with temperature?
-
-### What is physically happening?
----
-## Fission cross sections have this general trend
-
-<img align="left" src="img/u235.fission.cross.section.jpg">
-
-If fission neutrons start at 2 MeV, where would you want them for a reactor?
----
-## Neutron density in the thermal region follows Maxwellian distribution
-
-As fast neutrons slow down, they eventually come into thermal equilibrium with the thermal motion of the atoms in the medium through which they are moving
-
-Also called the 1/v region
-
-Resonances occur if the compound nucleus is produced in one of its characteristic excited states
-
-And the fast end is a smooth region
----
-class: center,middle
-
-## $n(E) = n_0 \frac{2\pi\sqrt{E}}{(\pi kT)^{\frac{3}{2}}} \cdot e^{-\frac{E}{kT}}$
-
-## $n(v) = n_0 \frac{4\pi v^2}{(\frac{2\pi kT}{m})^{\frac{3}{2}}} \cdot e^{-\frac{mv^2}{2kT}}$
----
-## How does this affect reactor operation?
-
-![capture cross section](img/capture.cross.section.jpg)
----
-![pu239 cross section](img/pu239.cross.section.jpg)
----
-## How do you choose materials?
-
-<a href="https://sites.wrk.ru/sites/org/wi/wikimedia/upload/wikipedia/commons/thumb/e/ee/Common_light_element_moderators,_reflectors_and_absorbers.svg/760px-Common_light_element_moderators,_reflectors_and_absorbers.svg.png" style="float: left"> <img src="img/moderators.jpg"></a>
-
-solid = scatter
-
-dotted = absorption
----
-class: center,middle
-
-## Are we good on cross sections?
+# Neutron flux
 ---
 <img align="left" src="img/shielding.jpg">
 
