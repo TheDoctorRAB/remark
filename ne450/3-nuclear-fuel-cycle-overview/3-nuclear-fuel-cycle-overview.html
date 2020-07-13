@@ -19,6 +19,14 @@
                          h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
        }
       .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+      .column:first-of-type {float:left}
+      .column:last-of-type {float:right}
+
+      .split-60 .column:first-of-type {width: 60%}
+      .split-60 .column:last-of-type {width: 40%}
+
+      .split-50 .column:first-of-type {width: 50%}
+      .split-50 .column:last-of-type {width: 50%}
     </style>
   </head>
   <body>
@@ -52,6 +60,28 @@ Check out [Pandora's promise](http://pandoraspromise.com/) if it's still on Netf
 
 There's a lot of pictures here
 ---
+class: split-60
+
+# Learning nodes
+
+.column[
+1\. Overview of the nuclear fuel cycle  
+2\. Locations of current domestic fleet  
+3\. Plant closures  
+4\. Nuclear power around the world  
+
+5\. Components of the nuclear fuel cycle  
+5.1\. Mining  
+5.2\. Milling  
+5.3\. Conversion  
+5.4\. Enrichment   
+5.5\. Separative work unit   
+]
+---
+class: center,middle
+
+# Overview  of the nuclear fuel cycle
+---
 class: center,middle
 
 ![Nuclear fuel cycle 1](img/nuclear.fuel.cycle1.jpg)
@@ -60,9 +90,49 @@ class: center,middle
 
 ![Nuclear fuel cycle 2](img/nuclear.fuel.cycle2.jpg)
 ---
+## Look at the fuel cycle as systems engineering
+
+Mining
+
+Making the fuel (saw Areva plant in Richland)
+
+What a reactor does and the different kinds
+
+Recycling (what kinds and how)
+
+Back-end management (storage and disposal)
+
+The fuel cycle has a lot of technical but institutional issues too
+
+How are they functionally dependent? 
+---
+## The fuel used in the commercial reactors is $UO_2$ or $ (Pu+U)O_2$
+
+<img src=img/cycle.components.jpg align="left">
+
+**Front end:** making the fuel and putting it in the reactor
+
+**Back end:** what happens when you take it out of the reactor
+---
+class: center,middle
+
+# Locations of current domestic fleet
+---
 class: center,middle
 
 ![Reactor sites](img/nuclear.reactor.sites.jpg)
+---
+class: center,middle
+
+# [NRC list of power reactor units](https://www.nrc.gov/reactors/operating/list-power-reactor-units.html)
+---
+class: center,middle
+
+[![Plant life cycle](img/plant.life.cycle.jpg)](https://media.mnn.com/assets/images/2011/03/power-reactors-map-sm.jpg)
+---
+class: center,middle
+
+# Plant closures
 ---
 class: center,middle
 
@@ -71,10 +141,6 @@ class: center,middle
 class: center,middle
 
 ### Check out [plant closure videos](https://courses.lumenlearning.com/uidaho-nuclear/chapter/nuclear-fuel-cycle-system/) on the OER
----
-class: center,middle
-
-[![Plant life cycle](img/plant.life.cycle.jpg)](https://media.mnn.com/assets/images/2011/03/power-reactors-map-sm.jpg)
 ---
 class: center,middle
 
@@ -106,39 +172,29 @@ class: center,middle
 
 ![Asia 2](img/asia2.jpg)
 ---
-## Look at the fuel cycle from systems engineering pov
+class: center,middle
 
-Mining
-
-Making the fuel (saw Areva plant in Richland)
-
-What a reactor does and the different kinds
-
-Recycling (what kinds and how)
-
-Back-end management (storage and disposal)
-
-The fuel cycle has a lot of technical but institutional issues too
-
-How are they functionally dependent? 
+# Components of the nuclear fuel cycle
 ---
-## The fuel used in the commercial reactors is $UO_2$ or $ (Pu+U)O_2$
+class: center,middle
 
-<img src=img/cycle.components.jpg align="left">
-
-**Front end:** making the fuel and putting it in the reactor
-
-**Back end:** what happens when you take it out of the reactor
+# Mining
 ---
 ## We have to find uranium first - [$U_3O_8$](https://www.uxc.com/p/prices/UxCPrices.aspx)
 
 <img src=img/uranium.world.jpg align="left">
 
+Extract the ore from the ground
+
 What do you do if you don't have it? 
 
 Check out Australia
 ---
-## Uranium mining extracts ore from the ground, and then is refined by milling
+class: center,middle
+
+# Milling
+---
+## Uranium ore is refined by milling
 
 The ore contains $UO_2, UO_3$, and other heavy metal oxides
 
@@ -154,6 +210,10 @@ Radioisotopes (radon), heavy metals, chemicals, etc.
 
 We have plenty of uranium resources  
 But what if we decide it is too harmful to mine?
+---
+class: center,middle
+
+# Conversion
 ---
 ## $U_3O_8$ is converted to $UF_6$ prior to enrichment with $^{235}U$
 
@@ -172,11 +232,19 @@ Any idea why?
 ---
 class: center,middle
 
+# Enrichment
+---
+class: center,middle
+
 ![centrifuges](img/centrifuges.jpg)
 ---
 class: center,middle
 
 [![centrifuge cross section view](img/centrifuge.jpg)](https://www.cameco.com/uranium_101/static/images/fuel-processing/centrifuge.jpg)
+---
+class: center,middle
+
+# Separative work unit
 ---
 ## [Separative work unit](https://courses.lumenlearning.com/uidaho-nuclear/chapter/swu/) (SWU) tells of the amount of work to enrich uranium from natural abundance to reactor/weapon grade
 
