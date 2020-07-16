@@ -19,6 +19,14 @@
                          h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
        }
       .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+      .column:first-of-type {float:left}
+      .column:last-of-type {float:right}
+
+      .split-60 .column:first-of-type {width: 60%}
+      .split-60 .column:last-of-type {width: 40%}
+
+      .split-50 .column:first-of-type {width: 50%}
+      .split-50 .column:last-of-type {width: 50%}
     </style>
   </head>
   <body>
@@ -44,27 +52,35 @@ Derive steady state neutron transport equation
 
 Demonstrate transient reactor behavior 
 
-[Watch](https://courses.lumenlearning.com/uidaho-nuclear/chapter/front-end-of-the-fuel-cycle-2/)
+[Watchi videos on different reactors and historical events](https://courses.lumenlearning.com/uidaho-nuclear/chapter/front-end-of-the-fuel-cycle-2/)
 ---
-class: center,middle
+class: split-60
 
-![Nuclear fuel cycle](img/nuclear.fuel.cycle1.jpg)
+# Learning nodes
+
+.column[
+.left[
+**Review**  
+**Neutron chain reaction**  
+
+**Neutron multiplication factor**  
+Four factor formula  
+Neutron reproduction factor  
+Fuel utilization factor  
+Resonance escape probability   
+Fast fission factor  
+]
+]
+
+.column[
+.right[
+
+]
+]
 ---
-## Designing a nuclear reactor is about controlling the neutron chain reaction
 
-![Fission](img/fission.jpg)
----
-## The neutron multiplication factor describes a chain reaction
 
-Ratio of fissions in generation (n+1) to fissions in generation (n)
 
-### $k_\infty \equiv \eta f \epsilon p$
-
-For the 'infinite' reactor
-
-### $k < 1 \rightarrow ?$
-### $k = 1 \rightarrow ?$
-### $k > 1 \rightarrow ?$
 ---
 ## The critical mass is the minimum amount of material required to maintain $k = 1$
 
@@ -80,9 +96,48 @@ Critical size is determined based on material and geometry
 
 Add a reflector
 ---
+
+
+---
 class: center,middle
 
-## Four factor formula
+# Nuclear fuel cycle review
+---
+class: center,middle
+
+![Nuclear fuel cycle](img/nuclear.fuel.cycle1.jpg)
+---
+class: center,middle
+
+# Neutron chain reaction
+---
+## Designing a nuclear reactor is about controlling the neutron chain reaction
+
+![Fission](img/fission.jpg)
+---
+class: center,middle
+
+# Neutron multiplication factor
+---
+## The neutron multiplication factor describes a chain reaction
+
+Ratio of fissions in generation (n+1) to fissions in generation (n)
+
+### $k < 1 \rightarrow ?$
+### $k = 1 \rightarrow ?$
+### $k > 1 \rightarrow ?$
+---
+class: center,middle
+
+# Four factor formula
+---
+class: center, middle
+
+### $k_\infty \equiv \eta f \epsilon p$
+---
+class: center, middle
+
+# Neutron reproduction factor
 ---
 ### Neutron reproduction factor is ratio of neutrons produced due to fission per neutron absorbed in by the fuel
 
@@ -94,21 +149,21 @@ Prompt and delayed neutrons (important to control)
 
 Average number of neutrons per thermal fission times the probability a fission occurs when a thermal neutron is absorbed by the fuel
 
-Needs to be greater than 1 - Why?
+Is $\eta$ less than or greater than 1? - Why?
 ---
-## Contemporary reactors use $^{235}U$
+class: center,middle
 
-However, in nature only about 0.7%
-
-Reactors need 3% to 5% 
-
-Enrichment processes
+# Fuel utilization factor
 ---
 ## Fuel utilization factor is ratio of neutrons absorbed in fuel to fuel + moderator
 
 ## $f \equiv \frac{\Sigma^{FUEL}_A}{\Sigma^{FUEL}_A + \Sigma^{MOD}_A}$
 
-## $0 < f < 1$
+## $0 \leq f \leq 1$
+---
+class: center,middle
+
+# Resonance escape probability
 ---
 ## Resonance escape is probability neutron is not absorbed in the resonance region
 
@@ -119,6 +174,10 @@ Empirical results are typically used because it is extremely difficult to comput
 class: center,middle
 
 ![Fission cross section](img/fission.cross.section.jpg)
+---
+class: center,middle
+
+# Fast fission factor
 ---
 ### Fast fission factor is ratio of the total number of fast and thermal neutrons produced to number produced by just thermal fission
 
