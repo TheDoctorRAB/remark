@@ -69,6 +69,11 @@ Neutron reproduction factor
 Fuel utilization factor  
 Resonance escape probability   
 Fast fission factor  
+
+**Critical and subcritical configurations**  
+**Burnup**  
+**Neutron interaction rate**  
+**Neutron diffusion**  
 ]
 ]
 
@@ -77,27 +82,6 @@ Fast fission factor
 
 ]
 ]
----
-
-
-
----
-## The critical mass is the minimum amount of material required to maintain $k = 1$
-
-### $D \nabla^2 \phi - \Sigma_A \phi + s = 0$
-
-One group diffusion equation
-
-Critical size is determined based on material and geometry
----
-## If the critical size of a Pu bare sphere is 10 cm, how do you make this smaller?
-
-![reflector](img/reflector.jpg)
-
-Add a reflector
----
-
-
 ---
 class: center,middle
 
@@ -183,9 +167,25 @@ class: center,middle
 
 Again, very hard to calculate
 ---
-## Critical configurations are needed to design reactors
+class: center, middle
 
-But $k$ is used to determine subcritical assemblies as well
+[![Neutron generation](img/neutron.generation.jpg)](http://knowledgepublications.com/doe/images/DOE_Nuclear_Neutron_Life_Cycle.gif)
+---
+class: center,middle
+
+# Critical and subcritical configurations
+---
+## The critical mass is the minimum amount of material required to maintain $k = 1$
+
+Critical size is determined based on material and geometry
+
+If the critical size of a Pu bare sphere is 10 cm, how do you make this smaller?
+
+![reflector](img/reflector.jpg)
+
+Add a reflector
+---
+## $k$ is used to determine subcritical assemblies as well
 
 Like used fuel pool storage
 
@@ -195,9 +195,9 @@ class: center,middle
 
 ![Used fuel pool](img/used.fuel.pool.jpg)
 ---
-class: center, middle
+class: center,middle
 
-[![Neutron generation](img/neutron.generation.jpg)](http://knowledgepublications.com/doe/images/DOE_Nuclear_Neutron_Life_Cycle.gif)
+# Burnup
 ---
 ## Burnup is a measure of the total energy released in fission by the fuel
 
@@ -229,7 +229,7 @@ Fast reactors are used
 ---
 class: center,middle
 
-## Neutron diffusion and moderation
+## Neutron interaction rate 
 ---
 ## Define energy dependent neutron interaction rate
 
@@ -239,7 +239,11 @@ Total interaction rate over all neutron energies
 
 Typically assume monoenergetic neutrons 
 
-Derived in 5.1
+Derived in 5.1 - whatever chapter is called 'neutron diffusion'
+---
+class: center,middle
+
+# Neutron diffusion
 ---
 ## We assume neutron diffusion follows Fick's law
 
@@ -249,7 +253,7 @@ Which is a good assumption because nearly everything does
 
 ### $D \equiv [L]$
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\huge&space;$\underline{J}&space;\equiv&space;-\underline{\underline{D}}&space;\nabla&space;\phi$" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\huge&space;$\underline{J}&space;\equiv&space;-\underline{\underline{D}}&space;\nabla&space;\phi$" title="\huge $\underline{J} \equiv -\underline{\underline{D}} \nabla \phi$" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\huge&space;\underline{J}&space;\equiv&space;-\underline{\underline{D}}&space;\nabla&space;\phi" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\huge&space;\underline{J}&space;\equiv&space;-\underline{\underline{D}}&space;\nabla&space;\phi" title="\huge \underline{J} \equiv -\underline{\underline{D}} \nabla \phi" /></a>
 
 The book calls J 'current'
 ---
