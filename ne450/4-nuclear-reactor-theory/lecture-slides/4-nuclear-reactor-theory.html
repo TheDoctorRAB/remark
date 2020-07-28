@@ -52,7 +52,7 @@ Derive steady state neutron transport equation
 
 Demonstrate transient reactor behavior 
 
-[Watchi videos on different reactors and historical events](https://courses.lumenlearning.com/uidaho-nuclear/chapter/front-end-of-the-fuel-cycle-2/)
+[Watch videos on different reactors and historical events](https://courses.lumenlearning.com/uidaho-nuclear/chapter/front-end-of-the-fuel-cycle-2/)
 ---
 class: split-60
 
@@ -93,11 +93,24 @@ Fast fission factor
 **Nuclear reactor design**  
 One group reactor equation  
 Buckling  
+Leakage  
+Criticality for thermal reactors  
+Two group theory  
+Six factor formula  
+Reflected reactor  
+Multigroup theory  
+Heterogeneity  
 ]
 ]
 
 .column[
 .right[
+**Reactor kinetics**  
+Prompt neutrons  
+Delayed neutrons  
+Reactor period  
+
+Fission product poisons  
 ]
 ]
 ---
@@ -405,10 +418,12 @@ class: center,middle
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\LARGE&space;\nabla^2&space;\phi_T&space;-\frac{1}{L^2}&space;\phi_T&space;&plus;&space;\frac{\Sigma_{F&space;\rightarrow&space;T}^S&space;\phi_F}{D_T}&space;=&space;0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\LARGE&space;\nabla^2&space;\phi_T&space;-\frac{1}{L^2}&space;\phi_T&space;&plus;&space;\frac{\Sigma_{F&space;\rightarrow&space;T}^S&space;\phi_F}{D_T}&space;=&space;0" title="\LARGE \nabla^2 \phi_T -\frac{1}{L^2} \phi_T + \frac{\Sigma_{F \rightarrow T}^S \phi_F}{D_T} = 0" /></a>
 
 What is going on here?
+
+Have them draw it out on the board
 ---
 class: center,middle
 
-## Nuclear reactor design
+# Nuclear reactor design
 ---
 class: center,middle
 
@@ -432,12 +447,15 @@ Source neutrons emitted due to fission not absorbed
 
 ### $\therefore k_\infty = \eta f$
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\LARGE&space;\nabla^2&space;\phi&space;-&space;\Sigma_A&space;\phi&space;&plus;&space;k_\infty&space;\Sigma_A&space;\phi&space;=&space;0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\LARGE&space;\nabla^2&space;\phi&space;-&space;\Sigma_A&space;\phi&space;&plus;&space;k_\infty&space;\Sigma_A&space;\phi&space;=&space;0" title="\LARGE \nabla^2 \phi - \Sigma_A \phi +
-k_\infty \Sigma_A \phi = 0" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\LARGE&space;D&space;\nabla^2&space;\phi&space;-&space;\Sigma_A&space;\phi&space;&plus;&space;k_\infty&space;\Sigma_A&space;\phi&space;=&space;0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\LARGE&space;D&space;\nabla^2&space;\phi&space;-&space;\Sigma_A&space;\phi&space;&plus;&space;k_\infty&space;\Sigma_A&space;\phi&space;=&space;0" title="\LARGE D \nabla^2 \phi - \Sigma_A \phi + k_\infty \Sigma_A \phi = 0" /></a>
+
+One group reactor equation  
 
 ## $\nabla^2 \phi + B^2 \phi = 0$
 
-One group reactor equation
+## $B^2 \equiv \frac{k_\infty - 1}{L^2}$
+
+Solve for $B^2$ on the board 
 ---
 class: center,middle
 
@@ -445,9 +463,17 @@ class: center,middle
 ---
 ## Solve buckling for different geometries 
 
-## $B^2 \equiv \frac{k_\infty - 1}{L^2}$
+$B^2$ is the eigenvalue - what does this mean? 
+
+For a sphere
 
 ## $B^2 = (\frac{\pi}{R})^2$
+
+For a slab
+
+## $B^2 = (\frac{\pi}{a})^2$
+
+Do these out
 ---
 ## Buckling determines critical geometry
 
@@ -459,9 +485,13 @@ Integrate over the volume for power
 
 Use power to find the constant of integration
 
-## $E_R = 3.2 \times 10^{-11} J$ per fission
+## $E_R = 3.2 \times 10^{-11} J$ per fission - $200 \; MeV$
 
 See chapter 6 and table
+---
+class: center,middle
+
+# Leakage
 ---
 ## 'Real' reactors have leakage
 
@@ -475,7 +505,23 @@ $\frac{k_\infty}{1+B^2L^2}=1$ just rearrange the equation to see the leakage ter
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;k_{EFF}&space;=&space;k_\infty&space;P_L" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;k_{EFF}&space;=&space;k_\infty&space;P_L" title="k_{EFF} = k_\infty P_L" /></a> one group critical equation for a bare reactor
 
+With $P_L$ being a general nonleakage probability term
+
 Neutrons either leak out or absorbed
+---
+## But we want to account for all the neutrons that will not leak
+
+Why do we want to do this? 
+---
+## But we want to account for all the neutrons that will not leak
+
+Go back to the continuity equation
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\large&space;\frac{d}{dt}\int_V&space;n&space;dV&space;=&space;\int_V&space;s&space;dV&space;-&space;\int_V&space;\Sigma_A\phi&space;dV&space;-&space;\int_A&space;\underline{J}&space;\cdot&space;\underline{n}&space;dA" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\large&space;\frac{d}{dt}\int_V&space;n&space;dV&space;=&space;\int_V&space;s&space;dV&space;-&space;\int_V&space;\Sigma_A\phi&space;dV&space;-&space;\int_A&space;\underline{J}&space;\cdot&space;\underline{n}&space;dA" title="\large \frac{d}{dt}\int_V n dV = \int_V s dV - \int_V \Sigma_A\phi dV - \int_A \underline{J} \cdot \underline{n} dA" /></a>
+
+Identify losses
+
+Identify leakage
 ---
 ## But we want to account for all the neutrons that will not leak
 
@@ -490,6 +536,10 @@ So the probability of absorption; i.e., non leakage is
 ### $\therefore P_L = \frac{\Sigma_A}{\Sigma_A + D B^2} = \frac{1}{1+B^2L^2}$
 
 Because $- \int_V D \nabla^2 \phi dV = \int_V DB^2 \phi dV$
+---
+class: center,middle
+
+# Criticality for thermal reactors
 ---
 ## Criticality is technically different for thermal reactors
 
@@ -506,6 +556,10 @@ Four factor formula is the same
 Resonance escape is an important parameter
 
 Why?
+---
+class: center,middle
+
+# Two group theory
 ---
 ## Need two group theory for thermal criticality 
 
@@ -561,6 +615,11 @@ Apply Cramer's rule
 
 ### $\tau \equiv \frac{D_1}{\Sigma_1}$ is the neutron age
 ---
+class: center,middle
+
+# Six factor formula
+---
+
 ## This gives the six factor formula
 
 ### $P_F \equiv \frac{1}{1+B^2\tau}$
@@ -576,6 +635,10 @@ Or multiply out the denominator from before
 Thermal migration area  
 See cases in section 6.5
 ---
+class: center,middle
+
+# Reflected reactor
+---
 ## A reflector is added to make the core smaller
 
 ### $\nabla^2\phi_C+B^2\phi_C=0$ core
@@ -587,6 +650,10 @@ With boundary conditions
 ### $D_C\phi'_C(R)=D_R\phi'_R(R)$
 
 ### $BR\cdot cot(BR)-1=-\frac{D_R}{D_C}(\frac{R}{L_R}+1)$ sphere
+---
+class: center,middle
+
+# Multigroup theory
 ---
 ## Multigroup theory is applied in the same way
 
@@ -625,6 +692,12 @@ For group g
 ## Then put that all together
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;D_g\nabla^2\phi_g-\Sigma_A^g\phi_g-\sum_{h=g&plus;1}^N\Sigma_{g\rightarrow&space;h}\phi_g&plus;\sum_{h=1}^{g-1}\Sigma_{h\rightarrow&space;g}\phi_h&plus;\chi_g\sum_{h=1}^N\nu_h\Sigma_F^h\phi_h=0" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;D_g\nabla^2\phi_g-\Sigma_A^g\phi_g-\sum_{h=g&plus;1}^N\Sigma_{g\rightarrow&space;h}\phi_g&plus;\sum_{h=1}^{g-1}\Sigma_{h\rightarrow&space;g}\phi_h&plus;\chi_g\sum_{h=1}^N\nu_h\Sigma_F^h\phi_h=0" title="D_g\nabla^2\phi_g-\Sigma_A^g\phi_g-\sum_{h=g+1}^N\Sigma_{g\rightarrow h}\phi_g+\sum_{h=1}^{g-1}\Sigma_{h\rightarrow g}\phi_h+\chi_g\sum_{h=1}^N\nu_h\Sigma_F^h\phi_h=0" /></a>
+
+Do out for 3 groups
+---
+class: center,middle
+
+# Heterogeneity
 ---
 ## Unfortunately, real reactors aren't homogeneous and it make calculating k hard
 
@@ -695,10 +768,26 @@ Reactor is initially loaded with more than the minimum critical mass due to burn
 Criticality affected by fission products
 
 Many are gaseous and have to be trapped
+
+
+
 ---
-## Fission poisons accumulate with burnup
+class: center,middle
+
+# Fission product poisons
+---
+## Fission product poisons accumulate with burnup
 
 [![fission product yield](img/fission.product.yield.jpg)](http://hyperphysics.phy-astr.gsu.edu/hbase/NucEne/fisfrag.html)
+---
+
+
+
+
+---
+class: center,middle
+
+# Prompt neutrons
 ---
 ## There are different kinds of neutrons to account for
 
@@ -726,8 +815,7 @@ Neutron travels an absorption mean free path before actually being absorbed
 
 Assuming Maxwell in the thermal region $\frac{1}{v}$ 
 
-$t(E)$ isn't energy dependent anymore because 
-$E = 0.0253 eV$ and $v = 2200 m/s$ and a constant
+$t(E)$ isn't energy dependent anymore because $E_0 = 0.0253 eV$ and $v_0 = 2200 m/s$ 
 ---
 ## Reason out the reactor physics to derive $t_D$
 
@@ -747,19 +835,23 @@ Or
 
 ### $\therefore t_D = \frac{\sqrt{\pi}}{2 v_T \Sigma_A^M}(1-f)$
 
-Prompt neutron lifetime is much shorter in fast reactors than thermal $10^{-7} s$
+$\sim 10^4 \; s$ for water
+
+Prompt neutron lifetime is much shorter in fast reactors than thermal $\sim 10^{-7} \; s$
 ---
-## What role do delayed neutrons play in reactor kinetics?
+## What role do neutrons play in reactor kinetics?
 
 Consider an infinite thermal reactor with only prompt neutrons
 
 Prompt neutron lifetime $l_P$ then is time between successive neutron generations
 
-Absorption of a neutron at $t=t_0$ 
+Absorption of a neutron at $t=t_0$
 
 means absorption of $k_\infty$ neutrons  
 
 at $t=t_0+l_P$
+
+(The script got wonky with the equations)
 ---
 ## How to we derive a measure of this time?
 
@@ -773,6 +865,10 @@ Substitute back in
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\frac{dN_F(t)}{dt}=\frac{k_\infty-1}{l_P}N_F(t)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\frac{dN_F(t)}{dt}=\frac{k_\infty-1}{l_P}N_F(t)" title="\LARGE \frac{dN_F(t)}{dt}=\frac{k_\infty-1}{l_P}N_F(t)" /></a>
 ---
+class: center,middle
+
+# Reactor period
+---
 ## How to we derive a measure of this time?
 
 ### $N_F(t)=N_F(0)e^{\frac{t}{T}}$
@@ -783,9 +879,13 @@ $T$ is called the reactor period (in the absence of delayed neutrons)
 
 What is this telling us? 
 
-So if $l_p = 10^{-4} s$, what is $T$ going from 
+If $l_p = 10^{-4} s$, what is $T$?
 
-### $k_\infty = 1 \rightarrow 1.001$
+What is the period physically describing?
+---
+class: center,middle
+
+# Picture break
 ---
 class: center,middle
 
@@ -795,9 +895,13 @@ class: center,middle
 
 ![WPI control panel](img/wpi.control.panel.jpg)
 ---
+class: center,middle
+
+# Delayed neutrons
+---
 ## Delayed neutrons control reactor operation
 
-Six groups of delayed neutron precursors with characteristic half life p75
+Six groups of delayed neutron precursors with characteristic half life
 
 Fission products that produce neutrons as part of decay process
 
