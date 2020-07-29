@@ -108,7 +108,12 @@ Heterogeneity
 **Reactor kinetics**  
 Prompt neutrons  
 Delayed neutrons  
-Reactor period  
+Reactor period - prompt  
+Point kinetics equations  
+Prompt critical  
+
+**Temperature coefficient**  
+**Doppler broadening**  
 
 Fission product poisons  
 ]
@@ -867,7 +872,7 @@ Substitute back in
 ---
 class: center,middle
 
-# Reactor period
+# Reactor period - prompt
 ---
 ## How to we derive a measure of this time?
 
@@ -899,7 +904,7 @@ class: center,middle
 
 # Delayed neutrons
 ---
-## Delayed neutrons control reactor operation
+## [Delayed neutrons](https://www.nrc.gov/docs/ML1214/ML12142A098.pdf) control reactor operation
 
 Six groups of delayed neutron precursors with characteristic half life
 
@@ -913,6 +918,10 @@ The diffusion equation for thermal neutrons is (5.21)
 
 Assume thermal flux is independent of position
 ---
+class: center,middle
+
+# Point kinetics equations
+----
 ## Deriving rate of change for delayed neutrons
 
 From 5.9 based on Maxwellian distribution
@@ -921,15 +930,26 @@ From 5.9 based on Maxwellian distribution
 
 ### $l_P \approx t_D = \frac{\sqrt{\pi}}{2} \cdot \frac{1}{\Sigma_A v_T}$
 
+### $\frac{dn}{dt}=s_T-\Sigma_A\phi_T$
+
+Substitute back in
+
 ### $l_P\frac{d\phi_T}{dt}=\frac{s_T}{\Sigma_A}-\phi_T$
+
+Now derive $s_T$
 ---
 ## The source has two contributions
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;s_T^P=(1-\beta)k_\infty\Sigma_A\phi_T" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;s_T^P=(1-\beta)k_\infty\Sigma_A\phi_T" title="\LARGE s_T^P=(1-\beta)k_\infty\Sigma_A\phi_T" /></a> from prompt neutrons 
+Prompt and delayed
 
-$\beta \equiv$ fraction of fission neutrons that are delayed
+If $\beta \equiv$ fraction of fission neutrons that are delayed
+
+Then the prompt contribution - 
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;s_T^P=(1-\beta)k_\infty\Sigma_A\phi_T" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;s_T^P=(1-\beta)k_\infty\Sigma_A\phi_T" title="\LARGE s_T^P=(1-\beta)k_\infty\Sigma_A\phi_T" /></a> 
+
 ---
-## Delayed neutron slows down really fast after emission
+## Delayed neutrons slow down quick after emission
 
 ### $s_T^D=p\lambda C$
 
@@ -940,6 +960,12 @@ This means the source is based on the production from the precusor and the proba
 ### Combining everything
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;l_P\frac{d\phi_T}{dt}=(1-\beta)k_\infty\Sigma_A\phi_T&plus;\frac{p}{\Sigma_A}\lambda&space;C-\phi_T" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;l_P\frac{d\phi_T}{dt}=(1-\beta)k_\infty\Sigma_A\phi_T&plus;\frac{p}{\Sigma_A}\lambda&space;C-\phi_T" title="\LARGE l_P\frac{d\phi_T}{dt}=(1-\beta)k_\infty\Sigma_A\phi_T+\frac{p}{\Sigma_A}\lambda C-\phi_T" /></a>
+
+Rate of change of thermal flux based on one group of delayed neutrons
+
+$C$ is the precursor concentration
+
+We need another equation
 ---
 ## Derive the precursor equation
 
@@ -953,7 +979,7 @@ Delayed neutron production rate is then
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\frac{dC}{dt}=\beta\cdot\frac{1}{p}k_\infty\Sigma_A\phi_T-\lambda&space;C" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\frac{dC}{dt}=\beta\cdot\frac{1}{p}k_\infty\Sigma_A\phi_T-\lambda&space;C" title="\LARGE \frac{dC}{dt}=\beta\cdot\frac{1}{p}k_\infty\Sigma_A\phi_T-\lambda C" /></a>
 ---
-## Solve the system simultaneously
+## The point kinetics equations describes reactor transient behavior 
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;l_P\frac{d\phi_T}{dt}=(1-\beta)k_\infty\Sigma_A\phi_T&plus;\frac{p}{\Sigma_A}\lambda&space;C-\phi_T" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;l_P\frac{d\phi_T}{dt}=(1-\beta)k_\infty\Sigma_A\phi_T&plus;\frac{p}{\Sigma_A}\lambda&space;C-\phi_T" title="\LARGE l_P\frac{d\phi_T}{dt}=(1-\beta)k_\infty\Sigma_A\phi_T+\frac{p}{\Sigma_A}\lambda C-\phi_T" /></a>
 
@@ -991,6 +1017,10 @@ What is the range of $\rho$?
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\rho&space;=&space;\frac{\omega&space;l_P}{1&plus;\omega&space;l_P}&space;&plus;&space;\frac{\omega}{1&plus;\omega&space;l_p}\sum_{i=1}^6{\frac{\beta_i}{\omega&plus;\lambda_i}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\rho&space;=&space;\frac{\omega&space;l_P}{1&plus;\omega&space;l_P}&space;&plus;&space;\frac{\omega}{1&plus;\omega&space;l_p}\sum_{i=1}^6{\frac{\beta_i}{\omega&plus;\lambda_i}}" title="\LARGE \rho = \frac{\omega l_P}{1+\omega l_P} + \frac{\omega}{1+\omega l_p}\sum_{i=1}^6{\frac{\beta_i}{\omega+\lambda_i}}" /></a>
 
 ---
+class: center,middle
+
+# Reactor period - delayed
+---
 ## We still need to figure out $\omega$
 
 Figure 7.1
@@ -1005,6 +1035,10 @@ This gives reactor period as
 
 ### $T = \frac{1}{\omega_1}$
 ---
+class: center,middle
+
+# Prompt critical
+---
 ## Let's look at the prompt critical reactor state
 
 If the reactor would be critical only on prompt neutrons
@@ -1016,6 +1050,8 @@ The period is very short and you can't control the reactor
 The reactivity corresponding to prompt critial is just
 
 ### $\rho = \beta$
+
+What is $k$ for this condition for $^{235}U$?
 
 See table 7.2
 ---
@@ -1047,6 +1083,8 @@ The rapid die-away gives sudden rise/drop to the flux before stability
 
 ### $C=\beta \frac{1}{p} \frac{1}{\lambda} \Sigma_A \phi_T^0$
 
+Substitute in
+
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;l_P\frac{d\phi_T}{dt}=(1-\beta)k_\infty\Sigma_A\phi_T&plus;\frac{p}{\Sigma_A}\lambda&space;C-\phi_T" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;l_P\frac{d\phi_T}{dt}=(1-\beta)k_\infty\Sigma_A\phi_T&plus;\frac{p}{\Sigma_A}\lambda&space;C-\phi_T" title="\LARGE l_P\frac{d\phi_T}{dt}=(1-\beta)k_\infty\Sigma_A\phi_T+\frac{p}{\Sigma_A}\lambda C-\phi_T" /></a>
 ---
 ## Solve for flux
@@ -1071,13 +1109,19 @@ Then
 
 ![prompt jump](img/prompt.jump.jpg)
 ---
-## What does this mean?
+class: center,middle
+
+# What does this mean?
 ---
 ## What does this mean?
 
 What happens when there is positive reactivity insertion?
 
 What happens with a negative reactivity insertion? 
+---
+class: center,middle
+
+# Control rod worth
 ---
 ## Control rod worth is the reactivity required to give a specific period
 
@@ -1091,7 +1135,11 @@ From a design standpoint, the arrangement of rods needs to let the neutron flux 
 Boric acid is often introduced into the coolant to affect criticality  
 Changes thermal utilization (f)
 
-Figure 7.10 experiment
+Figure 7.10 experiment - rod worth curve
+---
+class: center,middle
+
+# Picture break
 ---
 class:center,middle 
 ![ABWR core](img/abwr.jpg)
@@ -1099,6 +1147,10 @@ class:center,middle
 class: center,middle
 
 ![TRIGA core](img/triga.jpg)
+---
+class: center,middle
+
+# Temperature coefficient
 ---
 ## Many parameters that contribute to neutron multiplication are temperature dependent which changes reactivity in the system
 
@@ -1113,6 +1165,10 @@ With negative coefficient the feedback returns the reactor to its original state
 Increase in T = decrease in k
 
 Cannot obtain a license otherwise
+---
+class: center,middle
+
+# Doppler broadening
 ---
 ## Doppler broadening is the change in resonance with temperature
 
