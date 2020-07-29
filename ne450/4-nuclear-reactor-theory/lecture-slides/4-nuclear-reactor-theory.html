@@ -113,11 +113,25 @@ Point kinetics equations
 Prompt critical  
 
 **Temperature coefficient**  
-**Doppler broadening**  
+**Doppler broadening**    
+**Void coefficient**    
+**Fission product poisons**  
+]
+]
+---
+# Even more learning nodes 
 
-Fission product poisons  
-]
-]
+**Heat removal**  
+Heat removal rate  
+Heat production rate  
+Conduction  
+Convection  
+
+**Dimensionless heat transfer numbers**  
+
+**Boiling**
+
+**Meltdown**
 ---
 class: center,middle
 
@@ -773,22 +787,6 @@ Reactor is initially loaded with more than the minimum critical mass due to burn
 Criticality affected by fission products
 
 Many are gaseous and have to be trapped
-
-
-
----
-class: center,middle
-
-# Fission product poisons
----
-## Fission product poisons accumulate with burnup
-
-[![fission product yield](img/fission.product.yield.jpg)](http://hyperphysics.phy-astr.gsu.edu/hbase/NucEne/fisfrag.html)
----
-
-
-
-
 ---
 class: center,middle
 
@@ -1197,6 +1195,10 @@ class:center,middle
 
 ![resonance](img/resonance.jpg)
 ---
+class: center,middle
+
+# Void coefficient
+---
 ## The void coefficient describes change in reactivity to void fraction
 
 ### $\alpha \equiv \frac{d\rho}{dx}$
@@ -1215,6 +1217,18 @@ Important for BWR control
 
 Increases leakage
 ---
+class: center,middle
+
+# Fission product poisons
+---
+class: center,middle
+
+# Fission product poisons
+---
+## Fission product poisons accumulate with burnup
+
+[![fission product yield](img/fission.product.yield.jpg)](http://hyperphysics.phy-astr.gsu.edu/hbase/NucEne/fisfrag.html)
+---
 ## Fission products absorb neutrons
 
 What does this do to the multiplication factor? 
@@ -1231,13 +1245,13 @@ What does this mean for reactor operation?
 
 That's a lot of cows
 
-Xenon is produced by $^{135}I decay but also a fission product
+Xenon is produced by $^{135}I$ decay but also a fission product
 
 ### $\frac{dI}{dt}=\gamma_I\Sigma_F\phi_T -\lambda_I I$
 
 ### $\frac{dX}{dt} = \lambda_I I + \lambda_X\Sigma_F\phi_T-\lambda_X X$
 
-On shutdown, flux is zero and production of Xe is only due to I decay
+On shutdown, flux is zero and production of Xe is only due to $I$ decay
 
 Reactor cannot be restarted (unless you fool it with a cold start) until all the Xe decays due to the high negative reactivity
 ---
@@ -1267,7 +1281,11 @@ Power deposited to fuel must equal the power transferred from the fuel rod to th
 
 Power transferred from fuel rods to the coolant (plus the power deposited directly to the coolant) must equal the power transferred by coolant out of the core
 
-Cannot havee fuel temperature increase without taking heat away because it will melt
+Cannot have fuel temperature increase without taking heat away because it will melt
+---
+class: center,middle
+
+# Heat removal rate
 ---
 ## The coolant takes away all the heat from the reactor to make electricity
 
@@ -1276,8 +1294,10 @@ There are limits on bulk temperature though because the fuel would melt
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;q=\omega&space;\int_{T_I}^{T_O}c_P(T)dT" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;q=\omega&space;\int_{T_I}^{T_O}c_P(T)dT" title="\LARGE q=\omega \int_{T_I}^{T_O}c_P(T)dT" /></a>
 
 For constant pressure and $\omega$ is coolant flow rate
+---
+class: center, middle
 
-So this is heat removal rate
+# Heat production rate
 ---
 ## Spatial distribution of fission energy depends on reactor structure
 
@@ -1289,7 +1309,7 @@ The rest in the coolant/moderator (20 MeV)
 
 Power density in fuel
 
-Rate of heat production
+$E_D$ = energy deposited locally in the fuel per fission
 ---
 ## Spatial distribution of fission energy depends on reactor structure
 
@@ -1303,11 +1323,19 @@ Similar model for gamma ray heat
 
 Cooling after shutdown is important due to fission product heat
 ---
+class: center,middle
+
+# Conduction and convection
+---
 ## Heat is removed from the reactor by conduction and convection
 
 Heat transfer from fuel rod to rod surface by conduction
 
 Heat at rod surface transferred into the coolant and moved out of system by convection
+---
+class: center,middle
+
+# Conduction
 ---
 ## We use Fourier's law for conduction  
 
@@ -1334,6 +1362,10 @@ With no heat sources
 
 This is Laplace's equation used for all sorts of modeling 
 ---
+class: center,middle
+
+# Convection
+---
 ## Newton's law describes heat transfer from a solid to a moving fluid
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;q^{''}=h(T_C-T_B)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;q^{''}=h(T_C-T_B)" title="\LARGE q^{''}=h(T_C-T_B)" /></a>
@@ -1345,6 +1377,10 @@ Similar to Ohm's law where hA = "thermal resistance"
 Can have spatial dependence T(z) for a rod
 
 Heat flow into a coolant channel can be derived based on this
+---
+class: center,middle
+
+# Dimensionless heat transfer numbers
 ---
 ## Coolant flows under turbulent conditions to maximize heat transfer
 
@@ -1358,6 +1394,10 @@ Heat flow into a coolant channel can be derived based on this
 
 Design relationship for convective heat transfer  
 Heat transfer for liquid metals is mostly by conduction
+---
+class: center,middle
+
+# Boiling
 ---
 ## For boiling coolant, different story
 
@@ -1377,6 +1417,10 @@ Positive feedback leads to partial meltdown
 
 Need to stay in the nucleate regime  
 Empirical, thermodynamic correlations have been developed
+---
+class: center,middle
+
+# Meltdown
 ---
 ## Integrity of the cladding contains the fission products
 
