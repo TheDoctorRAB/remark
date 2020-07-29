@@ -1,0 +1,513 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+\usepackage[pagewise]{lineno} %line numbering
+\usepackage{setspace}
+\usepackage{ulem} %strikethrough - do not \sout{\cite{}}
+\usepackage{xcolor} %change font color
+\usepackage{graphicx}
+\usepackage{filecontents}
+\usepackage{tablefootnote}
+\usepackage{footnotehyper}
+\usepackage{subfig}
+\usepackage[yyyymmdd]{datetime} %date format
+\renewcommand{\dateseparator}{.}
+\graphicspath{{../img/}} %path to graphics
+\setcounter{secnumdepth}{5} %set subsection to nth level
+\usepackage{caption}
+\captionsetup[table]{skip=11pt} %sets a space after table caption
+\usepackage{times}
+\usepackage{tabto} %general tabbed spacing
+\usepackage{longtable} %need to put label at top under caption then \\ - use spacing
+\usepackage[stable,hang,flushmargin]{footmisc} %footnotes in section titles and no indent
+\usepackage[round]{natbib} %parenthesis instead of brackets for inline citations
+\usepackage{enumitem}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{array}
+\usepackage{caption}
+\usepackage[labelfont=bf]{caption}
+\usepackage{chngcntr}
+\usepackage{hyperref}
+
+\newcommand{\edit}[1]{\textcolor{blue}{#1}} %shortcut for changing font color on revised text
+\newcommand{\fn}[1]{\footnote{#1}} %shortcut for footnote tag
+\newcommand*\sq{\mathbin{\vcenter{\hbox{\rule{.3ex}{.3ex}}}}} %makes a small square as a separator $\sq$
+\renewcommand\labelenumi{(\theenumi)} %changes 1. to (1) in enumerated list
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} %move page number to bottom right
+\renewcommand{\headrulewidth}{0.5pt} %turn off line in header
+\lhead{\scriptsize NE450 - Principles of nuclear engineering}
+\chead{\scriptsize \today}
+\rhead{\scriptsize Project 4 - Nuclear reactor theory}
+\rfoot{\thepage}
+
+\begin{filecontents}{references.bib}
+    @misc{
+        ,
+        author = {{}},
+        title = {{}},
+        year = {}
+    }
+    @article{
+        ,
+        author = {{}},
+        journal = {},
+        pages = {},
+        title = {{}},
+        volume = {},
+        year = {}
+    }
+    @techreport{
+        ,
+        author = {{}},
+        title = {{}},
+        year = {},
+        institution = {},
+        number = {}
+    }
+\end{filecontents}
+
+\begin{document}
+
+\begin{titlepage}
+    \title{
+        NE450 - Principles of nuclear engineering\\
+        Project 4 - Nuclear reactor theory\\
+    }
+    \author{
+        Name
+        \\ \\ \\
+        University of Idaho $\sq$ Idaho Falls Center for Higher Education
+        \\ \\
+        Engineering/Technology Management, Industrial Technology\\and\\Nuclear Engineering Department
+        \\ \\ \\
+        email 
+    }
+\clearpage %not have page number on title page
+\maketitle
+\vspace*{\fill}
+\begin{flushright}{
+        Total - 450 
+}
+\end{flushright}
+\thispagestyle{empty} %start with page number 1 on second page
+\end{titlepage}
+
+\begin{enumerate}[leftmargin=*,topsep=0pt,font=\bfseries]
+    \item\textbf{(25) Find the neutron multiplication factor for a fuel of (1) 90\% $^{235}U$ and 10\% $^{238}U$, (2) pure $^{239}Pu$, and (3) pure $^{233}U$ for thermal neutrons. Do the same for fast neutrons (~2 MeV). Calculate $\eta$; don't just look it up in the book. \textit{Comment on any major characteristics of these results.}}
+        \vspace{0.25in}\\
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        \newpage 
+    \item\textbf{(30) What is the minimum $^{235}U$ enrichment needed for a critical assembly of a homogenous core of $^{235}U$ and $^{238}U$? Assume $\epsilon p$ is approximately unity and a thermal core. Comment on the results. This is kind of a trick question.}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(25) What is the fission rate, in fissions per day, for a 1000 MWe reactor? Assume 200 MeV is released per fission. If 1.16 atoms of $^{235}U$ are consumed per fission, then how many atoms are consumed per day due to fission? How many grams of $^{235}U$ per day is this? Given how much your last monthly electric bill was, how much $^{235}U$ did you consume per day?  Assume uranium costs (\$100/kg.) \textit{Comment on the results.}}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        \newpage 
+    \item\textbf{(25) Derive the expression for neutron flux and current density for a point source [S n/s] in an infinite vacuum [$D = 0$].}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(30) If three isotropic point sources of equal strength in an infinite vacuum are located at three corners of an equilateral triangle, what is the flux and current at the midpoint of one side of the triangle? The center of the triangle? \textit{D does not equal zero here.}}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(25) For the infinite, bare slab geometry of thickness [2a] with source $S \; n/cm^2/s$, derive the maximum flux. In the 2nd edition, it's on p203, eq. 5.41, but should be just around there in the other editions.}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(25) For the infinite bare slab geometry again, with fast source $s \; n/cm^2/s$, derive the thermal flux using two group theory as follows - }\\
+        \begin{equation} \label{eq-fast-flux}
+            \large D_1\nabla^2{\phi_1}-\Sigma_A^1\phi_1-\Sigma_{1 \rightarrow 2}\phi_1+\Sigma_{2 \rightarrow 1}\phi_2+s=0
+        \end{equation}
+        \begin{equation} \label{eq-thermal-flux}
+            \large D_2\nabla^2{\phi_2}-\Sigma_A^2\phi_2-\Sigma_{2 \rightarrow 1}\phi_2+\Sigma_{1 \rightarrow 2}\phi_1=0
+        \end{equation}
+        \noindent Hints and tips - 
+        \begin{enumerate}[leftmargin=*,topsep=0pt]
+            \item There is only a fast source. Leave it as $S$.
+            \item Don't worry about boundary conditions. Leave in the constants and just get the general solution.
+            \item Don't assume either absorption cross is zero.
+        \end{enumerate}
+        \noindent This differential equation system is very common to many engineering problems. There is a standard solution approach that can be found with some research. The solution procedure is not tricky, but it can be tedious.  
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(30) Derive the flux for a rectangular parallelepiped. See the section on the slab reactor, 6.2 in the second edition and assume a separable solution. Show the buckling. Compute maximum to average flux.}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(25) What is the critical size of this reactor for a homogeneous mixture of $^{239}Pu$ and $Na$, with atom densities of $0.00395 \times 10^{24}$ and $0.0234 \times 10^{24}$, respectively. Make assumptions on the relationship between the x, y, z dimensions.}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(25) A spherical thermal reactor of R = 50 cm contains a homogenous core of $^{235}U$ and water. Find the mass of $^{235}U$. It is reflected by graphite. Find the new critical mass. Use room temperature; i.e., standard cross sections.}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(30) Derive the reactivity equation. Work through the derivation in the book (or wherever) and explain the steps sufficiently in terms of the physics of what is going on.}\\
+        \begin{equation} \label{eq-reactivity}
+            \rho=\frac{\omega l_P}{1+\omega l_P}+\frac{\omega}{1+\omega l_P}\cdot\frac{\beta}{\omega+\lambda}
+        \end{equation}
+        Prove that $\omega$ is the reciprocal of the stable period with math. Why is there an asymptote at $\rho = 1$?
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(25) Plot reactor period versus absolute value of reactivity for $l_P = 10^{-6},10^{-5},...,10^{-1}$ seconds for the six groups of delayed neutrons for fast fission in $^{235}U$. What observations can be drawn regarding \textit{reactor operation?} Compare to the figure at the beginning of chapter 7 (The Time-Dependent Reactor). It's 7.2 in the 2nd edition.}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(30) Using the six group reactivity equation for $^{235}U$, show with math that for increasingly negative reactivity, the period is limited (controlled) by the decay of the longest lived precursor. At about what reactivity does this occur? What is the period?}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(30) Solve for the $^{135}Xe$ and $^{135}I$ concentrations, assuming a constant, average thermal flux of $10^{14} n/cm^2/s$. Plot the concentration as a function of time and note any important trends from t = 0 to 500 h. From t = 0 to 200 h, the reactor operates at full power. The reactor is instantaneously scrammed at t = 200 h. Assume a reactor with solely $^{235}U$ with no resonance absorbers or fissionable material. (Just solve the two equations and make whatever simplifying assumptions).}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(20) Derive the expression for the temperature profile of a single, TRISO fuel pebble of $^{235}U$ core with only a carbon coating as cladding. Plot the temperature profile for an assumed central temperature of $1500^o C$. Note any interesting observations.}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(15) What is the period for a critical reactor?}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(50) What is the equilibrium time for $^{135}Xe$? +50 for showing with math.}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{enumerate}
+
+\newpage
+
+\bibliographystyle{ieeetr}
+\setlength{\bibhang}{0pt}
+\bibliography{references}
+
+\end{document}
