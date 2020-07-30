@@ -73,7 +73,8 @@
 
 \section{Mathematical models}
 \subsection{Iodine}
-\begin{equation}
+\noindent Rate of change of iodine - 
+\begin{equation} \label{eq-i-dq}
 \begin{gathered}
 \frac{dI}{dt}=\gamma_I \Sigma_F \phi_T-\lambda_I I \\
 I(0)=0
@@ -81,45 +82,100 @@ I(0)=0
 \end{equation}
 
 \subsection{Xenon}
-\begin{equation}
+\noindent Rate of change of xenon - 
+\begin{equation} \label{eq-xe-dq}
 \begin{gathered}
 \frac{dX}{dt}=\lambda_I I + \gamma_X \Sigma_F \phi_T - \lambda_X X - \sigma_A \phi_T X \\
 X(0)=0
 \end{gathered}
 \end{equation}
 
-\newpage
-
 \section{Solutions}
 \subsection{Iodine}
-Laplace \\
-$\frac{dI}{dt}=\gamma_I \Sigma_F \phi_T-\lambda_I I$ \\ \\
-$s\tilde{I}=\frac{1}{s}\gamma_I\Sigma_F\phi_T-\lambda_I\tilde{I}$ \\
+\noindent Apply laplace transform to eq. \ref{eq-i-dq} - 
+\begin{equation} \label{eq-i-laplace-transform}
+\begin{split}
+& \frac{dI}{dt}=\gamma_I \Sigma_F \phi_T-\lambda_I I \\
+& s\tilde{I}=\frac{1}{s}\gamma_I\Sigma_F\phi_T-\lambda_I\tilde{I}
+\end{split}
+\end{equation}
 
-\noindent Rearrange \\
-$\tilde{I}=\frac{1}{s(s+\lambda_I)}\gamma_I\Sigma_F\phi_T$ \\
+\noindent Rearrange terms to obtain laplace solution - 
+\begin{equation} \label{eq-i-laplace-solution}
+\begin{gathered}
+\tilde{I}=\frac{1}{s(s+\lambda_I)}\gamma_I\Sigma_F\phi_T
+\end{gathered}
+\end{equation}
 
-\noindent Solve \\
-$I(t)=\frac{\gamma_I\Sigma_F\phi_T}{\lambda_I}(1-e^{-\lambda_I t})$
+\noindent Invert eq. \ref{eq-i-laplace-solution} to obtain real time domain solution - 
+\begin{equation} \label{eq-i-solution}
+\begin{gathered}
+I(t)=\frac{\gamma_I\Sigma_F\phi_T}{\lambda_I}(1-e^{-\lambda_I t})
+\end{gathered}
+\end{equation}
 
 \subsection{Xenon}
-Laplace \\
-$\frac{dX}{dt}=\lambda_I \frac{\gamma_I\Sigma_F\phi_T}{\lambda_I}(1-e^{-\lambda_I t}) + \gamma_X \Sigma_F \phi_T - \lambda_X X - \sigma_A \phi_T X$ \\ \\
-$\frac{dX}{dt}=\gamma_I\Sigma_F\phi_T(1-e^{-\lambda_I t}) + \gamma_X \Sigma_F \phi_T - \lambda_X X - \sigma_A \phi_T X$ \\ \\
-$\frac{dX}{dt}=\gamma_I\Sigma_F\phi_T - \gamma_I\Sigma_F\phi_T e^{-\lambda_I t} + \gamma_X \Sigma_F \phi_T - \lambda_X X - \sigma_A \phi_T X$ \\ \\
-$\frac{dX}{dt}=\gamma_I\Sigma_F\phi_T - \gamma_I\Sigma_F\phi_T e^{-\lambda_I t} + \gamma_X \Sigma_F \phi_T - (\lambda_X + \sigma_A \phi_T) X$ \\ \\
-$s\tilde{X}=\frac{1}{s}\gamma_I\Sigma_F\phi_T - \frac{1}{s+\lambda_I}\gamma_I\Sigma_F\phi_T + \frac{1}{s}\gamma_X\Sigma_F\phi_T - (\gamma_X+\sigma_A\phi_T)\tilde{X}$ \\ \\
+\noindent Substitute the iodine solution in eq. \ref{eq-i-solution} into eq. \ref{eq-xe-dq} - 
+\begin{equation} 
+\begin{split}
+& \frac{dX}{dt}=\lambda_I I + \gamma_X \Sigma_F \phi_T - \lambda_X X - \sigma_A \phi_T X \\
+& \frac{dX}{dt}=\lambda_I \frac{\gamma_I\Sigma_F\phi_T}{\lambda_I}(1-e^{-\lambda_I t}) + \gamma_X \Sigma_F \phi_T - \lambda_X X - \sigma_A \phi_T X
+\end{split}
+\end{equation}
 
-\noindent Rearrange \\
-$(s+[\gamma_X+\sigma_A\phi_T])\tilde{X}=\frac{1}{s}\gamma_I\Sigma_F\phi_T - \frac{1}{s+\lambda_I}\gamma_I\Sigma_F\phi_T + \frac{1}{s}\gamma_X\Sigma_F\phi_T$ \\ \\
-$\tilde{X}=\frac{1}{s(s+[\gamma_X+\sigma_A\phi_T])}\gamma_I\Sigma_F\phi_T - \frac{1}{(s+\lambda_I)(s+[\gamma_X+\sigma_A\phi_T])}\gamma_I\Sigma_F\phi_T + \frac{1}{s(s+[\gamma_X+\sigma_A\phi_T])}\gamma_X\Sigma_F\phi_T$ \\ \\
+\noindent Rearrange the terms and simplify - 
+\begin{equation} 
+\begin{split}
+& \frac{dX}{dt}=\gamma_I\Sigma_F\phi_T(1-e^{-\lambda_I t}) + \gamma_X \Sigma_F \phi_T - \lambda_X X - \sigma_A \phi_T X \\
+& \frac{dX}{dt}=\gamma_I\Sigma_F\phi_T - \gamma_I\Sigma_F\phi_T e^{-\lambda_I t} + \gamma_X \Sigma_F \phi_T - \lambda_X X - \sigma_A \phi_T X 
+\end{split}
+\end{equation}
 
-\noindent Solve \\
-$X(t)=\frac{\gamma_I\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T}(1-e^{-(\gamma_X+\sigma_A\phi_T)t})-\frac{\gamma_I\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T-\lambda_I}(e^{-\lambda_I t}-e^{-(\gamma_X+\sigma_A\phi_T)t})+\frac{\gamma_X\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T}(1-e^{-(\gamma_X+\sigma_A\phi_T)t})$ \\
+\begin{equation} \label{eq-xe-dq-full}
+\begin{gathered}
+\frac{dX}{dt}=\gamma_I\Sigma_F\phi_T - \gamma_I\Sigma_F\phi_T e^{-\lambda_I t} + \gamma_X \Sigma_F \phi_T - (\lambda_X + \sigma_A \phi_T) X
+\end{gathered}
+\end{equation}
 
-\newpage
+\noindent Apply laplace transform to eq. \ref{eq-xe-dq-full} -
+\begin{equation} \label{eq-xe-laplace-transform}
+\begin{gathered}
+s\tilde{X}=\frac{1}{s}\gamma_I\Sigma_F\phi_T - \frac{1}{s+\lambda_I}\gamma_I\Sigma_F\phi_T + \frac{1}{s}\gamma_X\Sigma_F\phi_T - (\gamma_X+\sigma_A\phi_T)\tilde{X}
+\end{gathered}
+\end{equation}
+
+\noindent Rearrange the terms in eq. \ref{eq-xe-laplace-transform} to obtain the laplace solution - 
+\begin{equation}
+\begin{gathered}
+(s+[\gamma_X+\sigma_A\phi_T])\tilde{X}=\frac{1}{s}\gamma_I\Sigma_F\phi_T - \frac{1}{s+\lambda_I}\gamma_I\Sigma_F\phi_T + \frac{1}{s}\gamma_X\Sigma_F\phi_T
+\end{gathered}
+\end{equation}
+
+\noindent Then - 
+
+\begin{equation} \label{eq-xe-laplace-solution} 
+\begin{aligned}
+\tilde{X}=\\
+& +\frac{1}{s(s+[\gamma_X+\sigma_A\phi_T])}\gamma_I\Sigma_F\phi_T \\
+& -\frac{1}{(s+\lambda_I)(s+[\gamma_X+\sigma_A\phi_T])}\gamma_I\Sigma_F\phi_T \\
+& +\frac{1}{s(s+[\gamma_X+\sigma_A\phi_T])}\gamma_X\Sigma_F\phi_T
+\end{aligned}
+\end{equation}
+
+\noindent Invert eq. \ref{eq-xe-laplace-solution} to obtain real time domain solution - 
+\begin{equation} \label{eq-xe-solution} 
+\begin{aligned}
+X(t)=\\
+& +\frac{\gamma_I\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T}(1-e^{-(\gamma_X+\sigma_A\phi_T)t}) \\
+& -\frac{\gamma_I\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T-\lambda_I}(e^{-\lambda_I t}-e^{-(\gamma_X+\sigma_A\phi_T)t}) \\
+& +\frac{\gamma_X\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T}(1-e^{-(\gamma_X+\sigma_A\phi_T)t}) \\
+\end{aligned}
+\end{equation}
 
 \section{Equilibrium time}
+\noindent The equilibrium time for xenon should be when the concentration achieves a steady state; i.e., the rate of change in the concentration is zero. \\
+
+
 $X(t)=\frac{\gamma_I\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T}(1-e^{-(\gamma_X+\sigma_A\phi_T)t})-\frac{\gamma_I\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T-\lambda_I}(e^{-\lambda_I t}-e^{-(\gamma_X+\sigma_A\phi_T)t})+\frac{\gamma_X\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T}(1-e^{-(\gamma_X+\sigma_A\phi_T)t})$ \\
 
 \noindent $\frac{dX}{dt}=[\frac{\gamma_I\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T}]((\gamma_X+\sigma_A\phi_T)e^{-(\gamma_X+\sigma_A\phi_T)t})-[\frac{\gamma_I\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T-\lambda_I}]((\gamma_X+\sigma_A\phi_T)e^{-(\gamma_X+\sigma_A\phi_T)t}-\lambda_Ie^{-\lambda_I t}) \\ +[\frac{\gamma_X\Sigma_F\phi_T}{\gamma_X+\sigma_A\phi_T}]((\gamma_X+\sigma_A\phi_T)e^{-(\gamma_X+\sigma_A\phi_T)t})$ \\ \\
