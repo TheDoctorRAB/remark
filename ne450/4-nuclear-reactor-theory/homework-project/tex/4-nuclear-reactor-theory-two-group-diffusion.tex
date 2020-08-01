@@ -1,0 +1,377 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+\usepackage[pagewise]{lineno} %line numbering
+\usepackage{setspace}
+\usepackage{ulem} %strikethrough - do not \sout{\cite{}}
+\usepackage{xcolor} %change font color
+\usepackage{graphicx}
+\usepackage{filecontents}
+\usepackage{tablefootnote}
+\usepackage{footnotehyper}
+\usepackage{subfig}
+\usepackage[yyyymmdd]{datetime} %date format
+\renewcommand{\dateseparator}{.}
+\graphicspath{{../img/}} %path to graphics
+\setcounter{secnumdepth}{5} %set subsection to nth level
+\usepackage{caption}
+\captionsetup[table]{skip=11pt} %sets a space after table caption
+\usepackage{times}
+\usepackage{tabto} %general tabbed spacing
+\usepackage{longtable} %need to put label at top under caption then \\ - use spacing
+\usepackage[stable,hang,flushmargin]{footmisc} %footnotes in section titles and no indent
+\usepackage[round]{natbib} %parenthesis instead of brackets for inline citations
+\usepackage{enumitem}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{array}
+\usepackage{caption}
+\usepackage[labelfont=bf]{caption}
+\usepackage{chngcntr}
+\usepackage{hyperref}
+
+\newcommand{\edit}[1]{\textcolor{blue}{#1}} %shortcut for changing font color on revised text
+\newcommand{\fn}[1]{\footnote{#1}} %shortcut for footnote tag
+\newcommand*\sq{\mathbin{\vcenter{\hbox{\rule{.3ex}{.3ex}}}}} %makes a small square as a separator $\sq$
+\renewcommand\labelenumi{(\theenumi)} %changes 1. to (1) in enumerated list
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} %move page number to bottom right
+\renewcommand{\headrulewidth}{0.5pt} %turn off line in header
+\lhead{\scriptsize NE450 - Principles of nuclear engineering}
+\chead{\scriptsize \today}
+\rhead{\scriptsize Two group diffusion}
+\rfoot{\thepage}
+
+\begin{document}
+
+\begin{titlepage}
+    \title{
+        NE450 - Principles of nuclear engineering\\
+        Two group diffusion\\
+    }
+    \author{
+        R. A. Borrelli
+        \\ \\ \\
+        University of Idaho $\sq$ Idaho Falls Center for Higher Education
+        \\ \\
+        Nuclear Engineering and Industrial Management Department
+        \\ \\ \\
+        r.angelo.borrelli@gmail.com
+    }
+\clearpage %not have page number on title page
+\maketitle
+\thispagestyle{empty} %start with page number 1 on second page
+\end{titlepage}
+
+\section{Equation of continuity}
+\noindent The equation of continuity for neutrons describes behavior in a reactor.\\
+
+\noindent [rate of change of neutrons] = [production rate] - [absorption rate] - [leakage rate]\\
+
+\begin{equation} \label{eq-1-continuity}
+    \frac{d}{dt}\int_V ndV=\int_V sdV-\int_V\Sigma_A\phi dV-\int_V\underline{J}\cdot\underline{n}dA
+\end{equation}
+
+\noindent The terms are - 
+\begin{itemize}[leftmargin=*,topsep=0pt]
+    \item $\int_V ndV$ - total number of neutrons
+    \item $\frac{d}{dt} \int_V ndV$ - rate of change
+    \item $\int_V sdV$ - production rate
+    \item $\int_V \Sigma_A \phi dV$ - absorption rate
+    \item $\int_A \underline{J} \cdot \underline{n} dA$ leakage rate
+\end{itemize}
+\vspace{\baselineskip}
+
+\noindent Applying some mathematical relationships - 
+\begin{equation}
+    \begin{split}
+        & \frac{d}{dt} \int_V ndV = \int_V \frac{\partial n}{\partial t} dV \\
+        & \int_A \underline{J} \cdot \underline{n} dA = \int_V \nabla \underline{J} dV
+    \end{split}
+\end{equation}
+
+\noindent Substitute into eq. \ref{eq-1-continuity} - 
+\begin{equation}
+    \int_V \frac{\partial{n}}{\partial{t}} dV = \int_V s dV - \int_V \Sigma_A\phi dV - \int_V \nabla \underline{J} dV
+\end{equation}
+
+\noindent Because the control volume is the same - 
+\begin{equation} \label{eq-continuity}
+    \frac{\partial{n}}{\partial{t}}=s-\Sigma_A\phi-\nabla{J}
+\end{equation}
+
+\noindent Apply Fick's law - 
+\begin{equation}
+    \begin{split}
+        & \frac{\partial{n}}{\partial{t}}=D\nabla^2{\phi}-\Sigma_A\phi+s \\
+        & \frac{1}{v}\frac{\partial{\phi}}{\partial{t}}=D\nabla^2{\phi}-\Sigma_A\phi+s
+    \end{split}
+\end{equation}
+
+\noindent Assume steady state - 
+\begin{equation} \label{eq-general-diffusion}
+    D\nabla^2{\phi}-\Sigma_A\phi+s=0
+\end{equation}
+
+\section{Multigroup diffusion theory}
+\noindent The general multigroup diffusion equation based on eq. \ref{eq-general-diffusion} for an arbitrary group $g$ is - 
+\begin{equation} \label{eq-multigroup-diffusion}
+    D_g\nabla^2{\phi_g}-\Sigma_A^g\phi_g-\sum_{h=g+1}^N{\Sigma_{g \rightarrow h}\phi_g}+\sum_{h=1}^{g-1}{\Sigma_{h \rightarrow g}\phi_h}+s_g=0
+\end{equation}
+
+\noindent In addition to absorption in group $g$, there is the loss due to scatter from group $g$ to $h$ but also a source terms due to scatter from $h$ to $g$.
+
+\noindent For 2 groups, then; i.e., a fast and thermal group, eq. \ref{eq-multigroup-diffusion} is - 
+\begin{equation}
+    \begin{split}
+        & D_1\nabla^2{\phi_1}-\Sigma_A^1\phi_1-\Sigma_{1 \rightarrow 2}\phi_1+\Sigma_{2 \rightarrow 1}\phi_2+s=0 \\
+        & D_2\nabla^2{\phi_2}-\Sigma_A^2\phi_2-\Sigma_{2 \rightarrow 1}\phi_2+\Sigma_{1 \rightarrow 2}\phi_1=0
+    \end{split}
+\end{equation}
+
+\noindent Neutrons will not scatter from the thermal group ($2$) to the fast group ($1$) - 
+\begin{equation}
+    \begin{split}
+        & D_1\nabla^2{\phi_1}-\Sigma_A^1\phi_1-\Sigma_{1 \rightarrow 2}\phi_1+s=0 \\
+        & D_2\nabla^2{\phi_2}-\Sigma_A^2\phi_2+\Sigma_{1 \rightarrow 2}\phi_1=0
+    \end{split}
+\end{equation}
+
+\section{Solution}
+\begin{enumerate}[leftmargin=*,topsep=0pt]
+    \item Assume a one-dimensional, infinite slab.
+    \item Compute the derivatives - 
+        \begin{equation} \label{eq-fast-diffusion}
+            \frac{d^2\phi_1}{dx^2}-\frac{1}{K^2}\phi_1+d=0 
+        \end{equation}
+        \begin{equation} \label{eq-thermal-diffusion}
+            \frac{d^2\phi_2}{dx^2}-\frac{1}{L^2}\phi_2+\Sigma_{1 \rightarrow 2}\phi_1=0
+        \end{equation}
+    \item[] Where - 
+        \begin{equation*}
+            \begin{split}
+                & L^2=\frac{D_2}{\Sigma_A^2} \\
+                & K^2=\frac{D_1}{\Sigma_A^1+\Sigma_{1\rightarrow 2}} \\
+                & d=\frac{s}{D_1}
+            \end{split}
+        \end{equation*}
+    \item[] Let - 
+        \begin{equation*}
+            \frac{d^2\phi}{dx^2} \equiv \phi''
+        \end{equation*}
+\end{enumerate}
+
+\subsection{Fast group}
+\begin{enumerate}[leftmargin=*,topsep=0pt]
+    \item Assume the solution is the sum of a homogeneous and a particular solution.
+        \begin{equation}
+            \phi_1(x)=\phi_H(x)+\phi_P(x)
+        \end{equation}
+    \item Making use of eq. \ref{eq-fast-diffusion} -  
+        \begin{equation}
+            \frac{d^2\phi_H}{dx^2}-\frac{1}{K^2}\phi_H=0
+        \end{equation}
+    \item Assume the homogeneous solution -
+        \begin{equation} \label{eq-fast-diffusion-homogeneous-solution}
+            Ae^{-\frac{x}{K}}+Ce^{\frac{x}{K}}
+        \end{equation}
+    \item Assume the particular solution is an arbitrary constant - 
+        \begin{equation} \label{eq-fast-diffusion-general-particular-solution}
+            \phi_P=B
+        \end{equation}
+    \item Substitute eq. \ref{eq-fast-diffusion-general-particular-solution} in to eq. \ref{eq-fast-diffusion} - 
+        \begin{equation}
+            0-\frac{1}{K^2}B+d=0
+        \end{equation}
+    \item The particular solution is then - 
+        \begin{equation} \label{eq-fast-diffusion-particular-solution}
+            \phi_P=dK^2
+        \end{equation}
+    \item The fast flux is then -
+        \begin{equation} \label{eq-fast-diffusion-solution}
+            \phi_1=A_1e^{-\frac{x}{K}}+C_1e^{\frac{x}{K}}+dK^2
+        \end{equation}
+\end{enumerate}
+
+\subsection{Thermal flux}
+\begin{enumerate}[leftmargin=*,topsep=0pt]
+    \item Substitute eq. \ref{eq-fast-diffusion-solution} into eq. \ref{eq-thermal-diffusion}, using the shorthand notation ($''$) for the second derivative - 
+        \begin{equation} \label{eq-thermal-diffusion-model}
+            \phi''_2-\frac{1}{L^2}\phi_2+\Sigma_1 A_1e^{-\frac{x}{K}}+\Sigma_1 C_1e^{\frac{x}{K}}+\Sigma_1 dK^2=0
+        \end{equation}
+    \item[] Where - 
+        \begin{equation*}
+            \Sigma_{1 \rightarrow 2} \equiv \Sigma_1
+        \end{equation*}
+    \item Following the same procedure, assume the solution is the sum of a homogeneous and a particular solution. 
+        \begin{equation} \label{eq-thermal-general-solution}
+            \phi_2=\phi_H+\phi_P
+        \end{equation}
+    \item Making use of eq. \ref{eq-thermal-diffusion} - 
+        \begin{equation}
+            \phi''_H-\frac{1}{L^2}\phi_H=0
+        \end{equation}
+    \item Assume the homogeneous solution -
+        \begin{equation} \label{eq-thermal-homogeneous-solution}
+            \phi_H=A_2e^{-\frac{x}{L}}+C_2e^{\frac{x}{L}}
+        \end{equation}
+    \item Apply the following \href{https://www.math.uh.edu/~etgen/5389-Chap3.pdf}{theorem} for the particular solution - 
+        \begin{enumerate}[leftmargin=*,topsep=0pt]
+            \item If $z_1(x)$ is a particular solution of - 
+                \begin{equation*}
+                    y''+p(x)y'+q(x)y=f(x)
+                \end{equation*}
+            \item and $z_2(x)$ is a particular solution of - 
+                \begin{equation*}
+                    y''+p(x)y'+q(x)y=g(x)
+                \end{equation*}
+            \item Then, for any number of forcing functions, $z=z_1(x)+z_2(x)$ is a particular solution of -
+                \begin{equation*}
+                    y''+p(x)y'+q(x)y=f(x)+g(x)
+                \end{equation*}
+        \end{enumerate}
+    \item Therefore, because there are three forcing functions in eq. \ref{eq-thermal-diffusion-model} - 
+        \begin{equation}
+            \phi_P=\phi_F+\phi_G+\phi_I
+        \end{equation}
+    \item Based on the theorem - 
+        \begin{equation} \label{eq-thermal-particular}
+            \begin{split}
+                & \phi''_F-\frac{1}{L^2}\phi_F+\Sigma_1 A_1 e^{-\frac{x}{K}} \\
+                & \phi''_G-\frac{1}{L^2}\phi_G+\Sigma_1 C_1 e^{\frac{x}{K}} \\
+                & \phi''_I-\frac{1}{L^2}\phi_I+\Sigma_1 dK^2
+            \end{split}
+        \end{equation}
+    \item[] The diffusion length ($L^2$) does not need to be split because the geometry is the same.
+    \item Assume the correponding particular solutions for each forcing function - 
+        \begin{equation} \label{eq-thermal-assumed-particular}
+            \begin{split}
+                & \phi_F^P=B_1e^{-\frac{x}{K}} \\
+                & \phi_G^P=B_2e^{\frac{x}{K}} \\
+                & \phi_I^P=B_3
+            \end{split}
+        \end{equation}
+    \item Compute the second derivative of each particular solution - 
+        \begin{equation}
+            \begin{split} \label{eq-thermal-assumed-particular-derivative}
+                & \phi''_F=\frac{B_1}{K^2}e^{-\frac{x}{K}} \\
+                & \phi''_G=\frac{B_2}{K^2}e^{\frac{x}{K}} \\
+                & \phi''_H=0
+            \end{split}
+        \end{equation}
+    \item Substitute eq. \ref{eq-thermal-assumed-particular-derivative} and \ref{eq-thermal-assumed-particular} into eq. \ref{eq-thermal-particular} - 
+        \begin{equation}
+            \begin{split}
+                & \frac{B_1}{K^2}e^{-\frac{x}{K}}-\frac{B_1}{L^2}e^{-\frac{x}{K}}+\Sigma_1 A_1 e^{-\frac{x}{K}}=0 \\
+                & \frac{B_2}{K^2}e^{\frac{x}{K}}-\frac{B_2}{L^2}e^{\frac{x}{K}}+\Sigma_1 C_1 e^{\frac{x}{K}}=0 \\
+                & 0-\frac{B_3}{L^2}+\Sigma_1 dK^2=0
+            \end{split}
+        \end{equation}
+    \item Simplfying - 
+        \begin{equation}
+            \begin{split}
+                & \frac{B_1}{K^2}-\frac{B_1}{L^2}+\Sigma_1 A_1 =0 \\
+                & \frac{B_2}{K^2}-\frac{B_2}{L^2}+\Sigma_1 C_1 =0 \\
+                & \frac{B_3}{L^2}-\Sigma_1 dK^2 = 0
+            \end{split}
+        \end{equation}
+    \item Solve for the constants - 
+        \begin{equation} \label{eq-thermal-particular-constants}
+            \begin{split}
+                & B_1=\frac{\Sigma_1 A_1 K^2 L^2}{K^2-L^2} \\
+                & B_2=\frac{\Sigma_1 C_1 K^2 L^2}{K^2-L^2} \\
+                & B_3=\Sigma_1dK^2L^2
+            \end{split}
+        \end{equation}
+    \item Substitute the constants in eq. \ref{eq-thermal-particular-constants} into eq. \ref{eq-thermal-assumed-particular} - 
+        \begin{equation} \label{eq-thermal-particular-solution}
+            \begin{split}
+                & \phi_F^P=\frac{\Sigma_1 A_1 K^2 L^2}{K^2-L^2} e^{-\frac{x}{K}} \\
+                & \phi_G^P=\frac{\Sigma_1 C_1 K^2 L^2}{K^2-L^2} e^{\frac{x}{K}} \\
+                & \phi_I^P=\Sigma_1 d K^2 L^2
+            \end{split}
+        \end{equation}
+    \item Finally, substitute the particular solutions in eq. \ref{eq-thermal-particular-solution} and the homogeneous solution in eq. \ref{eq-thermal-homogeneous-solution} into eq. \ref{eq-thermal-general-solution} to obtain the termal flux - 
+        \begin{equation} \label{eq-thermal-diffusion-solution}
+            \phi_2=A_2e^{-\frac{x}{L}}+C_2e^{\frac{x}{L}}+\frac{\Sigma_1 A_1 K^2 L^2}{K^2-L^2} e^{-\frac{x}{K}}+\frac{\Sigma_1 C_1 K^2 L^2}{K^2-L^2} e^{\frac{x}{K}}+\Sigma_1 d K^2 L^2
+        \end{equation}
+\end{enumerate}
+
+\newpage 
+
+\section{Solution check}
+\subsection{Fast flux}
+\begin{enumerate}[leftmargin=*,topsep=0pt]
+    \item The fast flux is -
+        \begin{equation} \label{eq-fast-flux}
+            \phi_1=A_1e^{-\frac{x}{K}}+C_1e^{\frac{x}{K}}+dK^2
+        \end{equation}
+    \item And the solution must satisfy - 
+        \begin{equation} \label{eq-fast-flux-check}
+            \frac{d^2\phi_1}{dx^2}-\frac{1}{K^2}\phi_1+d=0 
+        \end{equation}
+    \item Compute the second derivative of eq. \ref{eq-fast-flux} - 
+        \begin{equation}
+                \phi''_1=\frac{A_1}{K^2}e^{-\frac{x}{K}}+\frac{C_1}{K^2}e^{\frac{x}{K}} \\
+        \end{equation}
+    \item Substitute the result into eq. \ref{eq-fast-flux-check} and simplify - 
+        \begin{equation*}
+                (\frac{A_1}{K^2}e^{-\frac{x}{K}}+\frac{C_1}{K^2}e^{\frac{x}{K}})-\frac{1}{K^2}[A_1e^{-\frac{x}{K}}+C_1e^{\frac{x}{K}}+dK^2]+d=0
+        \end{equation*}
+        \begin{equation*}
+                \frac{A_1}{K^2}e^{-\frac{x}{K}}+\frac{C_1}{K^2}e^{\frac{x}{K}}-\frac{A_1}{K^2}e^{-\frac{x}{K}}-\frac{C_1}{K^2}e^{\frac{x}{K}}-d+d=0
+        \end{equation*}
+    \item[] Check satisfied.
+\end{enumerate}
+
+\subsection{Thermal flux}
+\begin{enumerate}[leftmargin=*,topsep=0pt]
+    \item The thermal flux is - 
+        \begin{equation} \label{eq-thermal-flux}
+            \phi_2=A_2e^{-\frac{x}{L}}+C_2e^{\frac{x}{L}}+\frac{\Sigma_1 A_1 K^2 L^2}{K^2-L^2} e^{-\frac{x}{K}}+\frac{\Sigma_1 C_1 K^2 L^2}{K^2-L^2} e^{\frac{x}{K}}+\Sigma_1 d K^2 L^2
+        \end{equation}
+    \item And the solution must satisfy - 
+        \begin{equation} \label{eq-thermal-flux-check}
+            \frac{d^2\phi_2}{dx^2}-\frac{1}{L^2}\phi_2+\Sigma_1\phi_1=0
+        \end{equation}
+    \item Compute the second derivative of eq. \ref{eq-thermal-flux} - 
+        \begin{equation}
+            \phi''_2=\frac{A_2}{L^2}e^{-\frac{x}{L}}+\frac{C_2}{L^2}e^{\frac{x}{L}}+\frac{\Sigma_1 A_1 K^2 L^2}{(K^2-L^2)K^2} e^{-\frac{x}{K}}+\frac{\Sigma_1 C_1 K^2 L^2}{(K^2-L^2)K^2} e^{\frac{x}{K}}
+        \end{equation}
+    \item Substitute the result into eq. \ref{eq-thermal-flux-check} and simplify - 
+        \begin{equation*}
+            \begin{aligned}
+                0=\\
+                & +[\frac{A_2}{L^2}e^{-\frac{x}{L}}+\frac{C_2}{L^2}e^{\frac{x}{L}}+\frac{\Sigma_1 A_1 K^2 L^2}{(K^2-L^2)K^2} e^{-\frac{x}{K}}+\frac{\Sigma_1 C_1 K^2 L^2}{(K^2-L^2)K^2} e^{\frac{x}{K}}] \\
+                & -[\frac{A_2}{L^2}e^{-\frac{x}{L}}+\frac{C_2}{L^2}e^{\frac{x}{L}}+\frac{\Sigma_1 A_1 K^2 L^2}{(K^2-L^2)L^2} e^{-\frac{x}{K}}+\frac{\Sigma_1 C_1 K^2 L^2}{(K^2-L^2)L^2} e^{\frac{x}{K}}+\Sigma_1 d K^2] \\
+                & +[\Sigma_1A_1e^{-\frac{x}{K}}+\Sigma_1C_1e^{\frac{x}{K}}+\Sigma_1dK^2]
+            \end{aligned}
+        \end{equation*}
+        \begin{equation*}
+            \begin{aligned}
+                0=\\
+                & +(\frac{A_2}{L^2}-\frac{A_2}{L^2})e^{-\frac{x}{L}}+(\frac{C_2}{L^2}-\frac{C_2}{L^2})e^{\frac{x}{L}}+(\Sigma_1dK^2-\Sigma_1dK^2) \\
+                & +[\frac{\Sigma_1A_1K^2L^2}{(K^2-L^2)K^2}-\frac{\Sigma_1A_1K^2L^2}{(K^2-L^2)L^2}+\Sigma_1A_1]e^{-\frac{x}{K}} \\
+                & +[\frac{\Sigma_1C_1K^2L^2}{(K^2-L^2)K^2}-\frac{\Sigma_1C_1K^2L^2}{(K^2-L^2)L^2}+\Sigma_1C_1]e^{\frac{x}{K}}
+            \end{aligned}
+        \end{equation*}
+        \begin{equation*}
+            \begin{aligned}
+                0=\\
+                & +(\frac{A_2}{L^2}-\frac{A_2}{L^2})e^{-\frac{x}{L}}+(\frac{C_2}{L^2}-\frac{C_2}{L^2})e^{\frac{x}{L}}+(\Sigma_1dK^2-\Sigma_1dK^2) \\
+                & +[\frac{\Sigma_1A_1L^2}{K^2-L^2}-\frac{\Sigma_1A_1K^2}{K^2-L^2}+\frac{\Sigma_1A_1(K^2-L^2)}{K^2-L^2}]e^{-\frac{x}{K}} \\
+                & +[\frac{\Sigma_1C_1L^2}{K^2-L^2}-\frac{\Sigma_1C_1K^2}{K^2-L^2}+\frac{\Sigma_1C_1(K^2-L^2)}{K^2-L^2}]e^{\frac{x}{K}}
+            \end{aligned}
+        \end{equation*}
+    \item[]Check satisfied.
+\end{enumerate}
+
+\end{document}
