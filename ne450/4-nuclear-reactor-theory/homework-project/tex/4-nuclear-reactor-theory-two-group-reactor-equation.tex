@@ -1,0 +1,236 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+\usepackage[pagewise]{lineno} %line numbering
+\usepackage{setspace}
+\usepackage{ulem} %strikethrough - do not \sout{\cite{}}
+\usepackage{xcolor} %change font color
+\usepackage{graphicx}
+\usepackage{filecontents}
+\usepackage{tablefootnote}
+\usepackage{footnotehyper}
+\usepackage{subfig}
+\usepackage[yyyymmdd]{datetime} %date format
+\renewcommand{\dateseparator}{.}
+\graphicspath{{../img/}} %path to graphics
+\setcounter{secnumdepth}{5} %set subsection to nth level
+\usepackage{caption}
+\captionsetup[table]{skip=11pt} %sets a space after table caption
+\usepackage{times}
+\usepackage{tabto} %general tabbed spacing
+\usepackage{longtable} %need to put label at top under caption then \\ - use spacing
+\usepackage[stable,hang,flushmargin]{footmisc} %footnotes in section titles and no indent
+\usepackage[round]{natbib} %parenthesis instead of brackets for inline citations
+\usepackage{enumitem}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{array}
+\usepackage{caption}
+\usepackage[labelfont=bf]{caption}
+\usepackage{chngcntr}
+\usepackage{hyperref}
+
+\newcommand{\edit}[1]{\textcolor{blue}{#1}} %shortcut for changing font color on revised text
+\newcommand{\fn}[1]{\footnote{#1}} %shortcut for footnote tag
+\newcommand*\sq{\mathbin{\vcenter{\hbox{\rule{.3ex}{.3ex}}}}} %makes a small square as a separator $\sq$
+\renewcommand\labelenumi{(\theenumi)} %changes 1. to (1) in enumerated list
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} %move page number to bottom right
+\renewcommand{\headrulewidth}{0.5pt} %turn off line in header
+\lhead{\scriptsize NE450 - Principles of nuclear engineering}
+\chead{\scriptsize \today}
+\rhead{\scriptsize Two group reactor equation}
+\rfoot{\thepage}
+
+\begin{document}
+
+\begin{titlepage}
+    \title{
+        NE450 - Principles of nuclear engineering\\
+        Two group reactor equation\\
+    }
+    \author{
+        R. A. Borrelli
+        \\ \\ \\
+        University of Idaho $\sq$ Idaho Falls Center for Higher Education
+        \\ \\
+        Nuclear Engineering and Industrial Management Department
+        \\ \\ \\
+        r.angelo.borrelli@gmail.com
+    }
+\clearpage %not have page number on title page
+\maketitle
+\thispagestyle{empty} %start with page number 1 on second page
+\end{titlepage}
+
+\section{Equation of continuity}
+\noindent The equation of continuity for neutrons describes behavior in a reactor.\\
+
+\noindent [rate of change of neutrons] = [production rate] - [absorption rate] - [leakage rate]\\
+
+\begin{equation} \label{eq-1-continuity}
+    \frac{d}{dt}\int_V ndV=\int_V sdV-\int_V\Sigma_A\phi dV-\int_V\underline{J}\cdot\underline{n}dA
+\end{equation}
+
+\noindent The terms are - 
+\begin{itemize}[leftmargin=*,topsep=0pt]
+    \item $\int_V ndV$ - total number of neutrons
+    \item $\frac{d}{dt} \int_V ndV$ - rate of change
+    \item $\int_V sdV$ - production rate
+    \item $\int_V \Sigma_A \phi dV$ - absorption rate
+    \item $\int_A \underline{J} \cdot \underline{n} dA$ leakage rate
+\end{itemize}
+\vspace{\baselineskip}
+
+\noindent Applying some mathematical relationships - 
+\begin{equation}
+    \begin{split}
+        & \frac{d}{dt} \int_V ndV = \int_V \frac{\partial n}{\partial t} dV \\
+        & \int_A \underline{J} \cdot \underline{n} dA = \int_V \nabla \underline{J} dV
+    \end{split}
+\end{equation}
+
+\noindent Substitute into eq. \ref{eq-1-continuity} - 
+\begin{equation}
+    \int_V \frac{\partial{n}}{\partial{t}} dV = \int_V s dV - \int_V \Sigma_A\phi dV - \int_V \nabla \underline{J} dV
+\end{equation}
+
+\noindent Because the control volume is the same - 
+\begin{equation} \label{eq-continuity}
+    \frac{\partial{n}}{\partial{t}}=s-\Sigma_A\phi-\nabla{J}
+\end{equation}
+
+\noindent Apply Fick's law - 
+\begin{equation}
+    \begin{split}
+        & \frac{\partial{n}}{\partial{t}}=D\nabla^2{\phi}-\Sigma_A\phi+s \\
+        & \frac{1}{v}\frac{\partial{\phi}}{\partial{t}}=D\nabla^2{\phi}-\Sigma_A\phi+s
+    \end{split}
+\end{equation}
+
+\noindent Assume steady state - 
+\begin{equation} \label{eq-general-diffusion}
+    D\nabla^2{\phi}-\Sigma_A\phi+s=0
+\end{equation}
+
+\section{Multigroup diffusion theory}
+\noindent The general multigroup diffusion equation based on eq. \ref{eq-general-diffusion} for an arbitrary group $g$ is - 
+\begin{equation} \label{eq-multigroup-diffusion}
+    D_g\nabla^2{\phi_g}-\Sigma_A^g\phi_g-\sum_{h=g+1}^N{\Sigma_{g \rightarrow h}\phi_g}+\sum_{h=1}^{g-1}{\Sigma_{h \rightarrow g}\phi_h}+s_g=0
+\end{equation}
+
+\noindent In addition to absorption in group $g$, there is the loss due to scatter from group $g$ to $h$ but also a source terms due to scatter from $h$ to $g$.
+
+\noindent For 2 groups, then; i.e., a fast and thermal group, eq. \ref{eq-multigroup-diffusion} is - 
+\begin{equation}
+    \begin{split}
+        & D_1\nabla^2{\phi_1}-\Sigma_A^1\phi_1-\Sigma_{1 \rightarrow 2}\phi_1+\Sigma_{2 \rightarrow 1}\phi_2+s_1=0 \\
+        & D_T\nabla^2{\phi_T}-\Sigma_A^T\phi_T-\Sigma_{T \rightarrow 1}\phi_T+s_T=0
+    \end{split}
+\end{equation}
+
+\noindent Neutrons will not scatter from the thermal group ($T$) to the fast group ($1$) - 
+\begin{equation}
+    \begin{split} \label{eq-general-reactor}
+        & D_1\nabla^2{\phi_1}-\Sigma_A^1\phi_1-\Sigma_{1 \rightarrow 2}\phi_1+s_1=0 \\
+        & D_T\nabla^2{\phi_T}-\Sigma_A^T\phi_T+s_T=0
+    \end{split}
+\end{equation}
+
+\section{Solution}
+\subsection{Source}
+\begin{enumerate}[leftmargin=*,topsep=0pt]
+    \item Assume the bulk of fissions are induced by thermal neutrons.
+        \begin{equation} \label{eq-fast-source}
+            s_1=\eta_T f \epsilon \Sigma_A^T \phi_T = \frac{k_{\infty}}{p} \Sigma_A^T \phi_T
+        \end{equation}
+    \item Fast neutrons scattering into the thermal region must survive through the resonances. 
+        \begin{equation} \label{eq-thermal-source}
+            s_T=p\Sigma_{1 \rightarrow T}\phi_1
+        \end{equation}
+\end{enumerate}
+
+\subsection{Reactor equations}
+\begin{enumerate}[leftmargin=*,topsep=0pt]
+    \item Assume a one-dimensional, infinite slab.
+    \item Compute the derivatives - 
+    \item[] Let - 
+        \begin{equation*}
+            \frac{d^2\phi}{dx^2} \equiv \phi''
+        \end{equation*}
+    \item Substitute the sources in eqns. \ref{eq-fast-source} and \ref{eq-thermal-source} into eq. \ref{eq-general-reactor} - 
+        \begin{equation} 
+            D_1\phi''_1-\Sigma_A^1\phi_1-\Sigma_{1 \rightarrow T}\phi_1+\frac{k_{\infty}}{p} \Sigma_A^T \phi_T=0
+        \end{equation}
+        \begin{equation} 
+            D_T\phi''_T-\Sigma_A^T\phi_T+p\Sigma_{1 \rightarrow T}\phi_1=0
+        \end{equation}
+    \item Then - 
+        \begin{equation} \label{eq-fast-flux}
+            \phi''_1-\frac{1}{K^2}\phi_1+f\phi_T=0
+        \end{equation}
+        \begin{equation} \label{eq-thermal-flux}
+            \phi''_T+g\phi_1-\frac{1}{L^2}\phi_T=0
+        \end{equation}
+    \item[] Where - 
+        \begin{equation*}
+            \begin{split}
+                & K^2=\frac{D_1}{\Sigma_{1 \rightarrow T}+\Sigma_A^1} \\
+                & L^2=\frac{D_T}{\Sigma_A^T} \\
+                & f=\frac{k\Sigma_A^T}{pD_1} \\
+                & g=\frac{p\Sigma_{1 \rightarrow T}}{D_T}
+            \end{split}
+        \end{equation*}
+\end{enumerate}
+
+\subsection{Eigenvalue approach}
+\begin{enumerate}[leftmargin=*,topsep=0pt]
+    \item Put in matrix form -
+        \begin{equation}
+            \underline{\phi}''=\underline{\underline{A}}\cdot\underline{\phi}
+        \end{equation}
+        \begin{equation}
+            \begin{bmatrix} \phi''_1 \\ \phi''_T \end{bmatrix} = \begin{bmatrix} \frac{1}{K^2} & -f \\ -g & \frac{1}{L^2} \end{bmatrix} \cdot \begin{bmatrix} \phi_1 \\ \phi_T \end{bmatrix}
+        \end{equation}
+    \item Find eigenvalues - 
+        \begin{equation*}
+            \underline{\underline{A}}\cdot\underline{x}=\lambda^2\underline{x}
+        \end{equation*}
+        \begin{equation*}
+            (\underline{\underline{A}}-\lambda^2\underline{\underline{I}})\underline{x}=0
+        \end{equation*}
+        \begin{equation*}
+            det(\underline{\underline{A}}-\lambda^2\underline{\underline{I}})=0
+        \end{equation*}
+    \item Applying eqns. \ref{eq-fast-flux} and \ref{eq-thermal-flux} - 
+        \begin{equation}
+            det \begin{bmatrix} \frac{1}{K^2}-\lambda^2 & -f \\ -g & \frac{1}{L^2}-\lambda^2 \end{bmatrix} = 0
+        \end{equation}
+        \begin{equation}
+            \frac{1}{K^2}(\frac{1}{L^2}-\lambda^2)+\lambda^4-\lambda^2\frac{1}{L^2}+fg=0
+        \end{equation}
+    \item Then - 
+        \begin{equation} \label{eq-characteristic}
+            K^2L^2\lambda^4-(L^2+K^2)\lambda^2+fgK^2L^2+1=0
+        \end{equation}
+    \item[] Eq. \ref{eq-characteristic} is quadratic in $\lambda^2$
+    \item The \href{http://www.math.utah.edu/~gustafso/2250systems-de.pdf}{general solution} (p585) is - 
+        \begin{equation} \label{eq-general-solution}
+            \underline{\phi}=\sum_{j=1}^{n}(a_j \cos\omega_j t+b_j\frac{\sin\omega_j t}{\omega_j})\underline{x}_j
+        \end{equation}
+    \item[] Where the eigenvalues ($\lambda$) relate as -
+        \begin{equation*}
+            \lambda_j = -\omega_j^2
+        \end{equation*}
+    \item[] Eq. \ref{eq-general-solution} assumes all eigenvalues of $\underline{\underline{A}}$ are negative or zero.
+\end{enumerate}
+
+\end{document}
