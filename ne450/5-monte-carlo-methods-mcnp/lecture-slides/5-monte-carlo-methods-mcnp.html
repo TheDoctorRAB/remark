@@ -19,6 +19,14 @@
                          h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
        }
       .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+      .column:first-of-type {float:left}
+      .column:last-of-type {float:right}
+
+      .split-60 .column:first-of-type {width: 60%}
+      .split-60 .column:last-of-type {width: 40%}
+
+      .split-50 .column:first-of-type {width: 50%}
+      .split-50 .column:last-of-type {width: 50%}
     </style>
   </head>
   <body>
@@ -43,7 +51,34 @@ Interpreting output
 
 Materials posted on [OER](https://courses.lumenlearning.com/uidaho-nuclear/chapter/mcnp/)
 ---
-# Monte Carlo simulates particle transport
+class: split-60
+
+# Learning nodes
+
+.column[
+.left[
+**Monte Carlo theory**  
+Approximating an integral  
+Computing $pi$  
+Multidimensional integration  
+Random sampling  
+Boltzmann transport equation  
+
+**Solution procedure**  
+]
+]
+
+.column[
+.right[
+
+]
+]
+---
+class: center,middle
+
+# Monte Carlo theory
+---
+## Monte Carlo simulates particle transport
 
 Like neutrons
 
@@ -59,7 +94,7 @@ class: middle,center
 # Forrest B. Brown
 # [LA-UR-05-4983](https://laws.lanl.gov/vhosts/mcnp.lanl.gov/pdf_files/la-ur-05-4983.pdf)
 ---
-# Monte Carlo was invented by von Neumann
+## Monte Carlo was invented by von Neumann
 
 Fairly successful guy
 
@@ -69,7 +104,7 @@ Monte Carlo is highly accurate but expensive CPU
 
 MCNP can be run on just about all architectures
 ---
-# Monte Carlo methods solve the transport equation
+## Monte Carlo methods solve the transport equation
 
 Mathematical approach is for importance sampling, convergence, variance reduction, random sampling techniques, eigenvalue calculation schemes
 
@@ -82,7 +117,11 @@ Eigenvalue problems are needed for criticality and reactor physics calculations
 
 Should know basic statistics
 ---
-# Consider a simple example
+Class: center,middle
+
+# Approximating an integral
+---
+## Consider a simple example
 
 $G = \int_0^1 g(x)dx$  
 $g(x) = \sqrt{1-x^2}$
@@ -99,7 +138,7 @@ $x_k^2+y_k^2 \leq 1, k=1,..,N$
 Sample x and y and count a 'hit' if less than 1  
 $G \approx (1 \cdot 1)\frac{hits}{N}$
 ---
-# Analytical solution can be obtained
+## Analytical solution can be obtained here
 
 $G = \frac{1}{2}(x\sqrt{1-x^2}-sin^{-1} x)$ 
 
@@ -111,7 +150,11 @@ See Brown 1-6
 
 ![circle](img/circle.png)
 ---
-# Use Monte Carlo to compute pi
+class: center,middle
+
+# Computing $pi$
+---
+## Use Monte Carlo to compute pi
 
 $x^2+y^2=r^2$
 
@@ -127,10 +170,13 @@ Record the hit
 Divide hits by sample number like before  
 Multiply by 4  
 ---
-# Monte Carlo is good for multi dimensional integration
+class: center,middle
+
+# Multidimensional integration
+---
+## Monte Carlo is good for multidimensional integration
 
 The procedure is the same
-
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\large&space;G&space;=&space;\int_{a_1}^{b_1}&space;...&space;\int_{a_n}^{b_n}&space;g(r_1,&space;...&space;,r_n)&space;dr_1&space;...&space;dr_n" target="_blank"><img
     src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;G&space;=&space;\int_{a_1}^{b_1}&space;...&space;\int_{a_n}^{b_n}&space;g(r_1,&space;...&space;,r_n)&space;dr_1&space;...&space;dr_n" title="\large G = \int_{a_1}^{b_1} ... \int_{a_n}^{b_n} g(r_1, ... ,r_n) dr_1 ... dr_n" /></a>
@@ -140,7 +186,11 @@ The procedure is the same
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\large&space;r_n^k&space;\in&space;(a_n,b_n)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;r_n^k&space;\in&space;(a_n,b_n)" title="\large r_n^k \in (a_n,b_n)" /></a>
 ---
-# The key to Monte Carlo methods is the notion of random sampling
+class: center,middle
+
+# Random sampling
+---
+## The key to Monte Carlo methods is the notion of random sampling
 
 For a pdf p(x) produce actual Xs distributed in the same way
 
@@ -152,9 +202,9 @@ Neutron scatting, absorption, fission
 ---
 class: center,middle
 
-# Boltzmann transport equation
+## Boltzmann transport equation
 ---
-# Monte Carlo is used to simulate the transport equation
+## Monte Carlo is used to simulate the transport equation
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\large&space;\Psi(\underline{r},\underline{v})=\int[\int\Psi(\underline{r}',\underline{v}')C(\underline{v}'\rightarrow\underline{v})d\underline{v}'&plus;Q(\underline{r}',\underline{v})]T(\underline{r}'\rightarrow\underline{r})d\underline{r}'" target="_blank"><img
     src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;\Psi(\underline{r},\underline{v})=\int[\int\Psi(\underline{r}',\underline{v}')C(\underline{v}'\rightarrow\underline{v})d\underline{v}'&plus;Q(\underline{r}',\underline{v})]T(\underline{r}'\rightarrow\underline{r})d\underline{r}'" title="\large
@@ -165,7 +215,7 @@ class: center,middle
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\large&space;C(\underline{v}'\rightarrow\underline{v})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;C(\underline{v}'\rightarrow\underline{v})" title="\large C(\underline{v}'\rightarrow\underline{v})" /></a> collision; change velocity at fixed position  
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\large&space;T(\underline{r}'\rightarrow\underline{r})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;T(\underline{r}'\rightarrow\underline{r})" title="\large T(\underline{r}'\rightarrow\underline{r})" /></a> transport; change position at fixed velocity
 ---
-# The source term can become exceedingly complex
+## The source term can become exceedingly complex
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\large&space;Q(\underline{r},\underline{v})=S(\underline{r},\underline{v})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;Q(\underline{r},\underline{v})=S(\underline{r},\underline{v})" title="\large Q(\underline{r},\underline{v})=S(\underline{r},\underline{v})" /></a>   
 fixed source
@@ -180,7 +230,11 @@ fixed source + fission
     \Psi(\underline{r},\underline{v}')F(\underline{v}'\rightarrow\underline{v},\underline{r})d\underline{v}'" /></a>  
 eigenvalue
 ---
-# Start with some assumptions
+class: center,middle
+
+# Solution procedure
+---
+## Start with some assumptions
 
 Static, homogeneous medium  
 
