@@ -65,15 +65,44 @@ Random sampling
 Boltzmann transport equation  
 
 **Solution procedure**  
+Assumptions  
+Superposition  
+
+**Random numbers**  
 ]
 ]
 
 .column[
 .right[
+**MCNP modeling**  
+Geometry summary  
+Neutron flux example  
+Surfaces  
+Sense   
+Cells  
+Universes  
 
+**Other tips**  
+
+**Additional information**
 ]
 ]
 ---
+class: split-60
+
+# More learning nodes
+
+.column[
+.left[
+**MCNP quality control**  
+Mean and variance  
+Other statistical checks  
+
+**Criticality**  
+
+**Variance reduction**  
+]
+]
 class: center,middle
 
 # Monte Carlo theory
@@ -234,6 +263,10 @@ class: center,middle
 
 # Solution procedure
 ---
+class: center,middle
+
+# Assumptions
+---
 ## Start with some assumptions
 
 Static, homogeneous medium  
@@ -246,30 +279,38 @@ Neglect relativistic effects
 
 Particles 'fly' in straight lines  
 ---
-# Develop a Markov scheme with superposition
+class: center,middle
+
+# Superposition
+---
+## Develop a Markov scheme with superposition
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\large&space;p&space;\equiv&space;(\underline{r},\underline{v})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;p&space;\equiv&space;(\underline{r},\underline{v})" title="\large p \equiv (\underline{r},\underline{v})" /></a>
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{200}&space;\large&space;R(p'\rightarrow&space;p)&space;\equiv&space;C(\underline{v}'\rightarrow&space;\underline{v},\underline{r}')\cdot&space;T(\underline{r}'\rightarrow&space;\underline{r},\underline{v})" target="_blank"><img
     src="https://latex.codecogs.com/gif.latex?\dpi{200}&space;\large&space;R(p'\rightarrow&space;p)&space;\equiv&space;C(\underline{v}'\rightarrow&space;\underline{v},\underline{r}')\cdot&space;T(\underline{r}'\rightarrow&space;\underline{r},\underline{v})" title="\large R(p'\rightarrow p) \equiv C(\underline{v}'\rightarrow \underline{v},\underline{r}')\cdot T(\underline{r}'\rightarrow \underline{r},\underline{v})" /></a>
 ---
-# Use some math tricks
+## Use some math tricks
 
 Define this
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\Psi(p)=\sum_{k=0}^{\infty}\Psi_k(p)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\Psi(p)=\sum_{k=0}^{\infty}\Psi_k(p)" title="\LARGE \Psi(p)=\sum_{k=0}^{\infty}\Psi_k(p)" /></a>
 
-And then we know this
+## And then we know this
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\Psi_0(p)=\int&space;Q(r',v)T(r'&space;\rightarrow&space;r,v)dr'" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\Psi_0(p)=\int&space;Q(r',v)T(r'&space;\rightarrow&space;r,v)dr'" title="\LARGE \Psi_0(p)=\int Q(r',v)T(r' \rightarrow r,v)dr'" /></a>
 ---
-So that
+## So that
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\LARGE&space;\Psi_k(p)=\int&space;\Psi_{k-1}(p')&space;\cdot&space;R(p'\rightarrow&space;p)dp'" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\dpi{150}&space;\LARGE&space;\Psi_k(p)=\int&space;\Psi_{k-1}(p')&space;\cdot&space;R(p'\rightarrow&space;p)dp'" title="\LARGE \Psi_k(p)=\int \Psi_{k-1}(p') \cdot R(p'\rightarrow p)dp'" /></a>
 
 Note that collision (k) then only depends on (k-1)
 
 That's the trick of Markov
+---
+class: center,middle
+
+# Histories
 ---
 ## Then, develop several histories, or sequence of states
 
@@ -300,6 +341,10 @@ class: center,middle
 
 ## Skipping ahead
 ---
+class: center,middle
+
+# Random numbers
+---
 ## Random number generation (26-49)
 
 Linear congruential random number generators  
@@ -320,10 +365,6 @@ Probability and statistics
 Key to monte carlo is random sampling  
 Gives several routines for common distributions 
 
-## Computational geometry (118-126)
-Relationship between geometry, physics, tallies
-
-All solid theoretical material
 ---
 class: center,middle
 
@@ -341,143 +382,6 @@ Good for a basis in nuclear engineering research and other courses
 
 More interested in getting to use it for basic problems than higher level techniques
 ---
-## Geometry is fickle and an acquired skill (126)
-
-Define surfaces  
-Define cells using surfaces & operators (intersection, union, complement)
-
-Can also group cells together into a universe, and embed that universe inside another cell
-
-Can also group cells together into a universe, repeat that universe in a lattice arrangement, and embed that universe inside another cell
-
-Repeat universes in a lattice
-
-Assign materials to cells  
-Assign other properties to cells (e.g., importance weights)
-
-Define tallies using cell or surface numbers
----
-class: center,middle
-
-## [Show neutron flux example](https://github.com/TheDoctorRAB/mcnpx.decks)
----
-## Surfaces can be lots of different geometries
-
-#### $F(x,y,z)=ax^2+by^2+cz^2+dxy+eyz+fxz+gx+hy+jz+k=0$
-
-[$F(x,y,z)=0$](https://www.mne.k-state.edu/~jks/MCNPprmr.pdf) defines the surface
-
-It is infinite and closed  
-But you just specify constants on the cards (nothing to actually solve)
-
-For a cylinder:  
-$x^2+y^2-R^2=0$
-
-```
-10     CZ 20
-```
-Just a vertical cylinder (infinite) with 20 cm radius
-
-Keep access to the manual to look up surface cards - see 128
----
-## Here's where things get weird
-
-'Sense' is how a point is defined relative to a surface
-
-For a given point in space $(x,y,z)$, the sense is where it is wrt surface
-
-$F(x,y,z) < 0$ means inside
-
-$F(x,y,z) > 0$ means outside
-
-$F(x,y,z) = 0$ means on
-
-```
-10     CZ  22.23         $metal/cathode basket radius
-11     PZ  100            $metal/cathode basket above the floor
-12     PZ  122.23       $metal/cathode basket height+floor height
-```
----
-## Finite cylinder with equal radius and height
-
-100 cm above the floor
-
--10 11 -12 is the interior (intersection of surfaces)
-
-Let's draw this out
----
-![basic surface](img/mcnp_basic.surface.jpg)
----
-## Use the union operator to assemble larger geometries or get around harder shapes
-
-```
-0      CZ  22.23         $metal/cathode basket radius
-11     PZ  100           $metal/cathode basket above the floor
-12     PZ  122.23        $metal/cathode basket height+floor height
-13     CZ  27.23         $5 cm thick MgO cathode basket
-14     PZ  95            $height above the floor/cathode basket bottom
-
-100    (10:-11)  -12 -13 14   $MgO cathode basket (union of surfaces and intersection)
-```
-
-BUT
-
-Use of ["NOT cell"](https://github.com/TheDoctorRAB/igem/blob/master/neutronics-shielding/low-burnup/L-3030/container/air/3cm/25wt/30wt/6cm/inp/single.assembly_7815.inp) is actually cleaner if you can
----
-![surface union](img/mcnp_surface.union.jpg)
----
-## Use surfaces to define cells
-
-Each has a distinct volume because they are defined by density (134-5)
-
-Intersection, union, of defined surfaces; NOT cell
-
-```
-100    1 -2.03                -10 11 -12                 $metal/salt-filled cathode basket
-
-101    2 -3.58    (10:-11)    -12 -13 14                 $MgO cathode basket
-
-102    3 -0.00178 (12:13:-14) -15 16 -17                 $Ar content in equipment
-
-103    4 -7.92    (15:-16:17) -18 -19 20                 $steel equipment
-
-104    3 -0.00178 (18:19:-20) -50 51 -52 53 54 -55       $rest of SE hot cell
-
-110    3 -0.00178 -52 53 54 -55 -61 70                   $SW hot cell 
-
-111    3 -0.00178  54 -55 -61 62 70 -72                  $NW hot cell
-
-112    3 -0.00178 -50 51 54 -55 62 -72                   $NE hot cell
-```
----
-## Universes are useful for repeating units
-
-Or "nested geometries" at multiple levels
-
-For a reactor core
-
-Remember 'unit cells' from reactor theory?
-
-Group a collection of cells into a universe
-
-Use VisEd for help on geometries
----
-![lattice and universe](img/mcnp_universe.jpg)
----
-## Other tips
-
-Someone already has made the same error as you - look it up
-
-Do not have coinciding surfaces
-
-Check the model space with VisEd
-
-It will show where there are problems
-
-Use the [compendium](http://www.pnl.gov/main/publications/external/technical_reports/PNNL-15870.pdf) in the OER to get weight fractions of common materials
-
-Then look up the cross section IDs in Appendix G of the manual (MCNP5)
----
 ## What happens to a particle?
 
 Born in the source or emerges from a collision  
@@ -494,25 +398,6 @@ Biasing + weight adjustments
 Tallies of quantities of interest
 
 This of course is all material dependent
-
-On top of all that there are variance reduction, weighting, splitting, etc.
----
-## Additional information in the slides
-
-**HTGR modeling (148-165)**  
-TRISO pebbles  
-Example of embedded universes  
-**Collision physics (166-205)**  
-How particles travel  
-Interactions  
-Determine which isotope the interaction is with  
-Determine which interaction type for that isotope  
-Determine the energy & direction of the exiting particle  
-Determine if secondary particles were produced  
-Sample flight distance  
-Biasing + weight adjustments  
-Tallies of quantities of interest  
-Based on pdfs
 ---
 ## How the flight distance is sampled
 
@@ -550,6 +435,203 @@ Criticality (KCODE)
 
 Detectors
 ---
+class: center,middle
+
+# Geometry summary
+---
+## Geometry is fickle and an acquired skill (126)
+
+Define surfaces  
+Define cells using surfaces & operators (intersection, union, complement)
+
+Can also group cells together into a universe, and embed that universe inside another cell
+
+Can also group cells together into a universe, repeat that universe in a lattice arrangement, and embed that universe inside another cell
+
+Repeat universes in a lattice
+
+Assign materials to cells  
+Assign other properties to cells (e.g., importance weights)
+
+Define tallies using cell or surface numbers
+---
+class: center,middle
+
+## [Neutron flux example](https://github.com/TheDoctorRAB/mcnpx.decks)
+---
+class: center,middle
+
+# Surfaces
+---
+## Surfaces can be lots of different geometries
+
+#### $F(x,y,z)=ax^2+by^2+cz^2+dxy+eyz+fxz+gx+hy+jz+k=0$
+
+[$F(x,y,z)=0$](https://www.mne.k-state.edu/~jks/MCNPprmr.pdf) defines the surface
+
+A surface is infinite and closed  
+But you just specify constants on the cards (nothing to actually solve)
+
+For a cylinder on z axis:  
+$x^2+y^2-R^2=0$
+
+```
+10     CZ 20
+```
+Just a vertical cylinder (infinite) with 20 cm radius
+
+Keep access to the manual to look up surface cards - see 128
+---
+class: center,middle
+
+# Sense
+---
+## Here's where things get weird
+
+'Sense' is how a point is defined relative to a surface
+
+For a given point in space $(x,y,z)$, the sense is where it is wrt surface
+
+$F(x,y,z) < 0$ means inside
+
+$F(x,y,z) > 0$ means outside
+
+$F(x,y,z) = 0$ means on
+---
+class: center,middle
+
+[basic surface](img/mcnp_basic.surface.jpg)
+---
+class: center,middle
+
+# Cells
+---
+## Surfaces define cells
+
+Each has a distinct volume because they are defined by density (134-5)
+
+Intersection, union, of defined surfaces; NOT cell
+
+```
+100    1 -2.03                -10 11 -12                 $metal/salt-filled cathode basket
+
+101    2 -3.58    (10:-11)    -12 -13 14                 $MgO cathode basket
+
+102    3 -0.00178 (12:13:-14) -15 16 -17                 $Ar content in equipment
+
+103    4 -7.92    (15:-16:17) -18 -19 20                 $steel equipment
+
+104    3 -0.00178 (18:19:-20) -50 51 -52 53 54 -55       $rest of SE hot cell
+
+110    3 -0.00178 -52 53 54 -55 -61 70                   $SW hot cell 
+
+111    3 -0.00178  54 -55 -61 62 70 -72                  $NW hot cell
+
+112    3 -0.00178 -50 51 54 -55 62 -72                   $NE hot cell
+```
+---
+## Finite cylinder with equal radius and height
+
+```
+10     CZ  22.23        $metal/cathode basket radius
+11     PZ  100          $metal/cathode basket above the floor
+12     PZ  122.23       $metal/cathode basket height+floor height
+```
+
+100 cm above the floor
+
+```
+-10 11 -12 is the interior (intersection of surfaces)
+
+```
+
+Let's draw this out
+---
+## Use the union operator to assemble larger cells or get around harder shapes
+
+```
+10     CZ  22.23         $metal/cathode basket radius
+11     PZ  100           $metal/cathode basket above the floor
+12     PZ  122.23        $metal/cathode basket height+floor height
+13     CZ  27.23         $5 cm thick MgO cathode basket
+14     PZ  95            $height above the floor/cathode basket bottom
+
+100    (10:-11)  -12 -13 14   $MgO cathode basket (union of surfaces and intersection)
+```
+
+BUT
+
+Use of ["NOT cell"](https://github.com/TheDoctorRAB/igem/blob/master/neutronics-shielding/low-burnup/L-3030/container/air/3cm/25wt/30wt/6cm/inp/single.assembly_7815.inp) is actually cleaner if you can
+---
+class: center,middle
+
+![surface union](img/mcnp_surface.union.jpg)
+---
+class: center,middle
+
+# Universes
+---
+## [Universes](https://github.com/TheDoctorRAB/igem/blob/master/neutronics-shielding/low-burnup/L-3030/container/air/3cm/25wt/30wt/6cm/inp/single.assembly_7815.inp) are useful for repeating units
+
+Or "nested geometries" at multiple levels
+
+For a reactor core
+
+Remember 'unit cells' from reactor theory?
+
+Group a collection of cells into a universe
+
+Use VisEd for help on geometries
+---
+![lattice and universe](img/mcnp_universe.jpg)
+---
+class: center,middle
+
+# Other tips
+---
+## Other tips
+
+Someone already has made the same error as you - look it up
+
+Do not have coinciding surfaces
+
+Check the model space with VisEd or the plotter
+
+It will show where there are problems
+
+Use the [compendium](https://courses.lumenlearning.com/uidaho-nuclear/chapter/mcnp/) in the OER to get weight fractions of common materials
+
+Then look up the cross section libraries (.70c, etc.) in Appendix G of the manual (MCNP5)
+---
+class: center,middle
+
+# Additional information
+---
+## Additional information in the slides
+
+**HTGR modeling (148-165)**  
+TRISO pebbles  
+Example of embedded universes  
+**Collision physics (166-205)**  
+How particles travel  
+Interactions  
+Determine which isotope the interaction is with  
+Determine which interaction type for that isotope  
+Determine the energy & direction of the exiting particle  
+Determine if secondary particles were produced  
+Sample flight distance  
+Biasing + weight adjustments  
+Tallies of quantities of interest  
+Based on pdfs
+---
+class: center,middle
+
+# MCNP quality control
+---
+class: center,middle
+
+# Mean and variance
+---
 ## Really we only need mean and variance for most problems
 
 For random variable $x$ of function $r(x)$ with pdf $f(x)$
@@ -571,6 +653,10 @@ Sample average will approach the true expected value with increasing N
 Central limit theorem states it will take on a normal distribution on 210  
 So the tally is the most probable result (basically)
 ---
+class: center,middle
+
+# Statistical checks
+---
 ## Statistical checks are provided for each tally
 
 Relative error (R) = standard deviation/mean  
@@ -590,64 +676,46 @@ Statistical checks are to avoid undersampling
 ---
 ## More about statistical checks from the manual (2-132)
 
-**MEAN**
-1. a nonmonotonic behavior (no up or down trend) in the estimated mean as a function of the number histories N for the last half of the problem
----
+**MEAN**  
+1\. A nonmonotonic behavior (no up or down trend) in the estimated mean as a function of the number histories N for the last half of the problem
+
 **R**  
-2.an acceptable magnitude of the estimated R of the estimated mean (< 0.05 for a
-point detector tally or < 0.10 for a non-point detector tally)
+2\. An acceptable magnitude of the estimated R of the estimated mean (less than 0.05 for a point detector tally or less than  0.10 for a non-point detector tally)
 
-3.a monotonically decreasing R as a function of the number histories N for the last
-   half of the problem
+3\. A monotonically decreasing R as a function of the number histories N for the last half of the problem
 
-4.a $N^{-0.5}$ decrease in the R as a function of N for the last half of the problem
+4\. A $N^{-0.5}$ decrease in the R as a function of N for the last half of the problem
 ---
 **VOV**  
-5.the magnitude of the estimated VOV should be less than 0.10 for all types of tallies
+5\. The magnitude of the estimated VOV should be less than 0.10 for all types of tallies
 
-6.a monotonically decreasing VOV as a function of N for the last half of the problem
+6\. A monotonically decreasing VOV as a function of N for the last half of the problem
 
-7.a $\frac{1}{N}$ decrease in the VOV as a function of N for the last half of the problem
----
+7\. A $\frac{1}{N}$ decrease in the VOV as a function of N for the last half of the problem
+
 **FOM**  
-8.a statistically constant value of the FOM as a function of N for the last half of the
+8\. A statistically constant value of the FOM as a function of N for the last half of the
    problem
 
-9.a nonmonotonic behavior in the FOM as a function of N for the last half of the
+9\. A nonmonotonic behavior in the FOM as a function of N for the last half of the
    problem
 
 $FOM \equiv \frac{1}{R^2 T}$
 
+---
 **f(x)**  
-10.the SLOPE (see page 2–127 Pareto fit) of the 25 to 201 largest positive (negative with a negative DBCN(16) entry) history scores x should be greater than 3.0 so that the second moment will exist if the SLOPE is extrapolated to infinity
+10\. The SLOPE (see page 2–127 Pareto fit) of the 25 to 201 largest positive (negative with a negative DBCN(16) entry) history scores x should be greater than 3.0 so that the second moment will exist if the SLOPE is extrapolated to infinity
 ---
-## Eigenvalue calculations (238-47)
+class: center,middle
 
-For problems separable in space and time (basically)
-
-Used for keff and criticality
-
-<a href="https://www.codecogs.com/eqnedit.php?latex=\large&space;[\underline{\Omega}\cdot\nabla&plus;\Sigma_T(\underline{r},E)]\Psi_k(\underline{r},E,\underline{\Omega})=&space;\\&space;\int\int&space;\Psi(\underline{r},E,\underline{\Omega}')\Sigma_S(\underline{r},E'\rightarrow&space;E,\underline{\Omega}\cdot\underline{\Omega}')d\underline{\Omega}'dE'&plus;&space;\\&space;\frac{1}{k}\frac{\chi(E)}{4\pi}\int\int\nu\Sigma_F(\underline{r},E')\Psi_k(\underline{r},E',\underline{\Omega'})d\underline{\Omega}'dE'"target="_blank"><img src="https://latex.codecogs.com/gif.latex?\large&space;[\underline{\Omega}\cdot\nabla&plus;\Sigma_T(\underline{r},E)]\Psi_k(\underline{r},E,\underline{\Omega})=&space;\\&space;\int\int&space;\Psi(\underline{r},E,\underline{\Omega}')\Sigma_S(\underline{r},E'\rightarrow&space;E,\underline{\Omega}\cdot\underline{\Omega}')d\underline{\Omega}'dE'&plus;&space;\\&space;\frac{1}{k}\frac{\chi(E)}{4\pi}\int\int\nu\Sigma_F(\underline{r},E')\Psi_k(\underline{r},E',\underline{\Omega'})d\underline{\Omega}'dE'"title="\large [\underline{\Omega}\cdot\nabla+\Sigma_T(\underline{r},E)]\Psi_k(\underline{r},E,\underline{\Omega})= \\ \int\int \Psi(\underline{r},E,\underline{\Omega}')\Sigma_S(\underline{r},E'\rightarrow E,\underline{\Omega}\cdot\underline{\Omega}')d\underline{\Omega}'dE'+ \\ \frac{1}{k}\frac{\chi(E)}{4\pi}\int\int\nu\Sigma_F(\underline{r},E')\Psi_k(\underline{r},E',\underline{\Omega'})d\underline{\Omega}'dE'"
-       /></a>
-
-leakage = scatter + fission
----
-## Jointly find k and angular flux
-
-### $(L+T)\Psi = S\Psi + \frac{1}{k}M\Psi$
-
-### $\Psi = \frac{1}{k}\cdot (L+T-S^{-1}) M\Psi$
-
-### $\Psi = \frac{1}{k} \cdot F\Psi$
-
-Solve until solution converges (275)
+# Criticality
 ---
 ## For criticality, a little different (247)
 
 Assume an initial k (k = 1, just use default KCODE; KSRC = x y z for a point in the middle of the source)  
-M fission sites are sampled from the initial source distribution
+Fission sites are sampled from the initial source distribution
 
-Follow a 'batch' of histories to estimate k effective (collectively cycles)  
+Follow a 'batch' of histories to estimate k (collectively called cycles)  
 When they converge, discard the tallies  
 Then start the new iterations until variances decrease   
 The idea is to run from 1 to N+D cycles (D = discard number) to converge the initial guess
@@ -658,9 +726,13 @@ The gist is when obtaining k effective, the value is statistically robust
 Typically, just start with the mcnp defaults and that should be good enough   
 Having some reasonable idea of the theory can help with higher level problems
 ---
+class: center,middle
+
+# Variance reduction
+---
 ## MCNP also comes with many many variance reduction techniques (310)
 
-Increase NPS for the first move
+Increase NPS for the first move (or cycles)
 
 **Modified sampling**  
 Modify the PDFs for physics interactions to favor events/tallies of interest
@@ -676,8 +748,7 @@ May be necessary in order to sample rare events
 More samples (with less weight each) —> smaller variance in tallies
 
 **Deterministic methods**  
-Replace portions of a particle random walk by the expected results  
-obtained from a deterministic calculation
+Replace portions of a particle random walk by the expected results obtained from a deterministic calculation
 
 Not a huge problem with basic criticality problems
 ---
@@ -685,7 +756,7 @@ Not a huge problem with basic criticality problems
 
 ### $\mu = \int r(x)\frac{f(x)}{g(x)}g(x)dx$
 
-### $\sigma^2 = [r(x)\frac{f(x)}{g(x)}]^2g(x)dx - \mu^2$
+### $\sigma^2 = [r(x)\frac{f(x)}{g(x)}]^2g^2(x)dx - \mu^2$
 
 Choose g(x) to reduce variance; i.e., relative error, VOV
 
@@ -721,7 +792,7 @@ Visual Editor
 **Materials**  
 See compendium
 
-**Source**
+**Source**  
 SDEF card for sources  
 KCODE for criticality
 
@@ -735,9 +806,9 @@ Variance reduction
 Length in cm  
 Energy in MeV  
 Mass density in g/cc
+Atom density in atoms/barn-cm
 
 **Do NOT use tabs**  
-Use the space bar
 
 Start in 7th column at the least to 80th column
 
