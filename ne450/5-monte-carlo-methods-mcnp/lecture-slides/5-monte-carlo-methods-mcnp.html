@@ -75,6 +75,10 @@ Superposition
 .column[
 .right[
 **MCNP modeling**  
+What it does  
+Particle tracking  
+Tally   
+Input decks  
 Geometry summary  
 Neutron flux example  
 Surfaces  
@@ -370,6 +374,10 @@ class: center,middle
 
 ## MCNP
 ---
+class: center,middle
+
+# What it does
+---
 ## MCNP is a very useful code to do all sorts of particle analysis
 
 Calculating critical core size for all different types of reactors
@@ -381,6 +389,10 @@ Skill in MCNP will help with other coding adventures
 Good for a basis in nuclear engineering research and other courses
 
 More interested in getting to use it for basic problems than higher level techniques
+---
+class: center,middle
+
+# Particle tracking
 ---
 ## What happens to a particle?
 
@@ -405,7 +417,7 @@ Particle at $(x_0,y_0,z_0)$ traveling with direction $(u,v,w)$
 
 Sample free flight distance
 
-pdf for flight distance s is
+pdf for flight distance $s$ is
 
 $f(s)=\Sigma_T e^{-\Sigma_T s}$
 
@@ -417,6 +429,10 @@ Find s by random sampling
 
 $s=-\frac{ln(1-\xi)}{\Sigma_T}$
 ---
+class: center,middle
+
+# Tally
+---
 ## What does mcnp actually tally? (206)
 
 During a history, tally the events of interest  
@@ -425,8 +441,6 @@ Upon completing a history, accumulate total scores and squares
 
 After completing all histories, compute mean scores and standard deviations
 
-Can change particle 'weights' to make some regions more important
-
 Average flux in a cell (see paper)
 
 Current or flux through a cell wall
@@ -434,6 +448,61 @@ Current or flux through a cell wall
 Criticality (KCODE)
 
 Detectors
+
+RTGs
+---
+class:center,middle
+
+# Input decks
+---
+## Making the input deck is not that hard
+
+**Geometry**  
+Cylinders are the easiest to do  
+Visual editor
+
+**Materials**  
+See compendium
+
+**Source**  
+SDEF card for sources  
+KCODE for criticality
+
+**Scores/Tallies**  
+Designate flux, detector, etc.
+
+Variance reduction if needed after
+---
+## MCNP is FORTRAN based so it is fickle
+
+Length in cm  
+
+Energy in MeV  
+
+Mass density in g/cc
+
+Atom density in atoms/barn-cm
+
+**Do NOT use tabs**  
+
+Get a real text editor
+
+Cards can only span 7th column to 80th column but you can wrap
+---
+## The input deck structure is very specific
+
+```
+One Line Problem Title Card  
+Cell cards  
+.  
+.  
+BLANK LINE  
+Surface cards  
+.  
+.  
+BLANK LINE  
+Data cards  
+```
 ---
 class: center,middle
 
@@ -500,7 +569,7 @@ $F(x,y,z) = 0$ means on
 ---
 class: center,middle
 
-[basic surface](img/mcnp_basic.surface.jpg)
+![basic surface](img/mcnp_basic.surface.jpg)
 ---
 class: center,middle
 
@@ -782,54 +851,6 @@ It isn't a science and comes with experience
 12. General source biasing
 13. Secondary particle biasing
 14. Bremsstrahlung energy biasing
----
-## Making the input deck is not that hard
-
-**Geometry**  
-Cylinders are the easiest to do  
-Visual Editor
-
-**Materials**  
-See compendium
-
-**Source**  
-SDEF card for sources  
-KCODE for criticality
-
-**Scores/Tallies**  
-Designate flux, detector, etc.
-
-Variance reduction
----
-## MCNP is FORTRAN based so it is fickle
-
-Length in cm  
-Energy in MeV  
-Mass density in g/cc
-Atom density in atoms/barn-cm
-
-**Do NOT use tabs**  
-
-Start in 7th column at the least to 80th column
-
-```
-One Line Problem Title Card  
-Cell cards  
-.  
-.  
-BLANK LINE  
-Surface cards  
-.  
-.  
-BLANK LINE  
-Data cards  
-```
----
-class: center,middle
-
-### Show example, data (per source neutron conversion)
-
-### This is one of those things that you just have to do to learn
 ---
 class: center,middle
 
