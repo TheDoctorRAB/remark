@@ -1,0 +1,554 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+\usepackage[pagewise]{lineno} %line numbering
+\usepackage{setspace}
+\usepackage{ulem} %strikethrough - do not \sout{\cite{}}
+\usepackage{xcolor} %change font color
+\usepackage{graphicx}
+\usepackage{filecontents}
+\usepackage{tablefootnote}
+\usepackage{footnotehyper}
+\usepackage{subfig}
+\usepackage[yyyymmdd]{datetime} %date format
+\renewcommand{\dateseparator}{.}
+\graphicspath{{../img/}} %path to graphics
+\setcounter{secnumdepth}{5} %set subsection to nth level
+\usepackage{caption}
+\captionsetup[table]{skip=11pt} %sets a space after table caption
+\usepackage{times}
+\usepackage{tabto} %general tabbed spacing
+\usepackage{longtable} %need to put label at top under caption then \\ - use spacing
+\usepackage[stable,hang,flushmargin]{footmisc} %footnotes in section titles and no indent
+\usepackage[round]{natbib} %parenthesis instead of brackets for inline citations
+\usepackage{enumitem}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{array}
+\usepackage{caption}
+\usepackage[labelfont=bf]{caption}
+\usepackage{chngcntr}
+\usepackage{hyperref}
+
+\newcommand{\edit}[1]{\textcolor{blue}{#1}} %shortcut for changing font color on revised text
+\newcommand{\fn}[1]{\footnote{#1}} %shortcut for footnote tag
+\newcommand*\sq{\mathbin{\vcenter{\hbox{\rule{.3ex}{.3ex}}}}} %makes a small square as a separator $\sq$
+\renewcommand\labelenumi{(\theenumi)} %changes 1. to (1) in enumerated list
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} %move page number to bottom right
+\renewcommand{\headrulewidth}{0.5pt} %turn off line in header
+\lhead{\scriptsize NE450 - Principles of nuclear engineering}
+\chead{\scriptsize \today}
+\rhead{\scriptsize Project 5 - Monte Carlo mathods and MCNP}
+\rfoot{\thepage}
+
+\begin{filecontents}{references.bib}
+    @misc{
+        ,
+        author = {{}},
+        title = {{}},
+        year = {}
+    }
+    @article{
+        ,
+        author = {{}},
+        journal = {},
+        pages = {},
+        title = {{}},
+        volume = {},
+        year = {}
+    }
+    @techreport{
+        ,
+        author = {{}},
+        title = {{}},
+        year = {},
+        institution = {},
+        number = {}
+    }
+\end{filecontents}
+
+\begin{document}
+
+\begin{titlepage}
+    \title{
+        NE450 - Principles of nuclear engineering\\
+        Project 5 - Monte Carlo methods and MCNP\\
+    }
+    \author{
+        Name
+        \\ \\ \\
+        University of Idaho $\sq$ Idaho Falls Center for Higher Education
+        \\ \\
+        Nuclear Engineering and Industrial Management Department
+        \\ \\ \\
+        email 
+    }
+\clearpage %not have page number on title page
+\maketitle
+\vspace*{\fill}
+\begin{flushright}{
+        Total - 450 
+}
+\end{flushright}
+\thispagestyle{empty} %start with page number 1 on second page
+\end{titlepage}
+
+\noindent For problems 1 - 3 use Monte Carlo techniques to obtain the solutions. \\
+
+\begin{enumerate}[leftmargin=*,topsep=0pt,font=\bfseries]
+    \item\textbf{(30) Solve for G using Monte Carlo techniques. Solve the integral analytically and graph g(x). Also plot G v N for $N = 10,\;10^2.\;10^3,\;10^4,\;10^5,\;10^6$.}
+        \begin{equation}
+            G = \int_0^1 g(x)dx 
+        \end{equation}
+        \begin{equation}
+            g(x)=1-e^{-x}
+        \end{equation}
+        \vspace{0.25in}\\
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        \newpage 
+    \item\textbf{(30) Do the same for the following function. This g(x) does not have an analytical solution. However, you can use another numerical solver to compare the Monte Carlo result.}
+        \begin{equation}
+            \int_0^{\frac{\pi}{2}}sin(x^2)dx
+        \end{equation}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(30) Approximate $\sqrt{2}$ in a similar manner to the way we approximated $\pi$.}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(50) Conduct a short modeling study of the metal fuel alloy for the hot cell facility using - }
+        \begin{itemize}[leftmargin=*,topsep=0pt]
+            \item\href{https://github.com/TheDoctorRAB/mcnpx.decks/blob/master/neutron.flux/input/4_ff.alloy.inp}{4\_ff.alloy.inp (flux)}
+            \item\href{https://github.com/TheDoctorRAB/mcnpx.decks/blob/master/neutron.flux/input/4d_ff.alloy.inp}{4d\_ff.alloy.inp (dose)}
+        \end{itemize}
+    \item[]See also the related \href{https://piazza.com/class_profile/get_resource/kbjsrzm65to4ul/kbjss2sfmbe4wu}{paper} in piazza for more information.
+    \item[]Apply the following procedure - 
+        \begin{itemize}
+            \item Look at the original geometry in the plotter/VisEd.
+            \item Modify the facility to only include the SE and SW cells.
+            \item Use MCNP to compute the volume averaged (F4) flux tallies for the SE cell and SW cell.
+            \item Use a neutron emission rate of of $1.1 \times 10^7 \; n/s/g$ for 24 grams of material. 
+            \item Increase NPS from the original files to reduce standard error.
+            \item Start with a wall thickness of 15 cm using the material already included in the deck. It is a form of borated concrete that is common to these kinds of facilities. Increase the wall thickness until the dose rate falls below $1 \mu Sv/h$ and the relative flux falls below 0.01.
+            \item Plot dose rate v wall thickness and the relative flux v wall thickness.
+        \end{itemize}
+    \item[]Is this wall thickness reasonable? As in, could a facility be practically built like this using current engineering design techniques?
+    \item[]Include the MCNP file at the end in an appendix.
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item[] For the criticality models - 
+        \begin{itemize}[leftmargin=*,topsep=0pt]
+            \item Include a screenshot of the model from the VisEd/plotter.
+            \item Use finite geometries.
+            \item Design geometries that will minimize leakage. Show (as part of making the mcnp file and results; not calculating by hand) that leakage has been minimized.
+            \item For criticality, try to get to 4 9s or 0s (.9999x, 1.0000x) for the mean, and 68\% confidence; 3 9s or 0s for each remaining confidence interval.
+            \item Report output in a table - k, standard deviation, 68\% confidence, 95\% confidence, and 99\% confidence.
+            \item Include the input deck in the appendix.
+        \end{itemize}
+    \item[]\textbf{PROTIP - }k can vary weird when your trying to get the critical radius to 4 or 5 decimal places. Study the KCODE parameters. You could also add more particles on KSRC, but be careful where you place them.
+        \newpage
+    \item\textbf{(20) What is the critical mass of a bare sphere of plutonium containing (1) $95.5\% \; ^{239}Pu$ and (2) $80\% \; ^{239}Pu$, where the rest is $^{238}Pu$?}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(20) What is the critical mass for the above, but with a thin nickel shell of 0.10 cm?}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(20) What is the critical mass of pure $^{239}Pu$ of a bare cylinder?}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(30) Taking the bare sphere $^{239}Pu$ model, what is the optimal reflector that minimizes the critical mass?}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(30) Do the same for $^{235}U$.}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(30) Do the same for $^{233}U$.}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(20) Which material is minimal and why, neutronically speaking?}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(50) Three unreflected aluminum cylinders contain $U(93.2)O_2F_2$ water solutions. The inside cylinder diameter and critical height measured 20.3 cm and 41.4 cm. The aluminum container had a density of $2.71 \; g/cm^3$ and was 0.15 cm thick. The three cylinders were set in an equilateral configuration with a surface separation of 0.38 cm. The solution concentration parameters were $0.90 \; g(^{235}U)/cm^3$ with $H:^{235}U = 309$}.
+    \item[]\textbf{It was estimated that the solution density was approximately $1.131 \; g/cm^3$ and consisted of $0.0021345\;^{235}U, \; 0.00015382\;^{238}U, \; 0.33383\;O, \; 0.65930\;H, \; 0.0045756\;F \; atoms/b-cm$.}
+    \item[]\textbf{MCNP gives $k = 0.9991\pm0.0011$.}
+    \item[]\textbf{Reproduce the model to get the result. See the \href{https://courses.lumenlearning.com/uidaho-nuclear/chapter/mcnp/}{MCNP benchmark document} in the OER for guidance.}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(20) Find the critical mass for a bare cylinder of 10.9\% enriched U with a density of 18.63 g/cc.}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(20) Find the minimum critical mass for an infinite graphite reflected 93.5\% enriched U sphere. Use 18.8 g/cc for the U density and just use carbon for the graphite.}
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage 
+    \item\textbf{(20) Find the critical mass of 97.67\% enriched U cube in an infinite water reflector. Use a density of 18.794 g/cc}.
+        \vspace{0.25in}\\
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{enumerate}
+
+\newpage
+
+\noindent{\Large\textbf{Hot cell MCNP input decks}}
+
+\newpage
+
+\noindent{\Large\textbf{Criticality MCNP input decks}}
+
+\newpage
+
+\bibliographystyle{ieeetr}
+\setlength{\bibhang}{0pt}
+\bibliography{references}
+
+\end{document}
