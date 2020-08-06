@@ -44,14 +44,15 @@
 
 \newcommand{\edit}[1]{\textcolor{blue}{#1}} %shortcut for changing font color on revised text
 \newcommand{\fn}[1]{\footnote{#1}} %shortcut for footnote tag
-
 \newcommand*\sq{\mathbin{\vcenter{\hbox{\rule{.3ex}{.3ex}}}}} %makes a small square as a separator $\sq$
+\renewcommand\labelenumi{(\theenumi)} %changes 1. to (1) in enumerated list
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{} %move page number to bottom right
 \renewcommand{\headrulewidth}{0.5pt} %turn off line in header
 \lhead{\scriptsize Prof. R. A. Borrelli} 
+\chead{\scriptsize \textit{MCNP walkthrough - Part I}} 
 \rhead{\scriptsize \today}
 \rfoot{\thepage}
 
@@ -68,9 +69,9 @@
     \author{
         Prof. R. A. Borrelli
         \\ \\ \\
-        University of Idaho $\sq$ Idaho Falls Center for Higher Education\\
-        Center for Advanced Energy Studies\\[0.05in]
-        Engineering/Technology Management, Industrial Technology\\and\\Nuclear Engineering Department
+        University of Idaho $\sq$ Idaho Falls Center for Higher Education
+        \\ \\
+        Nuclear Engineering and Industrial Management Department
         \\ \\ \\
         rborrelli@uidaho.edu
         \\ \\ \\
@@ -87,7 +88,7 @@
 \section{Preface} \label{preface}
 \subsection{Who is this walkthrough for?}
 \noindent Advanced undergraduate students and graduate students in any nuclear engineering curriculum. Students should know - 
-\begin{itemize}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
+\begin{itemize}[leftmargin=*,topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex]
     \item Basic nuclear physics; e.g., cross sections
     \item Interactions of neutrons and photons with matter
     \item Shielding, dose rates
@@ -110,7 +111,7 @@
 
 \noindent Not everyone is going to be a neutronics expert. For those that want to be, mastering MCNP makes it far easier to learn other neutronics codes, like Serpent. Any facility with MCNP provides a fundamental basis for a career in nuclear engineering. Frankly, if you're a graduate student, you're looking for internships. You may not really care what you're going to do; you just want a good position for your CV and a chance to network for future career development. Absolutely nothing wrong with that. On more than one occasion, I have had a researcher come up to me and ask `Do you know any of the students that know MCNP? I have some money for an intern this summer, but I need someone to step in and get right going.' I intend for this walkthrough to give you the skills to step right in and get going.\\
 
-\noindent Learning MCNP will also lend to transferable skills. Whether it is good coding practices, geometric modeling, or just developing engineering judgement, this will lead to success in higher endeavors. \\
+\noindent Learning MCNP will also lend to transferable skills. Whether it is good coding practices, geometric modeling, or just developing engineering judgement. This will lead to success in higher endeavors. \\
 
 \newpage
 
@@ -121,7 +122,7 @@
 \noindent Don't read this if you don't want to. I'm not losing sleep over it. Due to the virus sweeping the nation in 2020, over the summer, I decided I needed to take the time to prepare my fall course with the contingency for shifting to online delivery. I've taught the course since 2015, so I know the material, have all the slides and assignments, etc., already prepared. This is part of that effort. Students should be able to follow this on their own and learn how to use MCNP. 
 
 \subsection{An embarrassment of riches}
-\noindent There are tons and tons and tons and tons of MCNP resources floating around out there. I have compiled them as I find them in my \href{https://courses.lumenlearning.com/uidaho-nuclear/}{Online educational resources for nuclear engineering.} However, all this decentralization just spreads the materials out so much that there isn't really an orderly way to work through them as a learning process. There are a lot of good problems out there that I use in class. \\
+\noindent There are tons and tons and tons and tons of MCNP resources floating around out there. I have compiled them as I find them in my \href{https://courses.lumenlearning.com/uidaho-nuclear/}{online educational resource repository for nuclear engineering.} However, all this decentralization just spreads the materials out so much that there isn't really an orderly way to work through them as a learning process. There are a lot of good problems out there that I use in class. \\
 
 \noindent Probably the closest resource to what I'm trying to do here is the famous \href{https://www.mne.k-state.edu/~jks/MCNPprmr.pdf}{MCNP primer} from Prof. Shultis at Kansas State University. A particularly good feature of the primer is that it cross references to the MCNP manual. I certainly used it when I first learned MCNP. However, I do not know if that manual is shipped with MCNP anymore, and the most recent revision of the primer that I have found is 2011. To be fair, not too much has changed in the ensuing time, but just about all of the resources in addition to the primer that I have found are somewhat dated. The time seems right to develop something new. Another difficulty I have is that most of these resources are gigantic information dumps. It was overwhelming for me when I was first learning MCNP. I like writing, I'm fairly good at it, and given the context of 2020, the time felt right to give this a shot. \\
 
@@ -132,7 +133,7 @@
 \section{Experience - And who do you think you are?} \label{experience}
 \noindent Well, I'm an actual nuclear engineering professor. I've taught the Lamarsh class with an MCNP learning module every year since 2015. Students have attained solid success with publications, internships, and gainful employment from the course. I have many publications applying MCNP in a variety of topics. My expertise in MCNP has led to several funded projects. Ask about me. \\
 
-\noindent I am by no means the leading expert in MCNP. I'm probably not a leading anything unless I'm leading you to happy hour. I can name probably 12 - 15 people I know personally that are better at neutronics modeling than me. However, actually \textit{teaching} MCNP formally is a different paradigm, altogether. I am confident that I'm on a short list of being able to teach \textit{how to use MCNP effectively}. I am purposely very specific in claiming what I can actually do here.
+\noindent I am by no means the leading expert in MCNP. I'm probably not a leading anything unless I'm leading you to happy hour. I can name probably 12 - 15 people I know personally that are better at neutronics modeling than me, and probably 3 to 5 of them are students that took my course. However, actually \textit{teaching} MCNP formally is a different paradigm, altogether. I am confident that I'm on a short list of being able to teach \textit{how to use MCNP effectively}. I am purposely very specific in claiming what I can actually do here.
 
 \section{Style - What's wrong with you?}
 \noindent Plenty, but now's not that time for that. \\
@@ -144,10 +145,10 @@
 \chead{\scriptsize \textit{MCNP walkthrough - Intent and direction}}
 
 \section{Teaching MCNP for \textit{engineers}}
-\noindent There is a reason why I chose the title that I did. I'm interested in getting students and other researchers the guidance they need to run MCNP. If I were going to prepare a course, then, sure, I would spend a significant time on Monte Carlo theory. And I'll have a brief section in here about that. I'm not arguing that a scientific approach isn't valuable in comparison to engineering. I have found most MCNP resources include a ton of material on the theory behind MCNP. I'm assuming you know that already. If you feel like you need some background on the theory behind MCNP, I direct you to \href{https://laws.lanl.gov/vhosts/mcnp.lanl.gov/pdf_files/la-ur-05-4983.pdf}{Fundamentals of Monte Carlo particle transport} by Dr. Forrest B. Brown at Los Alamos National Laboratory. If there's only one expert in MCNP and Monte Carlo theory, he is probably that person. 
+\noindent There is a reason why I chose the title that I did. I'm interested in getting students and other researchers the guidance they need to run MCNP. If I were going to prepare a course, then, sure, I would spend a significant time on Monte Carlo theory. And I'll have a brief section in here about that. I'm not arguing that a scientific approach isn't valuable in comparison to an engineering approach. I have found most MCNP resources include a ton of material on the theory behind MCNP. I'm assuming you know that already. If you feel like you need some background on the theory behind MCNP, I direct you to \href{https://laws.lanl.gov/vhosts/mcnp.lanl.gov/pdf_files/la-ur-05-4983.pdf}{Fundamentals of Monte Carlo particle transport} by Dr. Forrest B. Brown at Los Alamos National Laboratory. If there's only one expert in MCNP and Monte Carlo theory, he is probably that person. 
 
 \section{\textit{Walkthrough}}
-\noindent I also chose the term `walkthrough' deliberately. Here's where I think I bring some value versus other resources. When I think about a walkthrough, I'm thinking about video games - You're playing a cool game but for the last hour you're stuck in a room looking for a lever or loose tile or you're asking questions to the townspeople and you know you have to do it in a certain order but you're going in circles. The game is starting to get tedious and you need a hint. The walkthrough provides a detailed account of the game - right down to where to look or, not only what weapon to select, but what move to employ. That's what I'm going for here - `Fatal error? Look up.' MCNP is slightly more complex than a video game, but if you can build an input file from scratch and get it to run, then you're well on your way. Building in more complexity isn't as overwhelming. 
+\noindent I also chose the term `\textit{walkthrough}' deliberately. Here's where I think I bring some value versus other resources. When I think about a walkthrough, I'm thinking about video games - You're playing a cool game but for the last hour you're stuck in a room looking for a lever or loose tile or you're asking questions to the townspeople and you know you have to do it in a certain order but you're going in circles. The game is starting to get tedious and you need a hint. The walkthrough provides a detailed account of the game - right down to where to look or, not only what weapon to select, but what move to employ. That's what I'm going for here - `Fatal error? Look up. Unlatch the window.' MCNP is slightly more complex than a video game, but if you can build an input file from scratch and get it to run, then you're well on your way. Building in more complexity isn't as overwhelming. 
 
 \newpage
 
@@ -163,22 +164,21 @@
 \noindent The linux distribution for MCNP comes with a plotter equipped to view your models. There's nothing extra to do in a standard linux environment. MCNP used to ship VisEd. I started on VisEd, so I am more used to it than the plotter. Both aren't super great. VisEd only runs in windows. You can request a VisEd download separately after you obtain your MCNP license. I would recommend it. Try both. It's kind of a pain to copy your MCNP file from linux to windows, but it's not really that bad.
 
 \section{Manual}
-\noindent The MCNP manual is very comprehensive. That's also kind of the problem. When I was learning MCNP on my own, the manual was just overwhemling. It is important to have even if for showing what each card (or command essentially) default is, or what output you want to write. Additionally, it contains several tables for the cross section libraries that you can designate. The 'standard` manual which I think everyoen refers to when they're talking about the manual is the one with the
-\textit{LA-UR-03-1987} designation. Mine was last revised in 2008. I don't know if this is shipped or not with the most current MCNP distribution, but I would recommend to find it. I'm not going to be referring to the manual. The Primer actually does a good job with that. I'm intending this walkthrough to be standalone, where the user can then access more comprehensive resources and not feel deluged with information.
+\noindent The MCNP manual is very comprehensive. That's also kind of the problem. When I was learning MCNP on my own, the manual was just overwhemling. It is important to have even if for showing what each card (essentially, a card is a command) default is, or what output you want to write. Additionally, it contains several tables for the cross section libraries that you can designate. The `standard' manual which I think everyone refers to when they're talking about the manual is the one with the \textit{LA-UR-03-1987} designation. Mine was last revised in 2008. I don't know if this is shipped or not with the most current MCNP distribution, but I would recommend to find it. I'm not going to be referring to the manual. The Primer actually does a good job with that. I'm intending this walkthrough to be standalone, where the user can then access more comprehensive resources and not feel deluged with information.
 
 \section{Text editor}
 \noindent MCNP is a FORTRAN code. \textit{FORTRAN}. That's an old language. O. L. D. That means you have to be really careful in your selection of a text editor. FORTRAN will go sideways fast if there's any whitespace or `$\wedge M$' in there. It is also very column specific - where to start and end a line. This is because when they first invented the language, they were programming on punch cards. Fortunately, there are plenty of choices in linux that can be used to build your input files. I use \texttt{vim}. I started on \texttt{vi} at an internship in undergrad at the Naval Undersea Warfare Center because the particular group I was working in used that. I actually learned FORTRAN there. The other popular editor is \texttt{emacs}. In linux, there are many choices. Use one of these. Make sure to turn on line numbers!
 
 \section{Scientific computing best practices}
 \subsection{Python}
-\noindent As a nuclear engineering graduate student, I know you all have a copy of \href{https://www.google.com/books/edition/Effective_Computation_in_Physics/6IkNCgAAQBAJ?hl=en&gbpv=0}{Effective Computation in Physics: Field Guide to Research with Python}. This book, and I feel like using the term `book' to describe this treatise to a successful research career just falls short, should be your guide to best computing practices. Again, installing MCNP in linux allows for more ready
-postprocessing with the accessibility to python. You can install python in your windows environment, but I just find installing packages to be a lot easier in linux. 
+\noindent As a nuclear engineering graduate student, faculty, or other professional, I know you all have a copy of \href{https://www.google.com/books/edition/Effective_Computation_in_Physics/6IkNCgAAQBAJ?hl=en&gbpv=0}{Effective Computation in Physics: Field Guide to Research with Python}. This book, and I feel like using the term `book' to describe this treatise to a successful research career just falls short, should be your guide to best computing practices. Again, installing MCNP in linux allows for more ready postprocessing with the accessibility to python. You can install python in your windows environment, but I just find installing packages to be a lot easier in linux. 
 
 \subsection{Postprocessing}
-\noindent For more complex neutronics and/or photon modeling, effective postprocessing is a necessity. Fortunately, with python, you can find many scripts to edit for your own purposes. I have several on my github. Please feel free to look around my repositories. Additionally, I've found it easier to prepare graphs in python. I have several python graph scripts as well. MCNP comes with plotting capabilities. I never got around to learning how to use them yet. That doesn't mean they aren't useful.
+\noindent For more complex neutronics and/or photon modeling, effective postprocessing is a necessity. Fortunately, with python, you can find many scripts to edit for your own purposes. I have several on my github. Please feel free to look around my repositories. Additionally, I've found it easier to prepare graphs in python. I have several python graph scripts as well. MCNP comes with plotting capabilities. I never got around to learning how to use them yet. That doesn't mean they aren't
+useful. I just haven't had the time. You can also explore the \href{https://pyne.io/}{PyNE toolkit}.
 
 \subsection{Reproducibility}
-\noindent Good computing means your creation can be used by other people. If you make an MCNP file, someone else should be able to run it and produce the same results that you obtained. This provides confidence that you produced research that is scientifically sound. Then, whomever has your MCNP file can modify, enhance, or build upon the model to tackle more problems. We must have this principle in mind when developing MCNP files. As I walkthrough MCNP, I'll make note of this. 
+\noindent Good computing means your creation can be used by other people. If you make an MCNP file, someone else should be able to run it and produce the same results that you obtained. This provides confidence that you produced research that is scientifically sound. Then, whomever has your MCNP file can modify, enhance, or build upon the model to tackle more problems. We must have this principle in mind when developing MCNP files. Much of that just involves comprehensive commenting. As I walkthrough MCNP, I'll make note of this. 
 
 \newpage
 
@@ -187,8 +187,8 @@ postprocessing with the accessibility to python. You can install python in your 
 \section{A brief discussion on Monte Carlo theory}
 \noindent The theory behind MCNP is fairly complicated. It would take a semester course to really get into it in depth. I don't really teach much of it at all, just enough so a user knows how MCNP works. Dr. Brown's 400+ slides contain an exhaustive amount of information on Monte Carlo theory, and I have used them for my own lectures in the Lamarsh course. I'm not trying to be glib - it's important to know the theory. However, this is a walkthrough for engineers on how to use MCNP. The theory can be discovered elsewhere.\\
 
-\noindent In short - Monte Carlo in general is a mathematical approach that simulates particle transport using lots of random number generators and statistical distributions. I'm sure the savvy graduate student will quickly understand that the science of random numbers is of critical importance. True randomness can't ever be achieved, but you need your simulation to be as high fidelity as possible. Dr. Brown's slides contain a very in-depth discussion about random number generation in
-MCNP. It's very good. Both the slides and the generation of randomness. I'm not a benchmark expert, but I think this is one of the reasons everything is benchmarked with MCNP. 
+\noindent In short - Monte Carlo in general is a mathematical approach that simulates particle transport using lots of random number generators and statistical distributions. I'm sure the savvy graduate student will quickly understand that the science of random numbers is of critical importance. True randomness can't ever be achieved, but you need your simulation to be as high fidelity as possible. Dr. Brown's slides contain a very in-depth discussion about random number generation in MCNP. It's
+very good. Both the slides and the generation of randomness. I'm not a benchmark expert, but I think this is one of the reasons everything is benchmarked with MCNP. The user can actually change the kernels for random number generation, but I have never done that. 
 
 \subsection{MCNP solves the transport equation}
 \noindent Monte Carlo methods solve integral problems, and it is very applicable to multi-dimensional integration. This is great for us because we're concerned with where the neutrons are born, where they're going, and what happens when they get there. Lots and lots and lots of times over. \\
@@ -221,7 +221,7 @@ MCNP. It's very good. Both the slides and the generation of randomness. I'm not 
 \end{enumerate}
 \vspace*{\baselineskip}
 
-\noindent Right off the bat, you can see that for reactor concepts like a molten salt reactor, MCNP isn't the best choice, althought it will produce reasonably meaningful results. However, MCNP can solves a wide variety of problems. Even if using newer Monte Carlo computational tools, I would still recommend learning MCNP first. Everything is built off the modeling concepts. 
+\noindent Right off the bat, you can see that for reactor concepts like a molten salt reactor, MCNP isn't the best choice, althought it will produce reasonably meaningful results. However, MCNP can solve a wide variety of problems. Even if using newer Monte Carlo computational tools, I would still recommend learning MCNP first.  
 
 \subsection{Using Monte Carlo to compute $\pi$}
 \noindent Computation of $\pi$ by Monte Carlo methods is a classic and fun example to illustrate the theory.\\
@@ -266,7 +266,7 @@ MCNP. It's very good. Both the slides and the generation of randomness. I'm not 
 
 \noindent To get $\pi$, multiply the result by 4.\\
 
-\noindent Each `particle' that is generated $(x,y)$ pair is indepentent on the prior particle. Here, the `interaction' is only whether the particle falls within the boundary. With a neutron, this could be a scattering or absorption event, which would be determined by cross sections and probability density functions. The concept is essentially the same on a fundamental level. 
+\noindent Each `particle' that is generated; i.e., $(x,y)$ pair, is independent on the prior particle. Here, the `interaction' is only whether the particle falls within the boundary. With a neutron, this could be a scattering or absorption event, which would be determined by cross sections and probability density functions. The concept is essentially the same on a fundamental level. \\
 
 \noindent It should be clear that the choice of N is important. Increasing N will result in solution convergence. I have a \href{https://github.com/TheDoctorRAB/education/blob/master/src/monte.carlo.simple.py}{python routine} where you can experiment with the selection of N and observe the convergence. In fact, that's typically the first option in MCNP when the statistics aren't working out - increase the number of particles to generate more histories. \\
 
