@@ -1,0 +1,325 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+\usepackage[pagewise]{lineno} %line numbering
+\usepackage{setspace}
+\usepackage{ulem} %strikethrough - do not \sout{\cite{}}
+\usepackage{xcolor} %change font color
+\usepackage{graphicx}
+\usepackage{filecontents}
+\usepackage{tablefootnote}
+\usepackage{footnotehyper}
+\usepackage{subfig}
+\usepackage[yyyymmdd]{datetime} %date format
+\renewcommand{\dateseparator}{.}
+\graphicspath{{../img/}} %path to graphics
+\setcounter{secnumdepth}{5} %set subsection to nth level
+\usepackage{caption}
+\captionsetup[table]{skip=11pt} %sets a space after table caption
+\usepackage{times}
+\usepackage{tabto} %general tabbed spacing
+\usepackage{longtable} %need to put label at top under caption then \\ - use spacing
+\usepackage[stable,hang,flushmargin]{footmisc} %footnotes in section titles and no indent
+\usepackage[round]{natbib} %parenthesis instead of brackets for inline citations
+\usepackage{enumitem}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{array}
+\usepackage{caption}
+\usepackage[labelfont=bf]{caption}
+\usepackage{chngcntr}
+\usepackage{hyperref}
+
+\newcommand{\edit}[1]{\textcolor{blue}{#1}} %shortcut for changing font color on revised text
+\newcommand{\fn}[1]{\footnote{#1}} %shortcut for footnote tag
+\newcommand*\sq{\mathbin{\vcenter{\hbox{\rule{.3ex}{.3ex}}}}} %makes a small square as a separator $\sq$
+\renewcommand\labelenumi{(\theenumi)} %changes 1. to (1) in enumerated list
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} %move page number to bottom right
+\renewcommand{\headrulewidth}{0.5pt} %turn off line in header
+\lhead{\scriptsize NE450 - Principles of nuclear engineering}
+\chead{\scriptsize \today}
+\rhead{\scriptsize Maxwell equations}
+\rfoot{\thepage}
+
+\begin{document}
+
+\begin{titlepage}
+    \title{
+        NE450 - Principles of nuclear engineering\\
+        Maxwell equations\\
+    }
+    \author{
+        R. A. Borrelli
+        \\ \\ \\
+        University of Idaho $\sq$ Idaho Falls Center for Higher Education
+        \\ \\
+        Nuclear Engineering and Industrial Management Department
+        \\ \\ \\
+        r.angelo.borrelli@gmail.com
+    }
+\clearpage %not have page number on title page
+\maketitle
+\thispagestyle{empty} %start with page number 1 on second page
+\end{titlepage}
+
+\noindent Definition of average energy - 
+\begin{equation}
+    \overline{E} = \frac{\int_0^{\infty} n(E)EdE}{\int_0^{\infty} n(E)dE}
+\end{equation}
+
+\begin{equation}
+    n(E) = n_0 \frac{2\pi}{(\pi kT)^{\frac{3}{2}}} \; \sqrt{E} \; e^{-\frac{E}{kT}}
+\end{equation}
+
+\noindent Denominator first - 
+\begin{equation}
+    \int_0^{\infty} n(E)dE \equiv F(E) = a \; n_0 \int_0^{\infty} \sqrt{E} \; e^{-b E} dE 
+\end{equation}
+
+\begin{equation*}
+    a \equiv \frac{2\pi}{(\pi kT)^{\frac{3}{2}}} 
+\end{equation*}
+
+\begin{equation*}
+    b \equiv \frac{1}{kT}
+\end{equation*}
+
+\begin{equation*}
+    \begin{gathered}
+        x  = \sqrt{E}\\
+        2x \; dx = dE
+    \end{gathered}
+\end{equation*}
+
+\begin{equation}
+    F(E) \rightarrow F(x) = a \; n_0 \int_0^\infty x \; e^{-bx^2} \; 2xdx
+\end{equation}
+
+\begin{equation*}
+    \int u \; dv = uv - \int v \; du
+\end{equation*}
+
+\begin{equation*}
+    \begin{gathered}
+        u = x\\
+        du = dx
+    \end{gathered}
+\end{equation*}
+
+\begin{equation*}
+    \begin{gathered}
+        dv = 2x \; e^{-bx^2} \; dx\\
+        v = -\frac{1}{b} \; e^{-bx^2}
+    \end{gathered}
+\end{equation*}
+
+\begin{equation}
+    F(x) = a \; n_0 [-\frac{1}{b} \; x \; e^{-bx^2} + \frac{1}{b} \; \int_0^{\infty} e^{-bx^2} \; dx]
+\end{equation}
+
+\begin{equation*}
+    \begin{gathered}
+        w = x\sqrt{b}\\
+        \frac{1}{\sqrt{b}} \; dw = dx
+    \end{gathered}
+\end{equation*}
+
+\begin{equation}
+    F(x) = a \; n_0 [-\frac{1}{b} \; x \; e^{-bx^2} + \frac{1}{b} \; \int_0^{\infty} e^{-w^2} \; \frac{1}{b} \; dw]
+\end{equation}
+
+\begin{equation}
+    F(x) = a \; n_0 [-\frac{1}{b} \; x \; e^{-bx^2} + \frac{1}{b^{\frac{3}{2}}} \; \int_0^{\infty} e^{-w^2} \; dw]
+\end{equation}
+
+\begin{equation}
+    F(x) = a \; n_0 [-\frac{1}{b} \; x \; e^{-bx^2} + \frac{1}{b^{\frac{3}{2}}} \; \frac{\sqrt{\pi}}{2} \; \int_0^{\infty} \frac{2}{\sqrt{\pi}} \; e^{-w^2} \; dw]
+\end{equation}
+
+\begin{equation}
+    F(x) = a \; n_0 [-\frac{1}{b} \; x \; e^{-bx^2} + \frac{1}{b^{\frac{3}{2}}} \; \frac{\sqrt{\pi}}{2} \; \erf(w)]
+\end{equation}
+
+\begin{equation}
+    F(x) = a \; n_0 [-\frac{1}{b} \; x \; e^{-bx^2} + \frac{1}{b^{\frac{3}{2}}} \; \frac{\sqrt{\pi}}{2} \; \erf(x\sqrt{b})]
+\end{equation}
+
+\begin{equation}
+    F(x) = a \; n_0 \left.[-\frac{1}{b} \; x \; e^{-bx^2} + \frac{1}{b^{\frac{3}{2}}} \; \frac{\sqrt{\pi}}{2} \; \erf(x\sqrt{b})]\right\vert \begin{matrix} \infty \\ 0 \end{matrix}
+\end{equation}
+
+\begin{equation}
+    F(E) = a \; n_0 \left.[-\frac{1}{b} \; \sqrt{E} \; e^{-bE} + \frac{1}{b^{\frac{3}{2}}} \; \frac{\sqrt{\pi}}{2} \; \erf(\sqrt{bE})]\right\vert \begin{matrix} \infty \\ 0 \end{matrix}
+\end{equation}
+
+\begin{equation}
+    F(E) = a \; n_0 [(0 + \frac{1}{b^{\frac{3}{2}}} \; \frac{\sqrt{\pi}}{2} \; 1) - (0 + 0)]
+\end{equation}
+
+\begin{equation}
+    F(E) = \frac{2\pi}{\sqrt{\pi^3 k^3 T^3}} \; n_0 [\frac{k^3 T^3}{} \; \frac{\sqrt{\pi}}{2}]
+\end{equation}
+
+\vspace{\baselineskip}
+
+\begin{equation}
+    \int_0^{\infty} n(E)dE = n_0
+\end{equation}
+
+\newpage
+
+\noindent Now numerator - 
+\begin{equation}
+    \int_0^{\infty} n(E) E dE \equiv F(E) = a \; n_0 \int_0^{\infty} \sqrt{E} E \; e^{-b E} dE 
+\end{equation}
+
+\begin{equation*}
+    a \equiv \frac{2\pi}{(\pi kT)^{\frac{3}{2}}} 
+\end{equation*}
+
+\begin{equation*}
+    b \equiv \frac{1}{kT}
+\end{equation*}
+
+\begin{equation*}
+    \begin{gathered}
+        x  = \sqrt{E}\\
+        2x \; dx = dE
+    \end{gathered}
+\end{equation*}
+
+\begin{equation}
+    F(E) \rightarrow F(x) = a \; n_0 \int_0^\infty x \; x^2 \; e^{-bx^2} \; 2xdx
+\end{equation}
+
+\begin{equation}
+    F(E) \rightarrow F(x) = a \; n_0 \int_0^\infty x^3 \; e^{-bx^2} \; 2xdx
+\end{equation}
+
+\begin{equation*}
+    \int u \; dv = uv - \int v \; du
+\end{equation*}
+
+\begin{equation*}
+    \begin{gathered}
+        u = x^3\\
+        du = 3x^2 \; dx
+    \end{gathered}
+\end{equation*}
+
+\begin{equation*}
+    \begin{gathered}
+        dv = 2x \; e^{-bx^2} dx\\
+        v = -\frac{1}{b} \; e^{-bx^2}
+    \end{gathered}
+\end{equation*}
+
+\begin{equation}
+    F(x) = a \; n_0 [-\frac{1}{b} x^3 \; e^{-bx^2} + \frac{3}{b} \int_0^{\infty} x^2 \; e^{-bx^2} \; dx]
+\end{equation}
+
+\begin{equation}
+    F(x) = a \; n_0 [-\frac{1}{b} x^3 \; e^{-bx^2} + \frac{3}{b} (\int_0^{\infty} x \; x \; e^{-bx^2} \; dx)]
+\end{equation}
+
+\begin{equation*}
+    \begin{gathered}
+        u = x\\
+        du = dx
+    \end{gathered}
+\end{equation*}
+
+\begin{equation}
+    \begin{gathered}
+        dv = x \; e^{-bx^2} \; dx\\
+        v = -\frac{1}{2b} \; e^{-bx^2}
+    \end{gathered}
+\end{equation}
+
+\begin{equation}
+    F(x) = a \; n_0 [-\frac{1}{b} \; x^3 \; e^{-bx^2} + \frac{3}{b} (-\frac{1}{2b} \; x \; e^{-bx^2} + \frac{1}{2b} \int_0^{\infty} e^{-bx^2} \; dx)]
+\end{equation}
+
+\begin{equation*}
+    \begin{gathered}
+        w = x\sqrt{b}\\
+        \frac{1}{\sqrt{b}} \; dw = dx
+    \end{gathered}
+\end{equation*}
+
+\begin{equation}
+    F(x) = a \; n_0 [-\frac{1}{b} \; x^3 \; e^{-bx^2} + \frac{3}{b} (-\frac{1}{2b} \; x \; e^{-bx^2} + \frac{1}{2b} \int_0^{\infty} e^{-w^2} \; \frac{1}{\sqrt{b}} \; dw)]
+\end{equation}
+
+\begin{equation}
+    F(x) = a \; n_0 [-\frac{1}{b} \; x^3 \; e^{-bx^2} + \frac{3}{b} (-\frac{1}{2b} \; x \; e^{-bx^2} + \frac{1}{2b^{\frac{3}{2}}} \int_0^{\infty} e^{-w^2} \; dw)]
+\end{equation}
+
+\begin{equation}
+    F(x) = a \; n_0 [-\frac{1}{b} \; x^3 \; e^{-bx^2} - \frac{3}{2b^2} \; x \; e^{-bx^2} + \frac{3}{2b^{\frac{5}{2}}} \int_0^{\infty} e^{-w^2} \; dw]
+\end{equation}
+
+\begin{equation}
+    F(x) = a \; n_0 [-\frac{1}{b} \; x^3 \; e^{-bx^2} - \frac{3}{2b^2} \; x \; e^{-bx^2} + \frac{3}{2b^{\frac{5}{2}}} \frac{\sqrt{\pi}}{2} \int_0^{\infty} \frac{2}{\sqrt{\pi}} \; e^{-w^2} \; dw]
+\end{equation}
+
+\begin{equation}
+    F(x) = a \; n_0 [-\frac{1}{b} \; x^3 \; e^{-bx^2} - \frac{3}{2b^2} \; x \; e^{-bx^2} + \frac{3}{2b^{\frac{5}{2}}} \frac{\sqrt{\pi}}{2} \erf(w)]
+\end{equation}
+
+\begin{equation}
+    F(x) = a \; n_0 [-\frac{1}{b} \; x^3 \; e^{-bx^2} - \frac{3}{2b^2} \; x \; e^{-bx^2} + \frac{3}{2b^{\frac{5}{2}}} \frac{\sqrt{\pi}}{2} \erf(x\sqrt{b})]
+\end{equation}
+
+\begin{equation}
+    F(x) = a \; n_0 [-\frac{1}{b} \; \sqrt{E^3} \; e^{-bE} - \frac{3}{2b^2} \; \sqrt{E} \; e^{-bE} + \frac{3}{2b^{\frac{5}{2}}} \frac{\sqrt{\pi}}{2} \erf(\sqrt{bE})]
+\end{equation}
+
+\begin{equation}
+    F(E) = a \; n_0 \left.[-\frac{1}{b} \; \sqrt{E^3} \; e^{-bE} - \frac{3}{2b^2} \; \sqrt{E} \; e^{-bE} + \frac{3}{2b^{\frac{5}{2}}} \frac{\sqrt{\pi}}{2} \erf(\sqrt{bE})]\right\vert \begin{matrix} \infty \\ 0 \end{matrix}
+\end{equation}
+
+\begin{equation}
+    F(E) = a \; n_0 [(0 - 0 + \frac{3}{2b^{\frac{5}{2}}} \frac{\sqrt{\pi}}{2}) - (0 - 0 + 0)]
+\end{equation}
+
+\begin{equation}
+    F(E) = a \; n_0 \; \frac{3}{2b^{\frac{5}{2}}} \frac{\sqrt{\pi}}{2} 
+\end{equation}
+
+\begin{equation}
+    F(E) = \frac{2\pi}{\sqrt{\pi^3 k^3 T^3}} \; n_0 \; \frac{3\sqrt{k^5 T^5}}{2} \frac{\sqrt{\pi}}{2} 
+\end{equation}
+
+\begin{equation}
+    F(E) = \frac{}{\sqrt{k^3 T^3}} \; n_0 \; \frac{3\sqrt{k^5 T^5}}{2} 
+\end{equation}
+
+\begin{equation}
+    F(E) = \frac{3}{2} \; n_0 \; k T 
+\end{equation}
+
+\newpage
+
+\begin{equation}
+    \overline{E} = \frac{\int_0^{\infty} n(E)EdE}{\int_0^{\infty} n(E)dE}
+\end{equation}
+
+\begin{equation}
+    \overline{E} = \frac{\frac{3}{2} \; n_0 \; k T}{n_0} 
+\end{equation}
+
+\begin{equation}
+    \overline{E} = \frac{3}{2} k T 
+\end{equation}
+
+\end{document}
