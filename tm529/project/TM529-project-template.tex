@@ -1,0 +1,225 @@
+
+
+\documentclass[11pt,a4paper]{article} 
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry} 
+\usepackage[pagewise]{lineno} %line numbering
+\usepackage{setspace}
+\usepackage{ulem} %strikethrough - do not \sout{\cite{}}
+\usepackage{xcolor} %change font color
+\usepackage{graphicx}
+\usepackage{filecontents}
+\usepackage{tablefootnote}
+\usepackage{footnotehyper}
+%\usepackage{subfig}
+\usepackage[yyyymmdd]{datetime} %date format
+\renewcommand{\dateseparator}{.}
+\graphicspath{{../img/}} %path to graphics
+\setcounter{secnumdepth}{5} %set subsection to nth level
+\usepackage{caption}
+\captionsetup[table]{skip=11pt} %sets a space after table caption
+\usepackage{times}
+\usepackage{tabto} %general tabbed spacing
+\usepackage{longtable} %need to put label at top under caption then \\ - use spacing
+\usepackage[stable,hang,flushmargin]{footmisc} %footnotes in section titles and no indent
+\usepackage[round]{natbib} %parenthesis instead of brackets for inline citations
+\usepackage{enumitem}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage[labelfont=bf]{caption}
+\usepackage{chngcntr}
+
+%\counterwithin{table}{section}
+
+%\usepackage{xr}
+%\externaldocument{} %aux file needed
+
+\newcommand{\edit}[1]{\textcolor{blue}{#1}} %shortcut for changing font color on revised text
+\newcommand{\fn}[1]{\footnote{#1}} %shortcut for footnote tag
+\newcommand*\sq{\mathbin{\vcenter{\hbox{\rule{.3ex}{.3ex}}}}} %makes a small square as a separator $\sq$
+\newcommand{\x}{\cellcolor{lightgray}} %use to shade in table cell
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} %move page number to bottom right
+\renewcommand{\headrulewidth}{0.5pt}
+\lhead{\scriptsize Name}
+\chead{\scriptsize NE450 - Project report}
+\rhead{\scriptsize \today}
+\rfoot{\thepage}
+
+\begin{filecontents}{references.bib}
+    @article{
+        xxxxx,
+        author = {},
+        journal = {},
+        pages = {},
+        title = {{}},
+        volume = {},
+        year = {}
+    }
+    @conference{
+        yyyyy,
+        author = {},
+        title = {{}},
+        year = {},
+        organization = {},
+        address = {}
+    }
+    @techreport{
+        zzzzz,
+        author = {},
+        title = {{}},
+        year = {},
+        institution = {},
+        number = {},
+        type = {~}
+    }
+    @book{
+        nnnnn,
+        author = {},
+        title = {{}},
+        publisher = {},
+        year = {},
+        isbn = {}
+    }
+\end{filecontents}
+
+\begin{document}
+
+\begin{titlepage}
+    \title{Title}
+    \author{
+        Name \\
+        NE450: Principles of Nuclear Engineering Course Design Project
+        \\ \\
+        University of Idaho $\sq$ Idaho Falls Center for Higher Education\\[0.05in]
+        Engineering/Technology Management, Industrial Technology\\and\\Nuclear Engineering Department
+        \\ \\
+        email
+    }
+\clearpage % not have page number on title page
+\maketitle
+\vspace*{\fill}
+\begin{flushright}{
+        \noindent Number of pages - XX \\
+        \noindent Number of tables - XX \\
+        \noindent Number of figures - XX
+}
+\end{flushright}
+\thispagestyle{empty} % start with page number 1 on second page
+\end{titlepage}
+
+\onehalfspacing
+\linenumbers
+\pagewiselinenumbers
+\modulolinenumbers[3] % line numbering interval
+
+\noindent\Large{\textbf{Executive Summary}} \label{exec-summ} \\
+
+\newpage
+
+\section{Introduction} \label{introduction}
+Expand on the white paper in this section to introduce the project.
+
+\subsection{Motivation}
+
+\subsection{Goals}
+
+\newpage
+
+\section{Background} \label{background}
+Give a good technical overview of your topic with literature references.
+
+\newpage
+
+\section{Process model} \label{process-model}
+`Derive' the process model. Include all the necessary data needed. Provide diagrams, etc.
+
+Be as technical as possible, and include a solid qualitative analysis. Include and justify any assumptions.
+
+\newpage
+
+\section{MCNP model} \label{mcnp-model}
+Provide the MCNP model Screenshot the configuration in the visual editor. Explain what you are modeling and why it is important. Include the input file in an appendix.
+
+\newpage
+
+\section{Results and discussion} \label{results-discussion}
+Present and analyze results.
+
+\newpage
+
+\section{Cross cutting discussions} \label{cross-cutting}
+Briefly discuss cross cutting issues related to the project.
+
+\newpage
+
+\section{Future work} \label{future-work}
+Outside the scope of the project, what additional work could be done using the existing model? What enhancements can be made to the model and for what purpose(s)?
+
+\newpage
+
+\section{Lessons learned} \label{lessons-learned}
+
+What you personally learned over the course of the project
+
+\newpage
+
+\section{Summary remarks} \label{summary-remarks}
+
+%uncomment to prepare references
+%\bibliographystyle{}
+%\setlength{\bibhang}{0pt}
+%\bibliography{}
+
+\newpage
+
+\noindent\Large{\textbf{Appendix I}} \label{appendix-i}
+
+\newpage
+
+\noindent\textbf{\Large{Tables}}
+
+\begin{table}[h!]
+    \centering
+    \caption{Caption}
+    \label{tab-label}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        A&
+        B&
+        C\\
+        \hline
+        1&2&3\\
+        \hline
+        4&5&6\\
+        \hline
+        7&8&9\\
+        \hline
+        X&Y&Z\\
+        \hline
+    \end{tabular}
+\end{table}
+
+\newpage
+
+\noindent\textbf{\Large{Figures}}
+
+%\begin{figure}[h!]
+%    \centering
+%    \includegraphics[width=0.8\textwidth]{}
+%    \caption{}
+%    \label{fig-label}
+%\end{figure}
+
+\end{document}
