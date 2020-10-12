@@ -1,0 +1,188 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+\usepackage[pagewise]{lineno} %line numbering
+\usepackage{setspace}
+\usepackage{ulem} %strikethrough - do not \sout{\cite{}}
+\usepackage{xcolor} %change font color
+\usepackage{graphicx}
+\usepackage{filecontents}
+\usepackage{tablefootnote}
+\usepackage{footnotehyper}
+\usepackage{subfig}
+\usepackage[yyyymmdd]{datetime} %date format
+\renewcommand{\dateseparator}{.}
+\graphicspath{{../img/}} %path to graphics
+\setcounter{secnumdepth}{5} %set subsection to nth level
+\usepackage{caption}
+\captionsetup[table]{skip=11pt} %sets a space after table caption
+\usepackage{times}
+\usepackage{tabto} %general tabbed spacing
+\usepackage{longtable} %need to put label at top under caption then \\ - use spacing
+\usepackage[stable,hang,flushmargin]{footmisc} %footnotes in section titles and no indent
+\usepackage[round]{natbib} %parenthesis instead of brackets for inline citations
+\usepackage{enumitem}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{array}
+\usepackage{caption}
+\usepackage[labelfont=bf]{caption}
+\usepackage{chngcntr}
+\usepackage{hyperref}
+
+\newcommand{\edit}[1]{\textcolor{blue}{#1}} %shortcut for changing font color on revised text
+\newcommand{\fn}[1]{\footnote{#1}} %shortcut for footnote tag
+\newcommand*\sq{\mathbin{\vcenter{\hbox{\rule{.3ex}{.3ex}}}}} %makes a small square as a separator $\sq$
+\renewcommand\labelenumi{(\theenumi)} %changes 1. to (1) in enumerated list
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} %move page number to bottom right
+\renewcommand{\headrulewidth}{0.5pt} %turn off line in header
+\lhead{\scriptsize TM529 - Risk assessment}
+\chead{\scriptsize \today}
+\rhead{\scriptsize Project 1 - Risk assessment and management overview}
+\rfoot{\thepage}
+
+\begin{filecontents}{references.bib}
+    @misc{
+        ,
+        author = {{}},
+        title = {{}},
+        year = {}
+    }
+    @article{
+        ,
+        author = {{}},
+        journal = {},
+        pages = {},
+        title = {{}},
+        volume = {},
+        year = {}
+    }
+    @techreport{
+        ,
+        author = {{}},
+        title = {{}},
+        year = {},
+        institution = {},
+        number = {}
+    }
+\end{filecontents}
+
+\begin{document}
+
+\begin{titlepage}
+    \title{
+        TM529 - Risk assessment\\
+        Project 1 - Risk assessment and management overview\\
+    }
+    \author{
+        Name
+        \\ \\ \\
+        University of Idaho $\sq$ Idaho Falls Center for Higher Education
+        \\ \\
+        Nuclear Engineering and Industrial Management Department
+        \\ \\ \\
+        email 
+    }
+\clearpage %not have page number on title page
+\maketitle
+\vspace*{\fill}
+\begin{flushright}{
+        Total - 200
+}
+\end{flushright}
+\thispagestyle{empty} %start with page number 1 on second page
+\end{titlepage}
+
+\begin{enumerate}[leftmargin=*,topsep=0pt,font=\bfseries]
+    \item\textbf{(75) Conduct a qualitative risk assessment on the selected topic, facility, issue.}
+        \begin{itemize}[topsep=-1ex,itemsep=-1ex,partopsep=1ex,parsep=1ex,font=\bfseries]
+            \item Briefly discuss the relevance of the selection and why it poses a risk.
+            \item Address each of the three major questions.
+            \item Use the risk assessment matrix to classify the results of the three questions.
+            \item Explain how the matrix was developed.
+            \item Suggest management strategies and how risk may be reduced.
+            \item Identify residual risks.
+            \item Conclude on the overall acceptability of risk for the selection.
+        \end{itemize}
+        \vspace{\baselineskip}
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        \newpage
+    \item\textbf{(75) Similarly, consider the following (see below) - }
+        \begin{itemize}[topsep=-1ex,itemsep=-1ex,partopsep=1ex,parsep=1ex,font=\bfseries]
+            \item Identify five issues relevant to risk characterization for hazardous and municipal waste incinerators.
+            \item Identify how to collect information for hazard identification, source data, emissions data, and source ranking.
+        \end{itemize}
+        \vspace{0.10in}
+        Incineration has emerged over the last century as an approach for (1) reducing the volume of municipal solid waste while producing electrical energy, (2) for destroying medically contaminated hospital waste, and (3) for reducing substantially the potential toxicity and volume of chemical and biological hazardous wastes. The concept of waste incineration is not new and has been employed for centuries. However, in the last several decades, the quantity of material being combusted, public concerns about the health and ecological impacts of combustion facilities, and the cost of control have all increased.
+
+        Municipal solid waste is defined as the solid portion of the waste generated by households, commercial establishments, institutions, and governments. This waste stream includes food and yard wastes, paper of all kinds, plastics, glass, wood, metals, rubber, textiles, and some construction wastes. The problem of increasing quantities of municipal solid waste in the USA continues to grow more severe as a result of three converging issues: (1) the population of the USA is considerably increasing, (2) per capita generation of waste is increasing due to increasing consumption of nondurable and disposable items, as well as, durable products and overpackaging, and (3) the population is concentrating into large urban complexes which have limited land and resources available for waste burial, as well as a limited capacity to disperse more air, soil, or water pollution, already polluted air and water resources, which in some cases threatens drinking water supplies. In addition, the increased consumption of packaging and products is taxing, and in some cases depleting, nonrenewable and renewable mineral, energy, water, and forest resources.  
+
+        A hazardous waste is defined by the EPA in RCRA as a material that can be classified as potentially dangerous to human health or the environment based on the following criteria: it may ignite easily, posing a fire hazard, it may be corrosive, capable of damaging materials or injuring people, it may be reactive, likely to explode, catch fire, or give off dangerous gases when in contact with water or other materials, it may be toxic, capable of causing illness or other health problems if handled incorrectly, it maybe on a list of specific wastes or discarded pure compounds which the EPA has determined as hazardous.
+
+        Hazardous wastes can originate from a wide range of industrial, agricultural, commercial, and household activities. They are generated by manufacturers of many everyday products, by manufacturers of speciality articles, by both service and wholesale trade companies, as well as universities, hospitals, government facilities, and households. Hazardous wastes are generated by both chemical manufacturing industries and users. Virtually all manufacturing operations result in the generation of residuals because no production process can transform all input materials into products or services.
+        \vspace{\baselineskip}
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        \newpage
+    \item\textbf{(50) Watch the \href{https://youtu.be/csbdeOfhKTM}{PBS NewsHour} piece on earthquakes in Oklahoma. Is this a relevant issue for the course? What is the risk? How could the risk be managed? What is the social context? There is no need for additional research. Consider this as an op-ed piece.}
+        \vspace{\baselineskip}
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        
+        
+\end{enumerate}
+
+\newpage 
+
+\bibliographystyle{ieeetr}
+\setlength{\bibhang}{0pt}
+\bibliography{references}
+
+\end{document}
