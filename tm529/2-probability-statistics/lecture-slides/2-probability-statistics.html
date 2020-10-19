@@ -19,6 +19,14 @@
                          h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
        }
       .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+      .column:first-of-type {float:left}
+      .column:last-of-type {float:right}
+
+      .split-60 .column:first-of-type {width: 60%}
+      .split-60 .column:last-of-type {width: 40%}
+
+      .split-50 .column:first-of-type {width: 50%}
+      .split-50 .column:last-of-type {width: 50%}
     </style>
   </head>
   <body>
@@ -31,29 +39,55 @@ class: center, middle
 
 #### 2
 ---
-# Learning outcomes
+class: split-60
 
+## Learning outcomes
+
+.column[
+.left[
 Demonstrating the importance of statistics  
+
 Explaining the relevance to the field  
+
 Analyzing and interpreting data  
+
 Deconstructing myths about statistics  
+
 Deriving basic metrics
 
 Chapter 7 in the book
+]
+]
 
+.column[
+.right[
 Has anyone taken a statistics course?
 
 Math classes tend not to focus on engineering so it is annoying
 
 Python very useful for statistical analysis
+]
+]
 ---
+class: split-60
+
+## Learning nodes 
+
+.column[
+.left[
+**Probability**
+]
+]
+---
+class: center,middle
+
 ![Zoidberg](img/zoidberg.jpg)
 ---
 class: center, middle
 
 # What is probability?
 ---
-# Probability theory was invented by Pascal and de Fermat for gambling
+## Probability theory was invented by Pascal and de Fermat for gambling
 
 Anyone know how to count cards?  
 Can up your odds in blackjack to almost over 50:50
