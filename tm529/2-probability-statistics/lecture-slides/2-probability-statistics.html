@@ -75,7 +75,24 @@ class: split-60
 
 .column[
 .left[
-**Probability**
+**Probability and statistics definitions**
+
+**Probability distributions**
+
+**Likelihood**
+
+**Statistics critique**  
+
+**Classic case studies**  
+Cholera  
+WWII  
+Challenger  
+]
+]
+
+.column[
+.right[
+**Misconceptions**
 ]
 ]
 ---
@@ -109,9 +126,10 @@ In a standard 6 deck blackjack game each true count will move the house edge hal
 
 You still need to know how to play though
 ---
-# Clearly, probability theory is essential for risk assessment
+## Clearly, probability theory is essential for risk assessment
 
 Perception of probability is not necessarily what the real probability is  
+
 This was the point of Monty Hall and the modified Russian roulette
 
 Risk perception is hugely important
@@ -120,7 +138,7 @@ Dice is usually a common starting example
 
 And we know the expected value of dice
 ---
-# Anyone play craps? 
+## Anyone play craps? 
 
 Explained in Section 7.1 in the book
 
@@ -138,7 +156,7 @@ what is the probability of these?
 
 So the reason craps is popular is because there are a lot of favorable probabilities
 ---
-# Event needs to be clearly characterized before deriving probabilities
+## Event needs to be _clearly characterized_ before deriving probabilities
 
 Wrong probability if describing the wrong event  
 Wrong assumptions
@@ -153,7 +171,7 @@ What is the probability of...
 
 What is an independent event? Dependent event?
 ---
-# Ground rules for probabilities
+## Ground rules for probabilities
 
 AND = multiply probabilities  
 $P(A \cap B) = P(A) \cdot P(B)$
@@ -164,15 +182,14 @@ $P(A \cup B) = P(A) + P(B)$
 CONDITIONAL = B given A
 P(theory|data) ~ P(data|theory) P(theory)  
 
-[Bayes Theorem](https://courses.candelalearning.com/riskassessment/chapter/bayes-theorem/)  
+[Bayes Theorem](https://courses.lumenlearning.com/uidaho-riskassessment/chapter/bayes-theorem/)
 
 $P(B|A) = \frac{P(A \cap B)}{P(A)}$  
 $P(B|A) = \frac{P(B) P(A|B)}{P(A)}$
 ---
-# More terms for probabilities
+## More terms for probabilities
 
-experiment = process by which an outcome is observed
-and we get data
+experiment = process by which an outcome is observed and we get data
 
 what experiments are we conducting in our research?
 
@@ -182,9 +199,63 @@ event = subset of sample space
 
 joint probability = occurrences of two random variables
 ---
-# We derive probability distributions from sample spaces
+## There is precise terminology to describe statistical problems
 
-Why?  How can a distribution be derived?  
+population (universe) = collection of things under consideration
+
+sample = portion of the population selected for analysis  
+Less time consuming and costly than a census  
+Less cumbersome and more practical to administer   
+
+parameter = summary measure computed to describe a characteristic of the population
+
+statistic = summary measure computed to describe a characteristic of the sample
+---
+## Use statistics to infer something about the population based on the sample
+
+1. Collect data
+2. Present data
+3. Characterize data (fit to a known distribution to obtain moments)
+
+Categorical data = qualitative  
+Numerical data = discrete or continuous  
+Central tendencies of data = mean, median, mode  
+Measure of spread = variance, standard deviation  
+Higher level moments = skewness, kurtosis  
+
+These are readily derived from known distributions
+---
+## So the goal is to find distributions for collected data in order to predict universe
+
+Also can use Monte Carlo methods  
+
+Which we have done to simulate injection casting failure using Weibull
+
+Sensitivity analysis = rate of change of output with input, local about nominal value, global over entire parameter space
+---
+## Why do we need data?
+
+To provide input to survey 
+
+To provide input to study
+
+To measure performance of service or production process
+
+To evaluate conformance to standards
+
+To assist in formulating alternative courses   of action
+
+To satisfy curiosity
+
+What else?
+---
+class: center,middle
+
+# Probability distributions
+---
+## We derive probability distributions from sample spaces
+
+Why? How can a distribution be derived?  
 Probability is starting with an animal, and figuring out what footprints it will make  
 Statistics is seeing a footprint, and guessing the animal  
 Discrete or continuous
@@ -196,15 +267,33 @@ Cumulative distribution or 'unreliability'
 $P(X \leq x) \equiv \int_{-\infty}^x p(\xi)d\xi$
 
 Used to determine failure rates for safety analysis  
-1st and 2nd [moments](https://courses.candelalearning.com/riskassessment/chapter/statistical-moments/) are used to obtain expected value and variance 
+[1st and 2nd moments](https://courses.lumenlearning.com/uidaho-riskassessment/chapter/statistical-moments/) are used to obtain expected value and variance 
 ---
-# [Normal distribution](https://courses.candelalearning.com/riskassessment/chapter/common-statistical-distributions/)
+class: center,middle
+
+$\rho (x) \equiv \lambda e^{-\lambda x}, \; x > 0$
+
+$E[X] \equiv \int_{0}^{\infty} x \rho (x) dx = \frac{1}{\lambda}$
+
+$Var[X] \equiv \int_{0}^{\infty} x^2 \rho (x) dx = \frac{1}{\lambda^2}$
+---
+## [Normal distribution](https://courses.lumenlearning.com/uidaho-riskassessment/chapter/common-statistical-distributions/)
 
 ![Normal distribution](img/normal.distribution.png)
 ---
+class: center,middle
+
+$p(x) = \frac{1}{\sigma\sqrt{2\pi}} \; e^{-\frac{1}{2}(\frac{x-\mu}{\sigma})^2}$
+---
+class: center,middle
+
 ![Class grades](img/class.png)
 ---
-# [Likelihood](https://courses.candelalearning.com/riskassessment/chapter/likelihood/) is a tool for summarizing the data’s evidence about unknown parameters
+class: center,middle
+
+# Likelihood
+---
+## [Likelihood](https://courses.lumenlearning.com/uidaho-riskassessment/chapter/likelihood/) is a tool for summarizing the data’s evidence about unknown parameters
 
 Normal distribution depends on two parameters   
 $f(x;\mu,\sigma) = \frac{1}{\sigma\sqrt{2\pi}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}$
@@ -217,7 +306,7 @@ A common application of the likelihood function is in estimation
 Estimate parameters from some given data x to understand how the function behaves
 if it has 'fat tails' or really skewed
 ---
-# There may not be a lot of data where the true mean, etc., could be directly obtained
+## There may not be a lot of data where the true mean, etc., could be directly obtained
 
 Example of statistical inference
 
@@ -228,7 +317,7 @@ $f(x) = \frac{n!}{x!(n-x)!}p^x(1-p)^{(n-x)}$
 For 10 flips of the fair coin  
 $f(x;p) = \binom{10}{x}0.5^x(1-0.5)^{(10-x)}$
 ---
-# What if you don't know the coin is fair? 
+## What if you don't know the coin is fair? 
 
 You see 7 heads on 10 flips
 
@@ -238,20 +327,27 @@ $L(p;x) = \binom{10}{7}p^7(1-p)^3$
 
 Typically to find p, find the maximum or log maximum
 ---
+class:center,middle
+
 ![Binomial pdf](img/binomial.pdf.png)
 ---
-# Statistics get a bad rap
+class: center,middle
+
+# Statistics critique
+---
+## Statistics get a bad rap
 
 There are three kinds of lies:  lies, damned lies, and statistics.   
 -Benjamin Disraeli
 
-
 I gather, young man, that you wish to be a Member of Parliament. The first lesson that you must learn is, when I call for statistics about the rate of infant mortality, what I want is proof that fewer babies died when I was Prime Minister than when anyone else was!  
 -Winston Churchill
 ---
+class: center,middle
+
 ![Cartoon](img/cartoon.jpg)
 ---
-# Statistics are tools, not ends
+## Statistics are tools, not ends
 
 It is very easy for research psychologists, particularly young psychologists, to be overconcerned with statistical methods...
 
@@ -259,7 +355,7 @@ However, **careful observation** is the main business of empirical science, and 
 
 William Hays (1963)
 ---
-# Statistical inference: The “grand thing of reasoning backwards”  
+## Statistical inference: The “grand thing of reasoning backwards”  
 
 In solving a problem of this sort, the grand thing is to be able to reason backward. That is a very useful accomplishment, and a very easy one, but people do not practise it much...Most people, if you describe a train of events to them, will tell you what the result would be.  
 
@@ -271,12 +367,16 @@ Sherlock Holmes - A Study in Scarlet
 ---
 class: center,middle
 
-# Let's look at some seminal cases
+# Let's look at some [seminal cases](https://courses.lumenlearning.com/uidaho-riskassessment/chapter/probability-and-statistics/)
 ---
-# In 1854, there was a cholera outbreak near Broad Street in London
+class: center,middle
+
+# Cholera
+
+## In 1854, there was a cholera outbreak near Broad Street in London
 
 Over 500 people died  
-[Seminal epidemiological study by Dr. John Snow](https://courses.candelalearning.com/riskassessment/chapter/probability-and-statistics/)  
+Seminal epidemiological study by Dr. John Snow  
 They did not know cholera was water borne  
 **Snow knew nothing at the time!**
 
@@ -289,13 +389,21 @@ Or went to school there
 
 Shut it down and new cases stopped
 ---
+class: center,middle
+
 ![Jon Snow](img/snow.png)
 ---
+class:center, middle
+
 ![Walker](img/walker.jpg)
 ---
-# Statistics is even used in war
+class: center,middle
 
-Too many [Allied planes](https://courses.candelalearning.com/riskassessment/chapter/probability-and-statistics/) were getting shot down over Germany
+# WWII
+---
+## Statistics is even used in war
+
+Too many Allied planes were getting shot down over Germany
 
 During WWII, statistician Abraham Wald was asked to catalog the location of bullet holes on returning Allied aircraft and determine the best places to reinforce the planes with armor
 
@@ -305,11 +413,15 @@ Take observations of planes that did return
 
 Draw map of where each aircraft was hit (generally)
 ---
+class: center,middle
+
 ![WWII plane](img/wwii.plane.jpg)
 ---
+class: center,middle
+
 ![WWII planes](img/wwii.planes.jpg)
 ---
-# Wald’s supervisors concluded that nose, wings, fuselage were covered in damage and needed more armor
+## Wald’s supervisors concluded that nose, wings, fuselage were covered in damage and needed more armor
 
 Wald said, no
 
@@ -321,7 +433,7 @@ Allies were only sampling planes that completed their missions and returned home
 
 A form of sampling bias
 ---
-# Don't miss the forest for the trees when analyzing tons of data
+## Don't miss the forest for the trees when analyzing tons of data
 
 Garbage in = garbage out
 
@@ -332,7 +444,7 @@ And that applies to risk assessment how?
 
 When we were critisizing utilitarianism
 ---
-# The Challenger explosion was the first space shuttle catastrophe
+## The Challenger explosion was the first space shuttle catastrophe
 
 28 January 1986  
 Forecast calls for abnormally low temperature (30F)   
@@ -347,7 +459,7 @@ Christa McAuliffe, teacher from New Hampshire, selected to teach lessons from sp
 
 This was a big deal leading up to the launch
 ---
-# Launch was already delayed for six days due to weather, technical problems
+## Launch was already delayed for six days due to weather, technical problems
 
 Reagan appointed a special commission to determine what went wrong with Challenger and to develop future corrective measures  
 
@@ -359,7 +471,7 @@ Flames broke out and damaged the external fuel tank
 NASA managers were aware of these design problems but also failed to act  
 (Lack of ethical context imo)
 ---
-# Launches resumed in 1988 after redesigns  
+## Launches resumed in 1988 after redesigns  
 
 But there still have been failures  
 
@@ -367,7 +479,7 @@ Would there ever be 100% safety?
 
 Are there more contemporary analogues?
 ---
-# [Lessons from the Space Shuttle Challenger](https://courses.candelalearning.com/riskassessment/chapter/contemporary-cases-in-risk-assessment/)
+## [Lessons learned from the Space Shuttle Challenger](https://courses.lumenlearning.com/uidaho-riskassessment/chapter/contemporary-cases-in-risk-assessment/)
 
 Argue that the very concept of risk management must be called into question  
 Using a failure modes effects analysis without any quantitative risk measures
@@ -399,7 +511,11 @@ Trend was not observed
 
 Probability of O ring distress is increased to almost a certainty if the temperature of the joint is less than 65
 ---
-# These case studies point to common misconceptions about the use of statistics
+class: center,middle
+
+# Misconceptions
+---
+## These case studies point to common misconceptions about the use of statistics
 
 **Statistics is mostly mathematics, formulas, proofs**    
 Statistics is the science of data, their production, how to make the right inferences
@@ -410,63 +526,13 @@ Statistical inference can be highly counterintuitive and often involves “backw
 **Statistical analyses can easily be done by computers**  
 Nothing relieves the investigator of the direct responsibility of understanding data and how best to analyze and interpret
 ---
-# I don’t plan on doing research myself, I just want to learn interesting things about ____________
+## I don’t plan on doing research myself, I just want to learn interesting things about ____________
 
 Engaging in science at any level (including as a consumer) requires critical analysis
 
 Knowledge of statistical methods is needed to protect us against false claims, junk science
 
 Examples?
----
-# There is precise terminology to describe statistical problems
-
-population (universe) = collection of things under consideration
-
-sample = portion of the population selected for analysis  
-Less time consuming and costly than a census  
-Less cumbersome and more practical to administer   
-
-parameter = summary measure computed to describe a characteristic of the population
-
-statistic = summary measure computed to describe a characteristic of the sample
----
-# Use statistics to infer something about the population based on the sample
-
-1. Collect data
-2. Present data
-3. Characterize data (fit to a known distribution to obtain moments)
-
-Categorical data = qualitative  
-Numerical data = discrete or continuous  
-Central tendencies of data = mean, median, mode  
-Measure of spread = variance, standard deviation  
-Higher level moments = skewness, kurtosis  
-
-These are readily derived from known distributions
----
-# So the goal is to find distributions for collected data in order to predict universe
-
-Also can use Monte Carlo methods  
-
-Which we have done to simulate injection casting failure using Weibull
-
-Sensitivity analysis = rate of change of output with input, local about nominal value, global over entire parameter space
----
-# Why do we need data?
-
-To provide input to survey 
-
-To provide input to study
-
-To measure performance of service or production process
-
-To evaluate conformance to standards
-
-To assist in formulating alternative courses   of action
-
-To satisfy curiosity
-
-What else?
 ---
 ![doggehs](img/final.jpg)
 </textarea>
