@@ -13,12 +13,20 @@
         font-family: 'Ubuntu';
         font-weight: normal;
         }
-      .remark-container {background-color: #F5F5F5; }
+      .remark-container {background-color: #F5F5F5}
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
       .remark-slide-content { background-color: #FFFAF0; font-size: 26px; 
-                         h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
+                         h1 { font-size: 38px; } h2 { font-size: 32px; } h3 { font-size: 28px; }
        }
       .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+      .column:first-of-type {float:left}
+      .column:last-of-type {float:right}
+
+      .split-60 .column:first-of-type {width: 60%}
+      .split-60 .column:last-of-type {width: 40%}
+
+      .split-50 .column:first-of-type {width: 50%; }
+      .split-50 .column:last-of-type {width: 50%}
     </style>
   </head>
   <body>
@@ -31,7 +39,7 @@ class: center, middle
 
 #### 3
 ---
-# Learning outcomes
+## Learning outcomes
 
 Chapter 6 in the book
 
@@ -41,23 +49,71 @@ Applying PHA to engineering problems and work environment
 
 Develop a systematic approach to risk assessment
 ---
+class: split-60
+
+## Learning nodes
+
+.column[
+.left[
+**Definig hazards**
+
+**Risk assessment flowchart**
+
+**Identifying hazards**
+
+**OSHA**
+
+**PHA framework**  
+Hazards  
+Consequences    
+Procedures  
+]
+]
+.column[
+.right[
+**Pyroprocessing example**
+
+**Analysis methods**  
+Forward  
+Backward  
+Top down  
+Bottom up
+
+**Lifecycle considerations**
+
+**Preliminary risk quantification**  
+Frequency estimation  
+Consequence estimation  
+
+**Common cause failures**
+
+**Visualizing risk**
+
+**Hazard elimination**
+
+**Criticisms*
+]
+]
+---
 class: center,middle
 
 # What is a hazard?
 ---
-# Preliminary hazard analysis (PHA) is a semi-quantitative analysis tool
+## Preliminary hazard analysis (PHA) is a semi-quantitative analysis tool
 
 Line item tabular inventory of non trivial system hazards and countermeasures
 
 Best applied in the design and development stage  
-(early phase risk assessment tool)
+
+Early phase risk assessment tool
 
 Identify all potential hazards and intiating events that may lead to an accident
 
 Rank the identified events according to their severity  
+
 Can be drawn from the risk assessment matrix from before
 ---
-# Identify required hazard controls and follow-up actions
+## Identify required hazard controls and follow-up actions
 
 Systematic process to identify hazards, prioritize, and propose mitigation
 
@@ -71,7 +127,11 @@ Failure mode and effects analysis (FMEA)
 Hazard and operability review (HAZOP)  
 Human error analysis (HEA)  
 ---
-# Overall risk assessment flowchart - Continual refinement
+class: center,middle
+
+# Risk assessment requires continual refinement
+---
+## Overall risk assessment flowchart - Continual refinement
 
 ![Risk chart](img/chart.png)
 ---
@@ -79,11 +139,17 @@ Human error analysis (HEA)
 
 ![Office space](img/office.space.jpg)
 ---
+class: center,middle
+
 ![Workplace](img/workplace.jpg)
 ---
 ## Risk assessment is everyone's responsibility
 
 ![Simpsons](img/simpsons.jpg)
+---
+class: center,middle
+
+# What are some hazards OSHA might cite?
 ---
 ## From OSHA's top 10 warehouse citations
 
@@ -100,13 +166,23 @@ Human error analysis (HEA)
 
 Any trends?
 ---
+class: center,middle
+
 ![Warehouse](img/warehouse.jpg)
 ---
+class: center,middle
+
 ![Loading dock](img/loading.dock.jpg)
 ---
+class: center,middle
+
 ![The Walking Dead](img/the.walking.dead.jpg)
 ---
-# [PHA is used as an initial risk study in the early stages of the project](https://courses.candelalearning.com/riskassessment/chapter/preliminary-hazards-analysis/)
+class: center,middle
+
+# PHA framework 
+---
+## [PHA](https://courses.lumenlearning.com/uidaho-riskassessment/chapter/preliminary-hazards-analysis/) is used as an initial risk study in the early stages of the project
 
 Initially developed by US Army  
 "Army had half day, Mother!"
@@ -114,43 +190,10 @@ Initially developed by US Army
 Used to review process areas of energy released in uncontrolled manner
 
 Identify hazards and consequences  
+
 Start as early as possible in system life cycle
-
-Accidents are mainly caused by release of energy (table 6.3 in the book)  
-chemical, electrical, mechanical
 ---
-# Identify potential hazards where energy may be released  
-
-mechanical moving parts  
-material incompatibilities  
-nuclear radiation  
-electromagnetic radiation (laser, radio, UV, etc.)  
-collisions from movement of personnel, equipment, automation
-
-toxic materials and corrosive liquids, gases stored or generated  
-all sorts of deterioration  
-subsonic or supersonic noise  
-biological, bacterial growth  
-human error  
-software, network, cyber-based 
----
-# Identify accidental events (multiple) that may occur from each hazard 
-
-Estimate frequency of hazards  
-Estimate of the severity of each event  
-We've done this, but stopped here  
-
-Then  
-Compare initial design concepts  
-Focus on important risk issues  
-Input for PRA   
-
-You might be able to easily mitigate some events right at the start using PHA
-
-Consider PHA to be the base level of risk analysis  
-Not sufficient but a necessary start
----
-# Adapt PHA to the system under study
+## Adapt PHA to the system under study
 
 Not everything is applicable to every system
 
@@ -168,7 +211,110 @@ Environmental constraints
 Operational constraints  
 Leading to potential malfunctions to system and components
 ---
-# Identify procedures related to operations, testing, maintenance, system diagnostics, emergencies
+class: center,middle
+
+# Hazards
+---
+class: split-50
+
+## Identify potential hazards where energy may be released  
+
+Table 6.3 in the book
+.column[
+.left[
+Mechanical moving parts  
+Material incompatibilities  
+Nuclear radiation  
+Electromagnetic radiation (laser, radio, UV, etc.)  
+Collisions from movement of personnel, equipment, automation
+]
+]
+
+.column[
+.right[
+Toxic materials and corrosive liquids, gases stored or generated  
+All sorts of deterioration  
+Subsonic or supersonic noise  
+Biological, bacterial growth  
+Human error  
+Software, network, cyber-based 
+]
+]
+---
+## Identify hazardous states of a system as part of the conceptual design phase
+
+Inputs
+
+Boundaries between the system(s)  
+
+System interaction and dependencies  
+
+System domain  
+
+System functionality for each component and holistically  
+
+Layout  
+
+Process flow  
+
+Output
+---
+## Identify where each hazard will occur  
+
+Significance   
+
+Method to eliminate or mitigate   
+
+How associated risk will be controlled
+---
+class: center, middle
+
+# Consequences
+---
+class: split-50
+
+## Identify consequences (multiple) that may occur from each hazard 
+
+.column[
+.left[
+Estimate frequency of hazards  
+Estimate of the severity of each event  
+We've done this, but stopped here  
+]
+]
+.column[
+.right[
+Compare initial design concepts  
+Focus on important risk issues  
+Input for PRA   
+]
+]
+
+$~$
+$~$
+
+You might be able to easily mitigate some events right at the start using PHA
+
+Consider PHA to be the base level of risk analysis  
+
+It is not sufficient but a necessary start
+---
+## Assign each consequence a severity categorization
+
+Quantify frequency of each accident sequence
+
+Assign each hazard a preliminary random and systematic probability target  
+6.1.1. in the book
+
+Propose safety features needed during the design and development phase
+
+You want to be able to head off low risk that can be mitigated by design and high risk that needs more work 
+---
+class: center,middle
+
+# Procedures
+---
+## Identify procedures related to operations, testing, maintenance, system diagnostics, emergencies
 
 Obtain potential related data cohorts  
 Reports, accident statistics, regulatory reviews if you know someone  
@@ -180,81 +326,76 @@ Review facility technical specifications if they are available
 
 Not so easy even though 'qualitative'
 ---
-# PHA is most effectively used during the initial development of a process and the procedures for performing that process
+## PHA is most effectively used during the initial development of a process and the procedures for performing that process
 
 In a PHA, idea is to list the hazards and not to analyze each step in the procedure  
 Very top-level analysis, but when done properly, very useful for more comprehensive PRA
 
 Would we really need this with mature systems?  
+
 Like AP1000?
 ---
-# Identify where each hazard will occur  
+class: center,middle
 
-Significance   
-
-Method to eliminate or mitigate   
-
-How associated risk will be controlled
----
-# Identify hazardous states of a system as part of the conceptual design phase
-
-Something I can use in my own research
-
-Establish framework  
-input  
-boundaries between the system(s)  
-system interaction and dependencies  
-system domain  
-system functionality for each component and holistically  
-layout  
-process flow  
-output
----
-# Identify system hazards and materials
-
-related accidents  
-
-accident sequences  
-
-energy use   
----
-# Assign each accident a severity categorization
-
-Quantify frequency of each accident sequence
-
-Assign each hazard a preliminary random and systematic probability target  
-6.1.1. in the book
-
-Propose safety features needed during the design and development phase
-
-You want to be able to head off low risk that can be mitigated by design and high risk that needs more work 
----
 ![Pyroprocessing flowsheet](img/pyroprocessing.flowsheet.jpg)
 ---
+class: center,middle
+
+# Analysis methods 
+---
+class: center,middle
+
+# Forward
+---
+class: center,middle
+
 ### Forward analysis identifies events then consequences
 ![Forward PHA](img/forward.jpg)
 ---
+class: center,middle
+
+# Backward
+---
+class: center,middle
+
 ### Backward analysis identifies hazards to find events
 ![Backward PHA](img/backward.jpg)
 ---
+class: center,middle
+
+# Top down
+---
+class: center,middle
+
 ### Use top down analysis to decompose the events
 ![Top down](img/top.down.jpg)
 ---
+class: center,middle
+
+# Bottom up
+---
+class: center,middle
+
 ### Use bottom up analysis to decompose the hazard
 ![Bottom up](img/bottom.up.jpg)
 ---
-# PHA should take place during different stages in the life cycle
+class: center,middle
+
+# Lifecycle considerations
+---
+## PHA should take place during different stages in the lifecycle
 
 New facilities as part of design before committing resources
 
 During construction, things are going to come up that were not anticipated  
+
 We know what we know  
 We know what we don't know  
 We don't know what we don't know
 
 Operational readiness must be conducted prior to system start up
 ---
-# Periodic analyze during operational lifetime
+## Periodic analysis during operational lifetime
 
 Maybe due to regulations
 
@@ -267,7 +408,15 @@ Disposal of materials, chemicals, etc.
 
 Really think about the wide range of engineering structures, facilities, etc., about how important this is
 ---
-### Probability of occurrence of unexpected hazardous release determines credibility
+class: center,middle
+
+# Preliminary risk quantification
+---
+class: center,middle
+
+# Frequency estimation
+---
+## Probability of occurrence of unexpected hazardous release determines credibility
 
 Less than 1E-06: less than credible  
 Not expected during facility lifetime
@@ -283,7 +432,7 @@ Trained worker error (do not agree with this at all)
 1E-02 - 1E-01: very likely  
 Events may often occur
 ---
-# If you can't guess at probabilities, estimate
+## You can just guess at the start 
 
 Frequent: occurs often  
 Likely: occurs several times  
@@ -293,7 +442,11 @@ Unlikely: neglibible
 
 These can be site or facility specific too
 ---
-### Rank hazards in terms of qualitative consequences or severity
+class: center,middle
+
+# Consequence estimation
+---
+## Rank hazards in terms of qualitative consequences or severity
 
 **Class I: negligible**  
 worst case effects cause less than minor injury, occupational illness, system damage
@@ -307,13 +460,17 @@ worse case effects cause severe (nondisabling) personnel injury, severe occupati
 **Class IV: catastrophic**  
 worse case effects cause death, disabling injury, system loss
 ---
-# Most reliable solution is to eliminate source of hazard
+## Most reliable solution is to eliminate source of hazard
 
 No problem amirite?!
 
 cf. Flushing automobile cooling system example in 6.2  and crib in 6.3
 ---
-# Beware common cause events or multiple consequences
+class: center,middle
+
+# Common cause failures
+---
+## Beware common cause events or multiple consequences
 
 Different events may lead to similar consequences
 
@@ -327,7 +484,7 @@ Estimate the frequency that initiating event produces a specific consequence
 
 This means that for each initiating event, there might be several consequences with associated frequencies
 ---
-# Example
+## Example
 
 For a typical warehouse environment
 
@@ -345,12 +502,23 @@ Maybe you have a separate section where fatalities are considered
 
 How else could this be classified?
 ---
+class: center,middle
+
+# Visualizing risk
+---
 # Clearer comparisons can be made now
+
 ![Matrix](img/matrix.jpg)
 ---
+class: center,middle
+
 ![Farmer's chart](img/farmer.jpg)
 ---
-# How can hazards be eliminated?
+class: center,middle
+
+# Hazard reduction
+---
+## How can hazards be eliminated?
 
 **Substitution**  
 Use safe materials  
@@ -367,7 +535,7 @@ No unnecessary, undocumented features, unused executable code
 Worst case timing is determinable  
 Design so that structural decomposition matches functional decomposition
 ---
-# How else can hazards be eliminated?
+## How else can hazards be eliminated?
 
 **Decouple**  
 Tightly coupled system is one that is highly interdependent  
@@ -382,19 +550,11 @@ Fail to a safe state
 
 **Human error**
 ---
-# In PHA, idea is to just rank the hazards and not to analyze each step in the procedure
+class: center,middle
 
-Event can carry wide range of consequences from negligible to catastrophic 
-
-Fire alone could be easy to put out or burn down the whole place
-
-It would seen that an envelope of potential consequences would be sensible
-
-Definitely worst case and maybe average consequence +/- something
-
-Expert judgment is critical if there is a lack of data or experience 
+# Criticisms
 ---
-# What's so good about PHA?
+## What's so good about PHA?
 
 Helps ensure that the system is safe
 
@@ -410,7 +570,7 @@ Provides information to management to make decisions to allocate resources to re
 
 Provides relatively quick review of most significant system risks
 ---
-# What's not so good about PHA?
+## What's not so good about PHA?
 
 Hazards must be foreseen by the analysts  
 Effects of interactions between hazards are not easily recognized  
@@ -428,6 +588,7 @@ Wrong assumptions for unknown data, etc.
 Too many targets, PHA becomes large and costly  
 Which misses the point
 ---
+class: center,middle
 ![doggehs](img/final.jpg)
 </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
