@@ -1,4 +1,6 @@
-\documentclass[11pt,a4paper]{article} \usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry} \usepackage[pagewise]{lineno} %line numbering
+\documentclass[11pt,a4paper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+\usepackage[pagewise]{lineno} %line numbering
 \usepackage{setspace}
 \usepackage{ulem} %strikethrough - do not \sout{\cite{}}
 \usepackage{xcolor} %change font color
@@ -41,15 +43,15 @@
 
 \newcommand{\edit}[1]{\textcolor{blue}{#1}} %shortcut for changing font color on revised text
 \newcommand{\fn}[1]{\footnote{#1}} %shortcut for footnote tag
-
 \newcommand*\sq{\mathbin{\vcenter{\hbox{\rule{.3ex}{.3ex}}}}} %makes a small square as a separator $\sq$
+\newcommand{\x}{\cellcolor{lightgray}} %use to shade in table cell
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{} %move page number to bottom right
 \renewcommand{\headrulewidth}{0.5pt}
 \lhead{\scriptsize Name}
-\chead{\scriptsize NE450 - Project project report}
+\chead{\scriptsize NE450 - Project report title}
 \rhead{\scriptsize \today}
 \rfoot{\thepage}
 
@@ -95,12 +97,12 @@
 \begin{titlepage}
     \title{Title}
     \author{
-        Name \\
-        NE450: Principles of Nuclear Engineering Course Design Project
+        Name
+        \\ \\ \\
+        University of Idaho $\sq$ Idaho Falls Center for Higher Education
         \\ \\
-        University of Idaho $\sq$ Idaho Falls Center for Higher Education\\[0.05in]
-        Engineering/Technology Management, Industrial Technology\\and\\Nuclear Engineering Department
-        \\ \\
+        Nuclear Engineering and Industrial Management Department
+        \\ \\ \\
         email
     }
 \clearpage % not have page number on title page
