@@ -47,7 +47,7 @@ Explain and analyze failures for process, system, product in detail
 
 My m/o is to use this time to show the concepts with my examples
 
-See case studies and literature in the [OER](https://courses.candelalearning.com/riskassessment/) to supplement the lecture
+See case studies and literature in the [OER](https://courses.lumenlearning.com/uidaho-riskassessment/) to supplement the lecture
 
 Choose what is most interesting and relevant to you
 
@@ -59,9 +59,59 @@ class: split-60
 
 .column[
 .left[
+**What FMEA is**
 
+**FMEA definitions**
+
+**Utility of FMEA**
 ]
 ]
+
+.column[
+.right[
+**FEMA procedure**  
+Construct flow chart  
+Define failure modes  
+Establish failure effects  
+Failure mode matrix examples  
+Evaluate severity  
+Estimate failure frequency  
+Calculate risk priority number 
+
+**Root cause analysis**
+
+**Mitigation**
+]
+]
+
+---
+## It's really hard to quantify risk 
+
+Who knew?!
+
+PRA is a really really useful tool
+
+It is the NRC regulatory paradigm
+
+Still wasn't "invented" until there were 2-ish decades of operational data
+
+Getting any data cohorts for an FMEA is ideal but probably difficult
+
+If you have enough data, probably best to do a PRA in the first place or use this as a first run
+
+Can use related historical or similarly accident data
+
+What will I use for the injection casting process?
+---
+## Most likely will need to draw upon expert judgement and best estimates
+
+Can use a [Delphi](https://courses.candelalearning.com/riskassessment/chapter/failure-rates/) technique for this
+
+Iterative way to develop consensus about something
+---
+class: center,middle
+
+# What FMEA is
 ---
 ## FMEA helps to develop a firm understanding of what a failure is prior to risk analysis
 
@@ -69,7 +119,7 @@ Detailed document that identifies ways in which process/product fails
 Or does not meet critical requirements
 
 Inductive - Sherlock Holmes  
-Bottom up, forward search approach (from chapter 3)
+Bottom up, forward search approach [from chapter 3](https://thedoctorrab.github.io/class-lecture/tm529/3-preliminary-hazards-analysis/3-preliminary-hazards-analysis.html#39)
 
 Living document that lists all the possible causes of failure  
 Items can be generated to determine types of controls/changes in procedures 
@@ -89,7 +139,11 @@ Most common for assessment technique at initial stages of system development
 
 Maximize design life
 ---
-# Let's start with some definitions
+class: center,middle
+
+# FMEA definitions
+---
+## Let's start with some definitions
 
 **Failure mode**  
 Ways in which a process can fail  
@@ -116,10 +170,16 @@ So we are still operating in the universe of the Three Questions
 
 **Risk priority number**  
 Value assigned to risk for each failure
-
-Can results from a PHA be applied?
 ---
-# Why is FMEA effective?
+class: center,middle
+
+# Can results from a PHA be applied?
+---
+class: center,middle
+
+# Utility of FMEA
+---
+## Why is FMEA effective?
 
 Identify...
 
@@ -139,7 +199,11 @@ class: middle,center
 
 # FMEA procedure
 ---
-# Construct a detailed flow chart of the process
+class: middle,center
+
+# Flow chart
+---
+## Construct a detailed flow chart of the process
 
 Multi-disciplinary participation of all those involved in the process
 
@@ -159,7 +223,11 @@ The book uses an example of a lawn mower
 ### Process steps
 ![Fuel fabrication process steps](img/fuel.fabrication.process.steps.jpg)
 ---
-# Determine how each step could possibly fail
+class: center,middle
+
+# Define failure modes 
+---
+## Determine how each step could possibly fail
 
 Getting material into the crucible - effect - cause
 
@@ -173,11 +241,19 @@ Molds get stuck or break - effect - cause
 
 Cannot remove heel - effect - cause
 ---
+class: center,middle 
+
+# Failure mode matrix examples
+---
 ![Pressure check valve](img/pressure.check.valve.jpg)
 ---
 ![Hotel service](img/hotel.service.jpg)
 ---
-# Determine the effects of each possible failure
+class: center,middle
+
+# Establish failure effects
+---
+## Determine the effects of each possible failure
 
 **What are the consequences?**
 
@@ -191,7 +267,11 @@ Molds get stuck or break: big mess; liquid metal spills onto equipment
 
 Cannot remove heel: replace crucible; store heel
 ---
-# Apply a Severity Rating Scale
+class: center,middle
+
+# Evaluate severity
+---
+## Apply a Severity Rating Scale
 
 10 -Dangerously high -Injury  
 9  -Extremely high   -Regulatory noncompliance  
@@ -208,7 +288,7 @@ Or make one up
 
 There's lots out there
 ---
-### Assign severity rating to fuel fabrication failure modes
+## Assign severity rating to fuel fabrication failure modes
 
 Getting material into the crucible: crucible breaks  
 6 Moderate  
@@ -222,7 +302,7 @@ Vacuum cannot be induced: no injection
 6 Moderate  
 Failure results in subsystem or partial malfunction of the product
 ---
-### Assign severity rating to fuel fabrication failure modes
+## Assign severity rating to fuel fabrication failure modes
 
 Molds get stuck or break: big mess; liquid metal spills onto equipment  
 8 Very High   
@@ -236,7 +316,11 @@ Any shutdown interrupts material flow
 
 For pyroprocessing, we also would have to do a material balance and that takes time
 ---
-### Estimate failure frequency with an Occurance Rating Scale
+class: center,middle
+
+# Estimate failure frequency
+---
+## Estimate failure frequency with an Occurance Rating Scale
 
 10 -Very high -1 per day or more than 3 per 10 events  
 9  -Mid       -1 per 3,4 days or 3 per 10 events  
@@ -246,12 +330,12 @@ For pyroprocessing, we also would have to do a material balance and that takes t
 5  -Mid       -1 per 6 months or 1 per 10000 events  
 4  -MidLow    -1 per year or 6 per 100000  
 3  -Low       -1 per 1-3 years or 6 per 1 billion events  
-2  -Mid       -1 per 3-5 years or 2 per 1 billion events
+2  -Mid       -1 per 3-5 years or 2 per 1 billion events  
 1  -Remote    -1 per >5 years or less than 2 per 1 billion events
 
 As long as it's a systematic scale
 ---
-### Assign occurance rating to fuel fabrication failure modes
+## Assign occurance rating to fuel fabrication failure modes
 
 Getting material into the crucible: crucible breaks  
 6 Moderate   
@@ -265,7 +349,7 @@ Failure results in subsystem or partial malfunction of the product
 7 Moderate/High  
 1 occurrence every month or 1 occurrence in 100 events
 ---
-### Assign an occurance rating to fuel fabrication failure modes 
+## Assign an occurance rating to fuel fabrication failure modes 
 
 Vacuum cannot be induced: no injection  
 6 Moderate   
@@ -279,7 +363,7 @@ Failure renders the unit inoperable or unfit for use
 5 Low/Moderate  
 1 occurrence every 6 months to 1 year or 1 occurrence in 10,000 events
 ---
-### Assign an occurance rating to fuel fabrication failure modes 
+## Assign an occurance rating to fuel fabrication failure modes 
 
 Cannot remove heel: replace crucible; store heel  
 6 Moderate   
@@ -287,7 +371,11 @@ Failure results in subsystem or partial malfunction of the product
 7 Moderate/High  
 1 occurrence every month or 1 occurrence in 100 events  
 ---
-### Calculate, prioritize a Risk Priority Number for each failure
+class: center,middle
+
+# Calculate risk priority number
+---
+## Calculate, prioritize a Risk Priority Number for each failure
 
 RPN = Severity Rating  x  Occurrence Rating  
 Even more quantitative than prior work we've done
@@ -299,7 +387,7 @@ Failure results in subsystem or partial malfunction of the product
 1 occurrence every 3 months or 3 occurrences in 1,000 events  
 **36**
 ---
-### Calculate, prioritize a Risk Priority Number for each failure
+## Calculate, prioritize a Risk Priority Number for each failure
 
 Heater fails to sufficiently melt all the metal: molds might crack; not sufficiently take up all the metal  
 6 Moderate   
@@ -307,6 +395,8 @@ Failure results in subsystem or partial malfunction of the product
 7 Moderate/High  
 1 occurrence every month or 1 occurrence in 100 events  
 **42**
+---
+## Calculate, prioritize a Risk Priority Number for each failure
 
 Vacuum cannot be induced: no injection  
 6 Moderate   
@@ -315,7 +405,7 @@ Failure results in subsystem or partial malfunction of the product
 1 occurrence every 3 months or 3 occurrences in 1,000 events  
 **36**
 ---
-### Calculate, prioritize a Risk Priority Number for each failure
+## Calculate, prioritize a Risk Priority Number for each failure
 
 Molds get stuck or break: big mess; liquid metal spills onto equipment  
 8 Very High   
@@ -337,31 +427,11 @@ class: center,middle
 
 **Also referred to as Failure Mode Effects and Criticality Analysis**
 ---
-# It's really hard to quantify risk 
+class: center,middle
 
-Who knew?!
-
-PRA is a really really useful tool
-
-It is the NRC regulatory paradigm
-
-Still wasn't "invented" until there were 2-ish decades of operational data
-
-Getting any data cohorts for an FMEA is ideal but probably difficult
-
-If you have enough data, probably best to do a PRA in the first place or use this as a first run
-
-Can use related historical or similarly accident data
-
-What will I use for the injection casting process?
----
-## Most likely will need to draw upon expert judgement and best estimates
-
-Can use a [Delphi](https://courses.candelalearning.com/riskassessment/chapter/failure-rates/) technique for this
-
-Iterative way to develop consensus about something
----
-## Conduct a [root cause](https://courses.candelalearning.com/riskassessment/chapter/failure-mode-and-effects-analysis/) analysis for highest risk 
+# Root cause analysis
+--
+## Conduct a [root cause](https://courses.lumenlearning.com/uidaho-riskassessment/chapter/failure-mode-and-effects-analysis/) analysis for highest risk 
 ![Root Cause](img/root.cause.1.jpg)
 ---
 ## Conduct a root cause analysis for highest risk 
@@ -369,7 +439,7 @@ Iterative way to develop consensus about something
 ---
 ![Fuel fabrication root cause](img/fuel.fabrication.root.cause.jpg)
 ---
-### Causes to make the metal stick to the crucible and cannot remove it cleanly
+## Causes to make the metal stick to the crucible and cannot remove it cleanly
 
 Graphite is the wrong material  
 Inert atmosphere  
@@ -382,7 +452,7 @@ If the process is automated, it may be too complicated
 Human hands might be needed  
 Which is a host of other problems
 ---
-### Causes to make the metal stick to the crucible and cannot remove it cleanly
+## Causes to make the metal stick to the crucible and cannot remove it cleanly
 
 Different equipment might be needed instead of people  
 So the removal process might need redesigning  
@@ -391,7 +461,11 @@ Maybe heat the crucible and pour metal into separate container
 
 Should be conducted by a team and be more in depth
 ---
-### Take action to eliminate or reduce the Risk Priority Number (RPN)
+class: center,middle
+
+# Mitigation
+---
+## Take action to eliminate or reduce the Risk Priority Number (RPN)
 
 Decrease likelihood of occurrence
 
@@ -407,7 +481,7 @@ Also induces cost hike
 
 My expert opinion would be that the crucible is the primary root cause
 ---
-### Apply a Plan-Do-Study-Act approach
+## Apply a 'Plan-Do-Study-Act' approach
 
 **What are we trying to accomplish?**  
 Remove the heel without having it stick on the crucible  
