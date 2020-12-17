@@ -1,0 +1,196 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+\usepackage[pagewise]{lineno} %line numbering
+\usepackage{setspace}
+\usepackage{ulem} %strikethrough - do not \sout{\cite{}}
+\usepackage{xcolor} %change font color
+\usepackage{graphicx}
+\usepackage{filecontents}
+\usepackage{tablefootnote}
+\usepackage{footnotehyper}
+\usepackage{subfig}
+\usepackage[yyyymmdd]{datetime} %date format
+\renewcommand{\dateseparator}{.}
+\graphicspath{{../img/}} %path to graphics
+\setcounter{secnumdepth}{5} %set subsection to nth level
+\usepackage{caption}
+\captionsetup[table]{skip=11pt} %sets a space after table caption
+\usepackage{times}
+\usepackage{tabto} %general tabbed spacing
+\usepackage{longtable} %need to put label at top under caption then \\ - use spacing
+\usepackage[stable,hang,flushmargin]{footmisc} %footnotes in section titles and no indent
+\usepackage[round]{natbib} %parenthesis instead of brackets for inline citations
+\usepackage{enumitem}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{array}
+\usepackage{caption}
+\usepackage[labelfont=bf]{caption}
+\usepackage{chngcntr}
+\usepackage{hyperref}
+
+\newcommand{\edit}[1]{\textcolor{blue}{#1}} %shortcut for changing font color on revised text
+\newcommand{\fn}[1]{\footnote{#1}} %shortcut for footnote tag
+\newcommand*\sq{\mathbin{\vcenter{\hbox{\rule{.3ex}{.3ex}}}}} %makes a small square as a separator $\sq$
+\renewcommand\labelenumi{(\theenumi)} %changes 1. to (1) in enumerated list
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} %move page number to bottom right
+\renewcommand{\headrulewidth}{0.5pt} %turn off line in header
+\lhead{\scriptsize TM529 - Risk assessment}
+\chead{\scriptsize \today}
+\rhead{\scriptsize Project 4 - Failure modes and effects analysis}
+\rfoot{\thepage}
+
+\begin{filecontents}{references.bib}
+    @misc{
+        ,
+        author = {{}},
+        title = {{}},
+        year = {}
+    }
+    @article{
+        ,
+        author = {{}},
+        journal = {},
+        pages = {},
+        title = {{}},
+        volume = {},
+        year = {}
+    }
+    @techreport{
+        ,
+        author = {{}},
+        title = {{}},
+        year = {},
+        institution = {},
+        number = {}
+    }
+\end{filecontents}
+
+\begin{document}
+
+\begin{titlepage}
+    \title{
+        TM529 - Risk assessment\\
+        Project 4 - Failure modes and effects analysis\\
+    }
+    \author{
+        Name
+        \\ \\ \\
+        University of Idaho $\sq$ Idaho Falls Center for Higher Education
+        \\ \\
+        Nuclear Engineering and Industrial Management Department
+        \\ \\ \\
+        email 
+    }
+\clearpage %not have page number on title page
+\maketitle
+\vspace*{\fill}
+\begin{flushright}{
+        Total - 200
+}
+\end{flushright}
+\thispagestyle{empty} %start with page number 1 on second page
+\end{titlepage}
+
+\begin{enumerate}[leftmargin=*,topsep=0pt,font=\bfseries]
+    \item\textbf{(100) Conduct a formalized FMEA for a selected topic. Apply some type of visual ranking tool again. Define your own level of `acceptable risk' and assess the failure modes within this context. Suggest mitigating measures to reduce risk and recalculate the risks to achieve the acceptable level. Focus on 5 to 7 failures. Apply the fishbone diagram for the top 2 riskiest failures. Explain the root cause of these failures based on the fishbone diagram. What limitations were encountered? Please clearly explain your reasoning throughout the process.}
+        \vspace{\baselineskip}
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        \newpage
+    \item\textbf{(50) Critically reflect on the use of FMEA in terms of assessing risk. Explain how a PHA can help in performing the FMEA. Is one more useful than the other? Are they both \href{https://en.wikipedia.org/wiki/Necessity_and_sufficiency}{necessary and sufficient} for a risk assessment? Please think about these concepts and how they might apply to \href{../ref/root-cause-tmi.pdf}{Three Mile Island}.}
+        \vspace{\baselineskip}
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        \newpage
+    \item\textbf{(50) Watch the piece about the \href{http://www.pbs.org/newshour/bb/as-pentagon-overhauls-nuclear-triad-critics-advise-caution/}{USA nuclear triad}. Briefly summarize the main issues. How is the nuclear triad an example of risk management? The triad was developed in the 1960s, when the Cold War \textit{paradigm} was initially formulated. Are we still in this paradigm? Explain why or why not. How relevant are nuclear weapons today? Are the ICBMs still an essential leg in the triad? Please discuss this topic in the same manner as the Oklahoma and North Dakota pieces.}
+        \vspace{\baselineskip}
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{enumerate}
+
+\newpage 
+
+\bibliographystyle{ieeetr}
+\setlength{\bibhang}{0pt}
+\bibliography{references}
+
+\end{document}
