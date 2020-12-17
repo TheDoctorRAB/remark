@@ -55,6 +55,8 @@ Please remember to see [case studies](https://courses.lumenlearning.com/uidaho-r
 
 .column[
 .left[
+**Defense in depth**
+
 **Getting failure rate data**  
 
 **Failure over lifecycle**  
@@ -69,7 +71,27 @@ Example
 **Human error**
 
 **Delphi technique**  
-Example
+Example  
+]
+]
+
+.column[
+.right[
+**Event tree analysis**  
+Fire   
+Pump  
+Gas fracking  
+LOCA  
+Limitations
+
+**Fault tree analysis**  
+TAM airline
+Building the fault tree  
+Doorbell  
+Lighting the room  
+Car crash  
+Counterexample 
+Limitations
 ]
 ]
 ---
@@ -90,6 +112,32 @@ Troubles with scaling up from the laboratory experiments
 Expert judgment only goes so far to where you're just making it up
 
 Then any analysis is effectively meaningless
+---
+class: center,middle
+
+# Defense in depth
+---
+## Multiple barriers reduce risk
+
+A well designed system has multiple barriers that are implemented to stop or reduce consequences of events
+
+The probability that an accidental event will lead to unwanted consequences will therefore depend on whether these barriers are functioning
+
+Event and fault trees can then also be used as a design tool
+
+Design, procedural weaknesses can be identified
+---
+# FTA and event trees are needed together for PRA
+
+Explicitly shows all the different relationships  necessary to result in the top event
+
+Thorough understanding is obtained of the logic and basic causes leading to the top event
+
+Systematic analysis of the logic and basic causes leading to the top event
+
+Provides a framework for thorough qualitative and quantitative evaluation of the top event
+
+Input for Farmer's chart?
 ---
 class: center, middle
 
@@ -413,7 +461,7 @@ class: center,middle
 
 # Event tree analysis
 ---
-### An event tree is a graphical representation of a series of possible events in an accident sequence
+## An event tree is a graphical representation of a series of possible events in an accident sequence
 
 Each event is either a fail or success with associated frequency
 
@@ -425,22 +473,9 @@ Downstream events follow from original event and subsequent events of other comp
 
 Initiating event -- event 1 -- event 2 -- event 3 -- event n-1 -- event n -- Final state
 
-We covered ways to assess frequency
-
-Now we're thinking about "What are the consequences?"
+We covered ways to assess frequency - now we ask "What are the consequences?"
 ---
-### What is the sequence of events when there is a [fire?](https://courses.candelalearning.com/riskassessment/chapter/event-trees-2/) - Figure 12.2 in the book
-
-![Event tree for fire](img/event.tree_fire.jpg)
----
-# Calculate probabilities and losses
-![Event tree for fire](img/event.tree_fire.loss.jpg)
----
-![Event tree for pump and valve maintenance](img/event.tree_pump.valve.jpg)
----
-![Event tree for high pressure gas](img/event.tree_gas.jpg)
----
-# Event trees apply forward logic
+## Event trees apply forward logic
 
 We start with the initiating events and work to what eventually happens
 
@@ -456,19 +491,7 @@ We talked about WASH1400 that basically invented for nuclear power plants
 
 Figure 12.3 in the book
 ---
-![Event tree for LOCA](img/event.tree_loca.jpg)
----
-# Multiple barriers reduce risk
-
-A well designed system has multiple barriers that are implemented to stop or reduce consequences of events
-
-The probability that an accidental event will lead to unwanted consequences will therefore depend on whether these barriers are functioning
-
-Event trees can then also be used as a design tool
-
-Design, procedural weaknesses can be identified
----
-# Event trees are essential to a PRA
+## Event trees are essential to a PRA
 
 Visualize event chains following an accidental event
 
@@ -480,7 +503,44 @@ Draws on prior PHAs, etc., to determine initiating events
 
 So it's a natural progression into PRA I,II,III
 ---
-# But event trees have limitations
+class: center,middle 
+
+# Examples
+---
+class: center,middle 
+
+# Fire
+---
+## What events lead to [fire?](https://courses.lumenlearning.com/uidaho-riskassessment/chapter/event-trees-2/) - Figure 12.2 in book
+
+![Event tree for fire](img/event.tree_fire.jpg)
+---
+## Calculate probabilities and losses
+![Event tree for fire](img/event.tree_fire.loss.jpg)
+---
+class: center,middle 
+
+# Pumps
+---
+![Event tree for pump and valve maintenance](img/event.tree_pump.valve.jpg)
+---
+class: center,middle 
+
+# Fracking
+---
+![Event tree for high pressure gas](img/event.tree_gas.jpg)
+---
+class: center,middle 
+
+# LOCA
+---
+![Event tree for LOCA](img/event.tree_loca.jpg)
+---
+class: center,middle
+
+# Limitations
+---
+## But event trees have limitations
 
 No standard for the graphical representation of the event tree
 
@@ -503,10 +563,10 @@ class: center,middle
 
 # Fault tree analysis
 ---
-### Fault tree analysis is applied to identify areas to mitigate or prevent risk at all phases of system life cycle
+## Fault tree analysis is applied to identify areas to mitigate or prevent risk at all phases of system life cycle
 
 'Little things' lead to catastrophic failures  
-Like the [Japan Airlines](http://lessonslearned.faa.gov/ll_main.cfm?TabID=4&LLID=16&LLTypeID=2) accident  
+Like the [Japan Airlines](https://lessonslearned.faa.gov/ll_adsearch_results.cfm?TabID=5) accident  
 
 But before risk assessment was invented, most likely from common cause failures
 
@@ -518,14 +578,12 @@ For the Minuteman ICBM (can't find any information)
 
 Though it seems that not formalized as part of risk assessment until WASH1400
 ---
-### Fault trees are a graphic to represent the interaction of failures and other events in a system
+## Fault trees are a graphic to represent the interaction of failures and other events in a system
 
 Top down, deductive failure analysis  
-Top event are hazards or failure modes (from event tree)  
+Top event are hazards or failure modes (from event tree) - LOCA, emissions, explosions
 Decompose the top event using boolean logic (AND, OR)  
 Bottom set of events are non-decomposable (basic events)
-
-Top events are LOCA, emissions, explosions
 
 Identify failures as a malfunction in a component requiring repair (pump shaft)
 
@@ -553,7 +611,7 @@ Work back up to compute top event probability
 
 Really requires expert knowledge of the system
 ---
-# Assemble a basic event matrix after defining the top event
+## Assemble a basic event matrix after defining the top event
 
 Basic failure event -- description -- credible? (table 14.5)
 
@@ -565,7 +623,11 @@ Sprinkler system failure
 
 System design tool
 ---
-### [TAM Airlines Flight 3054](https://www.google.com/maps/place/Sao+Paulo+International+Airport/@-23.4382049,-46.4703261,15z/data=!4m5!3m4!1s0x94ce8af96f722a25:0x8071626c51a7154a!8m2!3d-23.4345529!4d-46.478126) overran the runway and crashed into a warehouse (2007)
+class: center,middle
+
+# TAM airline
+---
+## [TAM Airlines Flight 3054](https://www.google.com/maps/place/Sao+Paulo+International+Airport/@-23.4382049,-46.4703261,15z/data=!4m5!3m4!1s0x94ce8af96f722a25:0x8071626c51a7154a!8m2!3d-23.4345529!4d-46.478126) overran the runway and crashed into a warehouse (2007)
 
 Use of FTA for accident analysis with multiple failures (14.7.3)
 
@@ -575,7 +637,7 @@ Warehouse next to gas station, which exploded
 
 199 fatalities
 ---
-# What happened
+## What happened
 
 Rain caused the runway to be wet
 
@@ -583,7 +645,7 @@ Plane overran the runway
 
 Crossed the road(!)
 ---
-# Background
+## Background
 
 20379 operating hours
 
@@ -597,7 +659,7 @@ Collided with warehouse
 
 Safety issues with insufficient length of the runway (faster speed, more distance to stop)
 ---
-# Flight recorder
+## Flight recorder
 
 Thrusters in climb position just before touchdown
 
@@ -609,9 +671,11 @@ One idle, one at climb position at touchdown; both needed to be in idle position
 
 So, what are some causes for this crash?
 ---
+class: center,middle
+
 ![Sao Paulo airport](img/brazil_airport.jpg)
 ---
-# Top event is the airplane crash
+## Top event is the airplane crash
 
 So, what are some causes for this crash?  
 Wet runway (hydroplaning, loss of vehicle control)  
@@ -625,9 +689,21 @@ Experienced pilots had not had training in this situation
 
 Which of these are basic events?
 ---
+class: center,middle
+
+# Building the fault tree
+---
+## How is the probability of crash calculated?
+
+Gates aren't limited to only two events  
+
+Can be more than one level of intermediate causes
+---
+class: center,middle
+
 ![Fault tree plane 1](img/fault.tree_plane.1.jpg)
 ---
-## So, what are some causes for this crash?
+## What are some causes for this crash?
 
 Wet runway (hydroplaning, loss of vehicle control)  
 Rain  
@@ -640,41 +716,50 @@ Experienced pilots had not had training in this situation
 
 Which of these are basic events?
 ---
+class: center,middle
+
 ![Fault tree plane 2](img/fault.tree_plane.2.jpg)
 ---
+class: center,middle
+
 ![Fault tree plane 3](img/fault.tree_plane.3.jpg)
 ---
-class: middle,left
+class: center,middle
 
-## How is probability of crash calculated?
-
-(Gates aren't limited to only two events)  
-(Can be more than one level of intermediate causes)
+# Doorbell
 ---
+class: center,middle
+
 ![Fault tree doorbell](img/fault.tree_doorbell.jpg)
 ---
+class: center,middle
+
+Lighting the room
+---
+class: center,middle
+
 ![Fault tree room](img/fault.tree_room.jpg)
 ---
+class: center,middle
+
+# Car crash
+---
+class: center,middle
+
 ![Fault tree car](img/fault.tree_car.jpg)
 ---
-#### What is the flaw in this fault tree analysis?
+class: center,middle
+
+# Counterexample
+
+## What is the flaw in this fault tree analysis?
+---
 ![Fault tree Fukushima](img/fault.tree_fukushima.jpg)
 ---
-# FTA and event trees are needed together for PRA
-
-Explicitly shows all the different relationships  necessary to result in the top event
-
-Thorough understanding is obtained of the logic and basic causes leading to the top event
-
-Systematic analysis of the logic and basic causes leading to the top event
-
-Provides a framework for thorough qualitative and quantitative evaluation of the top event
-
-Input for Farmer's chart?
----
-# Of course, there are limitations to FTA
+## Of course, there are limitations to FTA
 
 Undesirable events must be foreseen  
+
 We don't know what we don't know
  
 Each event analyzed singly
