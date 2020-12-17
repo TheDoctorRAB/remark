@@ -19,6 +19,14 @@
                          h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
        }
       .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+      .column:first-of-type {float:left}
+      .column:last-of-type {float:right}
+
+      .split-60 .column:first-of-type {width: 60%}
+      .split-60 .column:last-of-type {width: 40%}
+
+      .split-50 .column:first-of-type {width: 50%; }
+      .split-50 .column:last-of-type {width: 50%}
     </style>
   </head>
   <body>
@@ -31,7 +39,7 @@ class: center, middle
 
 #### 5
 ---
-# Learning outcomes
+## Learning outcomes
 
 Chapter 8, 12, 14 in the book
 
@@ -41,9 +49,31 @@ Quanitifying risk using fault and event trees
 
 Identifying where these tools fall short
 
-Please remember to see [case studies](https://courses.candelalearning.com/riskassessment/) in OER
+Please remember to see [case studies](https://courses.lumenlearning.com/uidaho-riskassessment/) in OER
 ---
-# How likely is it to happen?
+## Learning nodes
+
+.column[
+.left[
+**Getting failure rate data**  
+
+**Failure over lifecycle**  
+Example
+
+**Pyroprocessing failures**
+
+**Data perception**
+
+**Monte Carlo analysis**
+
+**Human error**
+
+**Delphi technique**  
+Example
+]
+]
+---
+## How likely is it to happen?
 
 Fault and event trees require frequency analysis for initiating events
 
@@ -60,6 +90,10 @@ Troubles with scaling up from the laboratory experiments
 Expert judgment only goes so far to where you're just making it up
 
 Then any analysis is effectively meaningless
+---
+class: center, middle
+
+# Getting failure rate data
 ---
 ## Failure rate data is probably the most important
 
@@ -79,22 +113,28 @@ Because the repository is completely new and unprecedented
 
 We need to model behavior in the EDZ for at least 1000 years
 ---
-# Some data can be obtained from the manufacturer
+## Some data can be obtained from the manufacturer
 
 Historical data (e.g., MCNP error messages)
 
 Government and military handbooks
 
-[Reliability Information Analysis Center](https://www.qualitydigest.com/node/17750#)
+[Reliability Information Analysis Center](https://www.quanterion.com/projects/reliability-information-analysis-center-riac/)
+
+[U. S. Energy Information Administration](https://www.eia.gov/)
 ---
-# Failure rate of system or equipment varies over life cycle
+class: center, middle
+
+# Failure over lifecycle
+---
+## Failure rate of system or equipment varies over life cycle
 
 We've shown the [bathtub curve](https://thedoctorrab.github.io/class-lecture/tm529/1-risk-overview/1-risk-overview.html#35) in Chapter 1
 
 Airplanes (from the book is a good example)  
 They're big, like a tylenol with wings!
 
-[Failure Knowledge Database](https://courses.candelalearning.com/riskassessment/chapter/fault-trees-2/)
+[Failure Knowledge Database](http://www.sozogaku.com/fkd/en/index.html)
 
 Obviously the structure of the plane is going to degrade with time
 
@@ -102,7 +142,11 @@ High stress over the life cycle
 
 [Table 8.2](https://docs.google.com/spreadsheets/d/11KeppAs0_VcJ_vLqMwpkflKbmLzNUPx13o_W31yFI8w/edit?usp=sharing) in the book is a typical example
 ---
-### Sorting data into bins can present and overall picture of what is going on 
+class: center,middle
+
+# Failure rate example
+---
+## Sorting data into bins can present and overall picture of what is going on 
 
 First, they sorted by [failure](https://docs.google.com/spreadsheets/d/1iNBowXJOa8Da4_TxbC0iFPxhtJtCSlNWTEF8rtCHdbI/edit?usp=sharing)  
 I also sorted by [temperature and hours of operation](https://docs.google.com/spreadsheets/d/1MLsXFbCZcbv1Atahns1xxBUEvodaqZh2DdBCWs13oN4/edit?usp=sharing)
@@ -110,7 +154,7 @@ I also sorted by [temperature and hours of operation](https://docs.google.com/sp
 Any observations? 
 
 **Failure rate**  
-$\lambda = \frac{20}{130300}=1.53 \times 10^{-04}$ per hour
+$\lambda = \frac{20}{130300}=1.53 \times 10^{-4}$ per hour
 
 **Mean time before failure (MTBF)**  
 $\theta = \frac{1}{\lambda} = 6515$ hours  
@@ -119,17 +163,21 @@ Typically called mean time to failure (MTTF)
 Assumes all systems fail in the same way  
 Is this the best way to do this?
 ---
-# Let's look at failure as a function of temperature
+## Let's look at failure as a function of temperature
 
 **Above 100**  
-$\lambda = 2.14 \times 10^{-04}$/h  
-$\theta = 4675$h
+$\lambda = 2.14 \times 10^{-4} \; /h$  
+$\theta = 4675 \; h$
 
 **Below 100**  
-$\lambda = 1.08 \times 10^{-04}$/h  
-$\theta = 9275$h
+$\lambda = 1.08 \times 10^{-4} \; /h $  
+$\theta = 9275 \; h$
 
 Observations?
+---
+class: center,middle
+
+# Pyroprocessing failures
 ---
 ![Pyroprocessing flowsheet](img/pyroprocessing.flowsheet.jpg)
 ---
@@ -137,7 +185,7 @@ Observations?
 ---
 ![Fuel fabrication process steps](img/fuel.fabrication.process.steps.jpg)
 ---
-# For each process step, what are the failures?
+## For each process step, what are the failures?
 
 Multiple failures, much more complexity
 
@@ -152,6 +200,10 @@ If one component fails the equipment fails
 Systems do not fail in the same way
 
 Major challenge to failure analysis
+---
+class: center,middle
+
+# Data perception
 ---
 ## It is important to consider how to frame failure data or what the data actually is
 
@@ -168,6 +220,10 @@ There is not any normalization in terms of failures per operating year
 Which is better?  
 How to decide?
 ---
+class: center,middle
+
+# Monte Carlo analysis
+---
 ## Monte Carlo can be used to establish failure rates or MTTFs
 
 Monte Carlo simulation is very famous, but not fancy
@@ -178,15 +234,15 @@ Applied to wide variety of complex problems involving random behavior
 
 We use MCNP in nuclear engineering to simulate neutron behavior
 
-Show example from NE450 now (lecture slides)
+Show example from [NE450](https://thedoctorrab.github.io/class-lecture/ne450/5-monte-carlo-methods-mcnp/lecture-slides/5-monte-carlo-methods-mcnp.html)
 ---
-# Monte Carlo can be used for [reliability](https://courses.candelalearning.com/riskassessment/chapter/failure-rates/)
+## Monte Carlo can be used for [reliability](https://courses.lumenlearning.com/uidaho-riskassessment/)
 
 $R(T) = e^{-(\frac{T}{\eta})^{\beta}}$
 
 $U \equiv R(T)$ where U is a random number
 
-$T = -\eta(lnU)^{\frac{1}{\beta}}$
+$T = -\eta(ln \; U)^{\frac{1}{\beta}}$
 
 What is the interpretation of T in this context?
 
@@ -229,8 +285,14 @@ New equipment is installed, so there is new distribution
 
 Early times the likelihood of failure is low  
 Later times it is higher because equipment is older
+
+[Failure testing repository](https://github.com/TheDoctorRAB/failure.testing)
 ---
-# Human error probability is difficult to quantify
+class: center, middle
+
+# Human error
+---
+## Human error probability is difficult to quantify
 
 Because people generally behave stupidly even sober
 
@@ -255,7 +317,11 @@ time
 stress  
 equipment design/human machine interface
 ---
-# The [Delphi technique](https://courses.candelalearning.com/riskassessment/chapter/failure-rates/) forecasts future events
+class: center,middle
+
+# Delphi technique
+---
+## The [Delphi technique](https://courses.lumenlearning.com/uidaho-riskassessment/) forecasts future events
 
 Initially developed in the 1950s by Helmer and Dalkey at Rand Corp
 
@@ -263,7 +329,7 @@ Controlled opinion feedback
 
 Initially “to solicit expert opinion to the selection, from the point of view of a Soviet strategic planner, of an optimal U.S. industrial target system and to the estimation of the number of A-bombs required to reduce the munitions output by a prescribed amount"
 ---
-# Delphi is used to validate research outcomes
+## Delphi is used to validate research outcomes
 
 Impact analysis of changes to the international business environment
 
@@ -296,7 +362,7 @@ Airline inspectors (regulations)
 Structural experts from manufacturer(s)  
 Repair/mechanics experts
 ---
-# Continuing 
+## Who do you select? 
 
 **Select panel and eliminate bias**  
 *People from INL*  
@@ -309,7 +375,7 @@ In book example, estimated probabilities are presented
 
 *Related data on industrial injection casting processing (crucible cracking)*
 ---
-# Continuing
+## Set problem boundaries and constraints
 
 **Present the parameters of the task to evaluate**  
 Qualitatively assess the problem  
@@ -326,7 +392,7 @@ Establish nominal probabilities for each class of crack
 **Discuss the results and iterate**  
 **Repeat until consensus reached for each class**
 ---
-# Continuing
+## Determine roadblocks
 
 **Develop PSFs**  
 What factors would lower the probability of the task?  
