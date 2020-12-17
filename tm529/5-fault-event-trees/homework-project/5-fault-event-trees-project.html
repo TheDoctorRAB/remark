@@ -40,10 +40,10 @@
 # TM529: Risk assessment
 ## Project 5
 ### Fault and event trees
-####[550]
+####[600]
 
 <p>
-1. [75] Because fuel fabrication of pyroprocessing materials is not known well at all, we want to apply a basic failure function that is grounded in some reality in order to model the process for a material flow simulation at the facility scale. It might be useful to obtain failure data for injection casting equipment for other industrial processes.  You each (pretend) to gather this data from different manufacturers. Please run the
+1. [100] Because fuel fabrication of pyroprocessing materials is not known well at all, we want to apply a basic failure function that is grounded in some reality in order to model the process for a material flow simulation at the facility scale. It might be useful to obtain failure data for injection casting equipment for other industrial processes.  You each (pretend) to gather this data from different manufacturers. Please run the
 [failure.data.py](https://github.com/TheDoctorRAB/education/blob/master/src/failure.data.py) code from my GitHub space. The free Anaconda package can be downloaded and installed to run python. This code generates a two column data file: equipment ID and operation time in hours. The equipment failed at the operation time.
 
 Sort the data. Compute the failure rate. 
@@ -65,13 +65,13 @@ There are online tools that will compute the integral for you. Just cite what yo
 An operation time of 4500 hours roughly translates to 18 hours of operation per day for a 250 day working year. Therefore, 3375 hours would be about 75% operation, for a little over six months. What would be the probability that the equipment survives at least 3375 hours for each $\beta$? How is MTTF interpreted with this survival probability?
 
 <p>
-2. [75] Now, for the reverse. Run [failure.simulation.py](https://github.com/TheDoctorRAB/education/blob/master/src/failure.simulation.py). This will generate a file for time and Q(t). Find the failure rate and $\beta$ for the data set. Again, comment on what this means. Try to plot the generated Q(t) data and the function to fit the data.
+2. [100] Now, for the reverse. Run [failure.simulation.py](https://github.com/TheDoctorRAB/education/blob/master/src/failure.simulation.py). This will generate a file for time and Q(t). Find the failure rate and $\beta$ for the data set. Again, comment on what this means. Try to plot the generated Q(t) data and the function to fit the data.
 
 <p>
 3. [100] Since you have identified initiating events already from the PHA and FMEA, take the two initiating events with the highest risk and construct and event tree for each. Please discuss your reasoning and the sequence from initiating event to final state.  Try to assign nominal frequencies to the events and discuss the risk of the final states. 
 
 <p>
-4. [100] In 1985, Japanese Airlines flight 123 crashed into a mountain shortly after take off. It seems that the initiating event was fatigue failure of the aft bulkhead due to errors in repairs. Briefly explain what happened. Construct an event tree similarly. Start with the [Failure Knowledge Database](http://www.sozogaku.com/fkd/en/cfen/CB1071008.html) and the [USA FAA](http://lessonslearned.faa.gov/ll_main.cfm?TabID=4&LLID=16&LLTypeID=2). There is actually a lot of information out there about this case. Focus mostly on constructing the event tree. Finding associated probabilities is likely going to take too much time. If they can be found quickly, great, but that part is not a big deal. 
+4. [100] In 1985, Japanese Airlines flight 123 crashed into a mountain shortly after take off. It seems that the initiating event was fatigue failure of the aft bulkhead due to errors in repairs. Briefly explain what happened. Construct an event tree similarly. Start with the [Failure Knowledge Database](http://www.sozogaku.com/fkd/en/cfen/CB1071008.html) and the [USA FAA](http://lessonslearned.faa.gov/ll_main.cfm?TabID=4&LLID=16&LLTypeID=2). There is actually a lot of information out there about this case. Estimate nominal frequencies for the events.  
 
 <p>
 5. [100] A fire is a common failure event anywhere, and any risk assessment will also include analysis for fire protection. [A fire requires fuel AND oxygen AND ignition](https://images.sampletemplates.com/wp-content/uploads/2016/06/02114906/Fault-Tree-Analysis-Format.jpg). Based on the given fault tree, present a fault tree analysis. Select any fire incident. The basic events need not be exactly the seven shown here; there could be more or less, and any combination of AND or OR gates may be needed. However, they all will lead to the three intermediate events in some way. Try to formulate nominal probabilities for the basic events and compute a final probability for the top level event; i.e., the fire. Finally, provide some analysis on the probability of the fire in terms of risk acceptability, and discuss any potential mitigation strategies. Anyone feeling adventurous can try the OpenFTA software [not required].
@@ -80,7 +80,7 @@ An operation time of 4500 hours roughly translates to 18 hours of operation per 
 6. [100] Select two of the events in the sequence from the event tree in #3 and construct a fault tree for each. Discuss how and why the fault tree was constructed and try to establish a frequency for the event based on basic events in the fault tree.
 </xmp>
 
-<script type="text/javascript" src="../../../strapdown.min.js?theme=readable"></script>
+<script type="text/javascript" src="../../../../strapdown.min.js?theme=readable"></script>
 
 </body>
 </html>
