@@ -18,6 +18,11 @@
 \usepackage{times}
 \usepackage{enumitem}
 \usepackage{multirow}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{longtable} %need to put label at top under caption then \\ - use spacing
 %\usepackage[labelfont=bf]{caption}
 
 \usepackage[singlelinecheck=false]{caption}
@@ -28,7 +33,7 @@
 \setlength{\intextsep}{0.10mm}
 \setlength{\columnsep}{0.10mm}
 
-\usepackage[numbers]{natbib} %use 'numbers' for numbered citations; 'round' for () instead [] for inline citations
+\usepackage[numbers,sort&compress]{natbib} %use 'numbers' for numbered citations; 'round' for () instead [] for inline citations
 %\setlength{\bibsep}{0pt} %sets space between references
 \renewcommand{\bibsection}{} %suppresses large 'references' heading
 \renewcommand\bibpreamble{\vspace{-0.2\baselineskip}} %sets spacing after heading if not using default references heading
@@ -37,6 +42,28 @@
 \newcommand{\fn}[1]{\footnote{#1}} %shortcut for footnote tag
 \newcommand*\sq{\mathbin{\vcenter{\hbox{\rule{.3ex}{.3ex}}}}} %makes a small square as a separator $\sq$
 \newcommand{\x}{\cellcolor{lightgray}} %use to shade in table cell
+
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}} %uses \raggedright with p{} in table column
+
+%\paragraph and \subparagraph modifiers
+% no indent for each
+% after \z@ pads whitespace on the top
+% em sets the distance after heading to text horizonally
+
+\makeatletter
+\renewcommand\paragraph{%
+    \@startsection{paragraph}{4}{\z@ }{0.55\baselineskip}{-1em}
+    {\normalfont \normalsize \bfseries}}%
+
+\makeatletter
+\renewcommand\subparagraph{%
+    \@startsection{subparagraph}{5}{\z@ }{0.45\baselineskip}{-1em}
+    {\normalfont \normalsize \itshape }}%
+
+\makeatletter
+\renewcommand\subsection{%
+    \@startsection{subsection}{2}{\z@ }{0.75\baselineskip}{0.25\baselineskip}
+    { \large \bfseries}}%
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -57,34 +84,36 @@
     Department of Nuclear Engineering and Industrial Management
 \par
 }
-\vspace{\baselineskip}
 
-\noindent\textbf{Summary of the Proposed Project.} 
-\\
+\paragraph*{Summary of the Proposed Project.} 
+\noindent
 
-\noindent\textbf{Motivation.}
-\\
+\paragraph*{Motivation.}
+\noindent
 
-\noindent\textbf{Overall Objective.}
-\\
+\paragraph*{Overall Objective.}
+\noindent
 
-\noindent\textbf{Importance and Relevance to Objectives.}
-\\
+\paragraph*{Importance and Relevance to Objectives.}
+\noindent
 
-\noindent\textbf{Logical Path, Work Scope, Description of Tasks.} The Logical Path and the proposed Work Scope is described below in terms of the defined Tasks for the project.
-\\
+\paragraph*{Logical Path, Work Scope, Description of Tasks.} The Logical Path and the proposed Work Scope is described below in terms of the defined Tasks for the project.
 
-\noindent\textbf{Task I. Title.}
-\\
+\paragraph*{Workscope 1. Title.}
+\subparagraph*{Task I. Title.}
+\noindent
 
-\noindent\textbf{Task II. Title.}
-\\
+\subparagraph*{Task II. Title.}
+\noindent
 
-\noindent\textbf{Task III. Title.}
-\\
+\paragraph*{Workscope 2. Title.}
+\subparagraph*{Task III. Title.}
+\noindent
 
-\noindent\textbf{Task N. Title.}
-\\
+\subparagraph*{Task N. Title.}
+\noindent
+
+\vspace{0.50\baselineskip}
 
 \begin{table}[h!]
     \centering
@@ -99,21 +128,64 @@
         \textbf{F}& 
         \textbf{M}& 
         \textbf{A}& 
-        \textbf{M}\\
+        \textbf{M}
+        \\
         \hline
-        I. & & & & & \\
+        I. Title
+        &\x\textbf{X} 
+        & 
+        & 
+        & 
+        & 
+        \\
         \hline
-        II. & & & & & \\
+        II. Title
+        &\x\textbf{X} 
+        & 
+        & 
+        & 
+        & 
+        \\
         \hline
-        III. & & & & & \\
+        III. Title
+        &\x\textbf{X} 
+        & 
+        & 
+        & 
+        & 
+        \\
         \hline
-        IV. & & & & &  \\
+        IV. Title
+        &\x\textbf{X} 
+        & 
+        & 
+        & 
+        &
+        \\
         \hline
-        V. & & & & &  \\
+        V. Title
+        &\x\textbf{X} 
+        & 
+        & 
+        & 
+        &  
+        \\
         \hline
-        VI. & & & & & \\
+        VI. Title
+        & 
+        & 
+        & 
+        & 
+        &\x\textbf{X} 
+        \\
         \hline
-        VII. & & & & & \\
+        VII. Title
+        & 
+        & 
+        & 
+        & 
+        &\x\textbf{X}
+        \\
         \hline
     \end{tabular}
     \label{tab-timeframe}
