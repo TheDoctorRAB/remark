@@ -83,7 +83,14 @@ Task analysis
 
 .column[
 .right[
-**HAZOP**
+**HAZOP**  
+Flowchart  
+Flash drum example  
+Safeguards  
+Record keeping  
+Pyroprocessing  
+Advantages  
+Drawbacks
 ]
 ]
 ---
@@ -385,7 +392,7 @@ class: middle,center
 
 # HAZOP
 ---
-### HAZOP identifies hazards without waiting for an accident to occur
+## HAZOP identifies hazards without waiting for an accident to occur
 
 Developed by Imperial Chemical Industries in early 1960s
 
@@ -397,7 +404,7 @@ Identifying potential hazards and operability problems caused by deviations from
 
 Essential feature to review process drawings and/or procedures
 ---
-### Identify all possible deviations from normal operation and associated hazards
+## Identify all possible deviations from normal operation and associated hazards
 
 Kind of a "what if" analysis for system parameters  
 What if “temperature” of “reactor” “rises”? What happens to system?  
@@ -407,14 +414,13 @@ Requires flow model of operating plant
 So this is not something done too early on in design phases  
 But can affect design  
 Later on in the life cycle if facility upgrades/retrofits have been made  
-Fukushima NRC USA safety analysis
 
 For use with PHA/FMEA and provides input to event trees too  
 Can offer some options to mitigate hazards
 
 HAZOP seems to me to be a limited fit for industrial facilities/reactors
 ---
-### HAZOP is a structured and systematic technique for examining a defined system
+## HAZOP is a structured and systematic technique for examining a defined system
 
 Identify potential hazards in the system  
 We've done that!
@@ -422,11 +428,12 @@ We've done that!
 Identifying potential operability problems with the system, causes of operational disturbances, and production deviations
 
 Ensure that all relevant deviations of process parameters are evaluated  
+
 Causes of deviations are human error, equipment failure, external events
 
 Deviation = Guideword + Parameter
 ---
-### Operability is any process inside the design envelope that would cause a shutdown 
+## Operability is any process inside the design envelope that would cause a shutdown 
 
 Where a shutdown could possibly lead to a violation of environmental, health or safety regulations or negatively impact profitability
 
@@ -434,33 +441,52 @@ Also called licensing basis envelope (LBE) with reactors
 
 More about system operation than safety
 ---
-### HAZOP deals with the identification of potential deviations from the design
-intent, examination of causes, and assessment of consequences
+## HAZOP deals with the identification of potential deviations from the design
+
+Iintent, examination of causes, and assessment of consequences
 
 Improve operating procedures or when modifying plant 
 
-Identify possible improvements in plants where accident or incident rate is abnormally high 
+Identify possible improvements where accident rate is abnormally high 
 
 Time consuming and can be tedious (Theo from Simplot)
 
 Generates many failure events with insignificant risk  
-But still needs to be done 
 
 Again, can miss common cause failures
 
 Tends to ignore contributions that can be made by operator interventions 
 ---
+## HAZOP has a logical structure like event and fault trees
+
+Flowing/process items are “entities”
+
+Entities have characteristic properties known as “attributes”
+
+Analysis based on possible deviations of attribute values (sensitivities)
+
+“Guide words” used to guide the analysis and designed to capture dimensions of variation
+---
+class: center,middle
+
+# Flowchart
+---
+class: center,middle
+
 ![HAZOP flowchart](img/hazop_flowchart.jpg)
 ---
-**[Flash drum example](https://courses.candelalearning.com/riskassessment/chapter/hazop/)**  
-![HAZOP flash drum](img/hazop_flash.drum.jpg)
----
+class: center,middle
+
 ![HAZOP analysis loop](img/hazop.loop.jpg)
 ---
 class: center,middle
-# Let's go through an example
+
+# Flash drum example
 ---
-### HAZOP analysis process for flash drum
+**[Flash drum example](https://courses.lumenlearning.com/uidaho-riskassessment/chapter/hazop/)**  
+![HAZOP flash drum](img/hazop_flash.drum.jpg)
+---
+## HAZOP analysis process for flash drum
 
 1. Select component - Flash drum
 
@@ -468,7 +494,7 @@ class: center,middle
 
 3. Select component parameter - Pressure
 
-4a. Develop deviation with [guidewords](https://courses.candelalearning.com/riskassessment/chapter/hazop/) - More/high pressure
+4a. Develop deviation with [guidewords](https://courses.lumenlearning.com/uidaho-riskassessment/chapter/hazop/) - More/high pressure
 
 4b. List causes - Valve is stuck closed; Feed temperature too high  
 Within or outside boundary  
@@ -478,9 +504,9 @@ Derived from independent variables
 Process hazards  
 Operability problems 
 ---
-### HAZOP analysis process for flash drum
+## HAZOP analysis process for flash drum
 
-4d. Identify existing safeguards - Temperature control; Pressure control  
+4d. Identify existing _safeguards_ - Temperature control; Pressure control  
 Safeguards reduce risk
 
 4d. Assess safeguards - Are the controls adequate? No.
@@ -494,7 +520,11 @@ Return to 3 and identify new component parameter
 
 Return to 1 and select new component
 ---
-### There are five types of safeguards
+class: center,middle
+
+# Safeguards
+---
+## There are five types of safeguards
 
 **IDENTIFY**  
 alarm instrumentation  
@@ -513,7 +543,11 @@ trip of the activity - SCRAM
 pressure safety valves (PSV)  
 vent systems
 ---
-# You can set up a chart
+class: center,middle
+
+# Record keeping
+---
+## You can set up a chart
 
 [Recording sheet](https://red-bag.com/imageslib/BN-EG-UE105_02.pdf)
 
@@ -526,11 +560,14 @@ vent systems
 [Guidelines](http://www.etenders.gov.za/sites/default/files/tenders/240-49230111%20HAZOP%20Analysis%20Guideline.pdf)
 ---
 class: middle, center
-# One more example
+
+# Pyroprocessing
 ---
+class: center,middle
+
 ![Pyroprocessing flowsheet](img/pyroprocessing.flowsheet.jpg)
 ---
-### HAZOP analysis process for pyroprocessing injection casting 
+## HAZOP analysis process for pyroprocessing injection casting 
 
 1. Select component - Injection casting machine
 
@@ -544,7 +581,7 @@ class: middle, center
 
 4c. List consequences - Metal is not totally melted; Quartz molds break; Spill liquid metal
 ---
-### HAZOP analysis process for flash drum
+## HAZOP analysis process for pyroprocessing injection casting
 
 4d. Identify existing safeguards - Unknown
 
@@ -558,6 +595,8 @@ Return to 3 and identify new component parameter
 
 Return to 1 and select new component
 ---
+## Select temperature 
+
 **Deviation** - LESS+TEMPERATURE - Low temperature
 
 **Causes** - Heater fails to start; Heater starts late; Power source not available
@@ -568,6 +607,8 @@ Return to 1 and select new component
 
 **Action** - Install temperature indicator; Human detection; Positive injection operation
 ---
+## Select time
+
 **Deviation** - LESS+TIME - Short injection time
 
 **Causes** - Operator error; Motor trip
@@ -578,17 +619,11 @@ Return to 1 and select new component
 
 **Action** - Install timer; Human detection; Positive mold removal operation
 ---
-## HAZOP has a logical structure like event and fault trees
+class: center,middle
 
-Flowing/process items are “entities”
-
-Entities have characteristic properties known as “attributes”
-
-Analysis based on possible deviations of attribute values (sensitivities)
-
-“Guide words” used to guide the analysis and designed to capture dimensions of variation
+# Advantages
 ---
-# What's good about HAZOP?
+## What's good about HAZOP?
 
 Considers more than failure accidents  
 Process and operation deviations
@@ -600,7 +635,11 @@ Easy to apply (ish)
 A simple method that can uncover complex accidents  
 Applicable to new designs and new design features
 ---
-# Eh, HAZOP, whatevs
+class: center,middle
+
+# Drawbacks
+---
+## Eh, HAZOP, whatevs
 
 Requires detailed plant information  
 Flowsheets, piping and instrumentation diagrams, plant layout
