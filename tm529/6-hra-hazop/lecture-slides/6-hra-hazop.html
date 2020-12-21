@@ -30,6 +30,14 @@
                          h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
        }
       .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+      .column:first-of-type {float:left}
+      .column:last-of-type {float:right}
+
+      .split-60 .column:first-of-type {width: 60%}
+      .split-60 .column:last-of-type {width: 40%}
+
+      .split-50 .column:first-of-type {width: 50%; }
+      .split-50 .column:last-of-type {width: 50%}
     </style>
   </head>
   <body>
@@ -45,9 +53,9 @@ class: center, middle
 #### .right[Bob Borrelli  
 @TheDoctorRAB]
 ---
-# Learning outcomes
+## Learning outcomes
 
-Chapter 10
+Chapter 12
 
 Applying HRA and HAZOP
 
@@ -57,12 +65,33 @@ Assessing human reliability as part of risk
 
 HAZOP is not in the book
 
-See [OER](https://courses.candelalearning.com/riskassessment/) for information on HAZOP
+See [OER](https://courses.lumenlearning.com/uidaho-riskassessment/) for information on HAZOP
+---
+## Learning nodes
+
+.column[
+.left[
+**Human reliability analysis**  
+LOCA  
+Task analysis
+
+**Human error probability**
+
+**Common cause**
+]
+]
+
+.column[
+.right[
+**HAZOP**
+]
+]
 ---
 class: center,middle
+
 # Human reliability analysis
 ---
-# HRA is typically part of PRA
+## HRA is typically part of PRA
 
 Based on human error probability
 
@@ -78,7 +107,7 @@ HRA can identify activities where human error can be reduced
 
 HRA supports PRA
 ---
-### HRA "system" is series of steps or actions that involve the potential for human failure
+## HRA "system" is series of steps or actions that involve the potential for human failure
 
 Pump trips in a reactor facility
 
@@ -90,23 +119,27 @@ HRA tell us how the personnel would screw up fixing it
 
 What would be the best way to reduce probability of human error?
 
-[Dreamliner documentary](https://courses.candelalearning.com/riskassessment/chapter/contemporary-cases-in-risk-assessment-2/) talking about where to score drugs
+[Dreamliner documentary](https://courses.lumenlearning.com/uidaho-riskassessment/chapter/contemporary-cases-in-risk-assessment-2/) talking about where to score drugs
+---
+class: center,middle
+
+# LOCA
 ---
 ## LOCA is the worst accident at the reactor
 
-Initiating event: rupture in coolant pipes (10.1.3)  
+Initiating event - Rupture in coolant pipes (12.1.3)  
 How could that happen?
 
-pipe ruptures (somewhere)
+Pipe ruptures (somewhere)
 
-drywell pressure reaches 2 psig  
+Drywell pressure reaches 2 psig  
 (provides pressure suppression system and fission product barrier BWR)
 
-emergency core cooling system (ECCS) initiates 
+Emergency core cooling system (ECCS) initiates 
 
-reactor SCRAM signal initiates   
-containment building isolates  
-emergency ventilation systems start
+Reactor SCRAM signal initiates   
+Containment building isolates  
+Emergency ventilation systems start
 
 Probably could construct and event tree since these are all success/fail
 ---
@@ -123,7 +156,7 @@ Passive safety therefore is a big deal at reactors
 
 AP1000 has numerous passive safety upgrades from Generation III designs
 
-Famous EBR-II experiment
+[EBR-II experiment](https://courses.lumenlearning.com/uidaho-nuclear/)
 ---
 ## Operators have to act if automatic systems fails
 
@@ -139,9 +172,9 @@ Which leads to error
 
 As much passive safety as there can be, human action is always going to be required at some level
 ---
-### Each HRA must be 'bounded' and have measurable start and end states
+## Each HRA must be 'bounded' and have measurable start and end states
 
-Start point and metric for successful completion of each step is distinctly identified 
+Start point and metric for success of each step is distinctly identified 
 
 For SCRAM actions
 1. Control rods inserted into core (automatic no human action) 
@@ -154,7 +187,7 @@ For SCRAM actions
 8. Verify reactor coolant pumps shift to slow speed
 9. Shift feed water control system to single element
 ---
-# You need an HRA for each step 
+## You need an HRA for each step 
 
 Then assess total human failure probability for SCRAM
 
@@ -164,14 +197,18 @@ Then obtain failure probability of LOCA
 
 All of this will be defined as an accident sequence in a PRA
 ---
-### 'Task analysis' identifies personnel actions into basic steps
+class: center,middle
+
+# Task analysis
+---
+## 'Task analysis' identifies personnel actions into basic steps
 
 Derive the smallest set of actions (very detailed)  
 Walk through the overall procedure and list what needs to be done  
 
 Include what to do if personnel fails to achieve each step in the procedure  
 
-10.2 in the book shows how to do this for "verifying all rods are inserted" (coming up next)
+12.2 in the book shows how to do this for "verifying all rods are inserted" (coming up next)
 
 It seems overly much, but you need all this precise actions to get operating license
 
@@ -179,15 +216,19 @@ Walkthrough with experienced personnel
 
 You don't want to be "umm, what's first now" when an accident happens (muscle memory)
 ---
-### "User error" for a nuclear reactor accident has enormous social implications
+## "User error" for a nuclear reactor accident has enormous social implications
 
 TMI and Chernobyl
 
 We had all this on our research reactor, but there was only one big button
 ---
+class: center, middle
+
 ![Rods inserted](img/hra_rods.inserted.jpg)
 ---
-# Task analysis - Figure 10.1
+## Task analysis validates operator actions
+
+Figure 12.1
 
 Operators must validate the sequence
 
@@ -197,11 +238,19 @@ Why do we need to be so detailed?
 
 What would cause a failure?
 ---
+class: center,middle
+
+# Picture break
+---
+class: center,middle
+
 ![WPI 1](img/wpi.reactor1.jpg)
 ---
+class: center,middle
+
 ![WPI 2](img/wpi.reactor2.jpg)
 ---
-### HRA model visually depicts each task as a failure with applicable recovery actions
+## Visually depict each task as a failure with applicable recovery actions
 
 HRA model needs to visually depict each task as a failure with applicable recovery actions
 
@@ -215,7 +264,11 @@ What would be the errors and recovery acts for the SCRAM rods sequence?
 
 Could make an event tree or fault tree from this
 
-Though fault tree would be just one and gate (figure 10.3) for failure to verify rod insertion
+Though fault tree would be just one and gate (figure 12.3) for failure to verify rod insertion
+---
+class: center,middle
+
+# Human error probability
 ---
 ## Human error probability is difficult to quantify
 
@@ -227,7 +280,7 @@ Astronaut behavior in normal conditions and critical conditions
 
 Psychological stress
 ---
-### Performance shaping factors account for human response to stressors
+## Performance shaping factors account for human response to stressors
 
 hot/cold  
 noise level  
@@ -246,7 +299,7 @@ Now, getting into an HRA, we need to obtain real frequencies to put together a P
 
 We saw this touring the hot cell
 
-[Handbook of Human Reliability Analysis with Emphasis on Nuclear Power Plant Applications](https://courses.candelalearning.com/riskassessment/chapter/human-reliability-analysis/) 
+[Handbook of Human Reliability Analysis with Emphasis on Nuclear Power Plant Applications](https://courses.lumenlearning.com/uidaho-riskassessment/chapter/human-reliability-analysis/) 
 
 "The completion cue or sign for the task or activity is simple and
 unambiguous"
@@ -262,11 +315,11 @@ How can these be formulated for a pyroprocessing facility?
 ---
 ## Increasing complexity with human error happens fast
 
-Technique for human error rate prediction (THERP) tables  
+Technique for human error rate prediction [(THERP) tables](https://courses.lumenlearning.com/uidaho-riskassessment/chapter/human-reliability-analysis/)
 
 Operator fails to find Rod Deselect button = 0.003 Table 20-12 item 2
 ---
-### Obtaining human error data is really the same as equipment failure rates
+## Obtaining human error data is really the same as equipment failure rates
 
 Search historical data for the task
 
@@ -280,7 +333,7 @@ Now, there are tons of PRAs to study for related activities
 
 Delphi - NEUP study
 ---
-### Performance shaping factors affect human error
+## Performance shaping factors affect human error
 
 Performance shaping factors account for human response to stressors  
 hot/cold  
@@ -294,27 +347,28 @@ time
 stress  
 equipment design/human machine interface
 ---
-### How can we reduce human error?
+## How can we reduce human error?
 
-Technique for human error rate prediction (THERP) tables (NUREG) 
+Technique for human error rate prediction [(THERP)](https://courses.lumenlearning.com/uidaho-riskassessment/chapter/human-reliability-analysis/) tables 
 
 Is there a procedure that is followed?  
 Pre-start checklist, log, and shutdown for WPI reactor  
 If there is an error in reactor operation, the checklist could show that  
 Procedures have to be memorized though
 
-Is there time pressure to complete the sequence?
+Is there time pressure to complete the sequence?  
 SCRAM actions need to be completed in about 3 minutes  
 So you need to know your actions  
-Muscle memory increases skill (table 10.4)  
 
 Familiarity can lead to cutting corners and errors  
-Single reactor operation at WPI  
-Cold start  
 ---
-# Avoid dependencies
+class: center,middle
 
-Dependence is relationship between tasks (chapter 10 NUREG)
+# Common cause
+---
+## Avoid dependencies
+
+Dependence is relationship between tasks [(chapter 10 NUREG)](https://courses.lumenlearning.com/uidaho-riskassessment/chapter/human-reliability-analysis/)
 
 Now we have a new problem  
 With reactor controls going digital  
@@ -328,6 +382,7 @@ We need to make sure we identify the most critical procedures to analyze
 Don't want to waste money on simple tasks
 ---
 class: middle,center
+
 # HAZOP
 ---
 ### HAZOP identifies hazards without waiting for an accident to occur
