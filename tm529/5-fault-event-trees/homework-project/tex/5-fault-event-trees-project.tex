@@ -1,0 +1,347 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+\usepackage[pagewise]{lineno} %line numbering
+\usepackage{setspace}
+\usepackage{ulem} %strikethrough - do not \sout{\cite{}}
+\usepackage{xcolor} %change font color
+\usepackage{graphicx}
+\usepackage{filecontents}
+\usepackage{tablefootnote}
+\usepackage{footnotehyper}
+\usepackage{subfig}
+\usepackage[yyyymmdd]{datetime} %date format
+\renewcommand{\dateseparator}{.}
+\graphicspath{{../img/}} %path to graphics
+\setcounter{secnumdepth}{5} %set subsection to nth level
+\usepackage{caption}
+\captionsetup[table]{skip=11pt} %sets a space after table caption
+\usepackage{times}
+\usepackage{tabto} %general tabbed spacing
+\usepackage{longtable} %need to put label at top under caption then \\ - use spacing
+\usepackage[stable,hang,flushmargin]{footmisc} %footnotes in section titles and no indent
+\usepackage[round]{natbib} %parenthesis instead of brackets for inline citations
+\usepackage{enumitem}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{array}
+\usepackage{caption}
+\usepackage[labelfont=bf]{caption}
+\usepackage{chngcntr}
+\usepackage{hyperref}
+
+\newcommand{\edit}[1]{\textcolor{blue}{#1}} %shortcut for changing font color on revised text
+\newcommand{\fn}[1]{\footnote{#1}} %shortcut for footnote tag
+\newcommand*\sq{\mathbin{\vcenter{\hbox{\rule{.3ex}{.3ex}}}}} %makes a small square as a separator $\sq$
+\renewcommand\labelenumi{(\theenumi)} %changes 1. to (1) in enumerated list
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} %move page number to bottom right
+\renewcommand{\headrulewidth}{0.5pt} %turn off line in header
+\lhead{\scriptsize TM529 - Risk assessment}
+\chead{\scriptsize \today}
+\rhead{\scriptsize Project 5 - Fault and event trees}
+\rfoot{\thepage}
+
+\begin{filecontents}{references.bib}
+    @misc{
+        ,
+        author = {{}},
+        title = {{}},
+        year = {}
+    }
+    @article{
+        ,
+        author = {{}},
+        journal = {},
+        pages = {},
+        title = {{}},
+        volume = {},
+        year = {}
+    }
+    @techreport{
+        ,
+        author = {{}},
+        title = {{}},
+        year = {},
+        institution = {},
+        number = {}
+    }
+\end{filecontents}
+
+\begin{document}
+
+\begin{titlepage}
+    \title{
+        TM529 - Risk assessment\\
+        Project 5 - Fault and event trees\\
+    }
+    \author{
+        Name
+        \\ \\ \\
+        University of Idaho $\sq$ Idaho Falls Center for Higher Education
+        \\ \\
+        Nuclear Engineering and Industrial Management Department
+        \\ \\ \\
+        email 
+    }
+\clearpage %not have page number on title page
+\maketitle
+\vspace*{\fill}
+\begin{flushright}{
+        Total - 600
+}
+\end{flushright}
+\thispagestyle{empty} %start with page number 1 on second page
+\end{titlepage}
+
+\begin{enumerate}[leftmargin=*,topsep=0pt,font=\bfseries]
+    \item\textbf{(100) Because fuel fabrication of pyroprocessing materials is not known well at all, we want to apply a basic failure function that is grounded in some reality in order to model the process for a material flow simulation at the facility scale. It might be useful to obtain failure data for injection casting equipment for other industrial processes.  You each (pretend) to gather this data from different manufacturers. Please run the \href{https://github.com/TheDoctorRAB/education/tree/master/src}{Failure Data} script. This code generates a two column data file: equipment ID and operation time in hours. The equipment failed at the operation time. (\textit{Note - Script is in v2.7.0.})
+    \item[] Sort the data. Compute the failure rate.
+    \item[]Because not much is known about how the equipment will behave with liquid plutonium metal, the \href{https://courses.lumenlearning.com/uidaho-riskassessment/chapter/failure-rates/}{Weibull distribution} is most useful for these kinds of situations.
+    \item[] $Q(t) = 1 - e^{-\frac{t}{\eta}^{\beta}}$
+    \item[] $Q(t)$ is the cumulative density function, sometimes referred to the unreliability function. The variable (t) is time. You have to look up the other two yourself. Stick to the two-parameter distribution. An example of this was covered in class.
+    \item[] Plot $Q(t)$ versus $0 \; < \; t \; \leq 4500 \; h$. Just plot for $\beta = 0.5, 1, 1.5$. What does $\beta$  mean in reality for this problem? How should it be selected? Does it make sense to use the Weibull function? Why? What would be the best model to use? What are the limitations to this approach?
+    \item[] If the reliability function is defined as $R(t) = 1 - Q(t)$ find the mean time to failure (MTTF) if $MTTF=\int_0^{\infty} R(t) dt$ for $\beta$. (\textit{There are online tools that will compute the integral for you. Just cite what you use.})
+    \item[] An operation time of 4500 hours roughly translates to 18 hours of operation per day for a 250 day working year. Therefore, 3375 hours would be about 75\% operation, for a little over six months. What would be the probability that the equipment survives at least 3375 hours for each $\beta$? How is MTTF interpreted with this survival probability?}
+        \vspace{\baselineskip}
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        \newpage
+    \item\textbf{(100) Now, for the reverse. Run the \href{https://github.com/TheDoctorRAB/education/tree/master/src}{Failure Simulation} script. This will generate a file for time and Q(t). Find the failure rate and $\beta$ for the data set. Again, comment on what this means. Try to plot the generated Q(t) data and the function to fit the data.}
+        \vspace{\baselineskip}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage
+    \item\textbf{(100) Since you have identified initiating events already from the PHA and FMEA, take the two initiating events with the highest risk and construct and event tree for each. Please discuss your reasoning and the sequence from initiating event to final state.  Try to assign nominal frequencies to the events and discuss the risk of the final states.}
+        \vspace{\baselineskip}
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        \newpage
+    \item\textbf{(100) In 1985, Japanese Airlines flight 123 crashed into a mountain shortly after take off. It seems that the initiating event was fatigue failure of the aft bulkhead due to errors in repairs. Briefly explain what happened. Construct an event tree similarly. Start with the \href{http://www.shippai.org/fkd/en/cfen/CB1071008.html}{Failure Knowledge Database} and the \href{https://lessonslearned.faa.gov/ll_adsearch_results.cfm?TabID=5}{USA FAA}. There is actually a lot of information out there about this case. Estimate nominal frequencies for the events.}
+        \vspace{\baselineskip}
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        \newpage
+    \item\textbf{(100) A fire is a common failure event anywhere, and any risk assessment will also include analysis for fire protection. \href{https://images.sampletemplates.com/wp-content/uploads/2016/06/02114906/Fault-Tree-Analysis-Format.jpg}{A fire requires fuel AND oxygen AND ignition}. Based on the given fault tree, present a fault tree analysis. Select any fire incident. The basic events need not be exactly the seven shown here; there could be more or less, and any combination of AND or OR gates may be needed. However, they all will lead to the three intermediate events in some way. Try to formulate nominal probabilities for the basic events and compute a final probability for the top level event; i.e., the fire. Finally, provide some analysis on the probability of the fire in terms of risk acceptability, and discuss any potential mitigation strategies. Anyone feeling adventurous can try any open source FTA software (\textit{not required}).}
+        \vspace{\baselineskip}
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        \newpage
+    \item\textbf{(100) Select two of the events in the sequence from the event tree and construct a fault tree for each. Discuss how and why the fault tree was constructed and try to establish a frequency for the event based on basic events in the fault tree.}
+        \vspace{\baselineskip}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{enumerate}
+
+\newpage 
+
+\bibliographystyle{ieeetr}
+\setlength{\bibhang}{0pt}
+\bibliography{references}
+
+\end{document}

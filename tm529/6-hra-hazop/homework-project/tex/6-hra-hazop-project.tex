@@ -47,7 +47,7 @@
 \renewcommand{\headrulewidth}{0.5pt} %turn off line in header
 \lhead{\scriptsize TM529 - Risk assessment}
 \chead{\scriptsize \today}
-\rhead{\scriptsize Project 5 - Fault and event trees}
+\rhead{\scriptsize Project 6 - HRA and HAZOP}
 \rfoot{\thepage}
 
 \begin{filecontents}{references.bib}
@@ -81,7 +81,7 @@
 \begin{titlepage}
     \title{
         TM529 - Risk assessment\\
-        Project 5 - Fault and event trees\\
+        Project 6 - HRA and HAZOP\\
     }
     \author{
         Name
@@ -96,32 +96,131 @@
 \maketitle
 \vspace*{\fill}
 \begin{flushright}{
-        Total - 600
+        Total - 300
 }
 \end{flushright}
 \thispagestyle{empty} %start with page number 1 on second page
 \end{titlepage}
 
 \begin{enumerate}[leftmargin=*,topsep=0pt,font=\bfseries]
-    \item\textbf{(100) Because fuel fabrication of pyroprocessing materials is not known well at all, we want to apply a basic failure function that is grounded in some reality in order to model the process for a material flow simulation at the facility scale. It might be useful to obtain failure data for injection casting equipment for other industrial processes.  You each (pretend) to gather this data from different manufacturers. Please run the \href{https://github.com/TheDoctorRAB/education/tree/master/src}{Failure Data} script. This code generates a two column data file: equipment ID and operation time in hours. The equipment failed at the operation time. (\textit{Note - Script is in v2.7.0.})
-        \vspace{0.05in}
-    \item[] Sort the data. Compute the failure rate.
-        \vspace{0.05in}
-    \item[]Because not much is known about how the equipment will behave with liquid plutonium metal, the \href{https://courses.lumenlearning.com/uidaho-riskassessment/chapter/failure-rates/}{Weibull distribution} is most useful for these kinds of situations.
-        \vspace{0.05in}
-    \item[] $Q(t) = 1 - e^{-\frac{t}{\eta}^{\beta}}$
-        \vspace{0.05in}
-    \item[] $Q(t)$ is the cumulative density function, sometimes referred to the unreliability function. The variable (t) is time. You have to look up the other two yourself. Stick to the two-parameter distribution. An example of this was covered in class.
-        \vspace{0.05in}
-    \item[] Plot $Q(t)$ versus $0 \; < \; t \; \leq 4500 \; h$. Just plot for $\beta = 0.5, 1, 1.5$. What does $\beta$  mean in reality for this problem? How should it be selected? Does it make sense to use the Weibull function? Why? What would be the best model to use? What are the limitations to this approach?
-        \vspace{0.05in}
-    \item[] If the reliability function is defined as $R(t) = 1 - Q(t)$ find the mean time to failure (MTTF) if $MTTF=\int_0^{\infty} R(t) dt$ for $\beta$. (\textit{There are online tools that will compute the integral for you. Just cite what you use.})
-        \vspace{0.05in}
-    \item[]
-        An operation time of 4500 hours roughly translates to 18 hours of operation per day for a 250 day working year. Therefore, 3375 hours would be about 75\% operation, for a little over six months. What would be the probability that the equipment survives at least 3375 hours for each $\beta$? How is MTTF interpreted with this survival probability?}
+    \item\textbf{(50) There was yet another catastrophic airline failure in 2005 on \href{https://en.wikipedia.org/wiki/Helios_Airways_Flight_522}{Helios Airways}. There is also a video in the case studies chapter of the \href{https://courses.lumenlearning.com/uidaho-riskassessment/chapter/contemporary-cases-in-risk-assessment-2/}. Briefly explain the accident. Comment on how this (potentially) was a failure of human reliability analysis and how HRA could have been applied to prevent this accident. Consider this to be at the same level of content as the news pieces.}
+    \item[] See - \href{https://www.flightglobal.com/news/articles/investigation-dispels-myths-around-helios-airways-cr-209984/}{Investigation dispels myths around Helios Airways crash}
         \vspace{\baselineskip}
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         \newpage
-    \item\textbf{(100) Now, for the reverse. Run the \href{https://github.com/TheDoctorRAB/education/tree/master/src}{Failure Simulation} script. This will generate a file for time and Q(t). Find the failure rate and $\beta$ for the data set. Again, comment on what this means. Try to plot the generated Q(t) data and the function to fit the data.}
+    \item\textbf{(100) Since there have been several PHAs and FMEAs conducted already, continue your risk assessment and perform a limited HAZOP on one of the systems of interest or something new. Perform the HAZOP for a total of 6 deviations; e.g., a single component, 2 parameters with 3 guidewords; 3 parameters with 2 guidewords, or a similar combination for 2 components. Construct a HAZOP table and sufficiently explain your reasoning.}
+        \vspace{\baselineskip}
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        \newpage
+    \item\textbf{(100) You are driving on I-84, west of Twin Falls, heading to Boise for some ridiculous symposium. It is nighttime and late in March. Conduct a HAZOP for the commute (i.e., operation of the car) as follows and sufficiently explain your reasoning.
+        \begin{itemize}
+            \item Since the car would be the component, generate 5 operational parameters that affect the commute.
+            \item Generate 2 or 3 associated guidewords for each parameter.
+            \item Briefly explain the resulting operational deviations (deviation = guideword + parameter)
+            \item Again, select a combination of 6 deviations and complete the HAZOP table.
+        \end{itemize}}
+        \vspace{\baselineskip}
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        \newpage
+    \item\textbf{(50) Watch the PBS news piece on the \href{https://youtu.be/Quh6fX57YxY}{Oroville Dam}. Is this a failure of risk assessment or management? Should the events leading to the flooding be included in the design basis or beyond design basis?}
         \vspace{\baselineskip}
 
 
