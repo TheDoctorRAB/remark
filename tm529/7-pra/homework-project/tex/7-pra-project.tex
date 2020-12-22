@@ -1,0 +1,162 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+\usepackage[pagewise]{lineno} %line numbering
+\usepackage{setspace}
+\usepackage{ulem} %strikethrough - do not \sout{\cite{}}
+\usepackage{xcolor} %change font color
+\usepackage{graphicx}
+\usepackage{filecontents}
+\usepackage{tablefootnote}
+\usepackage{footnotehyper}
+\usepackage{subfig}
+\usepackage[yyyymmdd]{datetime} %date format
+\renewcommand{\dateseparator}{.}
+\graphicspath{{../img/}} %path to graphics
+\setcounter{secnumdepth}{5} %set subsection to nth level
+\usepackage{caption}
+\captionsetup[table]{skip=11pt} %sets a space after table caption
+\usepackage{times}
+\usepackage{tabto} %general tabbed spacing
+\usepackage{longtable} %need to put label at top under caption then \\ - use spacing
+\usepackage[stable,hang,flushmargin]{footmisc} %footnotes in section titles and no indent
+\usepackage[round]{natbib} %parenthesis instead of brackets for inline citations
+\usepackage{enumitem}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{array}
+\usepackage{caption}
+\usepackage[labelfont=bf]{caption}
+\usepackage{chngcntr}
+\usepackage{hyperref}
+
+\newcommand{\edit}[1]{\textcolor{blue}{#1}} %shortcut for changing font color on revised text
+\newcommand{\fn}[1]{\footnote{#1}} %shortcut for footnote tag
+\newcommand*\sq{\mathbin{\vcenter{\hbox{\rule{.3ex}{.3ex}}}}} %makes a small square as a separator $\sq$
+\renewcommand\labelenumi{(\theenumi)} %changes 1. to (1) in enumerated list
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} %move page number to bottom right
+\renewcommand{\headrulewidth}{0.5pt} %turn off line in header
+\lhead{\scriptsize TM529 - Risk assessment}
+\chead{\scriptsize \today}
+\rhead{\scriptsize Project 7 - Probabilistic risk assessment}
+\rfoot{\thepage}
+
+\begin{filecontents}{references.bib}
+    @misc{
+        ,
+        author = {{}},
+        title = {{}},
+        year = {}
+    }
+    @article{
+        ,
+        author = {{}},
+        journal = {},
+        pages = {},
+        title = {{}},
+        volume = {},
+        year = {}
+    }
+    @techreport{
+        ,
+        author = {{}},
+        title = {{}},
+        year = {},
+        institution = {},
+        number = {}
+    }
+\end{filecontents}
+
+\begin{document}
+
+\begin{titlepage}
+    \title{
+        TM529 - Risk assessment\\
+        Project 7 - Probabilistic risk assessment\\
+    }
+    \author{
+        Name
+        \\ \\ \\
+        University of Idaho $\sq$ Idaho Falls Center for Higher Education
+        \\ \\
+        Nuclear Engineering and Industrial Management Department
+        \\ \\ \\
+        email 
+    }
+\clearpage %not have page number on title page
+\maketitle
+\vspace*{\fill}
+\begin{flushright}{
+        Total - 100
+}
+\end{flushright}
+\thispagestyle{empty} %start with page number 1 on second page
+\end{titlepage}
+
+\begin{enumerate}[leftmargin=*,topsep=0pt,font=\bfseries]
+    \item\textbf{(100) Assuming formalized PRA started with WASH-1400, and given the all the case studies we have discussed in class, has its use as an assessment tool sufficiently advanced with technological developments? Does PRA truly capture risk adequately? What is missing? What can be improved? Critically discuss the use and role of PRA to assess risk.}
+        \vspace{\baselineskip}
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+
+
+\end{enumerate}
+
+\newpage 
+
+\bibliographystyle{ieeetr}
+\setlength{\bibhang}{0pt}
+\bibliography{references}
+
+\end{document}
