@@ -19,6 +19,14 @@
                          h1 { font-size: 38px; } h2 {font-size: 32px; } h3 { font-size: 28px; }
        }
       .remark-slide-number { bottom: 8px; position: absolute; right: 8px; }
+      .column:first-of-type {float:left}
+      .column:last-of-type {float:right}
+
+      .split-60 .column:first-of-type {width: 60%}
+      .split-60 .column:last-of-type {width: 40%}
+
+      .split-50 .column:first-of-type {width: 50%; }
+      .split-50 .column:last-of-type {width: 50%}
     </style>
   </head>
   <body>
@@ -34,13 +42,60 @@ class: center, middle
 #### .right[Bob Borrelli  
 @TheDoctorRAB]
 ---
-# Learning outcomes
+## Learning outcomes
 
-Overview of chapters 15 and 16 in the book and other material I found
+Overview of chapters 17 and 19 in the book and other material I found
 
 Understanding how to integrate analytical tools to form a PRA
 
 This is a bit of a mash
+---
+## Learning nodes
+
+.column[
+.left[
+**NRC use of PRA**
+
+**PRA for system design**
+
+**Farmer's chart**
+
+**PRA space**
+
+**WASH-1400**  
+Peer review  
+Major findings  
+Recommendations  
+Limitations
+
+**Brown's Ferry**
+
+**Common cause failures**
+]
+]
+
+.column[
+.right[
+**Human factors**
+
+**Quantitative comparisons**
+
+**Follow up to WASH-1400**  
+1995 Policy statement  
+
+**PRA challenges**
+
+**Putting it all together**
+
+**Narrative research**
+
+**Case studies**
+]
+]
+---
+class: center,middle
+
+# NRC use of PRA
 ---
 ## [PRA](https://ocw.mit.edu/courses/nuclear-engineering/22-38-probability-and-its-applications-to-reliability-quality-control-and-risk-assessment-fall-2005/lecture-notes/sec12_pra_aposta.pdf) is the NRC regulatory paradigm now
 
@@ -51,6 +106,22 @@ Surprisingly, this is not the case with many industries
 Design Basis Accidents are postulated accidents that a nuclear facility must be designed and built to withstand without loss to the systems, structures, and components necessary to assure public health and safety
 
 Essential to PRA
+---
+## Quantitative safety goals were issued in 1986
+
+Early and latent cancer mortality risks to an individual living near the plant should not exceed 0.1% of the background accident or cancer mortality risk
+
+$5 \times 10^{-7}$ per year for early death
+
+$2 \times 10^{-6}$ per year for death from cancer
+
+The prompt fatality goal applies to an average individual living in the region between the site boundary and 1 mile beyond this boundary
+
+The latent cancer fatality goal applies to an average individual living in the region between the site boundary and 10 miles beyond this boundary
+---
+class: center,middle
+
+# PRA for system design
 ---
 ## PRA can inform system or facility design
 
@@ -67,7 +138,12 @@ So they came up with criteria to avoid this
 Need a heat sink and coolant source (Generation III+)  
 Cladding temperature, long term cooling, accident tolerant fuels etc.
 ---
+class: center,middle
+
+# Farmer's chart
+---
 ## Farmer came up with his chart in 1967 for I-131
+
 ![Farmers chart](img/farmers.chart.jpg)
 ---
 ## [I-131](http://www.radioactivity.eu.com/site/pages/Iodine_131.htm) is a major threat to health in a nuclear plant accident
@@ -81,9 +157,45 @@ Low consequence but more probable carries equal risk
 Postulated a near-inverse for acceptable risk  
 Events with twice the consequence must be half as frequent
 ---
-## [WASH-1400](https://courses.candelalearning.com/riskassessment/chapter/pra-2/) came along in 1975
+class: center,middle
 
-First formalized use of PRA; fault and events trees, etc.
+## There are two overall 'spaces' to consider with risk assessment
+---
+## 1. After the accident
+
+Figure out what went wrong
+
+Limit potential exposures and releases
+
+Prevent future similar accidents
+
+19.3 in the book
+---
+## 2. Facility/process/experimental operations
+
+Demonstrate ahead of time what the risks are and how they meet institutional requirements
+
+19.3.1. discusses again about the detection of small structural cracks in aircraft
+
+You can't really establish a probability of detection of the cracks
+
+But you can determine how experience would make detection more reliable
+
+Knowing what parts are more prone to cracks
+
+So you need qualitative efforts to determine this
+
+Develop a survey to determine experience level of inspectors
+
+Conduct a physical experiment to collect quantitative data from a lot of inspectors
+---
+class: center,middle
+
+# WASH-1400
+---
+## [WASH-1400](https://courses.lumenlearning.com/uidaho-riskassessment/chapter/pra-2/) came along in 1975
+
+First formalized use of PRA - Fault and events trees, etc.
 
 Dominant contributors to risk were small LOCAs and transients
 
@@ -95,6 +207,10 @@ Support systems and operator actions very important
 Change in the reactor coolant system temperature, pressure, or both, attributed to a change in the reactor’s power output
 
 300 reactor-years commercial experience
+---
+class: center,middle
+
+# Peer review
 ---
 ## The report was [reviewed by experts](http://www.iaea.org/inis/collection/NCLCollectionStore/_Public/10/452/10452296.pdf)
 
@@ -132,7 +248,8 @@ class: center,middle
 ### "We find that the fault-tree/event-tree methodology is sound, and both can and should be more widely used by NRC. The implementation of this methodology in WASH-1400 was a pioneering step, but leaves much to be desired."
 ---
 class: center,middle
-### Other major findings within the context of risk assessment
+
+# Other major findings
 ---
 1. WASH-1400 was a substantial advance over previous attempts to estimate the risks of the nuclear option. The methodology has set a framework that can be used more broadly to assess choices involving both technical consequences and impacts on humans
 
@@ -157,7 +274,8 @@ class: center,middle
 11. Made clear the importance to reactor safety discussions of accident consequences other than early fatalities (thyroid damage, land contamination, delayed cancers, genetic defects, etc.) for the first time
 ---
 class: center,middle
-### Let's look at some recommendations
+
+# Let's look at some recommendations
 ---
 1. Incorporate lessons learned into NRC licensing criteria
 
@@ -168,6 +286,56 @@ class: center,middle
 4. Use PRA for other electric generating technologies
 
 5. Fault-tree/event-tree analyses should be among the principal means used to deal with generic safety issues, to formulate new regulatory requirements, to assess and revalidate existing regulatory requirements, and to evaluate new designs
+---
+class: center,middle
+
+# Limitations
+---
+## Still there were limitations identified by the review
+
+1. Insufficient human data for the trees (though this seems at odds with what they just said)
+2. Methodological weakness due to the difficulty of incorporating time-window information into the event-trees
+3. Humans might make things worse, which is hard to analyze
+4. But they might also make things better
+5. This leads to uncertainty in assessing human factors
+
+Recommend that the NRC undertake a systematic program to evaluate the need for better human data
+
+Time dependencies only recently being addressed with dynamic risk assessment
+---
+It must be said at the outset that RSS represents the fruits of a praiseworthy and pioneering effort to deal in depth with an extremely complex subject. It is a monumental report, written in three years by a large number of people and (although it is difficult to count the pages because they are not consecutively numbered) is nearly a foot thick. Clearly no one person can, or did, write all of this, and the report suffers thereby from incoherence. 
+
+### #SHADE
+---
+## A specific definition of risk was not defined 
+
+But displayed its results through graphs of the probability of occurrence of an event against the consequences of'that event
+
+Other means of displaying the results could produce different risk perceptions
+
+We know that is the definition of risk now
+---
+## Establishing acceptable levels of risk is always challenging
+
+WASH-1400 compared estimated risks with other societal risks in Chapters 6 and  7
+
+To judge acceptability of nuclear reactors solely on the risk of early fatalities, and latent health effects, and property damage for Class 9 accidents is inappropriate
+
+Public perception hangs heavily upon the perceived credibility of the Nuclear Regulatory Commission
+
+I'm actually surprised to see this statement and wonder how they arrived at it
+---
+## They also considered the effects of [sabotage](https://youtu.be/z5rRZdiu1UE) 
+
+It‘is also worth noting that some features that make the plants difficult to sabotage successfully would also help to make most sabotage scenarios benign from the standpoint of public injury
+
+It would be-much easier to sabotage the plant so as to lead to shutdown and a need for expensive repair than to produce a core melt
+
+What about sabotage now? 
+---
+class: center,middle
+
+# Brown's Ferry
 ---
 ## Could PRA have predicted [Brown's Ferry?](http://www.ccnr.org/browns_ferry.html)
 
@@ -211,6 +379,10 @@ This is similarly hard to model or quantify
 
 So, the same things as now 
 ---
+class: center,middle
+
+# Common cause failures
+---
 ## Can PRA identify common cause failures?
 
 Common cause failure may invalidate some of the sequential features of an event-tree, while at the same time causing failures on adjacent and apparently disparate event-trees (report)
@@ -236,6 +408,20 @@ So this continues to be a problem with PRA
 
 How do you mitigate these initating events?
 ---
+## Earthquake is potential initiator of a common cause failure
+
+WASH-1400 found earthquakes to be small contributors to the total risks of core melt
+
+Earthquake risk in nuclear plants deserves much more attention than it has received
+
+Investigation at a level of sophistication necessary to resolve issue to our satisfaction has not yet been performed, and it is important that done
+---
+![Common cause failures](img/common.cause.failures.jpg)
+---
+class: center,middle
+
+# Human factors
+---
 ## People screwing up also cause a lot of accidents
 
 Also called human factors
@@ -257,7 +443,7 @@ But no one had any expertise in it either
 4. Some human-intertention phenomena are time-dependent (hard to quantify)
 5. Uncertainties arise when expert judgment is used 
 ---
-## But they did throw human factors a bone
+## WASH1400 threw human factors a bone
 
 1. Role of operators delinated better than prior to WASH1400
 2. Experience with other highly complex systems operated by well trained personnels is relevant
@@ -265,59 +451,17 @@ But no one had any expertise in it either
 
 But they point out that a substantive review did not occur
 ---
-## Still there were limitations identified by the review
+class: center,middle
 
-1. Insufficient human data for the trees (though this seems at odds with what they just said)
-2. Methodological weakness due to the difficulty of incorporating time-window information into the event-trees
-3. Humans might make things worse, which is hard to analyze
-4. But they might also make things better
-5. This leads to uncertainty in assessing human factors
-
-Recommend that the NRC undertake a systematic program to evaluate the need for better human data
----
-class:middle
-
-It must be said at the outset that RSS represents the fruits of a praiseworthy and pioneering effort to deal in depth with an extremely complex subject. It is a monumental report, written in three years by a large number of people and (although it is difficult to count the pages because they are not consecutively numbered) is nearly a foot thick. Clearly no one person can, or did, write all of this, and the report suffers thereby from incoherence. 
-
-### #SHADE
----
-## Earthquake is potential initiator of a common cause failure
-
-WASH-1400 found earthquakes to be small contributors to the total risks of core melt
-
-Earthquake risk in nuclear plants deserves much more attention than it has received
-
-Investigation at a level of sophistication necessary to resolve issue to our satisfaction has not yet been performed, and it is important that done
----
-## A specific definition of risk was not defined 
-
-But displayed its results through graphs of the probability of occurrence of an event against the consequences of'that event
-
-Other means of displaying the results could produce different risk perceptions
-
-We know that is the definition of risk now
----
-## Establishing acceptable levels of risk is always challenging
-
-WASH-1400 compared estimated risks with other societal risks in Chapters 6 and  7
-
-To judge acceptability of nuclear reactors solely on the risk of early fatalities, and latent health effects, and property damage for Class 9 accidents is inappropriate
-
-Public perception hangs heavily upon the perceived credibility of the Nuclear Regulatory Commission
-
-I'm actually surprised to see this statement and wonder how they arrived at it
----
-## They also considered the effects of [sabotage](https://youtu.be/z5rRZdiu1UE) 
-
-It‘is also worth noting that some features that make the plants difficult to sabotage successfully would also help to make most sabotage scenarios benign from the standpoint of public injury
-
-It would be-much easier to sabotage the plant so as to lead to shutdown and a need for expensive repair than to produce a core melt
-
-What about sabotage now? 
+# Quantitative comparisons
 ---
 class: center,middle
 
 ![WASH comparisons](img/wash.farmer.jpg)
+---
+class: center,middle
+
+# Follow up to WASH-1400
 ---
 ## Zion and Indian Point were the first PRAs sponsored by industry
 
@@ -329,11 +473,11 @@ Detailed containment analysis (not all accidents lead to containment failure)
 
 Still haven't found these reports
 ---
-## The follow up to WASH1400 was [NUREG1150](https://courses.candelalearning.com/riskassessment/chapter/pra-2/) in 1990
+## The follow up to WASH1400 was [NUREG1150](https://courses.lumenlearning.com/uidaho-riskassessment/chapter/pra-2/) in 1990
 
 Average probability of an individual early fatality per reactor per year
 
-NRC Safety Goal: 5E-07
+NRC Safety Goal - $5 \times 10^{-7}$
 
 Level I PRA methods generally sound
 
@@ -347,17 +491,9 @@ Same things we talk about today
 ---
 ![Iodine release](img/iodine.release.jpg)
 ---
-## Quantitative safety goals were issued in 1986
+class: center,middle
 
-Early and latent cancer mortality risks to an individual living near the plant should not exceed 0.1% of the background accident or cancer mortality risk
-
-$5 \times 10^{-7}$ per year for early death
-
-$2 \times 10^{-6}$ per year for death from cancer
-
-The prompt fatality goal applies to an average individual living in the region between the site boundary and 1 mile beyond this boundary
-
-The latent cancer fatality goal applies to an average individual living in the region between the site boundary and 10 miles beyond this boundary
+# 1995 Policy statement
 ---
 ## The NRC issued a [policy statement](https://www.nrc.gov/about-nrc/regulatory/risk-informed/history.html) in 1995
 
@@ -386,6 +522,10 @@ Risk informed, performance based regulations
 
 Another example?
 ---
+class: center,middle
+
+# PRA challenges
+---
 ## Doing a PRA is wicked hard
 
 Models the whole system including hardware failures, human performance, and relevant physical phenomena
@@ -410,6 +550,7 @@ such that these fail and again shift their load to other item, etc.
 Cascade
 
 Why did the item fail?  
+
 Why were several items affected?
 ---
 ## Identify causes as part of facility or system design
@@ -419,16 +560,14 @@ Pre-operational causes stem from design, manufacturing, construction, installati
 Operational causes stem from inadequate maintenance and operational procedures, execution, competence, scheduling
 
 Redundancy and diversity  
+
 Isolation (shielding, containment, separation)
 
 There's lots of modeling for this (bayes and binomial distribution, tables)
 ---
-![Common cause failures](img/common.cause.failures.jpg)
----
 class: center,middle
 
-# PRA  
-## Putting it all together
+# Putting it all together
 ---
 ## PRA was used by aviation and nuclear industry first, but now everyone uses it
 
@@ -500,6 +639,10 @@ Models defined
 
 More specific to the system to be analyzed
 ---
+class: center,middle
+
+# Narrative research
+---
 ## Narrative research can be used to determine what happened
 
 Way of understanding experience
@@ -513,6 +656,28 @@ Narrative research incorporates personal observation, records, videos, pictures
 Mitigate risk for future events
 
 Again, still a retrospective process though
+---
+## Quantitative risk analysis is needed for the Farmer's chart and regulations
+
+Ultimately needed for Level I,II,III PRA
+
+We have initiating events and scenarios, including human effects
+
+We know how to obtain failure rates and process data
+
+Higher level statistical analysis used
+
+Like Monte Carlo
+
+Identify distributions for relevant parameters
+
+Run the model
+
+Establish confidence limits
+---
+class: center,middle
+
+# Case studies
 ---
 ## Case study research can be used to apply a bounded system to other problems
 
@@ -536,22 +701,6 @@ Then develop your own
 
 So data gathering (what/importance) is important because you aren't modeling on your own, or using existing data in a model to further analyze the case
 ---
-## Quantitative risk analysis is needed for the Farmer's chart and regulations
-
-Ultimately needed for Level I,II,III PRA
-
-We have initiating events and scenarios, including human effects
-
-We know how to obtain failure rates and process data
-
-Higher level statistical analysis used
-Like Monte Carlo
-
-Identify distributions for relevant parameters
-Run the model
-
-Establish confidence limits
----
 ## Consider repository assessment 
 
 Wide variety of engineering and scientific disciplines to be needed
@@ -561,37 +710,6 @@ Geology, chemical engineering, environmental science, nuclear engineering
 Even though we've been working on small-scale projects, you should be able to expand to this level
 
 What is important is that risk has to be defined clearly for each system
----
-class: center,middle
-## There are two overall 'spaces' to consider with risk assessment
----
-## 1. After the accident
-
-Figure out what went wrong
-
-Limit potential exposures and releases
-
-Prevent future similar accidents
-
-16.3 in the book
----
-## 2. Facility/process/experimental operations
-
-Demonstrate ahead of time what the risks are and how they meet institutional requirements
-
-16.3.1. discusses again about the detection of small structural cracks in aircraft
-
-You can't really establish a probability of detection of the cracks
-
-But you can determine how experience would make detection more reliable
-
-Knowing what parts are more prone to cracks
-
-So you need qualitative efforts to determine this
-
-Develop a survey to determine experience level of inspectors
-
-Conduct a physical experiment to collect quantitative data from a lot of inspectors
 ---
 ![doggehs](img/final.jpg)
 </textarea>
