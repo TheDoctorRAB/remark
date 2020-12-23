@@ -1,0 +1,312 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry}
+\usepackage[pagewise]{lineno} %line numbering
+\usepackage{setspace}
+\usepackage{ulem} %strikethrough - do not \sout{\cite{}}
+\usepackage{xcolor} %change font color
+\usepackage{graphicx}
+\usepackage{filecontents}
+\usepackage{tablefootnote}
+\usepackage{footnotehyper}
+\usepackage{subfig}
+\usepackage[yyyymmdd]{datetime} %date format
+\renewcommand{\dateseparator}{.}
+\graphicspath{{../img/}} %path to graphics
+\setcounter{secnumdepth}{5} %set subsection to nth level
+\usepackage{caption}
+\captionsetup[table]{skip=11pt} %sets a space after table caption
+\usepackage{times}
+\usepackage{tabto} %general tabbed spacing
+\usepackage{longtable} %need to put label at top under caption then \\ - use spacing
+\usepackage[stable,hang,flushmargin]{footmisc} %footnotes in section titles and no indent
+\usepackage[round]{natbib} %parenthesis instead of brackets for inline citations
+\usepackage{enumitem}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{booktabs}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{lscape}
+\usepackage{array}
+\usepackage{caption}
+\usepackage[labelfont=bf]{caption}
+\usepackage{chngcntr}
+\usepackage{hyperref}
+
+\newcommand{\edit}[1]{\textcolor{blue}{#1}} %shortcut for changing font color on revised text
+\newcommand{\fn}[1]{\footnote{#1}} %shortcut for footnote tag
+\newcommand*\sq{\mathbin{\vcenter{\hbox{\rule{.3ex}{.3ex}}}}} %makes a small square as a separator $\sq$
+\renewcommand\labelenumi{(\theenumi)} %changes 1. to (1) in enumerated list
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} %move page number to bottom right
+\renewcommand{\headrulewidth}{0.5pt} %turn off line in header
+\lhead{\scriptsize TM529 - Risk assessment}
+\chead{\scriptsize \today}
+\rhead{\scriptsize Project 8 - Risk management}
+\rfoot{\thepage}
+
+\begin{filecontents}{references.bib}
+    @misc{
+        ,
+        author = {{}},
+        title = {{}},
+        year = {}
+    }
+    @article{
+        ,
+        author = {{}},
+        journal = {},
+        pages = {},
+        title = {{}},
+        volume = {},
+        year = {}
+    }
+    @techreport{
+        ,
+        author = {{}},
+        title = {{}},
+        year = {},
+        institution = {},
+        number = {}
+    }
+\end{filecontents}
+
+\begin{document}
+
+\begin{titlepage}
+    \title{
+        TM529 - Risk assessment\\
+        Project 8 - Risk management\\
+    }
+    \author{
+        Name
+        \\ \\ \\
+        University of Idaho $\sq$ Idaho Falls Center for Higher Education
+        \\ \\
+        Nuclear Engineering and Industrial Management Department
+        \\ \\ \\
+        email 
+    }
+\clearpage %not have page number on title page
+\maketitle
+\vspace*{\fill}
+\begin{flushright}{
+        Total - 350 
+}
+\end{flushright}
+\thispagestyle{empty} %start with page number 1 on second page
+\end{titlepage}
+
+\begin{enumerate}[leftmargin=*,topsep=0pt,font=\bfseries]
+    \item\textbf{(100) Building a nuclear reactor takes a long time, and time is, of course, money. Some of that time has to do with the licensing process and regulations, but a nuclear power plant is a large industrial facility that uses hazardous materials. Assume it takes ten years from groundbreak to operation for the AP1000. The cost over that time period is 100M/year. (That is seriously on the low end too). Starting in year eleven, the plant goes online. Kudos all around. Operational costs are 250M/year. The plant generates 450M/year in revenue. The plant is licensed for forty years. What is the net present value for the life cycle of the plant (construction to end of license)? What is the NPV if the license is extended to sixty years? Obviously, everyone wants to shorten the construction period. Repeat the NPV calculations for a seven year construction period. Discuss the results within the context of attracting investors to a nuclear power plant project. Use a discount rate from the \href{https://www.whitehouse.gov/omb/information-for-agencies/circulars/}{Guidelines and Discount Rates for Benefit-Cost Analysis of Federal Programs A-094}.}
+        \vspace{\baselineskip}
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        \newpage
+    \item\textbf{(100) Due to the Fukushima nuclear reactor accident in Japan, the Nuclear Regulatory Commission (NRC) here in the USA issued new standards for ‘seismic retrofitting’ the nuclear reactors all over the country as part of a safety analysis. In fact, in late August 2011, there was a 5.8 earthquake in Virginia near a reactor complex, the first of this magnitude since the late 1800s. [There was no damage.] Conduct a decision analysis for retrofitting a plant [or not].}
+    \item[] For simplicity, consider these decisions - 
+        \begin{enumerate}
+            \item Doing no retrofitting
+            \item Partial retrofitting 
+            \item Total retrofitting
+        \end{enumerate}
+    \item[] There are also three outcomes - 
+        \begin{enumerate}[label=(\alph*)]
+            \item No earthquake
+            \item 4.0 earthquake
+            \item 7.5 earthquake
+        \end{enumerate}
+    \item[] This power plant costs 5M/year [base cost] regardless of any retrofits. The plant generates 7.5M/year while it is operating in revenue whether there are any kinds of retrofits or not.
+    \item[] If the 4.0 earthquake occurs - 
+        \begin{enumerate}
+            \item No retrofit: the plant will be shut down for 4.5 months
+            \item Partial retrofit: the plant will be shut down for 1.5 months
+            \item Total retrofit: the plant will be shut down for 0.5 months
+        \end{enumerate}
+    \item[] If the 7.5 earthquake occurs - 
+        \begin{enumerate}
+            \item No retrofit: the plant will be shut down for 6.5 months
+            \item Partial retrofit: the plant will be shut down for 3 months
+            \item Total retrofit: the plant will be shut down for 1 month
+        \end{enumerate}
+    \item[] So, computing the monetary losses should be straightforward. Obviously, with no earthquake there is no monetary loss.
+    \item[] Use the Hurwicz optimality index and plot the choices as money loss v optimality. Please discuss what decision you would make within the context of risk aversion.
+        \vspace{\baselineskip}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+    \item\textbf{(100) Select a common utility function and conduct the decision analysis again. Does the decision change? Also, please compute the Arrow-Pratt coefficient for the utility function. We will compare that with everyone else and see how the coefficients reflect risk aversion.}
+        \vspace{\baselineskip}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        \newpage
+    \item\textbf{(50) It is impossibly difficult to predict earthquakes. However, expert geologists confirm that 1 high-magnitude earthquake will occur in 150 years. Does your decision change?}
+        \vspace{\baselineskip}
+
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+
+
+
+
+
+\end{enumerate}
+
+\newpage 
+
+\bibliographystyle{ieeetr}
+\setlength{\bibhang}{0pt}
+\bibliography{references}
+
+\end{document}
