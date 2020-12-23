@@ -1,5 +1,3 @@
-
-
 \documentclass[11pt,a4paper]{article} 
 \usepackage[lmargin=1in,rmargin=1in,tmargin=1in,bmargin=1in]{geometry} 
 \usepackage[pagewise]{lineno} %line numbering
@@ -21,7 +19,7 @@
 \usepackage{tabto} %general tabbed spacing
 \usepackage{longtable} %need to put label at top under caption then \\ - use spacing
 \usepackage[stable,hang,flushmargin]{footmisc} %footnotes in section titles and no indent
-\usepackage[round]{natbib} %parenthesis instead of brackets for inline citations
+\usepackage[round,semicolon]{natbib} %parenthesis instead of brackets for inline citations
 \usepackage{enumitem}
 \usepackage{boldline}
 \usepackage{makecell}
@@ -124,12 +122,12 @@
 \pagewiselinenumbers
 \modulolinenumbers[3] % line numbering interval
 
-\noindent\Large{\textbf{Executive Summary}} \label{exec-summ} \\
+\section*{Executive Summary}} \label{exec-summ} 
 
 \newpage
 
 \begin{center}
-    \textbf{Phase I - Risk Assessment}
+    \textbf{\Large Phase I - Risk Assessment}
 \end{center}
 
 \newpage
@@ -170,7 +168,7 @@ Give a good technical overview of your topic with literature references.
 \newpage
 
 \begin{center}
-    \textbf{Phase II - Risk Management}
+    \textbf{\Large Phase II - Risk Management}
 \end{center}
 
 \newpage
@@ -203,7 +201,7 @@ Give a good technical overview of your topic with literature references.
 \newpage
 
 \begin{center}
-    \textbf{Phase III - Institutional Issues}
+    \textbf{\Large Phase III - Institutional Issues}
 \end{center}
 
 \newpage
@@ -220,9 +218,9 @@ Give a good technical overview of your topic with literature references.
 
 \newpage
 
-\begin{center}
-    \textbf{Final Remarks}
-\end{center}
+\section{Final Remarks}
+
+\newpage
 
 \section{Project summary}
 
@@ -242,43 +240,34 @@ Outside the scope of the project, what additional work could be done using the e
 
 What you personally learned over the course of the project?
 
-%uncomment to prepare references
-%\bibliographystyle{}
-%\setlength{\bibhang}{0pt}
-%\bibliography{}
+\bibliographystyle{standard}
+\setlength{\bibhang}{0pt}
+\bibliography{references}
 
 \newpage
 
-\noindent\Large{\textbf{Appendix I}} \label{appendix-i}
+\section*{Appendix I} \label{appendix-i}
 
-\newpage
-
-\noindent\textbf{\Large{Tables}}
-
-\begin{table}[h!]
-    \centering
-    \caption{Caption}
-    \label{tab-label}
-    \begin{tabular}{|c|c|c|}
-        \hline
-        A&
-        B&
-        C\\
-        \hline
-        1&2&3\\
-        \hline
-        4&5&6\\
-        \hline
-        7&8&9\\
-        \hline
-        X&Y&Z\\
-        \hline
-    \end{tabular}
-\end{table}
-
-\newpage
-
-\noindent\textbf{\Large{Figures}}
+%\begin{table}[h!]
+%    \centering
+%    \caption{Caption}
+%    \label{tab-label}
+%    \begin{tabular}{|c|c|c|}
+%        \hline
+%        A&
+%        B&
+%        C\\
+%        \hline
+%        1&2&3\\
+%        \hline
+%        4&5&6\\
+%        \hline
+%        7&8&9\\
+%        \hline
+%        X&Y&Z\\
+%        \hline
+%    \end{tabular}
+%\end{table}
 
 %\begin{figure}[h!]
 %    \centering
